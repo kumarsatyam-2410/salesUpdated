@@ -74,6 +74,9 @@ public class Customer {
 	@Column(name = "is_active")
 	private boolean isActive;
 
+	@Column(name = "customer_status")
+	private String customerStatus;
+	
 	public Customer()
 	{
 
@@ -213,6 +216,25 @@ public class Customer {
 
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
+	}
+
+	public String getCustomerStatus() {
+		return customerStatus;
+	}
+
+	public void setCustomerStatus(String customerStatus) {
+		this.customerStatus = customerStatus;
+	}
+
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", customerName=" + customerName + ", gender=" + gender + ", address=" + address
+				+ ", zipcode=" + zipcode + ", mobile=" + mobile + ", adharNumber=" + adharNumber + ", packageType="
+				+ packageType + ", subscriptionType=" + subscriptionType + ", customerPic=" + customerPic
+				+ ", latitude=" + latitude + ", longitude=" + longitude + ", subscriptionStartDate="
+				+ subscriptionStartDate + ", subscriptionEndDate=" + subscriptionEndDate
+				+ ", lastSuccessSubscriptionDate=" + lastSuccessSubscriptionDate + ", isActive=" + isActive
+				+ ", customerStatus=" + customerStatus + "]";
 	}
 
 

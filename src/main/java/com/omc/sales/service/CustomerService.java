@@ -64,6 +64,7 @@ public class CustomerService {
 		customerEntity.setSubscriptionEndDate(customerDTO.getSubscriptionEndDate());
 		customerEntity.setLastSuccessSubscriptionDate(customerDTO.getLastSuccessSubscriptionDate());
 		//customerEntity.setAddedOn(customerDTO.getAddedOn());
+		customerEntity.setCustomerStatus(customerDTO.getCustomerStatus());
 		customerRepository.save(customerEntity);
 
 		LOGGER.info("Out createCustomer service with return Value customerId:"+customerEntity.getId()); 
@@ -103,7 +104,7 @@ public class CustomerService {
 		customerEntity.setSubscriptionEndDate(customerDTO.getSubscriptionEndDate());
 		customerEntity.setLastSuccessSubscriptionDate(customerDTO.getLastSuccessSubscriptionDate());
 		//customerEntity.setAddedOn(customerDTO.getAddedOn());
-		
+		customerEntity.setCustomerStatus(customerDTO.getCustomerStatus());
 		LOGGER.info("Out Customer Updated for "+customerEntity.getId()); 
 		return customerEntity.getId();
 	}

@@ -47,6 +47,8 @@ public class CustomerDTO {
 	private Timestamp addedOn;
 	
 	private boolean isActive;
+	
+	private String customerStatus;
 
 	public Long getId() {
 		return id;
@@ -182,6 +184,14 @@ public class CustomerDTO {
 
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
+	}
+
+	public String getCustomerStatus() {
+		return customerStatus;
+	}
+
+	public void setCustomerStatus(String customerStatus) {
+		this.customerStatus = customerStatus;
 	}
 
 
