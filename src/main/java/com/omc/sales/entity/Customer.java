@@ -77,6 +77,16 @@ public class Customer {
 	@Column(name = "customer_status")
 	private String customerStatus;
 	
+	@Column(name = "sales_executive_id")
+	private int salesExecutiveId;
+	
+	@Column(name = "cust_acq_id")
+	private Long custAcqId;
+	
+	@Column(name = "plant_id")
+	private int plantId;
+	
+	
 	public Customer()
 	{
 
@@ -226,6 +236,32 @@ public class Customer {
 		this.customerStatus = customerStatus;
 	}
 
+	
+	
+	public int getSalesExecutiveId() {
+		return salesExecutiveId;
+	}
+
+	public void setSalesExecutiveId(int salesExecutiveId) {
+		this.salesExecutiveId = salesExecutiveId;
+	}
+
+	public Long getCustAcqId() {
+		return custAcqId;
+	}
+
+	public void setCustAcqId(Long custAcqId) {
+		this.custAcqId = custAcqId;
+	}
+
+	public int getPlantId() {
+		return plantId;
+	}
+
+	public void setPlantId(int plantId) {
+		this.plantId = plantId;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", customerName=" + customerName + ", gender=" + gender + ", address=" + address
@@ -234,7 +270,8 @@ public class Customer {
 				+ ", latitude=" + latitude + ", longitude=" + longitude + ", subscriptionStartDate="
 				+ subscriptionStartDate + ", subscriptionEndDate=" + subscriptionEndDate
 				+ ", lastSuccessSubscriptionDate=" + lastSuccessSubscriptionDate + ", isActive=" + isActive
-				+ ", customerStatus=" + customerStatus + "]";
+				+ ", customerStatus=" + customerStatus + ", salesExecutiveId=" + salesExecutiveId + ", custAcqId="
+				+ custAcqId + ", plantId=" + plantId + "]";
 	}
 
 

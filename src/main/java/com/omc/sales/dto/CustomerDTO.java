@@ -49,7 +49,10 @@ public class CustomerDTO {
 	private boolean isActive;
 	
 	private String customerStatus;
-
+	private int salesExecutiveId;
+	private Long custAcqId;
+	private int plantId;
+	
 	public Long getId() {
 		return id;
 	}
@@ -192,6 +195,42 @@ public class CustomerDTO {
 
 	public void setCustomerStatus(String customerStatus) {
 		this.customerStatus = customerStatus;
+	}
+
+	public int getSalesExecutiveId() {
+		return salesExecutiveId;
+	}
+
+	public void setSalesExecutiveId(int salesExecutiveId) {
+		this.salesExecutiveId = salesExecutiveId;
+	}
+
+	public Long getCustAcqId() {
+		return custAcqId;
+	}
+
+	public void setCustAcqId(Long custAcqId) {
+		this.custAcqId = custAcqId;
+	}
+
+	public int getPlantId() {
+		return plantId;
+	}
+
+	public void setPlantId(int plantId) {
+		this.plantId = plantId;
+	}
+
+	@Override
+	public String toString() {
+		return "CustomerDTO [id=" + id + ", customerName=" + customerName + ", gender=" + gender + ", address="
+				+ address + ", zipcode=" + zipcode + ", mobile=" + mobile + ", adharNumber=" + adharNumber
+				+ ", packageType=" + packageType + ", subscriptionType=" + subscriptionType + ", customerPic="
+				+ customerPic + ", latitude=" + latitude + ", longitude=" + longitude + ", subscriptionStartDate="
+				+ subscriptionStartDate + ", subscriptionEndDate=" + subscriptionEndDate
+				+ ", lastSuccessSubscriptionDate=" + lastSuccessSubscriptionDate + ", addedOn=" + addedOn
+				+ ", isActive=" + isActive + ", customerStatus=" + customerStatus + ", salesExecutiveId="
+				+ salesExecutiveId + ", custAcqId=" + custAcqId + ", plantId=" + plantId + "]";
 	}
 
 
