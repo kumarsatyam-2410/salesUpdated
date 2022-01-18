@@ -133,7 +133,33 @@ CREATE TABLE IF NOT EXISTS `plant_sales_inventory` (
   ) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 
-  
+  CREATE TABLE `rms_plant_poll_mapping` (
+  `ppoll_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `plant_id` bigint(20) DEFAULT NULL,
+  `poll_number` bigint(20) DEFAULT NULL,
+  `added_on` DATETIME DEFAULT NULL,
+  `updated_on` DATETIME DEFAULT NULL,
+  PRIMARY KEY (`ppoll_id`)
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4
+
+CREATE TABLE `rms_poll_sll_mapping` (
+  `psll_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `poll_id` bigint(20) DEFAULT NULL,
+  `sll_number` bigint(20) DEFAULT NULL,
+  `added_on` DATETIME DEFAULT NULL,
+  `updated_on` DATETIME DEFAULT NULL,
+  PRIMARY KEY (`psll_id`)
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4
+
+
+CREATE TABLE `rms_sll_customer_mapping` (
+  `sc_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `customer_id` bigint(20) DEFAULT NULL,
+  `sll_id` bigint(20) DEFAULT NULL,
+  `added_on` DATETIME DEFAULT NULL,
+  `updated_on` DATETIME DEFAULT NULL,
+  PRIMARY KEY (`sc_id`)
+) ENGINE=INNODB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4
   
   
   

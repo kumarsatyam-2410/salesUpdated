@@ -14,7 +14,7 @@ import com.omc.sales.entity.Plant;
  * The Interface UsersRepository.
  */
 @Repository
-public interface PlantRepository extends JpaRepository<Plant, Integer> {
+public interface PlantRepository extends JpaRepository<Plant, Long> {
 
 
 	public List<Plant> findByCountryId(Integer countryId);

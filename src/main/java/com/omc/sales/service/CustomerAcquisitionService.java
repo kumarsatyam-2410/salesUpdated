@@ -70,14 +70,14 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setSubscriptionStartDate(customerAcquisitionDTO.getSubscriptionStartDate());
 		customerAcquisitionEntity.setSubscriptionEndDate(customerAcquisitionDTO.getSubscriptionEndDate());
 		customerAcquisitionEntity.setLastSuccessSubscriptionDate(customerAcquisitionDTO.getLastSuccessSubscriptionDate());
-		customerAcquisitionEntity.setAcquisition_status(customerAcquisitionDTO.getAcquisition_status());
-		customerAcquisitionEntity.setUpload_caf_path(customerAcquisitionDTO.getUpload_caf_path());
-		customerAcquisitionEntity.setUpload_installation_certificate(customerAcquisitionDTO.getUpload_installation_certificate());
-		customerAcquisitionEntity.setNo_board_installation_required(customerAcquisitionDTO.getNo_board_installation_required());
-		customerAcquisitionEntity.setNo_polls_installation_required(customerAcquisitionDTO.getNo_polls_installation_required());
-		customerAcquisitionEntity.setNo_rcbs_installation_required(customerAcquisitionDTO.getNo_rcbs_installation_required());
-		customerAcquisitionEntity.setNo_sll_installation_required(customerAcquisitionDTO.getNo_sll_installation_required());
-		customerAcquisitionEntity.setNo_wire_in_meter_required(customerAcquisitionDTO.getNo_wire_in_meter_required());
+		customerAcquisitionEntity.setAcquisitionStatus(customerAcquisitionDTO.getAcquisition_status().toString());
+		customerAcquisitionEntity.setUploadCafPath(customerAcquisitionDTO.getUpload_caf_path());
+		customerAcquisitionEntity.setUploadInstallationCertificate(customerAcquisitionDTO.getUpload_installation_certificate());
+		customerAcquisitionEntity.setNoBoardInstallationRequired(customerAcquisitionDTO.getNo_board_installation_required());
+		customerAcquisitionEntity.setNoPollsInstallationRequired(customerAcquisitionDTO.getNo_polls_installation_required());
+		customerAcquisitionEntity.setNoRcbsInstallationRequired(customerAcquisitionDTO.getNo_rcbs_installation_required());
+		customerAcquisitionEntity.setNoSllInstallationRequired(customerAcquisitionDTO.getNo_sll_installation_required());
+		customerAcquisitionEntity.setNoWireInMeterRequired(customerAcquisitionDTO.getNo_wire_in_meter_required());
 		//customerAcquisitionEntity.setAddedOn(customerAcquisitionDTO.getAddedOn());
 		customerAcquisitionRepository.save(customerAcquisitionEntity);
 
@@ -121,14 +121,14 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setSubscriptionStartDate(customerAcquisitionDTO.getSubscriptionStartDate());
 		customerAcquisitionEntity.setSubscriptionEndDate(customerAcquisitionDTO.getSubscriptionEndDate());
 		customerAcquisitionEntity.setLastSuccessSubscriptionDate(customerAcquisitionDTO.getLastSuccessSubscriptionDate());
-		customerAcquisitionEntity.setAcquisition_status(customerAcquisitionDTO.getAcquisition_status());
-		customerAcquisitionEntity.setUpload_caf_path(customerAcquisitionDTO.getUpload_caf_path());
-		customerAcquisitionEntity.setUpload_installation_certificate(customerAcquisitionDTO.getUpload_installation_certificate());
-		customerAcquisitionEntity.setNo_board_installation_required(customerAcquisitionDTO.getNo_board_installation_required());
-		customerAcquisitionEntity.setNo_polls_installation_required(customerAcquisitionDTO.getNo_polls_installation_required());
-		customerAcquisitionEntity.setNo_rcbs_installation_required(customerAcquisitionDTO.getNo_rcbs_installation_required());
-		customerAcquisitionEntity.setNo_sll_installation_required(customerAcquisitionDTO.getNo_sll_installation_required());
-		customerAcquisitionEntity.setNo_wire_in_meter_required(customerAcquisitionDTO.getNo_wire_in_meter_required());
+		customerAcquisitionEntity.setAcquisitionStatus(customerAcquisitionDTO.getAcquisition_status());
+		customerAcquisitionEntity.setUploadCafPath(customerAcquisitionDTO.getUpload_caf_path());
+		customerAcquisitionEntity.setUploadInstallationCertificate(customerAcquisitionDTO.getUpload_installation_certificate());
+		customerAcquisitionEntity.setNoBoardInstallationRequired(customerAcquisitionDTO.getNo_board_installation_required());
+		customerAcquisitionEntity.setNoPollsInstallationRequired(customerAcquisitionDTO.getNo_polls_installation_required());
+		customerAcquisitionEntity.setNoRcbsInstallationRequired(customerAcquisitionDTO.getNo_rcbs_installation_required());
+		customerAcquisitionEntity.setNoSllInstallationRequired(customerAcquisitionDTO.getNo_sll_installation_required());
+		customerAcquisitionEntity.setNoWireInMeterRequired(customerAcquisitionDTO.getNo_wire_in_meter_required());
 		
 		LOGGER.info("Out CustomerAcquisition Updated for "+customerAcquisitionEntity.getId()); 
 		return customerAcquisitionEntity.getId();
@@ -155,14 +155,14 @@ public class CustomerAcquisitionService {
 		customerAcquisitionHistory.setSubscriptionStartDate(customerAcquisitionEntity.getSubscriptionStartDate());
 		customerAcquisitionHistory.setSubscriptionEndDate(customerAcquisitionEntity.getSubscriptionEndDate());
 		customerAcquisitionHistory.setLastSuccessSubscriptionDate(customerAcquisitionEntity.getLastSuccessSubscriptionDate());
-		customerAcquisitionHistory.setAcquisition_status(customerAcquisitionEntity.getAcquisition_status());
-		customerAcquisitionHistory.setUpload_caf_path(customerAcquisitionEntity.getUpload_caf_path());
-		customerAcquisitionHistory.setUpload_installation_certificate(customerAcquisitionEntity.getUpload_installation_certificate());
-		customerAcquisitionHistory.setNo_board_installation_required(customerAcquisitionEntity.getNo_board_installation_required());
-		customerAcquisitionHistory.setNo_polls_installation_required(customerAcquisitionEntity.getNo_polls_installation_required());
-		customerAcquisitionHistory.setNo_rcbs_installation_required(customerAcquisitionEntity.getNo_rcbs_installation_required());
-		customerAcquisitionHistory.setNo_sll_installation_required(customerAcquisitionEntity.getNo_sll_installation_required());
-		customerAcquisitionHistory.setNo_wire_in_meter_required(customerAcquisitionEntity.getNo_wire_in_meter_required());
+		customerAcquisitionHistory.setAcquisition_status(customerAcquisitionEntity.getAcquisitionStatus());
+		customerAcquisitionHistory.setUpload_caf_path(customerAcquisitionEntity.getUploadCafPath());
+		customerAcquisitionHistory.setUpload_installation_certificate(customerAcquisitionEntity.getUploadInstallationCertificate());
+		customerAcquisitionHistory.setNo_board_installation_required(customerAcquisitionEntity.getNoBoardInstallationRequired());
+		customerAcquisitionHistory.setNo_polls_installation_required(customerAcquisitionEntity.getNoPollsInstallationRequired());
+		customerAcquisitionHistory.setNo_rcbs_installation_required(customerAcquisitionEntity.getNoRcbsInstallationRequired());
+		customerAcquisitionHistory.setNo_sll_installation_required(customerAcquisitionEntity.getNoSllInstallationRequired());
+		customerAcquisitionHistory.setNo_wire_in_meter_required(customerAcquisitionEntity.getNoWireInMeterRequired());
 		
 		customerAcquisitionHistory.setHistoryCreatedOn(new Timestamp(new Date().getTime()));
 		

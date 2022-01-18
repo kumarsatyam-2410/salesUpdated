@@ -17,7 +17,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "customer_payment_details")
-public class CustomerPaymentDetails implements Serializable {
+public class UserTarget implements Serializable {
 
 	/**
 	 * 
@@ -62,7 +62,7 @@ public class CustomerPaymentDetails implements Serializable {
 	 * @OneToOne(mappedBy = "plant_id") private PlantCapacity plantCapacity;
 	 */
 	
-	public CustomerPaymentDetails(){
+	public UserTarget(){
 		
 	}
 

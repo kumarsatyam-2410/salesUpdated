@@ -59,10 +59,15 @@ public class CustomerAcquisition {
 	private String longitude;
 
 	@Column(name = "acquisition_status")
-	private String acquisition_status;
+	private String acquisitionStatus;
 
 	@Column(name = "upload_caf_path")
-	private String upload_caf_path;
+	private String uploadCafPath;
+	
+	
+	@Column(name = "sales_executive_id")
+	private String salesExecutiveId;
+
 
 	@Column(name = "subscription_start_date")
 	private Timestamp subscriptionStartDate;
@@ -74,25 +79,25 @@ public class CustomerAcquisition {
 	private Timestamp lastSuccessSubscriptionDate;
 
 	@Column(name = "upload_installation_certificate")
-	private String upload_installation_certificate;
+	private String uploadInstallationCertificate;
 
 	@Column(name = "is_active")
 	private boolean isActive;
 
 	@Column(name = "no_board_installation_required")
-	private int no_board_installation_required;
+	private Integer noBoardInstallationRequired;
 
 	@Column(name = "no_sll_installation_required")
-	private int no_sll_installation_required;
+	private Integer noSllInstallationRequired;
 
 	@Column(name = "no_rcbs_installation_required")
-	private int no_rcbs_installation_required;
+	private Integer noRcbsInstallationRequired;
 
 	@Column(name = "no_polls_installation_required")
-	private int no_polls_installation_required;
+	private Integer noPollsInstallationRequired;
 
 	@Column(name = "no_wire_in_meter_required")
-	private int no_wire_in_meter_required;
+	private Integer noWireInMeterRequired;
 
 	public CustomerAcquisition()
 	{
@@ -235,69 +240,78 @@ public class CustomerAcquisition {
 		this.isActive = isActive;
 	}
 
-	public String getAcquisition_status() {
-		return acquisition_status;
+	public String getAcquisitionStatus() {
+		return acquisitionStatus;
 	}
 
-	public String getUpload_caf_path() {
-		return upload_caf_path;
+	public String getUploadCafPath() {
+		return uploadCafPath;
 	}
 
-	public String getUpload_installation_certificate() {
-		return upload_installation_certificate;
+	public String getSalesExecutiveId() {
+		return salesExecutiveId;
 	}
 
-	public int getNo_board_installation_required() {
-		return no_board_installation_required;
+	public String getUploadInstallationCertificate() {
+		return uploadInstallationCertificate;
 	}
 
-	public int getNo_sll_installation_required() {
-		return no_sll_installation_required;
+	public Integer getNoBoardInstallationRequired() {
+		return noBoardInstallationRequired;
 	}
 
-	public int getNo_rcbs_installation_required() {
-		return no_rcbs_installation_required;
+	public Integer getNoSllInstallationRequired() {
+		return noSllInstallationRequired;
 	}
 
-	public int getNo_polls_installation_required() {
-		return no_polls_installation_required;
+	public Integer getNoRcbsInstallationRequired() {
+		return noRcbsInstallationRequired;
 	}
 
-	public int getNo_wire_in_meter_required() {
-		return no_wire_in_meter_required;
+	public Integer getNoPollsInstallationRequired() {
+		return noPollsInstallationRequired;
 	}
 
-	public void setAcquisition_status(String acquisition_status) {
-		this.acquisition_status = acquisition_status;
+	public Integer getNoWireInMeterRequired() {
+		return noWireInMeterRequired;
 	}
 
-	public void setUpload_caf_path(String upload_caf_path) {
-		this.upload_caf_path = upload_caf_path;
+	public void setAcquisitionStatus(String acquisitionStatus) {
+		this.acquisitionStatus = acquisitionStatus;
 	}
 
-	public void setUpload_installation_certificate(String upload_installation_certificate) {
-		this.upload_installation_certificate = upload_installation_certificate;
+	public void setUploadCafPath(String uploadCafPath) {
+		this.uploadCafPath = uploadCafPath;
 	}
 
-	public void setNo_board_installation_required(int no_board_installation_required) {
-		this.no_board_installation_required = no_board_installation_required;
+	public void setSalesExecutiveId(String salesExecutiveId) {
+		this.salesExecutiveId = salesExecutiveId;
 	}
 
-	public void setNo_sll_installation_required(int no_sll_installation_required) {
-		this.no_sll_installation_required = no_sll_installation_required;
+	public void setUploadInstallationCertificate(String uploadInstallationCertificate) {
+		this.uploadInstallationCertificate = uploadInstallationCertificate;
 	}
 
-	public void setNo_rcbs_installation_required(int no_rcbs_installation_required) {
-		this.no_rcbs_installation_required = no_rcbs_installation_required;
+	public void setNoBoardInstallationRequired(Integer noBoardInstallationRequired) {
+		this.noBoardInstallationRequired = noBoardInstallationRequired;
 	}
 
-	public void setNo_polls_installation_required(int no_polls_installation_required) {
-		this.no_polls_installation_required = no_polls_installation_required;
+	public void setNoSllInstallationRequired(Integer noSllInstallationRequired) {
+		this.noSllInstallationRequired = noSllInstallationRequired;
 	}
 
-	public void setNo_wire_in_meter_required(int no_wire_in_meter_required) {
-		this.no_wire_in_meter_required = no_wire_in_meter_required;
+	public void setNoRcbsInstallationRequired(Integer noRcbsInstallationRequired) {
+		this.noRcbsInstallationRequired = noRcbsInstallationRequired;
 	}
+
+	public void setNoPollsInstallationRequired(Integer noPollsInstallationRequired) {
+		this.noPollsInstallationRequired = noPollsInstallationRequired;
+	}
+
+	public void setNoWireInMeterRequired(Integer noWireInMeterRequired) {
+		this.noWireInMeterRequired = noWireInMeterRequired;
+	}
+
 
 
 }

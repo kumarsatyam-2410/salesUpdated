@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.omc.sales.dto.DashboardDTO;
 import com.omc.sales.dto.UserResponseDTO;
 import com.omc.sales.entity.User;
 import com.omc.sales.exception.BaseException;
 import com.omc.sales.exception.ErrorCodes;
+import com.omc.sales.service.DashBoardService;
 import com.omc.sales.service.UserService;
 
 
@@ -31,6 +33,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private DashBoardService dashBoardService;
 	
 
 	@RequestMapping(value="/test", method = RequestMethod.GET)
@@ -64,27 +69,28 @@ public class UserController {
 	}
 
 	
-//	@RequestMapping(value = "/dashbord/{userId}", method = RequestMethod.GET)
-//	public DashboardDTO getDashbordByUser(@PathVariable String userId) {
-//		DashboardDTO userResponseDTO = new DashboardDTO();
-//		ResponseEntity<DashboardDTO> responseEntity;
-//		try{
-//			LOGGER.info("In UserController for dashboard Request");
-//			return dashBoardService.prepareDashBoard(Long.valueOf(userId));
-//			 
-//		}
-//		catch(BaseException exception){
-//			LOGGER.warn("Exception occur during = " + exception.getMessage());
-//			//userResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
-//			//userResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-//			responseEntity = new ResponseEntity<>(userResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
-//			//userResponseDTO.setErrorMessage(exception.getCause().getMessage());
-//		}
-//		catch(RuntimeException exception){
-//			LOGGER.warn("Error occurred during runtime creating user", exception);
-//		} catch(Exception exception){
-//			LOGGER.warn("Error occurred while creating user", exception);
-//		}
-//		return null;
-//	}
+	
+	@RequestMapping(value = "/dashbord/{userId}", method = RequestMethod.GET)
+	public DashboardDTO getDashbordByUser(@PathVariable String userId) {
+		DashboardDTO userResponseDTO = new DashboardDTO();
+		ResponseEntity<DashboardDTO> responseEntity;
+		try{
+			LOGGER.info("In UserController for dashboard Request");
+			return dashBoardService.prepareDashBoard(Long.valueOf(userId));
+			 
+		}
+		catch(BaseException exception){
+			LOGGER.warn("Exception occur during = " + exception.getMessage());
+			//userResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			//userResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			responseEntity = new ResponseEntity<>(userResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			//userResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		}
+		catch(RuntimeException exception){
+			LOGGER.warn("Error occurred during runtime creating user", exception);
+		} catch(Exception exception){
+			LOGGER.warn("Error occurred while creating user", exception);
+		}
+		return null;
+	}
 }
