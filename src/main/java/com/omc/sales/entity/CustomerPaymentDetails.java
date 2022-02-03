@@ -33,6 +33,9 @@ public class CustomerPaymentDetails implements Serializable {
 	@Column(name = "customer_id")
 	private Long customerId;
 	
+	@Column(name = "customer_name")
+	private String customerName;
+	
 	@Column(name = "plant_id")
 	private Integer plantId;
 
@@ -182,12 +185,24 @@ public class CustomerPaymentDetails implements Serializable {
 
 
 
+	public String getCustomerName() {
+		return customerName;
+	}
+
+
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+
+
 	@Override
 	public String toString() {
-		return "CustomerPaymentDetails [cpId=" + cpId + ", customerId=" + customerId + ", plantId=" + plantId
-				+ ", paymentMode=" + paymentMode + ", paymentAmount=" + paymentAmount + ", paymentCurrency="
-				+ paymentCurrency + ", paymentDate=" + paymentDate + ", paymentReceivedUserId=" + paymentReceivedUserId
-				+ ", remark=" + remark + "]";
+		return "CustomerPaymentDetails [cpId=" + cpId + ", customerId=" + customerId + ", customerName=" + customerName
+				+ ", plantId=" + plantId + ", paymentMode=" + paymentMode + ", paymentAmount=" + paymentAmount
+				+ ", paymentCurrency=" + paymentCurrency + ", paymentDate=" + paymentDate + ", paymentReceivedUserId="
+				+ paymentReceivedUserId + ", remark=" + remark + "]";
 	}
 	
 	

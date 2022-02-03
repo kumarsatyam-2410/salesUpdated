@@ -20,6 +20,8 @@ public class CustomerPaymentDTO {
 	private Long cpId;
 
 	private Long customerId;
+	
+	private String customerName;
 
 	private Integer plantId;
 
@@ -107,12 +109,21 @@ public class CustomerPaymentDTO {
 		this.remark = remark;
 	}
 
+	
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
 	@Override
 	public String toString() {
-		return "CustomerPaymentDTO [cpId=" + cpId + ", customerId=" + customerId + ", plantId=" + plantId
-				+ ", paymentMode=" + paymentMode + ", paymentAmount=" + paymentAmount + ", paymentCurrency="
-				+ paymentCurrency + ", paymentDate=" + paymentDate + ", paymentReceivedUserId=" + paymentReceivedUserId
-				+ ", remark=" + remark + "]";
+		return "CustomerPaymentDTO [cpId=" + cpId + ", customerId=" + customerId + ", customerName=" + customerName
+				+ ", plantId=" + plantId + ", paymentMode=" + paymentMode + ", paymentAmount=" + paymentAmount
+				+ ", paymentCurrency=" + paymentCurrency + ", paymentDate=" + paymentDate + ", paymentReceivedUserId="
+				+ paymentReceivedUserId + ", remark=" + remark + "]";
 	}
 
 }
