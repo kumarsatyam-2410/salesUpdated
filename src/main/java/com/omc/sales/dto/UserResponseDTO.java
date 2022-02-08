@@ -1,9 +1,13 @@
 package com.omc.sales.dto;
 
-import java.util.List;
+
 
 public class UserResponseDTO extends AbstractResponseDTO{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long id;
 	
 	public Long getId() {

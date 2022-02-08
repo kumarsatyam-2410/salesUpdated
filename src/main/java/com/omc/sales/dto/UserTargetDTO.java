@@ -1,48 +1,25 @@
-package com.omc.sales.entity;
+package com.omc.sales.dto;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name="user_target")
-public class UserTarget {
+public class UserTargetDTO {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="target_id")
-	private Long targetId;
+    private Long targetId;
 	
-	@Column(name="user_id")
 	private String userId;
 	
-	@Column(name="target_type")
 	private String targetType;
 	
-	@Column(name="target_start_date")
 	private Timestamp targetStartDate;
 	
-	@Column(name="target_end_date")
 	private Timestamp targetEndDate;
 	
-	@Column(name="no_customer_acq_target")
 	private Long noCustomerAcqTarget;
 	
-	@Column(name="revenue_target_amount")
 	private BigDecimal revenueTargetAmount;
 	
-	@Column(name="comment")
 	private String comment;
-
-	public UserTarget() {
-		super();
-	}
 
 	public Long getTargetId() {
 		return targetId;
@@ -110,7 +87,7 @@ public class UserTarget {
 
 	@Override
 	public String toString() {
-		return "UserTarget [targetId=" + targetId + ", userId=" + userId + ", targetType=" + targetType
+		return "UserTargetDTO [targetId=" + targetId + ", userId=" + userId + ", targetType=" + targetType
 				+ ", targetStartDate=" + targetStartDate + ", targetEndDate=" + targetEndDate + ", noCustomerAcqTarget="
 				+ noCustomerAcqTarget + ", revenueTargetAmount=" + revenueTargetAmount + ", comment=" + comment + "]";
 	}

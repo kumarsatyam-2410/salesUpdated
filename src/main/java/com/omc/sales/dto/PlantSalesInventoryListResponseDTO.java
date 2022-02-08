@@ -6,6 +6,10 @@ import com.omc.sales.entity.PlantSalesInventory;
 
 public class PlantSalesInventoryListResponseDTO extends AbstractResponseDTO{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<PlantSalesInventory> list;
 
 	public List<PlantSalesInventory> getList() {
