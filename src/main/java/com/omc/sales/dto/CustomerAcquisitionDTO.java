@@ -1,5 +1,6 @@
 package com.omc.sales.dto;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -59,7 +60,268 @@ public class CustomerAcquisitionDTO {
 	private int no_rcbs_installation_required;
 	private int no_polls_installation_required;
 	private int no_wire_in_meter_required;
+	
+	private String customerUserId;
+	
+	private String rechargeNo;
+	
+	private String customerType;
+	
+	private Long packageId;
+	
+	private BigDecimal amount;
+	
+	private Timestamp paymentDate;
+	
+	private String paymentStatus;
+	
+	private String paymentMode;
+	
+	private String paymentCurrency;
+	
+	private String fathersName;
+	
+	private String husbandName;
+	
+	private String conAddress;
+	
+	private String conVillage;
+	
+	private String conTehsil;
+	
+	private String conPostoffice;
+	
+	private String conPincode;
+	
+	private String permanentAddress;
+	
+	private String permanentVillage;
+	
+	private String permanentTehsil;
+	
+	private String permanentPostoffice;
+	
+	private String permanentPincode;
+	
+	private String idProofType;
+	
+	private String idProfDocNo;
+	
+	private String addressProofType;
 
+	private String addressProofDocNo;
+	
+    private String natureOfSupply;
+	
+	public String getCustomerUserId() {
+		return customerUserId;
+	}
+
+	public void setCustomerUserId(String customerUserId) {
+		this.customerUserId = customerUserId;
+	}
+
+	public String getRechargeNo() {
+		return rechargeNo;
+	}
+
+	public void setRechargeNo(String rechargeNo) {
+		this.rechargeNo = rechargeNo;
+	}
+
+	public String getCustomerType() {
+		return customerType;
+	}
+
+	public void setCustomerType(String customerType) {
+		this.customerType = customerType;
+	}
+
+	public Long getPackageId() {
+		return packageId;
+	}
+
+	public void setPackageId(Long packageId) {
+		this.packageId = packageId;
+	}
+
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
+
+	public Timestamp getPaymentDate() {
+		return paymentDate;
+	}
+
+	public void setPaymentDate(Timestamp paymentDate) {
+		this.paymentDate = paymentDate;
+	}
+
+	public String getPaymentStatus() {
+		return paymentStatus;
+	}
+
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+
+	public String getPaymentMode() {
+		return paymentMode;
+	}
+
+	public void setPaymentMode(String paymentMode) {
+		this.paymentMode = paymentMode;
+	}
+
+	public String getPaymentCurrency() {
+		return paymentCurrency;
+	}
+
+	public void setPaymentCurrency(String paymentCurrency) {
+		this.paymentCurrency = paymentCurrency;
+	}
+
+	public String getFathersName() {
+		return fathersName;
+	}
+
+	public void setFathersName(String fathersName) {
+		this.fathersName = fathersName;
+	}
+
+	public String getHusbandName() {
+		return husbandName;
+	}
+
+	public void setHusbandName(String husbandName) {
+		this.husbandName = husbandName;
+	}
+
+	public String getConAddress() {
+		return conAddress;
+	}
+
+	public void setConAddress(String conAddress) {
+		this.conAddress = conAddress;
+	}
+
+	public String getConVillage() {
+		return conVillage;
+	}
+
+	public void setConVillage(String conVillage) {
+		this.conVillage = conVillage;
+	}
+
+	public String getConTehsil() {
+		return conTehsil;
+	}
+
+	public void setConTehsil(String conTehsil) {
+		this.conTehsil = conTehsil;
+	}
+
+	public String getConPostoffice() {
+		return conPostoffice;
+	}
+
+	public void setConPostoffice(String conPostoffice) {
+		this.conPostoffice = conPostoffice;
+	}
+
+	public String getConPincode() {
+		return conPincode;
+	}
+
+	public void setConPincode(String conPincode) {
+		this.conPincode = conPincode;
+	}
+
+	public String getPermanentAddress() {
+		return permanentAddress;
+	}
+
+	public void setPermanentAddress(String permanentAddress) {
+		this.permanentAddress = permanentAddress;
+	}
+
+	public String getPermanentVillage() {
+		return permanentVillage;
+	}
+
+	public void setPermanentVillage(String permanentVillage) {
+		this.permanentVillage = permanentVillage;
+	}
+
+	public String getPermanentTehsil() {
+		return permanentTehsil;
+	}
+
+	public void setPermanentTehsil(String permanentTehsil) {
+		this.permanentTehsil = permanentTehsil;
+	}
+
+	public String getPermanentPostoffice() {
+		return permanentPostoffice;
+	}
+
+	public void setPermanentPostoffice(String permanentPostoffice) {
+		this.permanentPostoffice = permanentPostoffice;
+	}
+
+	public String getPermanentPincode() {
+		return permanentPincode;
+	}
+
+	public void setPermanentPincode(String permanentPincode) {
+		this.permanentPincode = permanentPincode;
+	}
+
+	public String getIdProofType() {
+		return idProofType;
+	}
+
+	public void setIdProofType(String idProofType) {
+		this.idProofType = idProofType;
+	}
+
+	public String getIdProfDocNo() {
+		return idProfDocNo;
+	}
+
+	public void setIdProfDocNo(String idProfDocNo) {
+		this.idProfDocNo = idProfDocNo;
+	}
+
+	public String getAddressProofType() {
+		return addressProofType;
+	}
+
+	public void setAddressProofType(String addressProofType) {
+		this.addressProofType = addressProofType;
+	}
+
+	public String getAddressProofDocNo() {
+		return addressProofDocNo;
+	}
+
+	public void setAddressProofDocNo(String addressProofDocNo) {
+		this.addressProofDocNo = addressProofDocNo;
+	}
+
+	public String getNatureOfSupply() {
+		return natureOfSupply;
+	}
+
+	public void setNatureOfSupply(String natureOfSupply) {
+		this.natureOfSupply = natureOfSupply;
+	}
+
+	
 	public Long getId() {
 		return id;
 	}
@@ -267,11 +529,5 @@ public class CustomerAcquisitionDTO {
 	public void setNo_wire_in_meter_required(int no_wire_in_meter_required) {
 		this.no_wire_in_meter_required = no_wire_in_meter_required;
 	}
-
-
-
-
-
-	
 
 }

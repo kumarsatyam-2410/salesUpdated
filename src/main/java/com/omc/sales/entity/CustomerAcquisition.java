@@ -1,5 +1,6 @@
 package com.omc.sales.entity;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -98,7 +99,85 @@ public class CustomerAcquisition {
 
 	@Column(name = "no_wire_in_meter_required")
 	private Integer noWireInMeterRequired;
+	
+	@Column(name = "customer_uid")
+	private String customerUserId;
+	
+	@Column(name = "recharge_no")
+	private String rechargeNo;
+	
+	@Column(name = "cust_type")
+	private String customerType;
+	
+	@Column(name = "package_id")
+	private Long packageId;
+	
+	@Column(name = "amount")
+	private BigDecimal amount;
+	
+	@Column(name = "payment_date")
+	private Timestamp paymentDate;
+	
+	@Column(name = "payment_status")
+	private String paymentStatus;
+	
+	@Column(name = "payment_mode")
+	private String paymentMode;
+	
+	@Column(name = "payment_currency")
+	private String paymentCurrency;
+	
+	@Column(name = "fathers_name")
+	private String fathersName;
+	
+	@Column(name = "husband_name")
+	private String husbandName;
+	
+	@Column(name = "con_address")
+	private String conAddress;
+	
+	@Column(name = "con_village")
+	private String conVillage;
+	
+	@Column(name = "con_tehsil")
+	private String conTehsil;
+	
+	@Column(name = "con_postoffice")
+	private String conPostoffice;
+	
+	@Column(name = "con_pincode")
+	private String conPincode;
+	
+	@Column(name = "permanent_address")
+	private String permanentAddress;
+	
+	@Column(name = "permanent_village")
+	private String permanentVillage;
+	
+	@Column(name = "permanent_tehsil")
+	private String permanentTehsil;
+	
+	@Column(name = "permanent_postoffice")
+	private String permanentPostoffice;
+	
+	@Column(name = "permanent_pincode")
+	private String permanentPincode;
+	
+	@Column(name = "id_proof_type")
+	private String idProofType;
+	
+	@Column(name = "id_prof_doc_no")
+	private String idProfDocNo;
+	
+	@Column(name = "address_proof_type")
+	private String addressProofType;
 
+	@Column(name = "address_proof_doc_no")
+	private String addressProofDocNo;
+	
+	@Column(name = "nature_of_supply")
+	private String natureOfSupply;
+	
 	public CustomerAcquisition()
 	{
 
@@ -310,6 +389,214 @@ public class CustomerAcquisition {
 
 	public void setNoWireInMeterRequired(Integer noWireInMeterRequired) {
 		this.noWireInMeterRequired = noWireInMeterRequired;
+	}
+
+	public String getCustomerUserId() {
+		return customerUserId;
+	}
+
+	public void setCustomerUserId(String customerUserId) {
+		this.customerUserId = customerUserId;
+	}
+
+	public String getRechargeNo() {
+		return rechargeNo;
+	}
+
+	public void setRechargeNo(String rechargeNo) {
+		this.rechargeNo = rechargeNo;
+	}
+
+	public String getCustomerType() {
+		return customerType;
+	}
+
+	public void setCustomerType(String customerType) {
+		this.customerType = customerType;
+	}
+
+	public Long getPackageId() {
+		return packageId;
+	}
+
+	public void setPackageId(Long packageId) {
+		this.packageId = packageId;
+	}
+
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
+
+	public Timestamp getPaymentDate() {
+		return paymentDate;
+	}
+
+	public void setPaymentDate(Timestamp paymentDate) {
+		this.paymentDate = paymentDate;
+	}
+
+	public String getPaymentStatus() {
+		return paymentStatus;
+	}
+
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+
+	public String getPaymentMode() {
+		return paymentMode;
+	}
+
+	public void setPaymentMode(String paymentMode) {
+		this.paymentMode = paymentMode;
+	}
+
+	public String getPaymentCurrency() {
+		return paymentCurrency;
+	}
+
+	public void setPaymentCurrency(String paymentCurrency) {
+		this.paymentCurrency = paymentCurrency;
+	}
+
+	public String getFathersName() {
+		return fathersName;
+	}
+
+	public void setFathersName(String fathersName) {
+		this.fathersName = fathersName;
+	}
+
+	public String getHusbandName() {
+		return husbandName;
+	}
+
+	public void setHusbandName(String husbandName) {
+		this.husbandName = husbandName;
+	}
+
+	public String getConAddress() {
+		return conAddress;
+	}
+
+	public void setConAddress(String conAddress) {
+		this.conAddress = conAddress;
+	}
+
+	public String getConVillage() {
+		return conVillage;
+	}
+
+	public void setConVillage(String conVillage) {
+		this.conVillage = conVillage;
+	}
+
+	public String getConTehsil() {
+		return conTehsil;
+	}
+
+	public void setConTehsil(String conTehsil) {
+		this.conTehsil = conTehsil;
+	}
+
+	public String getConPostoffice() {
+		return conPostoffice;
+	}
+
+	public void setConPostoffice(String conPostoffice) {
+		this.conPostoffice = conPostoffice;
+	}
+
+	public String getConPincode() {
+		return conPincode;
+	}
+
+	public void setConPincode(String conPincode) {
+		this.conPincode = conPincode;
+	}
+
+	public String getPermanentAddress() {
+		return permanentAddress;
+	}
+
+	public void setPermanentAddress(String permanentAddress) {
+		this.permanentAddress = permanentAddress;
+	}
+
+	public String getPermanentVillage() {
+		return permanentVillage;
+	}
+
+	public void setPermanentVillage(String permanentVillage) {
+		this.permanentVillage = permanentVillage;
+	}
+
+	public String getPermanentTehsil() {
+		return permanentTehsil;
+	}
+
+	public void setPermanentTehsil(String permanentTehsil) {
+		this.permanentTehsil = permanentTehsil;
+	}
+
+	public String getPermanentPostoffice() {
+		return permanentPostoffice;
+	}
+
+	public void setPermanentPostoffice(String permanentPostoffice) {
+		this.permanentPostoffice = permanentPostoffice;
+	}
+
+	public String getPermanentPincode() {
+		return permanentPincode;
+	}
+
+	public void setPermanentPincode(String permanentPincode) {
+		this.permanentPincode = permanentPincode;
+	}
+
+	public String getIdProofType() {
+		return idProofType;
+	}
+
+	public void setIdProofType(String idProofType) {
+		this.idProofType = idProofType;
+	}
+
+	public String getIdProfDocNo() {
+		return idProfDocNo;
+	}
+
+	public void setIdProfDocNo(String idProfDocNo) {
+		this.idProfDocNo = idProfDocNo;
+	}
+
+	public String getAddressProofType() {
+		return addressProofType;
+	}
+
+	public void setAddressProofType(String addressProofType) {
+		this.addressProofType = addressProofType;
+	}
+
+	public String getAddressProofDocNo() {
+		return addressProofDocNo;
+	}
+
+	public void setAddressProofDocNo(String addressProofDocNo) {
+		this.addressProofDocNo = addressProofDocNo;
+	}
+
+	public String getNatureOfSupply() {
+		return natureOfSupply;
+	}
+
+	public void setNatureOfSupply(String natureOfSupply) {
+		this.natureOfSupply = natureOfSupply;
 	}
 
 

@@ -78,6 +78,33 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setNoRcbsInstallationRequired(customerAcquisitionDTO.getNo_rcbs_installation_required());
 		customerAcquisitionEntity.setNoSllInstallationRequired(customerAcquisitionDTO.getNo_sll_installation_required());
 		customerAcquisitionEntity.setNoWireInMeterRequired(customerAcquisitionDTO.getNo_wire_in_meter_required());
+		customerAcquisitionEntity.setCustomerUserId(customerAcquisitionEntity.getCustomerUserId());
+		customerAcquisitionEntity.setRechargeNo(customerAcquisitionDTO.getRechargeNo());
+		customerAcquisitionEntity.setCustomerType(customerAcquisitionDTO.getCustomerType());
+		customerAcquisitionEntity.setPackageId(customerAcquisitionEntity.getPackageId());
+		customerAcquisitionEntity.setAmount(customerAcquisitionDTO.getAmount());
+		customerAcquisitionEntity.setPaymentDate(customerAcquisitionDTO.getPaymentDate());
+		customerAcquisitionEntity.setPaymentStatus(customerAcquisitionDTO.getPaymentStatus());
+		customerAcquisitionEntity.setPaymentMode(customerAcquisitionDTO.getPaymentMode());
+		customerAcquisitionEntity.setPaymentCurrency(customerAcquisitionDTO.getPaymentCurrency());
+		customerAcquisitionEntity.setFathersName(customerAcquisitionDTO.getFathersName());
+		customerAcquisitionEntity.setHusbandName(customerAcquisitionDTO.getHusbandName());
+		customerAcquisitionEntity.setConAddress(customerAcquisitionDTO.getConAddress());
+		customerAcquisitionEntity.setConVillage(customerAcquisitionDTO.getConVillage());
+		customerAcquisitionEntity.setConTehsil(customerAcquisitionDTO.getConTehsil());
+		customerAcquisitionEntity.setConPostoffice(customerAcquisitionDTO.getConPostoffice());
+		customerAcquisitionEntity.setConPincode(customerAcquisitionDTO.getConPincode());
+		customerAcquisitionEntity.setPermanentAddress(customerAcquisitionDTO.getPermanentAddress());
+		customerAcquisitionEntity.setPermanentVillage(customerAcquisitionDTO.getPermanentVillage());
+		customerAcquisitionEntity.setPermanentTehsil(customerAcquisitionDTO.getPermanentTehsil());
+		customerAcquisitionEntity.setPermanentPostoffice(customerAcquisitionDTO.getPermanentPostoffice());
+		customerAcquisitionEntity.setPermanentPincode(customerAcquisitionDTO.getPermanentPincode());
+		customerAcquisitionEntity.setIdProofType(customerAcquisitionDTO.getIdProofType());
+		customerAcquisitionEntity.setIdProfDocNo(customerAcquisitionDTO.getIdProfDocNo());
+		customerAcquisitionEntity.setAddressProofType(customerAcquisitionDTO.getAddressProofType());
+		customerAcquisitionEntity.setAddressProofDocNo(customerAcquisitionDTO.getAddressProofDocNo());
+		customerAcquisitionEntity.setNatureOfSupply(customerAcquisitionDTO.getNatureOfSupply());
+		
 		//customerAcquisitionEntity.setAddedOn(customerAcquisitionDTO.getAddedOn());
 		customerAcquisitionRepository.save(customerAcquisitionEntity);
 
@@ -129,6 +156,33 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setNoRcbsInstallationRequired(customerAcquisitionDTO.getNo_rcbs_installation_required());
 		customerAcquisitionEntity.setNoSllInstallationRequired(customerAcquisitionDTO.getNo_sll_installation_required());
 		customerAcquisitionEntity.setNoWireInMeterRequired(customerAcquisitionDTO.getNo_wire_in_meter_required());
+		
+		customerAcquisitionEntity.setCustomerUserId(customerAcquisitionEntity.getCustomerUserId());
+		customerAcquisitionEntity.setRechargeNo(customerAcquisitionDTO.getRechargeNo());
+		customerAcquisitionEntity.setCustomerType(customerAcquisitionDTO.getCustomerType());
+		customerAcquisitionEntity.setPackageId(customerAcquisitionEntity.getPackageId());
+		customerAcquisitionEntity.setAmount(customerAcquisitionDTO.getAmount());
+		customerAcquisitionEntity.setPaymentDate(customerAcquisitionDTO.getPaymentDate());
+		customerAcquisitionEntity.setPaymentStatus(customerAcquisitionDTO.getPaymentStatus());
+		customerAcquisitionEntity.setPaymentMode(customerAcquisitionDTO.getPaymentMode());
+		customerAcquisitionEntity.setPaymentCurrency(customerAcquisitionDTO.getPaymentCurrency());
+		customerAcquisitionEntity.setFathersName(customerAcquisitionDTO.getFathersName());
+		customerAcquisitionEntity.setHusbandName(customerAcquisitionDTO.getHusbandName());
+		customerAcquisitionEntity.setConAddress(customerAcquisitionDTO.getConAddress());
+		customerAcquisitionEntity.setConVillage(customerAcquisitionDTO.getConVillage());
+		customerAcquisitionEntity.setConTehsil(customerAcquisitionDTO.getConTehsil());
+		customerAcquisitionEntity.setConPostoffice(customerAcquisitionDTO.getConPostoffice());
+		customerAcquisitionEntity.setConPincode(customerAcquisitionDTO.getConPincode());
+		customerAcquisitionEntity.setPermanentAddress(customerAcquisitionDTO.getPermanentAddress());
+		customerAcquisitionEntity.setPermanentVillage(customerAcquisitionDTO.getPermanentVillage());
+		customerAcquisitionEntity.setPermanentTehsil(customerAcquisitionDTO.getPermanentTehsil());
+		customerAcquisitionEntity.setPermanentPostoffice(customerAcquisitionDTO.getPermanentPostoffice());
+		customerAcquisitionEntity.setPermanentPincode(customerAcquisitionDTO.getPermanentPincode());
+		customerAcquisitionEntity.setIdProofType(customerAcquisitionDTO.getIdProofType());
+		customerAcquisitionEntity.setIdProfDocNo(customerAcquisitionDTO.getIdProfDocNo());
+		customerAcquisitionEntity.setAddressProofType(customerAcquisitionDTO.getAddressProofType());
+		customerAcquisitionEntity.setAddressProofDocNo(customerAcquisitionDTO.getAddressProofDocNo());
+		customerAcquisitionEntity.setNatureOfSupply(customerAcquisitionDTO.getNatureOfSupply());
 		
 		LOGGER.info("Out CustomerAcquisition Updated for "+customerAcquisitionEntity.getId()); 
 		return customerAcquisitionEntity.getId();
