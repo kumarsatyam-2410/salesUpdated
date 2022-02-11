@@ -114,6 +114,7 @@ public class CustomerController {
 		try{
 			LOGGER.info("In CustomerController for updateCustomer Request");
 			Long customerId = customerService.updateCustomer(customerDTO);
+			System.out.println("id="+customerId);
 			customerResponseDTO.setId(customerId);
 			customerResponseDTO.setStatus(HttpStatus.OK.value());
 			responseEntity = new ResponseEntity<>(customerResponseDTO, HttpStatus.OK);

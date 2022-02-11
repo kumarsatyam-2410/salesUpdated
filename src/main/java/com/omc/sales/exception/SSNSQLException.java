@@ -2,6 +2,11 @@ package com.omc.sales.exception;
 
 
 public class SSNSQLException extends BaseException {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/** The error code. */
 	private String errorMsg;
 

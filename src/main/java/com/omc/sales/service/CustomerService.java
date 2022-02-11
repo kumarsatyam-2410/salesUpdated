@@ -1,6 +1,8 @@
 package com.omc.sales.service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -12,8 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.omc.sales.dto.CustomerDTO;
 import com.omc.sales.entity.Customer;
+import com.omc.sales.entity.CustomerHistory;
 import com.omc.sales.exception.ErrorCodes;
 import com.omc.sales.exception.SSNSQLException;
+import com.omc.sales.repository.CustomerHistoryRepository;
 import com.omc.sales.repository.CustomerRepository;
 
 @Service
@@ -25,6 +29,9 @@ public class CustomerService {
 	/** The customer repository. */
 	@Autowired
 	private CustomerRepository customerRepository;
+	
+	@Autowired
+	private CustomerHistoryRepository customerHistoryRepository;
 
 
 	/**
@@ -90,6 +97,8 @@ public class CustomerService {
 	public Long updateCustomer(CustomerDTO customerDTO) {
 		LOGGER.info("In updateCustomer  Service");
 		Customer customerEntity = customerRepository.findByCustomerName(customerDTO.getCustomerName());
+		CustomerHist(customerEntity);
+		customerEntity.setId(customerDTO.getId());
 		customerEntity.setActive(customerDTO.isActive());
 		customerEntity.setCustomerName(customerDTO.getCustomerName());
 		customerEntity.setGender(customerDTO.getGender());
@@ -111,6 +120,38 @@ public class CustomerService {
 		customerEntity.setPlantId(customerDTO.getPlantId());
 		LOGGER.info("Out Customer Updated for "+customerEntity.getId()); 
 		return customerEntity.getId();
+	}
+
+
+	private void CustomerHist(Customer customerEntity) {
+		
+		CustomerHistory customerHistory=new CustomerHistory();
+		
+		Timestamp current_ts = new Timestamp(new Date().getTime());
+		customerHistory.setCustomerHistoryDate(current_ts);
+		customerHistory.setId(customerEntity.getId());
+		customerHistory.setCustomerName(customerEntity.getCustomerName());
+		customerHistory.setGender(customerEntity.getGender());
+		customerHistory.setAddress(customerEntity.getAddress());
+		customerHistory.setZipcode(customerEntity.getZipcode());
+		customerHistory.setMobile(customerEntity.getMobile());
+		customerHistory.setAdharNumber(customerEntity.getAdharNumber());
+		customerHistory.setPackageType(customerEntity.getPackageType());
+		customerHistory.setSubscriptionType(customerEntity.getSubscriptionType());
+		customerHistory.setCustomerPic(customerEntity.getCustomerPic());
+		customerHistory.setLatitude(customerEntity.getLatitude());
+		customerHistory.setLongitude(customerEntity.getLongitude());
+		customerHistory.setSubscriptionStartDate(customerEntity.getSubscriptionStartDate());
+		customerHistory.setSubscriptionEndDate(customerEntity.getSubscriptionEndDate());
+		customerHistory.setLastSuccessSubscriptionDate(customerEntity.getLastSuccessSubscriptionDate());
+		customerHistory.setActive(true);
+		customerHistory.setCustomerStatus(customerEntity.getCustomerStatus());
+		customerHistory.setSalesExecutiveId(customerEntity.getSalesExecutiveId());
+		customerHistory.setCustAcqId(customerEntity.getCustAcqId());
+		customerHistory.setPlantId(customerEntity.getPlantId());
+		customerHistoryRepository.save(customerHistory);
+		
+		
 	}
 
 
