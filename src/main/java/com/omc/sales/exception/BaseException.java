@@ -65,6 +65,12 @@ public class BaseException extends RuntimeException {
 		this.errorCode = errorCode;
 	}
 
+	
+	public BaseException(String errorMsg,Throwable cause) {
+		super(errorMsg, cause);
+		this.errorMsg = errorMsg;
+	}
+
 	/**
 	 * Gets the error msg.
 	 *
