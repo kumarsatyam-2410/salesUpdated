@@ -29,8 +29,30 @@ public class CustomerAcquisition {
 	@Column(name = "customer_name")
 	private String customerName;
 
+	public String getAbhApprovalStatus() {
+		return abhApprovalStatus;
+	}
+
+	public void setAbhApprovalStatus(String abhApprovalStatus) {
+		this.abhApprovalStatus = abhApprovalStatus;
+	}
+
+	public String getSalesheadApprovalStatus() {
+		return salesheadApprovalStatus;
+	}
+
+	public void setSalesheadApprovalStatus(String salesheadApprovalStatus) {
+		this.salesheadApprovalStatus = salesheadApprovalStatus;
+	}
+
 	@Column(name = "gender")
 	private String gender;
+	
+	@Column(name = "abh_approval_status")
+	private String abhApprovalStatus;
+	
+	@Column(name = "saleshead_approval_status")
+	private String salesheadApprovalStatus;
 
 	@Column(name = "address")
 	private String address;

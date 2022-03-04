@@ -33,7 +33,7 @@ public class CustomerPaymentDTO {
 	
 	private Timestamp paymentDate;
 	
-	private Timestamp paymentReceivedUserId;
+	private int paymentReceivedUserId;
 		
 	private String remark;
 
@@ -93,11 +93,11 @@ public class CustomerPaymentDTO {
 		this.paymentDate = paymentDate;
 	}
 
-	public Timestamp getPaymentReceivedUserId() {
+	public int getPaymentReceivedUserId() {
 		return paymentReceivedUserId;
 	}
 
-	public void setPaymentReceivedUserId(Timestamp paymentReceivedUserId) {
+	public void setPaymentReceivedUserId(int paymentReceivedUserId) {
 		this.paymentReceivedUserId = paymentReceivedUserId;
 	}
 

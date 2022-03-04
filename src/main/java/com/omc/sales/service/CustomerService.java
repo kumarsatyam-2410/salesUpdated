@@ -119,7 +119,9 @@ public class CustomerService {
 		customerEntity.setSalesExecutiveId(customerDTO.getSalesExecutiveId());
 		customerEntity.setPlantId(customerDTO.getPlantId());
 		LOGGER.info("Out Customer Updated for "+customerEntity.getId()); 
+		
 		return customerEntity.getId();
+		
 	}
 
 

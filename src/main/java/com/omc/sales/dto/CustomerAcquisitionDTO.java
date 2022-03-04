@@ -29,6 +29,26 @@ public class CustomerAcquisitionDTO {
 
 	private String zipcode;
 	
+	private String abhApprovalStatus;
+
+	private String salesheadApprovalStatus;
+	
+	public String getAbhApprovalStatus() {
+		return abhApprovalStatus;
+	}
+
+	public void setAbhApprovalStatus(String abhApprovalStatus) {
+		this.abhApprovalStatus = abhApprovalStatus;
+	}
+
+	public String getSalesheadApprovalStatus() {
+		return salesheadApprovalStatus;
+	}
+
+	public void setSalesheadApprovalStatus(String salesheadApprovalStatus) {
+		this.salesheadApprovalStatus = salesheadApprovalStatus;
+	}
+
 	private String mobile;
 	
 	private String adharNumber;

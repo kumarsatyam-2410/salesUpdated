@@ -55,6 +55,9 @@ public class CustomerAcquisitionService {
 		}
 		
 		CustomerAcquisition customerAcquisitionEntity = new CustomerAcquisition();
+		
+		customerAcquisitionEntity.setAbhApprovalStatus(customerAcquisitionDTO.getAbhApprovalStatus());
+		customerAcquisitionEntity.setSalesheadApprovalStatus(customerAcquisitionDTO.getSalesheadApprovalStatus());
 		customerAcquisitionEntity.setActive(customerAcquisitionDTO.isActive());
 		customerAcquisitionEntity.setCustomerName(customerAcquisitionDTO.getCustomerName());
 		customerAcquisitionEntity.setPlantId(Long.valueOf(customerAcquisitionDTO.getPlantId()));
@@ -131,9 +134,12 @@ public class CustomerAcquisitionService {
 		LOGGER.info("In updateCustomerAcquisition  Service");
 		CustomerAcquisition customerAcquisitionEntity = customerAcquisitionRepository.findByCustomerName(customerAcquisitionDTO.getCustomerName());
 		
-		historiseCustomerAcq(customerAcquisitionEntity);
+		 historiseCustomerAcq(customerAcquisitionEntity);
 		
 		customerAcquisitionEntity.setActive(customerAcquisitionDTO.isActive());
+		
+		customerAcquisitionEntity.setAbhApprovalStatus(customerAcquisitionDTO.getAbhApprovalStatus());
+		customerAcquisitionEntity.setSalesheadApprovalStatus(customerAcquisitionDTO.getSalesheadApprovalStatus());
 		customerAcquisitionEntity.setCustomerName(customerAcquisitionDTO.getCustomerName());
 		customerAcquisitionEntity.setPlantId(Long.valueOf(customerAcquisitionDTO.getPlantId()));
 		customerAcquisitionEntity.setGender(customerAcquisitionDTO.getGender());
@@ -156,6 +162,8 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setNoRcbsInstallationRequired(customerAcquisitionDTO.getNo_rcbs_installation_required());
 		customerAcquisitionEntity.setNoSllInstallationRequired(customerAcquisitionDTO.getNo_sll_installation_required());
 		customerAcquisitionEntity.setNoWireInMeterRequired(customerAcquisitionDTO.getNo_wire_in_meter_required());
+		
+		
 		
 		customerAcquisitionEntity.setCustomerUserId(customerAcquisitionEntity.getCustomerUserId());
 		customerAcquisitionEntity.setRechargeNo(customerAcquisitionDTO.getRechargeNo());
@@ -195,6 +203,9 @@ public class CustomerAcquisitionService {
 		
 		customerAcquisitionHistory.setCust_acq_id(customerAcquisitionEntity.getId());
 		customerAcquisitionHistory.setActive(customerAcquisitionEntity.isActive());
+		
+		customerAcquisitionHistory.setAbhApprovalStatus(customerAcquisitionEntity.getAbhApprovalStatus());
+		customerAcquisitionHistory.setSalesheadApprovalStatus(customerAcquisitionEntity.getSalesheadApprovalStatus());
 		customerAcquisitionHistory.setCustomerName(customerAcquisitionEntity.getCustomerName());
 		customerAcquisitionHistory.setPlantId(Long.valueOf(customerAcquisitionEntity.getPlantId()));
 		customerAcquisitionHistory.setGender(customerAcquisitionEntity.getGender());

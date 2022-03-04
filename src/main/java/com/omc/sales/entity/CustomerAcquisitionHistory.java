@@ -22,6 +22,22 @@ public class CustomerAcquisitionHistory {
 	@Column(name = "history_cust_acq_id")
 	private Long id;
 
+	public String getAbhApprovalStatus() {
+		return abhApprovalStatus;
+	}
+
+	public void setAbhApprovalStatus(String abhApprovalStatus) {
+		this.abhApprovalStatus = abhApprovalStatus;
+	}
+
+	public String getSalesheadApprovalStatus() {
+		return salesheadApprovalStatus;
+	}
+
+	public void setSalesheadApprovalStatus(String salesheadApprovalStatus) {
+		this.salesheadApprovalStatus = salesheadApprovalStatus;
+	}
+
 	@Column(name = "history_created_on")
 	private Timestamp historyCreatedOn;
 	
@@ -66,6 +82,12 @@ public class CustomerAcquisitionHistory {
 
 	@Column(name = "customer_pic")
 	private String customerPic;
+	
+	@Column(name = "abh_approval_status")
+	private String abhApprovalStatus;
+	
+	@Column(name = "saleshead_approval_status")
+	private String salesheadApprovalStatus;
 
 	@Column(name = "latitude")
 	private String latitude;

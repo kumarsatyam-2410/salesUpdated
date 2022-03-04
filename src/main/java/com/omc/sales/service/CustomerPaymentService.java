@@ -10,13 +10,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.omc.sales.dto.CustomerDTO;
-import com.omc.sales.entity.Customer;
+import com.omc.sales.dto.CustomerPaymentDTO;
 import com.omc.sales.entity.CustomerPaymentDetails;
-import com.omc.sales.exception.ErrorCodes;
 import com.omc.sales.exception.SSNSQLException;
 import com.omc.sales.repository.CustomerPaymentRepository;
-import com.omc.sales.repository.CustomerRepository;
 
 @Service
 public class CustomerPaymentService {
@@ -25,6 +22,7 @@ public class CustomerPaymentService {
 	private static final Logger LOGGER = LogManager.getLogger(CustomerPaymentService.class);
 
 	/** The customer repository. */
+	
 	@Autowired
 	private CustomerPaymentRepository customerPaymentRepository;
 
@@ -38,6 +36,7 @@ public class CustomerPaymentService {
 	 * @throws SSNSQLException 
 	 * @throws Throwable 
 	 */
+		
 /*	@Transactional(propagation=Propagation.REQUIRED)
 	public Long createCustomer(CustomerDTO customerDTO) throws SSNSQLException{
 
@@ -85,6 +84,24 @@ public class CustomerPaymentService {
 		List<CustomerPaymentDetails> customerPaymentDetail = new ArrayList<>();
 		customerPaymentRepository.findAll().forEach(customerPaymentDetail::add);
 		return customerPaymentDetail;
+	}
+
+
+	public Long addCustomerPayment(CustomerPaymentDTO customerPaymentDTO) {
+		
+		CustomerPaymentDetails customerPaymentDetails = new CustomerPaymentDetails();
+		customerPaymentDetails.setCustomerId(customerPaymentDTO.getCustomerId());
+		customerPaymentDetails.setCustomerName(customerPaymentDTO.getCustomerName());
+		customerPaymentDetails.setPlantId(customerPaymentDTO.getPlantId());
+		customerPaymentDetails.setPaymentMode(customerPaymentDTO.getPaymentMode());
+		customerPaymentDetails.setPaymentAmount(customerPaymentDTO.getPaymentAmount());
+		customerPaymentDetails.setPaymentCurrency(customerPaymentDTO.getPaymentCurrency());
+		customerPaymentDetails.setPaymentDate(customerPaymentDTO.getPaymentDate());
+		customerPaymentDetails.setPaymentReceivedUserId(customerPaymentDTO.getPaymentReceivedUserId());
+		customerPaymentDetails.setRemark(customerPaymentDTO.getRemark());
+		customerPaymentRepository.save(customerPaymentDetails);
+		return customerPaymentDetails.getCpId();
+		
 	}
 
 /*
