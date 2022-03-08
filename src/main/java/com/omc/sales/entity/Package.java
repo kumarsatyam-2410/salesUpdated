@@ -66,6 +66,105 @@ public class Package {
 
 	@Column(name = "updated_by")
 	private String updated_by;
+	
+	@Column(name = "customer_type")
+	private String customerType;
+	
+	@Column(name = "unit_price")
+	private BigDecimal unit_price;
+	
+	@Column(name = "billing_type")
+	private String billingType;
+	
+	@Column(name = "OTI")
+	private BigDecimal OTI;
+	
+	@Column(name = "Remarks")
+	private String Remarks;
+	
+	@Column(name = "validity_days")
+	private int validityDays;
+	
+	@Column(name = "minimum_package_monthly")
+	private BigDecimal minimumPackageMonthly;
+	
+	@Column(name = "start_timing")
+	private Long startTiming;
+	
+	@Column(name = "end_timing")
+	private Long endTiming;
+	
+	public String getCustomerType() {
+		return customerType;
+	}
+
+	public int getValidityDays() {
+		return validityDays;
+	}
+
+	public void setValidityDays(int validityDays) {
+		this.validityDays = validityDays;
+	}
+
+	public BigDecimal getMinimumPackageMonthly() {
+		return minimumPackageMonthly;
+	}
+
+	public void setMinimumPackageMonthly(BigDecimal minimumPackageMonthly) {
+		this.minimumPackageMonthly = minimumPackageMonthly;
+	}
+
+	public Long getStartTiming() {
+		return startTiming;
+	}
+
+	public void setStartTiming(Long startTiming) {
+		this.startTiming = startTiming;
+	}
+
+	public Long getEndTiming() {
+		return endTiming;
+	}
+
+	public void setEndTiming(Long endTiming) {
+		this.endTiming = endTiming;
+	}
+
+	public void setCustomerType(String customerType) {
+		this.customerType = customerType;
+	}
+
+	public BigDecimal getUnit_price() {
+		return unit_price;
+	}
+
+	public void setUnit_price(BigDecimal unit_price) {
+		this.unit_price = unit_price;
+	}
+
+	public String getBillingType() {
+		return billingType;
+	}
+
+	public void setBillingType(String billingType) {
+		this.billingType = billingType;
+	}
+
+	public BigDecimal getOTI() {
+		return OTI;
+	}
+
+	public void setOTI(BigDecimal oTI) {
+		OTI = oTI;
+	}
+
+	public String getRemarks() {
+		return Remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		Remarks = remarks;
+	}
 
 	public Package()
 	{

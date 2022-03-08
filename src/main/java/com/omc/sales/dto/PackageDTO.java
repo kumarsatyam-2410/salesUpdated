@@ -1,6 +1,11 @@
 package com.omc.sales.dto;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
+
+import javax.persistence.Column;
+
+
 
 /**
  * The Class CustomerDTO.
@@ -22,15 +27,15 @@ public class PackageDTO {
 
 	private String packageType;
 	
-	private String amount;
+	private BigDecimal amount;
 	
 	private Timestamp validity;
 	
 	private String suplyHours;
 	
-	private String maxLoadPerDay;
+	private BigDecimal maxLoadPerDay;
 	
-	private String totalLoad;
+	private BigDecimal totalLoad;
 	
 	private String created_by;
 	
@@ -41,6 +46,113 @@ public class PackageDTO {
 	private Timestamp updatedOn;
 	
 	private boolean isActive;
+	
+	private String customerType;
+	
+	private BigDecimal unit_price;
+	
+	private String billingType;
+	
+	private BigDecimal OTI;
+	
+	private int validityDays;
+	
+	private BigDecimal minimumPackageMonthly;
+	
+	private Long startTiming;
+	
+	private Long endTiming;
+	
+	private String Remarks;
+	
+	public int getValidityDays() {
+		return validityDays;
+	}
+
+
+	public void setValidityDays(int validityDays) {
+		this.validityDays = validityDays;
+	}
+
+
+	public BigDecimal getMinimumPackageMonthly() {
+		return minimumPackageMonthly;
+	}
+
+
+	public void setMinimumPackageMonthly(BigDecimal minimumPackageMonthly) {
+		this.minimumPackageMonthly = minimumPackageMonthly;
+	}
+
+
+	public Long getStartTiming() {
+		return startTiming;
+	}
+
+
+	public void setStartTiming(Long startTiming) {
+		this.startTiming = startTiming;
+	}
+
+
+	public Long getEndTiming() {
+		return endTiming;
+	}
+
+
+	public void setEndTiming(Long endTiming) {
+		this.endTiming = endTiming;
+	}
+
+
+	public String getCustomerType() {
+		return customerType;
+	}
+
+
+	public void setCustomerType(String customerType) {
+		this.customerType = customerType;
+	}
+
+
+	public BigDecimal getUnit_price() {
+		return unit_price;
+	}
+
+
+	public void setUnit_price(BigDecimal unit_price) {
+		this.unit_price = unit_price;
+	}
+
+
+	public String getBillingType() {
+		return billingType;
+	}
+
+
+	public void setBillingType(String billingType) {
+		this.billingType = billingType;
+	}
+
+
+	public BigDecimal getOTI() {
+		return OTI;
+	}
+
+
+	public void setOTI(BigDecimal oTI) {
+		OTI = oTI;
+	}
+
+
+	public String getRemarks() {
+		return Remarks;
+	}
+
+
+	public void setRemarks(String remarks) {
+		Remarks = remarks;
+	}
 
 	public Long getId() {
 		return id;
@@ -91,7 +203,7 @@ public class PackageDTO {
 	}
 
 
-	public String getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
@@ -106,12 +218,12 @@ public class PackageDTO {
 	}
 
 
-	public String getMaxLoadPerDay() {
+	public BigDecimal getMaxLoadPerDay() {
 		return maxLoadPerDay;
 	}
 
 
-	public String getTotalLoad() {
+	public BigDecimal getTotalLoad() {
 		return totalLoad;
 	}
 
@@ -141,7 +253,7 @@ public class PackageDTO {
 	}
 
 
-	public void setAmount(String amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 
@@ -156,12 +268,12 @@ public class PackageDTO {
 	}
 
 
-	public void setMaxLoadPerDay(String maxLoadPerDay) {
+	public void setMaxLoadPerDay(BigDecimal maxLoadPerDay) {
 		this.maxLoadPerDay = maxLoadPerDay;
 	}
 
 
-	public void setTotalLoad(String totalLoad) {
+	public void setTotalLoad(BigDecimal totalLoad) {
 		this.totalLoad = totalLoad;
 	}
 
