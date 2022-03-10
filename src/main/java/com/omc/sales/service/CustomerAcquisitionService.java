@@ -107,7 +107,22 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setAddressProofType(customerAcquisitionDTO.getAddressProofType());
 		customerAcquisitionEntity.setAddressProofDocNo(customerAcquisitionDTO.getAddressProofDocNo());
 		customerAcquisitionEntity.setNatureOfSupply(customerAcquisitionDTO.getNatureOfSupply());
-		
+		customerAcquisitionEntity.setOmcId(customerAcquisitionDTO.getOmcId());
+		customerAcquisitionEntity.setCustomerType(customerAcquisitionDTO.getCustomerType());
+		customerAcquisitionEntity.setSubscriptionPackageId(customerAcquisitionDTO.getSubscriptionPackageId());
+		customerAcquisitionEntity.setSubscriptionPackageAmount(customerAcquisitionDTO.getSubscriptionPackageAmount());
+		customerAcquisitionEntity.setSpiCategory(customerAcquisitionDTO.getSpiCategory());
+		customerAcquisitionEntity.setDeviceConnected(customerAcquisitionDTO.getDeviceConnected());
+		customerAcquisitionEntity.setPollNo(customerAcquisitionDTO.getPollNo());
+		customerAcquisitionEntity.setBigBoard(customerAcquisitionDTO.getBigBoard());
+		customerAcquisitionEntity.setSmallBoard(customerAcquisitionDTO.getSmallBoard());
+		customerAcquisitionEntity.setLed(customerAcquisitionDTO.getLed());
+		customerAcquisitionEntity.setTypeOfEstablishment(customerAcquisitionDTO.getTypeOfEstablishment());
+		customerAcquisitionEntity.setProfessionOccupation(customerAcquisitionDTO.getProfessionOccupation());
+		customerAcquisitionEntity.setConnectionAddressDistrict(customerAcquisitionDTO.getConnectionAddressDistrict());
+		customerAcquisitionEntity.setPermanentAddressDistrict(customerAcquisitionDTO.getPermanentAddressDistrict());
+		customerAcquisitionEntity.setAddressProofType(customerAcquisitionDTO.getAddressProofType());
+		customerAcquisitionEntity.setPermanentAddressDocNo(customerAcquisitionDTO.getPermanentAddressDocNo());
 		//customerAcquisitionEntity.setAddedOn(customerAcquisitionDTO.getAddedOn());
 		customerAcquisitionRepository.save(customerAcquisitionEntity);
 
@@ -192,6 +207,23 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setAddressProofDocNo(customerAcquisitionDTO.getAddressProofDocNo());
 		customerAcquisitionEntity.setNatureOfSupply(customerAcquisitionDTO.getNatureOfSupply());
 		
+		customerAcquisitionEntity.setOmcId(customerAcquisitionDTO.getOmcId());
+		customerAcquisitionEntity.setCustomerType(customerAcquisitionDTO.getCustomerType());
+		customerAcquisitionEntity.setSubscriptionPackageId(customerAcquisitionDTO.getSubscriptionPackageId());
+		customerAcquisitionEntity.setSubscriptionPackageAmount(customerAcquisitionDTO.getSubscriptionPackageAmount());
+		customerAcquisitionEntity.setSpiCategory(customerAcquisitionDTO.getSpiCategory());
+		customerAcquisitionEntity.setDeviceConnected(customerAcquisitionDTO.getDeviceConnected());
+		customerAcquisitionEntity.setPollNo(customerAcquisitionDTO.getPollNo());
+		customerAcquisitionEntity.setBigBoard(customerAcquisitionDTO.getBigBoard());
+		customerAcquisitionEntity.setSmallBoard(customerAcquisitionDTO.getSmallBoard());
+		customerAcquisitionEntity.setLed(customerAcquisitionDTO.getLed());
+		customerAcquisitionEntity.setTypeOfEstablishment(customerAcquisitionDTO.getTypeOfEstablishment());
+		customerAcquisitionEntity.setProfessionOccupation(customerAcquisitionDTO.getProfessionOccupation());
+		customerAcquisitionEntity.setConnectionAddressDistrict(customerAcquisitionDTO.getConnectionAddressDistrict());
+		customerAcquisitionEntity.setPermanentAddressDistrict(customerAcquisitionDTO.getPermanentAddressDistrict());
+		customerAcquisitionEntity.setAddressProofType(customerAcquisitionDTO.getAddressProofType());
+		
+		
 		LOGGER.info("Out CustomerAcquisition Updated for "+customerAcquisitionEntity.getId()); 
 		return customerAcquisitionEntity.getId();
 	}
@@ -228,6 +260,22 @@ public class CustomerAcquisitionService {
 		customerAcquisitionHistory.setNo_rcbs_installation_required(customerAcquisitionEntity.getNoRcbsInstallationRequired());
 		customerAcquisitionHistory.setNo_sll_installation_required(customerAcquisitionEntity.getNoSllInstallationRequired());
 		customerAcquisitionHistory.setNo_wire_in_meter_required(customerAcquisitionEntity.getNoWireInMeterRequired());
+		
+		customerAcquisitionHistory.setOmcId(customerAcquisitionEntity.getOmcId());
+		customerAcquisitionHistory.setSubscriptionPackageId(customerAcquisitionEntity.getSubscriptionPackageId());
+		customerAcquisitionHistory.setSubscriptionPackageAmount(customerAcquisitionEntity.getSubscriptionPackageAmount());
+		customerAcquisitionHistory.setSpiCategory(customerAcquisitionEntity.getSpiCategory());
+		customerAcquisitionHistory.setDeviceConnected(customerAcquisitionEntity.getDeviceConnected());
+		customerAcquisitionHistory.setPollNo(customerAcquisitionEntity.getPollNo());
+		customerAcquisitionHistory.setBigBoard(customerAcquisitionEntity.getBigBoard());
+		customerAcquisitionHistory.setSmallBoard(customerAcquisitionEntity.getSmallBoard());
+		customerAcquisitionHistory.setLed(customerAcquisitionEntity.getLed());
+		customerAcquisitionHistory.setTypeOfEstablishment(customerAcquisitionEntity.getTypeOfEstablishment());
+		customerAcquisitionHistory.setProfessionOccupation(customerAcquisitionEntity.getProfessionOccupation());
+		customerAcquisitionHistory.setConnectionAddressDistrict(customerAcquisitionEntity.getConnectionAddressDistrict());
+		customerAcquisitionHistory.setPermanentAddressDistrict(customerAcquisitionEntity.getPermanentAddressDistrict());
+		customerAcquisitionHistory.setPermanentAddressProofType(customerAcquisitionEntity.getPermanentAddressProofType());
+		customerAcquisitionHistory.setPermanentAddressDocNo(customerAcquisitionEntity.getPermanentAddressDocNo());
 		
 		customerAcquisitionHistory.setHistoryCreatedOn(new Timestamp(new Date().getTime()));
 		

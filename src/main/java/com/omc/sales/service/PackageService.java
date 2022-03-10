@@ -3,6 +3,7 @@ package com.omc.sales.service;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -116,6 +117,14 @@ public class PackageService {
 		
 		LOGGER.info("Out Package Updated for "+packageEntity.getId()); 
 		return packageEntity.getId();
+	}
+
+    //get only one record of package
+	public List<Package> listAllPackage(Long id) {
+		List list = new ArrayList<>();
+		Optional<Package> p=packageRepository.findById(id);
+		list.add(p);
+		return list;
 	}
 
 

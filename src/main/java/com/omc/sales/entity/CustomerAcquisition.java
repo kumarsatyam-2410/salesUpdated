@@ -29,22 +29,6 @@ public class CustomerAcquisition {
 	@Column(name = "customer_name")
 	private String customerName;
 
-	public String getAbhApprovalStatus() {
-		return abhApprovalStatus;
-	}
-
-	public void setAbhApprovalStatus(String abhApprovalStatus) {
-		this.abhApprovalStatus = abhApprovalStatus;
-	}
-
-	public String getSalesheadApprovalStatus() {
-		return salesheadApprovalStatus;
-	}
-
-	public void setSalesheadApprovalStatus(String salesheadApprovalStatus) {
-		this.salesheadApprovalStatus = salesheadApprovalStatus;
-	}
-
 	@Column(name = "gender")
 	private String gender;
 	
@@ -90,8 +74,7 @@ public class CustomerAcquisition {
 	
 	@Column(name = "sales_executive_id")
 	private String salesExecutiveId;
-
-
+	
 	@Column(name = "subscription_start_date")
 	private Timestamp subscriptionStartDate;
 	
@@ -200,11 +183,194 @@ public class CustomerAcquisition {
 	@Column(name = "nature_of_supply")
 	private String natureOfSupply;
 	
+	@Column(name = "omc_id")
+	private Long omcId;
+	
+	@Column(name = "Subscription_Package_amount")
+	private BigDecimal SubscriptionPackageAmount;
+	
+	@Column(name = "Subscription_Package_id")
+	private Long SubscriptionPackageId;
+	
+	@Column(name = "spi_category")
+	private String spiCategory;
+	
+	@Column(name = "device_connected")
+	private String deviceConnected;
+	
+	@Column(name = "led")
+	private String led;
+	
+	@Column(name = "small_board")
+	private String smallBoard;
+	
+	@Column(name = "big_board")
+	private String bigBoard;
+	
+	@Column(name = "poll_no")
+	private String pollNo;
+	
+	@Column(name = "type_of_establishment")
+	private String typeOfEstablishment;
+	
+	@Column(name = "profession_occupation")
+	private String professionOccupation;
+	
+	@Column(name = "connection_address_district")
+	private String connectionAddressDistrict;
+	
+	@Column(name = "Permanent_address_district")
+	private String PermanentAddressDistrict;
+	
+	@Column(name = "permanent_address_proof_type")
+	private String permanentAddressProofType;
+	
+	@Column(name = "permanent_address_doc_no")
+	private String permanentAddressDocNo;
+	
+	
+	
+	public String getProfessionOccupation() {
+		return professionOccupation;
+	}
+
+	public void setProfessionOccupation(String professionOccupation) {
+		this.professionOccupation = professionOccupation;
+	}
+
+	public String getConnectionAddressDistrict() {
+		return connectionAddressDistrict;
+	}
+
+	public void setConnectionAddressDistrict(String connectionAddressDistrict) {
+		this.connectionAddressDistrict = connectionAddressDistrict;
+	}
+
+	public String getPermanentAddressDistrict() {
+		return PermanentAddressDistrict;
+	}
+
+	public void setPermanentAddressDistrict(String permanentAddressDistrict) {
+		PermanentAddressDistrict = permanentAddressDistrict;
+	}
+
+	public String getPermanentAddressProofType() {
+		return permanentAddressProofType;
+	}
+
+	public void setPermanentAddressProofType(String permanentAddressProofType) {
+		this.permanentAddressProofType = permanentAddressProofType;
+	}
+
+	public String getPermanentAddressDocNo() {
+		return permanentAddressDocNo;
+	}
+
+	public void setPermanentAddressDocNo(String permanentAddressDocNo) {
+		this.permanentAddressDocNo = permanentAddressDocNo;
+	}
+
+	public Long getOmcId() {
+		return omcId;
+	}
+
+	public void setOmcId(Long omcId) {
+		this.omcId = omcId;
+	}
+
+	public BigDecimal getSubscriptionPackageAmount() {
+		return SubscriptionPackageAmount;
+	}
+
+	public void setSubscriptionPackageAmount(BigDecimal subscriptionPackageAmount) {
+		SubscriptionPackageAmount = subscriptionPackageAmount;
+	}
+
+	public Long getSubscriptionPackageId() {
+		return SubscriptionPackageId;
+	}
+
+	public void setSubscriptionPackageId(Long subscriptionPackageId) {
+		SubscriptionPackageId = subscriptionPackageId;
+	}
+
+	public String getSpiCategory() {
+		return spiCategory;
+	}
+
+	public void setSpiCategory(String spiCategory) {
+		this.spiCategory = spiCategory;
+	}
+
+	public String getDeviceConnected() {
+		return deviceConnected;
+	}
+
+	public void setDeviceConnected(String deviceConnected) {
+		this.deviceConnected = deviceConnected;
+	}
+
+	public String getLed() {
+		return led;
+	}
+
+	public void setLed(String led) {
+		this.led = led;
+	}
+
+	public String getSmallBoard() {
+		return smallBoard;
+	}
+
+	public void setSmallBoard(String smallBoard) {
+		this.smallBoard = smallBoard;
+	}
+
+	public String getBigBoard() {
+		return bigBoard;
+	}
+
+	public void setBigBoard(String bigBoard) {
+		this.bigBoard = bigBoard;
+	}
+
+	public String getPollNo() {
+		return pollNo;
+	}
+
+	public void setPollNo(String pollNo) {
+		this.pollNo = pollNo;
+	}
+
+	public String getTypeOfEstablishment() {
+		return typeOfEstablishment;
+	}
+
+	public void setTypeOfEstablishment(String typeOfEstablishment) {
+		this.typeOfEstablishment = typeOfEstablishment;
+	}
+
 	public CustomerAcquisition()
 	{
 
 	}
 
+	public String getAbhApprovalStatus() {
+		return abhApprovalStatus;
+	}
+
+	public void setAbhApprovalStatus(String abhApprovalStatus) {
+		this.abhApprovalStatus = abhApprovalStatus;
+	}
+
+	public String getSalesheadApprovalStatus() {
+		return salesheadApprovalStatus;
+	}
+
+	public void setSalesheadApprovalStatus(String salesheadApprovalStatus) {
+		this.salesheadApprovalStatus = salesheadApprovalStatus;
+	}
+	
 	public Long getId() {
 		return id;
 	}

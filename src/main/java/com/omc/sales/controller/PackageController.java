@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -127,4 +129,33 @@ public class PackageController {
 		return responseEntity;
 
 	}
+	
+	@GetMapping("/getpackage/{id}")
+	public List<Package> getPackageById(@PathVariable Long id) {
+
+		ResponseEntity<PackageListResponseDTO> responseEntity;
+		List<Package> list = new ArrayList<>();
+		PackageListResponseDTO packageResponseDTO = new PackageListResponseDTO();
+		try{
+			LOGGER.info("In PackageController for listAll Packages Request");	
+			list = packageService.listAllPackage(id);
+			packageResponseDTO.setList(list);
+			packageResponseDTO.setStatus(HttpStatus.OK.value());
+			responseEntity = new ResponseEntity<>(packageResponseDTO,HttpStatus.OK);
+		}  catch(RuntimeException exception) {
+			LOGGER.warn("Error occurred while listing package", exception);
+			packageResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			packageResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity = new ResponseEntity<>(packageResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			packageResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		} catch(Exception exception){
+			LOGGER.warn("Error occurred while listing package", exception);
+			packageResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			packageResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity = new ResponseEntity<>(packageResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			packageResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		}
+		return list;
+	}
+	
 }

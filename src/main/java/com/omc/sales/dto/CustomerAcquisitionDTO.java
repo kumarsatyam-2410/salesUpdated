@@ -132,6 +132,158 @@ public class CustomerAcquisitionDTO {
 	private String addressProofDocNo;
 	
     private String natureOfSupply;
+    
+	private Long omcId;
+	
+	private BigDecimal SubscriptionPackageAmount;
+	
+	private Long SubscriptionPackageId;
+	
+	private String spiCategory;
+	
+	private String deviceConnected;
+	
+	private String led;
+	
+	private String smallBoard;
+	
+	private String bigBoard;
+	
+	private String pollNo;
+	
+	private String professionOccupation;
+	
+	private String connectionAddressDistrict;
+	
+	private String PermanentAddressDistrict;
+	
+	private String permanentAddressProofType;
+	
+	private String permanentAddressDocNo;
+	
+	
+	
+	public String getProfessionOccupation() {
+		return professionOccupation;
+	}
+
+	public void setProfessionOccupation(String professionOccupation) {
+		this.professionOccupation = professionOccupation;
+	}
+
+	public String getConnectionAddressDistrict() {
+		return connectionAddressDistrict;
+	}
+
+	public void setConnectionAddressDistrict(String connectionAddressDistrict) {
+		this.connectionAddressDistrict = connectionAddressDistrict;
+	}
+
+	public String getPermanentAddressDistrict() {
+		return PermanentAddressDistrict;
+	}
+
+	public void setPermanentAddressDistrict(String permanentAddressDistrict) {
+		PermanentAddressDistrict = permanentAddressDistrict;
+	}
+
+	public String getPermanentAddressProofType() {
+		return permanentAddressProofType;
+	}
+
+	public void setPermanentAddressProofType(String permanentAddressProofType) {
+		this.permanentAddressProofType = permanentAddressProofType;
+	}
+
+	public String getPermanentAddressDocNo() {
+		return permanentAddressDocNo;
+	}
+
+	public void setPermanentAddressDocNo(String permanentAddressDocNo) {
+		this.permanentAddressDocNo = permanentAddressDocNo;
+	}
+
+	public Long getOmcId() {
+		return omcId;
+	}
+
+	public void setOmcId(Long omcId) {
+		this.omcId = omcId;
+	}
+
+	public BigDecimal getSubscriptionPackageAmount() {
+		return SubscriptionPackageAmount;
+	}
+
+	public void setSubscriptionPackageAmount(BigDecimal subscriptionPackageAmount) {
+		SubscriptionPackageAmount = subscriptionPackageAmount;
+	}
+
+	public Long getSubscriptionPackageId() {
+		return SubscriptionPackageId;
+	}
+
+	public void setSubscriptionPackageId(Long subscriptionPackageId) {
+		SubscriptionPackageId = subscriptionPackageId;
+	}
+
+	public String getSpiCategory() {
+		return spiCategory;
+	}
+
+	public void setSpiCategory(String spiCategory) {
+		this.spiCategory = spiCategory;
+	}
+
+	public String getDeviceConnected() {
+		return deviceConnected;
+	}
+
+	public void setDeviceConnected(String deviceConnected) {
+		this.deviceConnected = deviceConnected;
+	}
+
+	public String getLed() {
+		return led;
+	}
+
+	public void setLed(String led) {
+		this.led = led;
+	}
+
+	public String getSmallBoard() {
+		return smallBoard;
+	}
+
+	public void setSmallBoard(String smallBoard) {
+		this.smallBoard = smallBoard;
+	}
+
+	public String getBigBoard() {
+		return bigBoard;
+	}
+
+	public void setBigBoard(String bigBoard) {
+		this.bigBoard = bigBoard;
+	}
+
+	public String getPollNo() {
+		return pollNo;
+	}
+
+	public void setPollNo(String pollNo) {
+		this.pollNo = pollNo;
+	}
+
+	public String getTypeOfEstablishment() {
+		return typeOfEstablishment;
+	}
+
+	public void setTypeOfEstablishment(String typeOfEstablishment) {
+		this.typeOfEstablishment = typeOfEstablishment;
+	}
+
+	private String typeOfEstablishment;
 	
 	public String getCustomerUserId() {
 		return customerUserId;
