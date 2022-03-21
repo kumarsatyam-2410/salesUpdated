@@ -149,7 +149,7 @@ public class CustomerAcquisitionDTO {
 	
 	private String bigBoard;
 	
-	private String pollNo;
+	private Long pollNo;
 	
 	private String professionOccupation;
 	
@@ -267,11 +267,11 @@ public class CustomerAcquisitionDTO {
 		this.bigBoard = bigBoard;
 	}
 
-	public String getPollNo() {
+	public Long getPollNo() {
 		return pollNo;
 	}
 
-	public void setPollNo(String pollNo) {
+	public void setPollNo(Long pollNo) {
 		this.pollNo = pollNo;
 	}
 

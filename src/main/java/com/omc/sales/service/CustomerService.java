@@ -92,6 +92,8 @@ public class CustomerService {
 		customerEntity.setLed(customerDTO.getLed());
 		customerEntity.setTypeOfEstablishment(customerDTO.getTypeOfEstablishment());
 		customerEntity.setLiveDate(customerDTO.getLiveDate());
+		customerEntity.setCurrentPackageAmount(customerDTO.getCurrentPackageAmount());
+		customerEntity.setCurrentPackageId(customerDTO.getCurrentPackageId());
 			customerRepository.save(customerEntity);
 
 		LOGGER.info("Out createCustomer service with return Value customerId:"+customerEntity.getId()); 
@@ -103,7 +105,7 @@ public class CustomerService {
 	 * List all customers.
 	 */
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
-	public List<Customer> listAllCustomers() {
+	public List<Customer> listAllCustomers()throws SSNSQLException  {
 		LOGGER.info("In listAllCustomers  Service");
 		List<Customer> customer = new ArrayList<>();
 		customerRepository.findAll().forEach(customer::add);
@@ -155,6 +157,8 @@ public class CustomerService {
 		customerEntity.setLed(customerDTO.getLed());
 		customerEntity.setTypeOfEstablishment(customerDTO.getTypeOfEstablishment());
 		customerEntity.setLiveDate(customerDTO.getLiveDate());
+		customerEntity.setCurrentPackageAmount(customerDTO.getCurrentPackageAmount());
+		customerEntity.setCurrentPackageId(customerDTO.getCurrentPackageId());
 		LOGGER.info("Out Customer Updated for "+customerEntity.getId()); 
 		
 		return customerEntity.getId();
@@ -206,8 +210,10 @@ public class CustomerService {
 		customerHistory.setType(customerEntity.getType());
 		customerHistory.setCustomerType(customerEntity.getCustomerType());     ////////////////
 		customerHistory.setCustomerUid(customerEntity.getCustomerUid());
+		customerHistory.setCurrentPackageId(customerEntity.getCurrentPackageId());
+		customerHistory.setCurrentPackageAmount(customerEntity.getCurrentPackageAmount());
 		customerHistoryRepository.save(customerHistory);
-		
+
 		
 	}
 

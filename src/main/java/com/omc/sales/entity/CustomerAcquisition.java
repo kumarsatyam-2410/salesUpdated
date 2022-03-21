@@ -208,7 +208,7 @@ public class CustomerAcquisition {
 	private String bigBoard;
 	
 	@Column(name = "poll_no")
-	private String pollNo;
+	private Long pollNo;
 	
 	@Column(name = "type_of_establishment")
 	private String typeOfEstablishment;
@@ -334,11 +334,11 @@ public class CustomerAcquisition {
 		this.bigBoard = bigBoard;
 	}
 
-	public String getPollNo() {
+	public Long getPollNo() {
 		return pollNo;
 	}
 
-	public void setPollNo(String pollNo) {
+	public void setPollNo(Long pollNo) {
 		this.pollNo = pollNo;
 	}
 

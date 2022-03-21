@@ -101,6 +101,25 @@ public class CustomerDTO {
 	
 	private String typeOfEstablishment;
 	
+	private Long currentPackageId;
+	
+	public Long getCurrentPackageId() {
+		return currentPackageId;
+	}
+
+	public void setCurrentPackageId(Long currentPackageId) {
+		this.currentPackageId = currentPackageId;
+	}
+
+	public BigDecimal getCurrentPackageAmount() {
+		return CurrentPackageAmount;
+	}
+
+	public void setCurrentPackageAmount(BigDecimal currentPackageAmount) {
+		CurrentPackageAmount = currentPackageAmount;
+	}
+
+	private BigDecimal CurrentPackageAmount;
 	
 	public Long getOmcId() {
 		return omcId;

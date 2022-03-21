@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -49,7 +50,7 @@ public class CustomerAcquisitionService {
 		LOGGER.info("Request Received for createCustomerAcquisition with parameters:"+ "customerName: " + customerAcquisitionDTO.getCustomerName());
 
 		 //validate unique customerAcquisition
-		CustomerAcquisition existingCustomerAcquisitionEntity = customerAcquisitionRepository.findByCustomerName(customerAcquisitionDTO.getCustomerName());
+		CustomerAcquisition existingCustomerAcquisitionEntity =customerAcquisitionRepository.findByCustomerName(customerAcquisitionDTO.getCustomerName());
 		if(existingCustomerAcquisitionEntity != null){
 			throw new SSNSQLException("Not Unique CustomerAcquisition", ErrorCodes.NOT_UNIQUE_CUSTOMER);
 		}

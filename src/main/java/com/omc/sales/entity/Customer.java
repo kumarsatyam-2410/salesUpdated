@@ -135,8 +135,28 @@ public class Customer {
 	@Column(name = "type_of_establishment")
 	private String typeOfEstablishment;
 	
+	@Column(name = "current_package_id")
+	private Long currentPackageId;
 	
+	public Long getCurrentPackageId() {
+		return currentPackageId;
+	}
+
+	public void setCurrentPackageId(Long currentPackageId) {
+		this.currentPackageId = currentPackageId;
+	}
+
+	@Column(name = "Current_Package_amount")
+	private BigDecimal CurrentPackageAmount;
 	
+	public BigDecimal getCurrentPackageAmount() {
+		return CurrentPackageAmount;
+	}
+
+	public void setCurrentPackageAmount(BigDecimal currentPackageAmount) {
+		CurrentPackageAmount = currentPackageAmount;
+	}
+
 	public String getCustomerUid() {
 		return customerUid;
 	}

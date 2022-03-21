@@ -137,6 +137,28 @@ public class CustomerHistory {
 	
 	@Column(name = "type_of_establishment")
 	private String typeOfEstablishment;
+	
+	@Column(name = "current_package_id")
+	private Long currentPackageId;
+	
+	@Column(name = "Current_Package_amount")
+	private BigDecimal CurrentPackageAmount;
+	
+	public Long getCurrentPackageId() {
+		return currentPackageId;
+	}
+
+	public void setCurrentPackageId(Long currentPackageId) {
+		this.currentPackageId = currentPackageId;
+	}
+
+	public BigDecimal getCurrentPackageAmount() {
+		return CurrentPackageAmount;
+	}
+
+	public void setCurrentPackageAmount(BigDecimal currentPackageAmount) {
+		CurrentPackageAmount = currentPackageAmount;
+	}
 
 	public Long getOmcId() {
 		return omcId;

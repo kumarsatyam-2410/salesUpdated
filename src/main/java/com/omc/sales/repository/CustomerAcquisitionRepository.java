@@ -1,6 +1,7 @@
 package com.omc.sales.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -15,6 +16,7 @@ import com.omc.sales.entity.CustomerAcquisition;
 public interface CustomerAcquisitionRepository extends JpaRepository<CustomerAcquisition, Long> {
 
 	public CustomerAcquisition findByCustomerName(String customerName);
+	public Optional<CustomerAcquisition> findById(Long id);
 	
 	public List<CustomerAcquisition> findByIsActiveAndAcquisitionStatusAndSalesExecutiveId(Boolean isActive, String acquisition_status, String salesId);
 	//public List<CustomerAcquisition> findByAcquisitionStatus(Boolean isActive, String acquisition_status);
