@@ -17,6 +17,7 @@ public interface CustomerAcquisitionRepository extends JpaRepository<CustomerAcq
 
 	public CustomerAcquisition findByCustomerName(String customerName);
 	public Optional<CustomerAcquisition> findById(Long id);
+	public List<CustomerAcquisition> getAllCustomerAcquisitionByid(Long id);
 	
 	public List<CustomerAcquisition> findByIsActiveAndAcquisitionStatusAndSalesExecutiveId(Boolean isActive, String acquisition_status, String salesId);
 	//public List<CustomerAcquisition> findByAcquisitionStatus(Boolean isActive, String acquisition_status);

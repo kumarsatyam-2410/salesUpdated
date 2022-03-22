@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -132,4 +133,33 @@ public class CustomerAcquisitionController {
 		return responseEntity;
 
 	}
+	
+	@GetMapping("/getcustomerAcquisition/{id}")
+	public List<CustomerAcquisition> getcustomerAcquisitionById(@PathVariable Long id) {
+
+		ResponseEntity<CustomerAcquitionListResponseDTO> responseEntity;
+		List<CustomerAcquisition> list = new ArrayList<>();
+		CustomerAcquitionListResponseDTO customerAcquisitionResponseDTO = new CustomerAcquitionListResponseDTO();
+		try{
+			LOGGER.info("In CustomerAcquisitionController for listAll CustomerAcquisitions Request");	
+			list = customerAcquisitionService.CustomerAcquisitionById(id);
+			customerAcquisitionResponseDTO.setList(list);
+			customerAcquisitionResponseDTO.setStatus(HttpStatus.OK.value());
+			responseEntity = new ResponseEntity<>(customerAcquisitionResponseDTO,HttpStatus.OK);
+		}  catch(RuntimeException exception) {
+			LOGGER.warn("Error occurred while listing customerAcquisition", exception);
+			customerAcquisitionResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			customerAcquisitionResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity = new ResponseEntity<>(customerAcquisitionResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			customerAcquisitionResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		} catch(Exception exception){
+			LOGGER.warn("Error occurred while listing customerAcquisition", exception);
+			customerAcquisitionResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			customerAcquisitionResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity = new ResponseEntity<>(customerAcquisitionResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			customerAcquisitionResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		}
+		return list;
+	}
+	
 }

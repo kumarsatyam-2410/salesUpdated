@@ -49,7 +49,8 @@ public class CustomerService {
 		LOGGER.info("Request Received for createCustomer with parameters:"+ "customername: " + customerDTO.getCustomerName());
 
 		// validate unique customer
-		Customer existingCustomerEntity = customerRepository.findByCustomerName(customerDTO.getCustomerName());
+		//  Customer existingCustomerEntity = customerRepository.findByCustomerName(customerDTO.getCustomerName());
+		Customer existingCustomerEntity = customerRepository.findById(customerDTO.getId()).get();
 		if(existingCustomerEntity != null){
 			throw new SSNSQLException("Not Unique Customer", ErrorCodes.NOT_UNIQUE_CUSTOMER);
 		}
@@ -215,6 +216,14 @@ public class CustomerService {
 		customerHistoryRepository.save(customerHistory);
 
 		
+	}
+
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
+	public List<Customer> getCustomerById(Long id) {
+	
+		List<Customer> customer=new ArrayList<>();
+		customerRepository.getCustomerById(id).forEach(customer::add);
+		return customer;
 	}
 
 

@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
 import com.omc.sales.dto.CustomerAcquisitionDTO;
 import com.omc.sales.entity.CustomerAcquisition;
 import com.omc.sales.entity.CustomerAcquisitionHistory;
@@ -284,5 +283,14 @@ public class CustomerAcquisitionService {
 		
 	}
 
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
+	public List<CustomerAcquisition> CustomerAcquisitionById(Long id) {
+		
+		List<CustomerAcquisition> customerAcquisition= new ArrayList<>();
+		customerAcquisitionRepository.getAllCustomerAcquisitionByid(id).forEach(customerAcquisition::add);
+		return customerAcquisition;
+	}
 
+
+	
 }
