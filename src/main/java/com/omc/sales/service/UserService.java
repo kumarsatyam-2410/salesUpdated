@@ -1,11 +1,16 @@
 package com.omc.sales.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.omc.sales.dto.LoginDTO;
+import com.omc.sales.entity.Role;
 import com.omc.sales.entity.User;
 import com.omc.sales.exception.ErrorCodes;
 import com.omc.sales.exception.SSNSQLException;
@@ -33,6 +38,15 @@ public class UserService implements UserDetailsService {
 	
 	public User getUserById(String id){
 		return userRepository.findById(Long.valueOf(id)).get();
+	}
+ /////////////////////////////
+	public List<User> login(LoginDTO loginDTO) {
+		
+	     String email=loginDTO.getEmail();
+	     String password=loginDTO.getPassword();
+	   //  int role=loginDTO.getRoleId();
+	      return userRepository.findByEmailAndPassword(email, password);
+	     	
 	}
 
 }

@@ -1,17 +1,27 @@
 package com.omc.sales.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.omc.sales.dto.CustomerAcquisitionDTO;
+import com.omc.sales.dto.CustomerAcquisitionResponseDTO;
 import com.omc.sales.dto.DashboardDTO;
+import com.omc.sales.dto.LoginDTO;
+import com.omc.sales.dto.UserListResponseDTO;
 import com.omc.sales.dto.UserResponseDTO;
 import com.omc.sales.entity.User;
 import com.omc.sales.exception.BaseException;
@@ -92,5 +102,43 @@ public class UserController {
 			LOGGER.warn("Error occurred while creating user", exception);
 		}
 		return null;
+	}
+	
+	/////////////////////////////////////////////////////////////////////////////////////////
+	@PostMapping("/login")
+	public ResponseEntity<UserListResponseDTO> login(@RequestBody LoginDTO loginDTO) {
+
+		ResponseEntity<UserListResponseDTO> responseEntity;
+		UserListResponseDTO userListResponseDTO = new UserListResponseDTO();
+		List<User> list =new ArrayList<>();
+		try{
+			LOGGER.info("In UserController for loging Request");
+			list = userService.login(loginDTO);
+			userListResponseDTO.setStatus(HttpStatus.CREATED.value());
+			userListResponseDTO.setList(list);
+			responseEntity = new ResponseEntity<>(userListResponseDTO,HttpStatus.CREATED);
+		}catch(BaseException exception){
+			LOGGER.warn("Exception occur during = " + exception.getMessage());
+			userListResponseDTO.setErrorCode(exception.getErrorCode().getCode());
+			userListResponseDTO.setStatus(HttpStatus.BAD_REQUEST.value());
+			userListResponseDTO.setErrorMessage(exception.getErrorMsg());
+			responseEntity = new ResponseEntity<>(userListResponseDTO,HttpStatus.BAD_REQUEST);	
+		}
+		catch(RuntimeException exception){
+			LOGGER.warn("Error occurred during runtime creating Logging", exception);
+			userListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			userListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(userListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			
+		} catch(Exception exception){
+			LOGGER.warn("Error occurred while creating Logging", exception);
+			userListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			userListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(userListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			
+		}
+		return responseEntity;
 	}
 }
