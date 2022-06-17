@@ -160,9 +160,27 @@ public class CustomerAcquisitionDTO {
 	private String permanentAddressProofType;
 	
 	private String permanentAddressDocNo;
+
+	private String cafNo;
 	
+	private String billingType;
 	
-	
+	public String getCafNo() {
+		return cafNo;
+	}
+
+	public void setCafNo(String cafNo) {
+		this.cafNo = cafNo;
+	}
+
+	public String getBillingType() {
+		return billingType;
+	}
+
+	public void setBillingType(String billingType) {
+		this.billingType = billingType;
+	}
+
 	public String getProfessionOccupation() {
 		return professionOccupation;
 	}

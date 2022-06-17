@@ -65,6 +65,18 @@ public class PackageDTO {
 	
 	private String Remarks;
 	
+	private int closedPackage;
+	
+	public int getClosedPackage() {
+		return closedPackage;
+	}
+
+
+	public void setClosedPackage(int closedPackage) {
+		this.closedPackage = closedPackage;
+	}
+
+
 	public int getValidityDays() {
 		return validityDays;
 	}

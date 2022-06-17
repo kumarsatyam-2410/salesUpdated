@@ -176,9 +176,29 @@ public class CustomerAcquisitionHistory {
 	
 	@Column(name = "permanent_address_doc_no")
 	private String permanentAddressDocNo;
+
+	@Column(name = "caf_no")
+	private String cafNo;
 	
+	@Column(name = "billing_type")
+	private String billingType;
 	
-	
+	public String getCafNo() {
+		return cafNo;
+	}
+
+	public void setCafNo(String cafNo) {
+		this.cafNo = cafNo;
+	}
+
+	public String getBillingType() {
+		return billingType;
+	}
+
+	public void setBillingType(String billingType) {
+		this.billingType = billingType;
+	}
+
 	public String getProfessionOccupation() {
 		return professionOccupation;
 	}

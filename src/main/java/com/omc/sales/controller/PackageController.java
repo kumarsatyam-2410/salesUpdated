@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.omc.sales.dto.PackageDTO;
@@ -75,14 +76,14 @@ public class PackageController {
 
 
 	@RequestMapping(value = "/packages", method = RequestMethod.GET)
-	public List<Package> listAll() {
+	public List<Package> listAll(@RequestParam String packageType,@RequestParam String billingType ,@RequestParam int closedPackage) {
 
 		ResponseEntity<PackageListResponseDTO> responseEntity;
 		List<Package> list = new ArrayList<>();
 		PackageListResponseDTO packageResponseDTO = new PackageListResponseDTO();
 		try{
 			LOGGER.info("In PackageController for listAll Packages Request");	
-			list = packageService.listAllPackages();
+			list = packageService.listAllPackages(packageType,billingType,closedPackage);
 			packageResponseDTO.setList(list);
 			packageResponseDTO.setStatus(HttpStatus.OK.value());
 			responseEntity = new ResponseEntity<>(packageResponseDTO,HttpStatus.OK);

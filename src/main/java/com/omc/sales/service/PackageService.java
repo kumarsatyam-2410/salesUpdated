@@ -71,6 +71,7 @@ public class PackageService {
 		packageEntity.setMinimumPackageMonthly(packageDTO.getMinimumPackageMonthly());
 		packageEntity.setStartTiming(packageDTO.getStartTiming());
 		packageEntity.setEndTiming(packageDTO.getEndTiming());
+		packageEntity.setClosedPackage(packageDTO.getClosedPackage());
 		packageRepository.save(packageEntity);
 
 		LOGGER.info("Out createPackage service with return Value packageId:"+packageEntity.getId()); 
@@ -80,12 +81,15 @@ public class PackageService {
 
 	/**
 	 * List all packages.
+	 * @param closedPackage 
+	 * @param billingType 
+	 * @param packageType 
 	 */
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
-	public List<Package> listAllPackages() {
+	public List<Package> listAllPackages(String packageType, String billingType, int closedPackage) {
 		LOGGER.info("In listAllPackages  Service");
 		List<Package> packages = new ArrayList<>();
-		packageRepository.findAll().forEach(packages::add);
+		packages=packageRepository.findByPackageTypeAndBillingTypeAndClosedPackage(packageType,billingType,closedPackage);
 		return packages;
 	}
 
@@ -114,6 +118,7 @@ public class PackageService {
 		packageEntity.setMinimumPackageMonthly(packageDTO.getMinimumPackageMonthly());
 		packageEntity.setStartTiming(packageDTO.getStartTiming());
 		packageEntity.setEndTiming(packageDTO.getEndTiming());
+		packageEntity.setClosedPackage(packageDTO.getClosedPackage());
 		
 		LOGGER.info("Out Package Updated for "+packageEntity.getId()); 
 		return packageEntity.getId();

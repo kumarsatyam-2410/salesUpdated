@@ -123,6 +123,8 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setPermanentAddressDistrict(customerAcquisitionDTO.getPermanentAddressDistrict());
 		customerAcquisitionEntity.setAddressProofType(customerAcquisitionDTO.getAddressProofType());
 		customerAcquisitionEntity.setPermanentAddressDocNo(customerAcquisitionDTO.getPermanentAddressDocNo());
+		customerAcquisitionEntity.setCafNo(customerAcquisitionDTO.getCafNo());
+		customerAcquisitionEntity.setBillingType(customerAcquisitionDTO.getBillingType());
 		//customerAcquisitionEntity.setAddedOn(customerAcquisitionDTO.getAddedOn());
 		customerAcquisitionRepository.save(customerAcquisitionEntity);
 
@@ -222,6 +224,8 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setConnectionAddressDistrict(customerAcquisitionDTO.getConnectionAddressDistrict());
 		customerAcquisitionEntity.setPermanentAddressDistrict(customerAcquisitionDTO.getPermanentAddressDistrict());
 		customerAcquisitionEntity.setAddressProofType(customerAcquisitionDTO.getAddressProofType());
+		customerAcquisitionEntity.setCafNo(customerAcquisitionDTO.getCafNo());
+		customerAcquisitionEntity.setBillingType(customerAcquisitionDTO.getBillingType());
 		
 		
 		LOGGER.info("Out CustomerAcquisition Updated for "+customerAcquisitionEntity.getId()); 
@@ -276,7 +280,8 @@ public class CustomerAcquisitionService {
 		customerAcquisitionHistory.setPermanentAddressDistrict(customerAcquisitionEntity.getPermanentAddressDistrict());
 		customerAcquisitionHistory.setPermanentAddressProofType(customerAcquisitionEntity.getPermanentAddressProofType());
 		customerAcquisitionHistory.setPermanentAddressDocNo(customerAcquisitionEntity.getPermanentAddressDocNo());
-		
+		customerAcquisitionHistory.setCafNo(customerAcquisitionEntity.getCafNo());
+		customerAcquisitionHistory.setBillingType(customerAcquisitionEntity.getBillingType());
 		customerAcquisitionHistory.setHistoryCreatedOn(new Timestamp(new Date().getTime()));
 		
 		customerAcquisitionHistoryRepository.save(customerAcquisitionHistory);

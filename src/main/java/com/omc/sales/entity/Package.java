@@ -94,6 +94,17 @@ public class Package {
 	@Column(name = "end_timing")
 	private Long endTiming;
 	
+	@Column(name = "closed_package")
+	private int closedPackage;
+	
+	public int getClosedPackage() {
+		return closedPackage;
+	}
+
+	public void setClosedPackage(int closedPackage) {
+		this.closedPackage = closedPackage;
+	}
+
 	public String getCustomerType() {
 		return customerType;
 	}
