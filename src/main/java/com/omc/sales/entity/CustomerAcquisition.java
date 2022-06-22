@@ -234,6 +234,17 @@ public class CustomerAcquisition {
 	@Column(name = "billing_type")
 	private String billingType;
 	
+	@Column(name = "created_by")
+	private int createdBy;
+	
+	public int getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(int createdBy) {
+		this.createdBy = createdBy;
+	}
+
 	public String getCafNo() {
 		return cafNo;
 	}

@@ -33,22 +33,8 @@ public class CustomerAcquisitionDTO {
 
 	private String salesheadApprovalStatus;
 	
-	public String getAbhApprovalStatus() {
-		return abhApprovalStatus;
-	}
-
-	public void setAbhApprovalStatus(String abhApprovalStatus) {
-		this.abhApprovalStatus = abhApprovalStatus;
-	}
-
-	public String getSalesheadApprovalStatus() {
-		return salesheadApprovalStatus;
-	}
-
-	public void setSalesheadApprovalStatus(String salesheadApprovalStatus) {
-		this.salesheadApprovalStatus = salesheadApprovalStatus;
-	}
-
+	private String salesExecutiveId;
+	
 	private String mobile;
 	
 	private String adharNumber;
@@ -164,6 +150,40 @@ public class CustomerAcquisitionDTO {
 	private String cafNo;
 	
 	private String billingType;
+	
+	private int createdBy;
+	
+	public int getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(int createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getSalesExecutiveId() {
+		return salesExecutiveId;
+	}
+
+	public void setSalesExecutiveId(String salesExecutiveId) {
+		this.salesExecutiveId = salesExecutiveId;
+	}
+
+	public String getAbhApprovalStatus() {
+		return abhApprovalStatus;
+	}
+
+	public void setAbhApprovalStatus(String abhApprovalStatus) {
+		this.abhApprovalStatus = abhApprovalStatus;
+	}
+
+	public String getSalesheadApprovalStatus() {
+		return salesheadApprovalStatus;
+	}
+
+	public void setSalesheadApprovalStatus(String salesheadApprovalStatus) {
+		this.salesheadApprovalStatus = salesheadApprovalStatus;
+	}
 	
 	public String getCafNo() {
 		return cafNo;

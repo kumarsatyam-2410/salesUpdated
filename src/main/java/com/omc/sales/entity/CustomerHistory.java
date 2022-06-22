@@ -40,7 +40,6 @@ public class CustomerHistory {
 	@Column(name = "mobile_no")
 	private String mobile;
 
-	
 	@Column(name = "adhar_no")
 	private String adharNumber;
 
@@ -144,6 +143,61 @@ public class CustomerHistory {
 	@Column(name = "Current_Package_amount")
 	private BigDecimal CurrentPackageAmount;
 	
+	@Column(name = "caf_no")
+	private String cafNo;
+	
+	@Column(name = "sll")
+	private Long sll;
+	
+	@Column(name = "no_of_rcb")
+	private Long noOfRcb;
+	
+	@Column(name = "billing_type")
+	private String billingType;
+	
+	@Column(name = "created_by")
+	private int createdBy;
+	
+	public int getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(int createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getBillingType() {
+		return billingType;
+	}
+
+	public void setBillingType(String billingType) {
+		this.billingType = billingType;
+	}
+
+	public String getCafNo() {
+		return cafNo;
+	}
+
+	public void setCafNo(String cafNo) {
+		this.cafNo = cafNo;
+	}
+
+	public Long getSll() {
+		return sll;
+	}
+
+	public void setSll(Long sll) {
+		this.sll = sll;
+	}
+
+	public Long getNoOfRcb() {
+		return noOfRcb;
+	}
+
+	public void setNoOfRcb(Long noOfRcb) {
+		this.noOfRcb = noOfRcb;
+	}
+
 	public Long getCurrentPackageId() {
 		return currentPackageId;
 	}

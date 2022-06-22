@@ -125,6 +125,8 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setPermanentAddressDocNo(customerAcquisitionDTO.getPermanentAddressDocNo());
 		customerAcquisitionEntity.setCafNo(customerAcquisitionDTO.getCafNo());
 		customerAcquisitionEntity.setBillingType(customerAcquisitionDTO.getBillingType());
+		customerAcquisitionEntity.setSalesExecutiveId(customerAcquisitionDTO.getSalesExecutiveId());
+		customerAcquisitionEntity.setCreatedBy(customerAcquisitionDTO.getCreatedBy());
 		//customerAcquisitionEntity.setAddedOn(customerAcquisitionDTO.getAddedOn());
 		customerAcquisitionRepository.save(customerAcquisitionEntity);
 
@@ -226,6 +228,7 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setAddressProofType(customerAcquisitionDTO.getAddressProofType());
 		customerAcquisitionEntity.setCafNo(customerAcquisitionDTO.getCafNo());
 		customerAcquisitionEntity.setBillingType(customerAcquisitionDTO.getBillingType());
+		customerAcquisitionEntity.setCreatedBy(customerAcquisitionDTO.getCreatedBy());
 		
 		
 		LOGGER.info("Out CustomerAcquisition Updated for "+customerAcquisitionEntity.getId()); 
@@ -283,7 +286,7 @@ public class CustomerAcquisitionService {
 		customerAcquisitionHistory.setCafNo(customerAcquisitionEntity.getCafNo());
 		customerAcquisitionHistory.setBillingType(customerAcquisitionEntity.getBillingType());
 		customerAcquisitionHistory.setHistoryCreatedOn(new Timestamp(new Date().getTime()));
-		
+		customerAcquisitionHistory.setCreatedBy(customerAcquisitionEntity.getCreatedBy());
 		customerAcquisitionHistoryRepository.save(customerAcquisitionHistory);
 		
 	}

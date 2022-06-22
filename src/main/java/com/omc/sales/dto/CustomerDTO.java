@@ -103,6 +103,56 @@ public class CustomerDTO {
 	
 	private Long currentPackageId;
 	
+	private String cafNo;
+	
+	private Long sll;
+	
+	private Long noOfRcb;
+	
+	private String billingType;
+	
+	private int createdBy;
+	
+	public int getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(int createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getCafNo() {
+		return cafNo;
+	}
+
+	public void setCafNo(String cafNo) {
+		this.cafNo = cafNo;
+	}
+
+	public Long getSll() {
+		return sll;
+	}
+
+	public void setSll(Long sll) {
+		this.sll = sll;
+	}
+
+	public Long getNoOfRcb() {
+		return noOfRcb;
+	}
+
+	public void setNoOfRcb(Long noOfRcb) {
+		this.noOfRcb = noOfRcb;
+	}
+
+	public String getBillingType() {
+		return billingType;
+	}
+
+	public void setBillingType(String billingType) {
+		this.billingType = billingType;
+	}
+
 	public Long getCurrentPackageId() {
 		return currentPackageId;
 	}

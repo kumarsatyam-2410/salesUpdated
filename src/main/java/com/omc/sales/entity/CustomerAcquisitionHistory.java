@@ -22,38 +22,7 @@ public class CustomerAcquisitionHistory {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "history_cust_acq_id")
 	private Long id;
-
-	public String getAbhApprovalStatus() {
-		return abhApprovalStatus;
-	}
-
-	public void setAbhApprovalStatus(String abhApprovalStatus) {
-		this.abhApprovalStatus = abhApprovalStatus;
-	}
-
-	public String getSalesheadApprovalStatus() {
-		return salesheadApprovalStatus;
-	}
-
-	public void setSalesheadApprovalStatus(String salesheadApprovalStatus) {
-		this.salesheadApprovalStatus = salesheadApprovalStatus;
-	}
-
-	@Column(name = "history_created_on")
-	private Timestamp historyCreatedOn;
 	
-	
-	@Column(name = "cust_acq_id")
-	private Long cust_acq_id;
-
-	public Long getCust_acq_id() {
-		return cust_acq_id;
-	}
-
-	public void setCust_acq_id(Long cust_acq_id) {
-		this.cust_acq_id = cust_acq_id;
-	}
-
 	@Column(name = "plant_id")
 	private Long plantId;
 	
@@ -182,6 +151,49 @@ public class CustomerAcquisitionHistory {
 	
 	@Column(name = "billing_type")
 	private String billingType;
+	
+	@Column(name = "created_by")
+	private int createdBy;
+	
+	public int getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(int createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getAbhApprovalStatus() {
+		return abhApprovalStatus;
+	}
+
+	public void setAbhApprovalStatus(String abhApprovalStatus) {
+		this.abhApprovalStatus = abhApprovalStatus;
+	}
+
+	public String getSalesheadApprovalStatus() {
+		return salesheadApprovalStatus;
+	}
+
+	public void setSalesheadApprovalStatus(String salesheadApprovalStatus) {
+		this.salesheadApprovalStatus = salesheadApprovalStatus;
+	}
+
+	@Column(name = "history_created_on")
+	private Timestamp historyCreatedOn;
+	
+	
+	@Column(name = "cust_acq_id")
+	private Long cust_acq_id;
+
+	public Long getCust_acq_id() {
+		return cust_acq_id;
+	}
+
+	public void setCust_acq_id(Long cust_acq_id) {
+		this.cust_acq_id = cust_acq_id;
+	}
+
 	
 	public String getCafNo() {
 		return cafNo;
