@@ -149,7 +149,7 @@ public class CustomerAcquisitionService {
 	public Long updateCustomerAcquisition(CustomerAcquisitionDTO customerAcquisitionDTO) {
 		
 		LOGGER.info("In updateCustomerAcquisition  Service");
-		CustomerAcquisition customerAcquisitionEntity = customerAcquisitionRepository.findByCustomerName(customerAcquisitionDTO.getCustomerName());
+		CustomerAcquisition customerAcquisitionEntity = customerAcquisitionRepository.findAllById(customerAcquisitionDTO.getId());
 		
 		 historiseCustomerAcq(customerAcquisitionEntity);
 		

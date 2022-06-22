@@ -16,7 +16,7 @@ import com.omc.sales.entity.CustomerAcquisition;
 public interface CustomerAcquisitionRepository extends JpaRepository<CustomerAcquisition, Long> {
 
 	public CustomerAcquisition findByCustomerName(String customerName);
-	public Optional<CustomerAcquisition> findById(Long id);
+	public CustomerAcquisition findAllById(Long id);
 	public List<CustomerAcquisition> getAllCustomerAcquisitionByid(Long id);
 	
 	public List<CustomerAcquisition> findByIsActiveAndAcquisitionStatusAndSalesExecutiveId(Boolean isActive, String acquisition_status, String salesId);
