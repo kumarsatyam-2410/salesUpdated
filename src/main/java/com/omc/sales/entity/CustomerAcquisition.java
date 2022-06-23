@@ -236,154 +236,41 @@ public class CustomerAcquisition {
 	
 	@Column(name = "created_by")
 	private int createdBy;
-	
-	public int getCreatedBy() {
-		return createdBy;
+
+	public CustomerAcquisition() {
+		
 	}
 
-	public void setCreatedBy(int createdBy) {
-		this.createdBy = createdBy;
+	public Long getId() {
+		return id;
 	}
 
-	public String getCafNo() {
-		return cafNo;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public void setCafNo(String cafNo) {
-		this.cafNo = cafNo;
+	public Long getPlantId() {
+		return plantId;
 	}
 
-	public String getBillingType() {
-		return billingType;
+	public void setPlantId(Long plantId) {
+		this.plantId = plantId;
 	}
 
-	public void setBillingType(String billingType) {
-		this.billingType = billingType;
+	public String getCustomerName() {
+		return customerName;
 	}
 
-	public String getProfessionOccupation() {
-		return professionOccupation;
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 
-	public void setProfessionOccupation(String professionOccupation) {
-		this.professionOccupation = professionOccupation;
+	public String getGender() {
+		return gender;
 	}
 
-	public String getConnectionAddressDistrict() {
-		return connectionAddressDistrict;
-	}
-
-	public void setConnectionAddressDistrict(String connectionAddressDistrict) {
-		this.connectionAddressDistrict = connectionAddressDistrict;
-	}
-
-	public String getPermanentAddressDistrict() {
-		return PermanentAddressDistrict;
-	}
-
-	public void setPermanentAddressDistrict(String permanentAddressDistrict) {
-		PermanentAddressDistrict = permanentAddressDistrict;
-	}
-
-	public String getPermanentAddressProofType() {
-		return permanentAddressProofType;
-	}
-
-	public void setPermanentAddressProofType(String permanentAddressProofType) {
-		this.permanentAddressProofType = permanentAddressProofType;
-	}
-
-	public String getPermanentAddressDocNo() {
-		return permanentAddressDocNo;
-	}
-
-	public void setPermanentAddressDocNo(String permanentAddressDocNo) {
-		this.permanentAddressDocNo = permanentAddressDocNo;
-	}
-
-	public Long getOmcId() {
-		return omcId;
-	}
-
-	public void setOmcId(Long omcId) {
-		this.omcId = omcId;
-	}
-
-	public BigDecimal getSubscriptionPackageAmount() {
-		return SubscriptionPackageAmount;
-	}
-
-	public void setSubscriptionPackageAmount(BigDecimal subscriptionPackageAmount) {
-		SubscriptionPackageAmount = subscriptionPackageAmount;
-	}
-
-	public Long getSubscriptionPackageId() {
-		return SubscriptionPackageId;
-	}
-
-	public void setSubscriptionPackageId(Long subscriptionPackageId) {
-		SubscriptionPackageId = subscriptionPackageId;
-	}
-
-	public String getSpiCategory() {
-		return spiCategory;
-	}
-
-	public void setSpiCategory(String spiCategory) {
-		this.spiCategory = spiCategory;
-	}
-
-	public String getDeviceConnected() {
-		return deviceConnected;
-	}
-
-	public void setDeviceConnected(String deviceConnected) {
-		this.deviceConnected = deviceConnected;
-	}
-
-	public String getLed() {
-		return led;
-	}
-
-	public void setLed(String led) {
-		this.led = led;
-	}
-
-	public String getSmallBoard() {
-		return smallBoard;
-	}
-
-	public void setSmallBoard(String smallBoard) {
-		this.smallBoard = smallBoard;
-	}
-
-	public String getBigBoard() {
-		return bigBoard;
-	}
-
-	public void setBigBoard(String bigBoard) {
-		this.bigBoard = bigBoard;
-	}
-
-	public Long getPollNo() {
-		return pollNo;
-	}
-
-	public void setPollNo(Long pollNo) {
-		this.pollNo = pollNo;
-	}
-
-	public String getTypeOfEstablishment() {
-		return typeOfEstablishment;
-	}
-
-	public void setTypeOfEstablishment(String typeOfEstablishment) {
-		this.typeOfEstablishment = typeOfEstablishment;
-	}
-
-	public CustomerAcquisition()
-	{
-
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 
 	public String getAbhApprovalStatus() {
@@ -401,209 +288,177 @@ public class CustomerAcquisition {
 	public void setSalesheadApprovalStatus(String salesheadApprovalStatus) {
 		this.salesheadApprovalStatus = salesheadApprovalStatus;
 	}
-	
-	public Long getId() {
-		return id;
-	}
-
-	public String getCustomerName() {
-		return customerName;
-	}
-
-	public String getGender() {
-		return gender;
-	}
 
 	public String getAddress() {
 		return address;
-	}
-
-	public String getZipcode() {
-		return zipcode;
-	}
-
-	public Long getPlantId() {
-		return plantId;
-	}
-
-	public void setPlantId(Long plantId) {
-		this.plantId = plantId;
-	}
-
-	public String getMobile() {
-		return mobile;
-	}
-
-	public String getAdharNumber() {
-		return adharNumber;
-	}
-
-	public String getPackageType() {
-		return packageType;
-	}
-
-	public String getSubscriptionType() {
-		return subscriptionType;
-	}
-
-	public String getCustomerPic() {
-		return customerPic;
-	}
-
-	public String getLatitude() {
-		return latitude;
-	}
-
-	public String getLongitude() {
-		return longitude;
-	}
-
-	public Timestamp getSubscriptionStartDate() {
-		return subscriptionStartDate;
-	}
-
-	public Timestamp getSubscriptionEndDate() {
-		return subscriptionEndDate;
-	}
-
-	public Timestamp getLastSuccessSubscriptionDate() {
-		return lastSuccessSubscriptionDate;
-	}
-
-	public boolean isActive() {
-		return isActive;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
 	}
 
 	public void setAddress(String address) {
 		this.address = address;
 	}
 
+	public String getZipcode() {
+		return zipcode;
+	}
+
 	public void setZipcode(String zipcode) {
 		this.zipcode = zipcode;
+	}
+
+	public String getMobile() {
+		return mobile;
 	}
 
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
 
+	public String getAdharNumber() {
+		return adharNumber;
+	}
+
 	public void setAdharNumber(String adharNumber) {
 		this.adharNumber = adharNumber;
+	}
+
+	public String getPackageType() {
+		return packageType;
 	}
 
 	public void setPackageType(String packageType) {
 		this.packageType = packageType;
 	}
 
+	public String getSubscriptionType() {
+		return subscriptionType;
+	}
+
 	public void setSubscriptionType(String subscriptionType) {
 		this.subscriptionType = subscriptionType;
+	}
+
+	public String getCustomerPic() {
+		return customerPic;
 	}
 
 	public void setCustomerPic(String customerPic) {
 		this.customerPic = customerPic;
 	}
 
+	public String getLatitude() {
+		return latitude;
+	}
+
 	public void setLatitude(String latitude) {
 		this.latitude = latitude;
+	}
+
+	public String getLongitude() {
+		return longitude;
 	}
 
 	public void setLongitude(String longitude) {
 		this.longitude = longitude;
 	}
 
-	public void setSubscriptionStartDate(Timestamp subscriptionStartDate) {
-		this.subscriptionStartDate = subscriptionStartDate;
-	}
-
-	public void setSubscriptionEndDate(Timestamp subscriptionEndDate) {
-		this.subscriptionEndDate = subscriptionEndDate;
-	}
-
-	public void setLastSuccessSubscriptionDate(Timestamp lastSuccessSubscriptionDate) {
-		this.lastSuccessSubscriptionDate = lastSuccessSubscriptionDate;
-	}
-
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-
 	public String getAcquisitionStatus() {
 		return acquisitionStatus;
-	}
-
-	public String getUploadCafPath() {
-		return uploadCafPath;
-	}
-
-	public String getSalesExecutiveId() {
-		return salesExecutiveId;
-	}
-
-	public String getUploadInstallationCertificate() {
-		return uploadInstallationCertificate;
-	}
-
-	public Integer getNoBoardInstallationRequired() {
-		return noBoardInstallationRequired;
-	}
-
-	public Integer getNoSllInstallationRequired() {
-		return noSllInstallationRequired;
-	}
-
-	public Integer getNoRcbsInstallationRequired() {
-		return noRcbsInstallationRequired;
-	}
-
-	public Integer getNoPollsInstallationRequired() {
-		return noPollsInstallationRequired;
-	}
-
-	public Integer getNoWireInMeterRequired() {
-		return noWireInMeterRequired;
 	}
 
 	public void setAcquisitionStatus(String acquisitionStatus) {
 		this.acquisitionStatus = acquisitionStatus;
 	}
 
+	public String getUploadCafPath() {
+		return uploadCafPath;
+	}
+
 	public void setUploadCafPath(String uploadCafPath) {
 		this.uploadCafPath = uploadCafPath;
+	}
+
+	public String getSalesExecutiveId() {
+		return salesExecutiveId;
 	}
 
 	public void setSalesExecutiveId(String salesExecutiveId) {
 		this.salesExecutiveId = salesExecutiveId;
 	}
 
+	public Timestamp getSubscriptionStartDate() {
+		return subscriptionStartDate;
+	}
+
+	public void setSubscriptionStartDate(Timestamp subscriptionStartDate) {
+		this.subscriptionStartDate = subscriptionStartDate;
+	}
+
+	public Timestamp getSubscriptionEndDate() {
+		return subscriptionEndDate;
+	}
+
+	public void setSubscriptionEndDate(Timestamp subscriptionEndDate) {
+		this.subscriptionEndDate = subscriptionEndDate;
+	}
+
+	public Timestamp getLastSuccessSubscriptionDate() {
+		return lastSuccessSubscriptionDate;
+	}
+
+	public void setLastSuccessSubscriptionDate(Timestamp lastSuccessSubscriptionDate) {
+		this.lastSuccessSubscriptionDate = lastSuccessSubscriptionDate;
+	}
+
+	public String getUploadInstallationCertificate() {
+		return uploadInstallationCertificate;
+	}
+
 	public void setUploadInstallationCertificate(String uploadInstallationCertificate) {
 		this.uploadInstallationCertificate = uploadInstallationCertificate;
+	}
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
+	public Integer getNoBoardInstallationRequired() {
+		return noBoardInstallationRequired;
 	}
 
 	public void setNoBoardInstallationRequired(Integer noBoardInstallationRequired) {
 		this.noBoardInstallationRequired = noBoardInstallationRequired;
 	}
 
+	public Integer getNoSllInstallationRequired() {
+		return noSllInstallationRequired;
+	}
+
 	public void setNoSllInstallationRequired(Integer noSllInstallationRequired) {
 		this.noSllInstallationRequired = noSllInstallationRequired;
+	}
+
+	public Integer getNoRcbsInstallationRequired() {
+		return noRcbsInstallationRequired;
 	}
 
 	public void setNoRcbsInstallationRequired(Integer noRcbsInstallationRequired) {
 		this.noRcbsInstallationRequired = noRcbsInstallationRequired;
 	}
 
+	public Integer getNoPollsInstallationRequired() {
+		return noPollsInstallationRequired;
+	}
+
 	public void setNoPollsInstallationRequired(Integer noPollsInstallationRequired) {
 		this.noPollsInstallationRequired = noPollsInstallationRequired;
+	}
+
+	public Integer getNoWireInMeterRequired() {
+		return noWireInMeterRequired;
 	}
 
 	public void setNoWireInMeterRequired(Integer noWireInMeterRequired) {
@@ -818,6 +673,149 @@ public class CustomerAcquisition {
 		this.natureOfSupply = natureOfSupply;
 	}
 
+	public Long getOmcId() {
+		return omcId;
+	}
 
+	public void setOmcId(Long omcId) {
+		this.omcId = omcId;
+	}
 
+	public BigDecimal getSubscriptionPackageAmount() {
+		return SubscriptionPackageAmount;
+	}
+
+	public void setSubscriptionPackageAmount(BigDecimal subscriptionPackageAmount) {
+		SubscriptionPackageAmount = subscriptionPackageAmount;
+	}
+
+	public Long getSubscriptionPackageId() {
+		return SubscriptionPackageId;
+	}
+
+	public void setSubscriptionPackageId(Long subscriptionPackageId) {
+		SubscriptionPackageId = subscriptionPackageId;
+	}
+
+	public String getSpiCategory() {
+		return spiCategory;
+	}
+
+	public void setSpiCategory(String spiCategory) {
+		this.spiCategory = spiCategory;
+	}
+
+	public String getDeviceConnected() {
+		return deviceConnected;
+	}
+
+	public void setDeviceConnected(String deviceConnected) {
+		this.deviceConnected = deviceConnected;
+	}
+
+	public String getLed() {
+		return led;
+	}
+
+	public void setLed(String led) {
+		this.led = led;
+	}
+
+	public String getSmallBoard() {
+		return smallBoard;
+	}
+
+	public void setSmallBoard(String smallBoard) {
+		this.smallBoard = smallBoard;
+	}
+
+	public String getBigBoard() {
+		return bigBoard;
+	}
+
+	public void setBigBoard(String bigBoard) {
+		this.bigBoard = bigBoard;
+	}
+
+	public Long getPollNo() {
+		return pollNo;
+	}
+
+	public void setPollNo(Long pollNo) {
+		this.pollNo = pollNo;
+	}
+
+	public String getTypeOfEstablishment() {
+		return typeOfEstablishment;
+	}
+
+	public void setTypeOfEstablishment(String typeOfEstablishment) {
+		this.typeOfEstablishment = typeOfEstablishment;
+	}
+
+	public String getProfessionOccupation() {
+		return professionOccupation;
+	}
+
+	public void setProfessionOccupation(String professionOccupation) {
+		this.professionOccupation = professionOccupation;
+	}
+
+	public String getConnectionAddressDistrict() {
+		return connectionAddressDistrict;
+	}
+
+	public void setConnectionAddressDistrict(String connectionAddressDistrict) {
+		this.connectionAddressDistrict = connectionAddressDistrict;
+	}
+
+	public String getPermanentAddressDistrict() {
+		return PermanentAddressDistrict;
+	}
+
+	public void setPermanentAddressDistrict(String permanentAddressDistrict) {
+		PermanentAddressDistrict = permanentAddressDistrict;
+	}
+
+	public String getPermanentAddressProofType() {
+		return permanentAddressProofType;
+	}
+
+	public void setPermanentAddressProofType(String permanentAddressProofType) {
+		this.permanentAddressProofType = permanentAddressProofType;
+	}
+
+	public String getPermanentAddressDocNo() {
+		return permanentAddressDocNo;
+	}
+
+	public void setPermanentAddressDocNo(String permanentAddressDocNo) {
+		this.permanentAddressDocNo = permanentAddressDocNo;
+	}
+
+	public String getCafNo() {
+		return cafNo;
+	}
+
+	public void setCafNo(String cafNo) {
+		this.cafNo = cafNo;
+	}
+
+	public String getBillingType() {
+		return billingType;
+	}
+
+	public void setBillingType(String billingType) {
+		this.billingType = billingType;
+	}
+
+	public int getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(int createdBy) {
+		this.createdBy = createdBy;
+	}
+	
+	
 }

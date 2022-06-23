@@ -40,9 +40,6 @@ public class Package {
 	@Column(name = "amount")
 	private BigDecimal amount;
 
-	@Column(name = "validity")
-	private Timestamp validity;
-
 	@Column(name = "suply_hours")
 	private String suplyHours;
 
@@ -83,7 +80,7 @@ public class Package {
 	private String Remarks;
 	
 	@Column(name = "validity_days")
-	private int validityDays;
+  	private int validityDays;
 	
 	@Column(name = "minimum_package_monthly")
 	private BigDecimal minimumPackageMonthly;
@@ -96,6 +93,9 @@ public class Package {
 	
 	@Column(name = "closed_package")
 	private int closedPackage;
+	
+	@Column(name = "validity")
+	private Timestamp validity;
 	
 	public int getClosedPackage() {
 		return closedPackage;

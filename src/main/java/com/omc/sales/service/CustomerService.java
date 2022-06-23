@@ -50,12 +50,14 @@ public class CustomerService {
 
 		// validate unique customer
 		//  Customer existingCustomerEntity = customerRepository.findByCustomerName(customerDTO.getCustomerName());
-		Customer existingCustomerEntity = customerRepository.findById(customerDTO.getId()).get();
-		if(existingCustomerEntity != null){
-			throw new SSNSQLException("Not Unique Customer", ErrorCodes.NOT_UNIQUE_CUSTOMER);
-		}
+//		Customer existingCustomerEntity = customerRepository.findById(customerDTO.getId()).get();
+//		if(existingCustomerEntity != null){
+//			throw new SSNSQLException("Not Unique Customer", ErrorCodes.NOT_UNIQUE_CUSTOMER);
+//		}
 		
 		Customer customerEntity = new Customer();
+
+		customerEntity.setId(customerDTO.getId());
 		customerEntity.setActive(customerDTO.isActive());
 		customerEntity.setCustomerName(customerDTO.getCustomerName());
 		customerEntity.setGender(customerDTO.getGender());

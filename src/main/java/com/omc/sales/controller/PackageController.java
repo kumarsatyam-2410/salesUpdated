@@ -159,4 +159,31 @@ public class PackageController {
 		return list;
 	}
 	
+	@RequestMapping(value = "/listOfPackages", method = RequestMethod.GET)
+	public ResponseEntity<PackageListResponseDTO> listOfPackage() {
+
+		ResponseEntity<PackageListResponseDTO> responseEntity;
+		List<Package> list = new ArrayList<>();
+		PackageListResponseDTO packageResponseDTO = new PackageListResponseDTO();
+		try{
+			LOGGER.info("In PackageController for listAll Packages Request");	
+			list = packageService.listAllPackages();
+			packageResponseDTO.setList(list);
+			packageResponseDTO.setStatus(HttpStatus.OK.value());
+			responseEntity = new ResponseEntity<>(packageResponseDTO,HttpStatus.OK);
+		}  catch(RuntimeException exception) {
+			LOGGER.warn("Error occurred while listing package", exception);
+			packageResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			packageResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity = new ResponseEntity<>(packageResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			packageResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		} catch(Exception exception){
+			LOGGER.warn("Error occurred while listing package", exception);
+			packageResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			packageResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity = new ResponseEntity<>(packageResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			packageResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		}
+		return responseEntity;
+	}
 }

@@ -15,14 +15,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.omc.sales.dto.CafTableListResponseDTO;
 import com.omc.sales.dto.CustomerAcquisitionDTO;
 import com.omc.sales.dto.CustomerAcquisitionResponseDTO;
 import com.omc.sales.dto.DashboardDTO;
 import com.omc.sales.dto.LoginDTO;
 import com.omc.sales.dto.UserListResponseDTO;
 import com.omc.sales.dto.UserResponseDTO;
+import com.omc.sales.entity.CafTable;
 import com.omc.sales.entity.User;
 import com.omc.sales.exception.BaseException;
 import com.omc.sales.exception.ErrorCodes;
@@ -141,4 +144,39 @@ public class UserController {
 		}
 		return responseEntity;
 	}
+	
+	@RequestMapping(value = "/get_user_list", method = RequestMethod.GET)
+	public ResponseEntity<UserListResponseDTO> getUserList() {
+
+		ResponseEntity<UserListResponseDTO> responseEntity;
+		List<User> list=new ArrayList<>();
+		UserListResponseDTO userListResponseDTO = new UserListResponseDTO();
+		try{
+			list =userService.getUserList();
+			userListResponseDTO.setList(list);
+			userListResponseDTO.setStatus(HttpStatus.CREATED.value());
+			responseEntity = new ResponseEntity<>(userListResponseDTO,HttpStatus.CREATED);
+		}catch(BaseException exception){
+			userListResponseDTO.setErrorCode(exception.getErrorCode().getCode());
+			userListResponseDTO.setStatus(HttpStatus.BAD_REQUEST.value());
+			userListResponseDTO.setErrorMessage(exception.getErrorMsg());
+			responseEntity = new ResponseEntity<>(userListResponseDTO,HttpStatus.BAD_REQUEST);
+			
+		}
+		catch(RuntimeException exception){
+			userListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			userListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(userListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);	
+		} catch(Exception exception){
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(userListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			
+		}
+		return responseEntity;
+	}
+
+	
 }

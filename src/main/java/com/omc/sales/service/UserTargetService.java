@@ -36,7 +36,7 @@ public class UserTargetService {
 		 * SSNSQLException("not unique inventory",ErrorCodes.NOT_UNIQUE_Plan); }
 		 */
 		UserTarget userTarget=new UserTarget();
-		//userTarget.setTargetId(userTargetDTO.getTargetId());
+		userTarget.setTargetId(userTargetDTO.getTargetId());
 		userTarget.setUserId(userTargetDTO.getUserId());
 		userTarget.setTargetType(userTargetDTO.getTargetType());
 		userTarget.setTargetStartDate(userTargetDTO.getTargetStartDate());

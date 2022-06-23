@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.omc.sales.dto.LoginDTO;
 import com.omc.sales.entity.Role;
@@ -18,6 +20,7 @@ import com.omc.sales.repository.UsersRepository;
 
 
 @Service
+@Transactional(propagation = Propagation.REQUIRES_NEW)
 public class UserService implements UserDetailsService {
 	
 	@Autowired
@@ -47,6 +50,11 @@ public class UserService implements UserDetailsService {
 	   //  int role=loginDTO.getRoleId();
 	      return userRepository.findByEmailAndPassword(email, password);
 	     	
+	}
+
+	public List<User> getUserList() {
+		
+		return userRepository.findAll();
 	}
 
 }

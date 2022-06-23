@@ -240,7 +240,7 @@ public class CustomerAcquisitionService {
 		
 		CustomerAcquisitionHistory customerAcquisitionHistory = new CustomerAcquisitionHistory();
 		
-		customerAcquisitionHistory.setCust_acq_id(customerAcquisitionEntity.getId());
+		customerAcquisitionHistory.setId(customerAcquisitionEntity.getId());
 		customerAcquisitionHistory.setActive(customerAcquisitionEntity.isActive());
 		
 		customerAcquisitionHistory.setAbhApprovalStatus(customerAcquisitionEntity.getAbhApprovalStatus());
@@ -285,7 +285,7 @@ public class CustomerAcquisitionService {
 		customerAcquisitionHistory.setPermanentAddressDocNo(customerAcquisitionEntity.getPermanentAddressDocNo());
 		customerAcquisitionHistory.setCafNo(customerAcquisitionEntity.getCafNo());
 		customerAcquisitionHistory.setBillingType(customerAcquisitionEntity.getBillingType());
-		customerAcquisitionHistory.setHistoryCreatedOn(new Timestamp(new Date().getTime()));
+		//customerAcquisitionHistory.setHistoryCreatedOn(new Timestamp(new Date().getTime()));
 		customerAcquisitionHistory.setCreatedBy(customerAcquisitionEntity.getCreatedBy());
 		customerAcquisitionHistoryRepository.save(customerAcquisitionHistory);
 		

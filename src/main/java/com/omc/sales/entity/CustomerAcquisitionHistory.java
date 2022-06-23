@@ -154,13 +154,97 @@ public class CustomerAcquisitionHistory {
 	
 	@Column(name = "created_by")
 	private int createdBy;
-	
-	public int getCreatedBy() {
-		return createdBy;
+
+	public CustomerAcquisitionHistory() {
+		
 	}
 
-	public void setCreatedBy(int createdBy) {
-		this.createdBy = createdBy;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getPlantId() {
+		return plantId;
+	}
+
+	public void setPlantId(Long plantId) {
+		this.plantId = plantId;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getAdharNumber() {
+		return adharNumber;
+	}
+
+	public void setAdharNumber(String adharNumber) {
+		this.adharNumber = adharNumber;
+	}
+
+	public String getPackageType() {
+		return packageType;
+	}
+
+	public void setPackageType(String packageType) {
+		this.packageType = packageType;
+	}
+
+	public String getSubscriptionType() {
+		return subscriptionType;
+	}
+
+	public void setSubscriptionType(String subscriptionType) {
+		this.subscriptionType = subscriptionType;
+	}
+
+	public String getCustomerPic() {
+		return customerPic;
+	}
+
+	public void setCustomerPic(String customerPic) {
+		this.customerPic = customerPic;
 	}
 
 	public String getAbhApprovalStatus() {
@@ -179,76 +263,116 @@ public class CustomerAcquisitionHistory {
 		this.salesheadApprovalStatus = salesheadApprovalStatus;
 	}
 
-	@Column(name = "history_created_on")
-	private Timestamp historyCreatedOn;
-	
-	
-	@Column(name = "cust_acq_id")
-	private Long cust_acq_id;
-
-	public Long getCust_acq_id() {
-		return cust_acq_id;
+	public String getLatitude() {
+		return latitude;
 	}
 
-	public void setCust_acq_id(Long cust_acq_id) {
-		this.cust_acq_id = cust_acq_id;
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
 	}
 
-	
-	public String getCafNo() {
-		return cafNo;
+	public String getLongitude() {
+		return longitude;
 	}
 
-	public void setCafNo(String cafNo) {
-		this.cafNo = cafNo;
+	public void setLongitude(String longitude) {
+		this.longitude = longitude;
 	}
 
-	public String getBillingType() {
-		return billingType;
+	public String getAcquisition_status() {
+		return acquisition_status;
 	}
 
-	public void setBillingType(String billingType) {
-		this.billingType = billingType;
+	public void setAcquisition_status(String acquisition_status) {
+		this.acquisition_status = acquisition_status;
 	}
 
-	public String getProfessionOccupation() {
-		return professionOccupation;
+	public String getUpload_caf_path() {
+		return upload_caf_path;
 	}
 
-	public void setProfessionOccupation(String professionOccupation) {
-		this.professionOccupation = professionOccupation;
+	public void setUpload_caf_path(String upload_caf_path) {
+		this.upload_caf_path = upload_caf_path;
 	}
 
-	public String getConnectionAddressDistrict() {
-		return connectionAddressDistrict;
+	public Timestamp getSubscriptionStartDate() {
+		return subscriptionStartDate;
 	}
 
-	public void setConnectionAddressDistrict(String connectionAddressDistrict) {
-		this.connectionAddressDistrict = connectionAddressDistrict;
+	public void setSubscriptionStartDate(Timestamp subscriptionStartDate) {
+		this.subscriptionStartDate = subscriptionStartDate;
 	}
 
-	public String getPermanentAddressDistrict() {
-		return PermanentAddressDistrict;
+	public Timestamp getSubscriptionEndDate() {
+		return subscriptionEndDate;
 	}
 
-	public void setPermanentAddressDistrict(String permanentAddressDistrict) {
-		PermanentAddressDistrict = permanentAddressDistrict;
+	public void setSubscriptionEndDate(Timestamp subscriptionEndDate) {
+		this.subscriptionEndDate = subscriptionEndDate;
 	}
 
-	public String getPermanentAddressProofType() {
-		return permanentAddressProofType;
+	public Timestamp getLastSuccessSubscriptionDate() {
+		return lastSuccessSubscriptionDate;
 	}
 
-	public void setPermanentAddressProofType(String permanentAddressProofType) {
-		this.permanentAddressProofType = permanentAddressProofType;
+	public void setLastSuccessSubscriptionDate(Timestamp lastSuccessSubscriptionDate) {
+		this.lastSuccessSubscriptionDate = lastSuccessSubscriptionDate;
 	}
 
-	public String getPermanentAddressDocNo() {
-		return permanentAddressDocNo;
+	public String getUpload_installation_certificate() {
+		return upload_installation_certificate;
 	}
 
-	public void setPermanentAddressDocNo(String permanentAddressDocNo) {
-		this.permanentAddressDocNo = permanentAddressDocNo;
+	public void setUpload_installation_certificate(String upload_installation_certificate) {
+		this.upload_installation_certificate = upload_installation_certificate;
+	}
+
+	public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
+	public int getNo_board_installation_required() {
+		return no_board_installation_required;
+	}
+
+	public void setNo_board_installation_required(int no_board_installation_required) {
+		this.no_board_installation_required = no_board_installation_required;
+	}
+
+	public int getNo_sll_installation_required() {
+		return no_sll_installation_required;
+	}
+
+	public void setNo_sll_installation_required(int no_sll_installation_required) {
+		this.no_sll_installation_required = no_sll_installation_required;
+	}
+
+	public int getNo_rcbs_installation_required() {
+		return no_rcbs_installation_required;
+	}
+
+	public void setNo_rcbs_installation_required(int no_rcbs_installation_required) {
+		this.no_rcbs_installation_required = no_rcbs_installation_required;
+	}
+
+	public int getNo_polls_installation_required() {
+		return no_polls_installation_required;
+	}
+
+	public void setNo_polls_installation_required(int no_polls_installation_required) {
+		this.no_polls_installation_required = no_polls_installation_required;
+	}
+
+	public int getNo_wire_in_meter_required() {
+		return no_wire_in_meter_required;
+	}
+
+	public void setNo_wire_in_meter_required(int no_wire_in_meter_required) {
+		this.no_wire_in_meter_required = no_wire_in_meter_required;
 	}
 
 	public Long getOmcId() {
@@ -319,8 +443,8 @@ public class CustomerAcquisitionHistory {
 		return pollNo;
 	}
 
-	public void setPollNo(Long long1) {
-		this.pollNo = long1;
+	public void setPollNo(Long pollNo) {
+		this.pollNo = pollNo;
 	}
 
 	public String getTypeOfEstablishment() {
@@ -331,218 +455,69 @@ public class CustomerAcquisitionHistory {
 		this.typeOfEstablishment = typeOfEstablishment;
 	}
 
-	public Long getPlantId() {
-		return plantId;
+	public String getProfessionOccupation() {
+		return professionOccupation;
 	}
 
-	public String getCustomerName() {
-		return customerName;
+	public void setProfessionOccupation(String professionOccupation) {
+		this.professionOccupation = professionOccupation;
 	}
 
-	public String getGender() {
-		return gender;
+	public String getConnectionAddressDistrict() {
+		return connectionAddressDistrict;
 	}
 
-	public String getAddress() {
-		return address;
+	public void setConnectionAddressDistrict(String connectionAddressDistrict) {
+		this.connectionAddressDistrict = connectionAddressDistrict;
 	}
 
-	public String getZipcode() {
-		return zipcode;
+	public String getPermanentAddressDistrict() {
+		return PermanentAddressDistrict;
 	}
 
-	public String getMobile() {
-		return mobile;
+	public void setPermanentAddressDistrict(String permanentAddressDistrict) {
+		PermanentAddressDistrict = permanentAddressDistrict;
 	}
 
-	public String getAdharNumber() {
-		return adharNumber;
+	public String getPermanentAddressProofType() {
+		return permanentAddressProofType;
 	}
 
-	public String getPackageType() {
-		return packageType;
+	public void setPermanentAddressProofType(String permanentAddressProofType) {
+		this.permanentAddressProofType = permanentAddressProofType;
 	}
 
-	public String getSubscriptionType() {
-		return subscriptionType;
+	public String getPermanentAddressDocNo() {
+		return permanentAddressDocNo;
 	}
 
-	public String getCustomerPic() {
-		return customerPic;
+	public void setPermanentAddressDocNo(String permanentAddressDocNo) {
+		this.permanentAddressDocNo = permanentAddressDocNo;
 	}
 
-	public String getLatitude() {
-		return latitude;
+	public String getCafNo() {
+		return cafNo;
 	}
 
-	public String getLongitude() {
-		return longitude;
+	public void setCafNo(String cafNo) {
+		this.cafNo = cafNo;
 	}
 
-	public String getAcquisition_status() {
-		return acquisition_status;
+	public String getBillingType() {
+		return billingType;
 	}
 
-	public String getUpload_caf_path() {
-		return upload_caf_path;
+	public void setBillingType(String billingType) {
+		this.billingType = billingType;
 	}
 
-	public Timestamp getSubscriptionStartDate() {
-		return subscriptionStartDate;
+	public int getCreatedBy() {
+		return createdBy;
 	}
 
-	public Timestamp getSubscriptionEndDate() {
-		return subscriptionEndDate;
+	public void setCreatedBy(int createdBy) {
+		this.createdBy = createdBy;
 	}
-
-	public Timestamp getLastSuccessSubscriptionDate() {
-		return lastSuccessSubscriptionDate;
-	}
-
-	public String getUpload_installation_certificate() {
-		return upload_installation_certificate;
-	}
-
-	public boolean isActive() {
-		return isActive;
-	}
-
-	public int getNo_board_installation_required() {
-		return no_board_installation_required;
-	}
-
-	public int getNo_sll_installation_required() {
-		return no_sll_installation_required;
-	}
-
-	public int getNo_rcbs_installation_required() {
-		return no_rcbs_installation_required;
-	}
-
-	public int getNo_polls_installation_required() {
-		return no_polls_installation_required;
-	}
-
-	public int getNo_wire_in_meter_required() {
-		return no_wire_in_meter_required;
-	}
-
-	public void setPlantId(Long plantId) {
-		this.plantId = plantId;
-	}
-
-	public void setCustomerName(String customerName) {
-		this.customerName = customerName;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
-	}
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-
-	public void setAdharNumber(String adharNumber) {
-		this.adharNumber = adharNumber;
-	}
-
-	public void setPackageType(String packageType) {
-		this.packageType = packageType;
-	}
-
-	public void setSubscriptionType(String subscriptionType) {
-		this.subscriptionType = subscriptionType;
-	}
-
-	public void setCustomerPic(String customerPic) {
-		this.customerPic = customerPic;
-	}
-
-	public void setLatitude(String latitude) {
-		this.latitude = latitude;
-	}
-
-	public void setLongitude(String longitude) {
-		this.longitude = longitude;
-	}
-
-	public void setAcquisition_status(String acquisition_status) {
-		this.acquisition_status = acquisition_status;
-	}
-
-	public void setUpload_caf_path(String upload_caf_path) {
-		this.upload_caf_path = upload_caf_path;
-	}
-
-	public void setSubscriptionStartDate(Timestamp subscriptionStartDate) {
-		this.subscriptionStartDate = subscriptionStartDate;
-	}
-
-	public void setSubscriptionEndDate(Timestamp subscriptionEndDate) {
-		this.subscriptionEndDate = subscriptionEndDate;
-	}
-
-	public void setLastSuccessSubscriptionDate(Timestamp lastSuccessSubscriptionDate) {
-		this.lastSuccessSubscriptionDate = lastSuccessSubscriptionDate;
-	}
-
-	public void setUpload_installation_certificate(String upload_installation_certificate) {
-		this.upload_installation_certificate = upload_installation_certificate;
-	}
-
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-
-	public void setNo_board_installation_required(int no_board_installation_required) {
-		this.no_board_installation_required = no_board_installation_required;
-	}
-
-	public void setNo_sll_installation_required(int no_sll_installation_required) {
-		this.no_sll_installation_required = no_sll_installation_required;
-	}
-
-	public void setNo_rcbs_installation_required(int no_rcbs_installation_required) {
-		this.no_rcbs_installation_required = no_rcbs_installation_required;
-	}
-
-	public void setNo_polls_installation_required(int no_polls_installation_required) {
-		this.no_polls_installation_required = no_polls_installation_required;
-	}
-
-	public void setNo_wire_in_meter_required(int no_wire_in_meter_required) {
-		this.no_wire_in_meter_required = no_wire_in_meter_required;
-	}
-
-	public CustomerAcquisitionHistory()
-	{
-
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public Timestamp getHistoryCreatedOn() {
-		return historyCreatedOn;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public void setHistoryCreatedOn(Timestamp historyCreatedOn) {
-		this.historyCreatedOn = historyCreatedOn;
-	}
-
-
+	
+	
 }
