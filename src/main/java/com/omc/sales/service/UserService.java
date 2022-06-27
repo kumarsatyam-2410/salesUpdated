@@ -64,8 +64,8 @@ public class UserService implements UserDetailsService {
 	}
 
 	
-	public List<User> getUserListByPlantId(Long plantIds) {
-		return plantUsersRepository.findUserByPlant(plantIds);
+	public List<User> getUserListByPlantId(Long plantId) {
+		return plantUsersRepository.findUserByPlant(plantId);
 	}
 
 }

@@ -34,8 +34,11 @@ public class PlantPollSllCustomerService {
 	@Autowired
 	private PlantRepository plantRepository;
 	
+	
+	
 	@Autowired
 	private PlantPollRepository plantPollRepository;
+	
 	
 	@Autowired
 	private PollSllRepository pollSllRepository;
@@ -88,6 +91,12 @@ public class PlantPollSllCustomerService {
 	@Transactional(propagation=Propagation.REQUIRED)
 	public List<PlantPoll> getPollSll(Plant plant) {
 		return plantPollRepository.findByPlant(plant);
+	}
+
+	@Transactional(propagation=Propagation.REQUIRED)
+	public List<PollSll> listAllPollSll(Long psId) {
+		
+		return pollSllRepository.findAllByPsId(psId);
 	}
 	
 }

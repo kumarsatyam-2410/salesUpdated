@@ -17,4 +17,6 @@ import com.omc.sales.entity.PollSll;
 @Repository
 public interface PollSllRepository extends JpaRepository<PollSll, Long> {
 
+public 	List<PollSll> findAllByPsId(Long psId);
+
 }

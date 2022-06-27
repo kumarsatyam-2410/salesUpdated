@@ -181,14 +181,14 @@ public class UserController {
 		return responseEntity;
 	}
 
-	@RequestMapping(value = "/get_user_list/{plantIds}", method = RequestMethod.GET)
-	public ResponseEntity<UserListResponseDTO> getUserListByPlantId(@PathVariable Long plantIds) {
+	@RequestMapping(value = "/get_user_list/{plantId}", method = RequestMethod.GET)
+	public ResponseEntity<UserListResponseDTO> getUserListByPlantId(@PathVariable Long plantId) {
 
 		ResponseEntity<UserListResponseDTO> responseEntity;
 		List<User> list=new ArrayList<>();
 		UserListResponseDTO userListResponseDTO = new UserListResponseDTO();
 		try{
-			list =userService.getUserListByPlantId(plantIds);
+			list =userService.getUserListByPlantId(plantId);
 			userListResponseDTO.setList(list);
 			userListResponseDTO.setStatus(HttpStatus.CREATED.value());
 			responseEntity = new ResponseEntity<>(userListResponseDTO,HttpStatus.CREATED);

@@ -22,6 +22,9 @@ public interface PlantUsersRepository extends JpaRepository<PlantUsers, Long> {
 	@Query("SELECT r.plant FROM PlantUsers r where r.user.id=:userId")
 	List<Plant> findPlantByUser(@Param("userId") Long userId);
 
-	@Query("SELECT r.user FROM PlantUsers r where r.plant.plantId=:plantIds")
-	List<User> findUserByPlant(@Param("plantIds") Long plantIds);
+//	@Query("SELECT r.user FROM PlantUsers r where r.plant.plantId=:plantIds")
+//	List<User> findUserByPlant(@Param("plantIds") Long plantIds);
+	
+	@Query(value="SELECT a.user_id,b.username FROM sales.plant_users a,  user b where a.plant.plantId=:plantId and a.user_id=b.user_id",nativeQuery=true)
+	List<User> findUserByPlant(Long plantId);
 }

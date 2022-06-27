@@ -18,4 +18,5 @@ import com.omc.sales.entity.PlantPoll;
 public interface PlantPollRepository extends JpaRepository<PlantPoll, Long> {
 
 	public List<PlantPoll> findByPlant(Plant plant);
+	
 }

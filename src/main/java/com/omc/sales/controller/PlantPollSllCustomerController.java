@@ -11,14 +11,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.omc.sales.dto.CustomerPaymentListResponseDTO;
 import com.omc.sales.dto.CustomerResponseDTO;
+import com.omc.sales.dto.PlantPollSllCustomerListDTO;
+import com.omc.sales.entity.CustomerPaymentDetails;
 import com.omc.sales.entity.PlantPoll;
 import com.omc.sales.entity.PlantUsers;
+import com.omc.sales.entity.PollSll;
 import com.omc.sales.exception.BaseException;
 import com.omc.sales.exception.ErrorCodes;
 import com.omc.sales.repository.PlantRepository;
@@ -160,4 +165,37 @@ public class PlantPollSllCustomerController {
 
 		return list;
 	}
+	
+	
+	@RequestMapping(value = "/allPollSll/{psId}", method = RequestMethod.GET)
+	public ResponseEntity<PlantPollSllCustomerListDTO> listAllPollSll(@PathVariable Long psId) {
+
+		ResponseEntity<PlantPollSllCustomerListDTO> responseEntity;
+		List<PollSll> list = new ArrayList<>();
+		PlantPollSllCustomerListDTO plantPollSllCustomerListDTO = new PlantPollSllCustomerListDTO();
+		try{
+			LOGGER.info("In CustomerController for listAll Customers Request");	
+			list = plantPollSllCustomerService.listAllPollSll(psId);
+			plantPollSllCustomerListDTO.setList(list);
+			plantPollSllCustomerListDTO.setStatus(HttpStatus.OK.value());
+			responseEntity = new ResponseEntity<>(plantPollSllCustomerListDTO,HttpStatus.OK);
+		}  catch(RuntimeException exception) {
+			LOGGER.warn("Error occurred while listing customer", exception);
+			plantPollSllCustomerListDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			plantPollSllCustomerListDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			plantPollSllCustomerListDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(plantPollSllCustomerListDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			
+		} catch(Exception exception){
+			LOGGER.warn("Error occurred while listing customer", exception);
+			plantPollSllCustomerListDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			plantPollSllCustomerListDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			plantPollSllCustomerListDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(plantPollSllCustomerListDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			
+		}
+		return responseEntity;
+	}
+
+
 }

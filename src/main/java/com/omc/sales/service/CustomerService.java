@@ -128,53 +128,132 @@ public class CustomerService {
 		LOGGER.info("In updateCustomer  Service");
 		Customer customerEntity = customerRepository.findByCustomerName(customerDTO.getCustomerName());
 		CustomerHist(customerEntity);
+		if(customerDTO.getId() != null && customerDTO.getId() >= 0)
 		customerEntity.setId(customerDTO.getId());
+		
 		customerEntity.setActive(customerDTO.isActive());
+		if(customerDTO.getCustomerName() != null && customerDTO.getCustomerName().length() > 0 );
 		customerEntity.setCustomerName(customerDTO.getCustomerName());
+		
+		if(customerDTO.getGender() != null && customerDTO.getGender().length() > 0 );
 		customerEntity.setGender(customerDTO.getGender());
+		
+		if(customerDTO.getAddress() != null && customerDTO.getAddress().length() > 0 );
 		customerEntity.setAddress(customerDTO.getAddress());
+		
+		if(customerDTO.getZipcode() != null && customerDTO.getZipcode().length() > 0 );
 		customerEntity.setZipcode(customerDTO.getZipcode());
+		
+		if(customerDTO.getMobile() != null && customerDTO.getMobile().length() > 0 );
 		customerEntity.setMobile(customerDTO.getMobile());
+		
+		if(customerDTO.getAdharNumber() != null && customerDTO.getAdharNumber().length() > 0 );
 		customerEntity.setAdharNumber(customerDTO.getAdharNumber());
+		
+		if(customerDTO.getPackageType() != null && customerDTO.getPackageType().length() > 0 );
 		customerEntity.setPackageType(customerDTO.getPackageType());
+		
+		if(customerDTO.getSubscriptionType() != null && customerDTO.getSubscriptionType().length() > 0 );
 		customerEntity.setSubscriptionType(customerDTO.getSubscriptionType());
+		
+		if(customerDTO.getCustomerPic() != null && customerDTO.getCustomerPic().length() > 0 );
 		customerEntity.setCustomerPic(customerDTO.getCustomerPic());
+		
+		if(customerDTO.getLatitude() != null && customerDTO.getLatitude().length() > 0 );
 		customerEntity.setLatitude(customerDTO.getLatitude());
+		
+		if(customerDTO.getLongitude() != null && customerDTO.getLongitude().length() > 0 );
 		customerEntity.setLongitude(customerDTO.getLongitude());
+		
 		customerEntity.setSubscriptionStartDate(customerDTO.getSubscriptionStartDate());
 		customerEntity.setSubscriptionEndDate(customerDTO.getSubscriptionEndDate());
 		customerEntity.setLastSuccessSubscriptionDate(customerDTO.getLastSuccessSubscriptionDate());
 		//customerEntity.setAddedOn(customerDTO.getAddedOn());
+		
+		if(customerDTO.getCustomerStatus() != null && customerDTO.getCustomerStatus().length() > 0 );
 		customerEntity.setCustomerStatus(customerDTO.getCustomerStatus());
+		
+		//if(customerDTO.getSalesExecutiveId() = null && customerDTO.getSalesExecutiveId() >= 0 );
 		customerEntity.setSalesExecutiveId(customerDTO.getSalesExecutiveId());
+		
+		//if(customerDTO.getPlantId() != null && customerDTO.getPlantId() >= 0 );
 		customerEntity.setPlantId(customerDTO.getPlantId());
 		
+		if(customerDTO.getOmcId() != null && customerDTO.getOmcId() >= 0 );
 		customerEntity.setOmcId(customerDTO.getOmcId());
+		
+		if(customerDTO.getCustomerUid() != null && customerDTO.getCustomerUid().length() > 0 );
 		customerEntity.setCustomerUid(customerDTO.getCustomerUid());
-		customerEntity.setCustomerType(customerDTO.getCustomerType());    ////////////////
+		
+		if(customerDTO.getCustomerType() != null && customerDTO.getCustomerType().length() > 0 );
+		customerEntity.setCustomerType(customerDTO.getCustomerType()); 
+		////////////////
 		customerEntity.setSubscriptionPackageAmount(customerDTO.getSubscriptionPackageAmount());
+		
+		if(customerDTO.getSubscription_Package_id() != null && customerDTO.getSubscription_Package_id() >= 0 );
 		customerEntity.setSubscription_Package_id(customerDTO.getSubscription_Package_id());
+		
+		if(customerDTO.getType() != null && customerDTO.getType().length() > 0 );
 		customerEntity.setType(customerDTO.getType());
+		
 		customerEntity.setDate_cancell_hold_unhold(customerDTO.getDate_cancell_hold_unhold());
+		
+		if(customerDTO.getRemarks() != null && customerDTO.getRemarks().length() > 0 );
 		customerEntity.setRemarks(customerDTO.getRemarks());
+		
+		if(customerDTO.getSpiCategory() != null && customerDTO.getSpiCategory().length() > 0 );
 		customerEntity.setSpiCategory(customerDTO.getSpiCategory());
+		
+		if(customerDTO.getDeviceConnected() != null && customerDTO.getDeviceConnected().length() > 0 );
 		customerEntity.setDeviceConnected(customerDTO.getDeviceConnected());
+		
+		if(customerDTO.getFatherHusbandName() != null && customerDTO.getFatherHusbandName().length() > 0 );
 		customerEntity.setFatherHusbandName(customerDTO.getFatherHusbandName());
+		
+		if(customerDTO.getPoll_no() != null && customerDTO.getPoll_no() >= 0 );
 		customerEntity.setPoll_no(customerDTO.getPoll_no());
+		
+		//if(customerDTO.getWire_meter() != null && customerDTO.getWire_meter() >= 0 );
 		customerEntity.setWire_meter(customerDTO.getWire_meter());
+		
+		if(customerDTO.getBigBoard() != null && customerDTO.getBigBoard().length() > 0 );
 		customerEntity.setBigBoard(customerDTO.getBigBoard());
+		
+		if(customerDTO.getSmallBoard() != null && customerDTO.getSmallBoard().length() > 0 );
 		customerEntity.setSmallBoard(customerDTO.getSmallBoard());
+		
+		if(customerDTO.getLed() != null && customerDTO.getLed().length() > 0 );
 		customerEntity.setLed(customerDTO.getLed());
+		
+		if(customerDTO.getTypeOfEstablishment() != null && customerDTO.getTypeOfEstablishment().length() > 0 );
 		customerEntity.setTypeOfEstablishment(customerDTO.getTypeOfEstablishment());
+		
 		customerEntity.setLiveDate(customerDTO.getLiveDate());
+		
+	//	if(customerDTO.getCurrentPackageAmount() != null && customerDTO.getCurrentPackageAmount() >= 0 );
 		customerEntity.setCurrentPackageAmount(customerDTO.getCurrentPackageAmount());
+		
+		if(customerDTO.getCurrentPackageId() != null && customerDTO.getCurrentPackageId() >= 0 );
 		customerEntity.setCurrentPackageId(customerDTO.getCurrentPackageId());
+		
+		if(customerDTO.getCafNo() != null && customerDTO.getCafNo().length() > 0 );
 		customerEntity.setCafNo(customerDTO.getCafNo());
+		
+		if(customerDTO.getBillingType() != null && customerDTO.getBillingType().length() > 0 );
 		customerEntity.setBillingType(customerDTO.getBillingType());
+		
+		if(customerDTO.getSll() != null && customerDTO.getSll() >= 0 );
 		customerEntity.setSll(customerDTO.getSll());
+		
+		if(customerDTO.getNoOfRcb() != null && customerDTO.getNoOfRcb() >= 0 );
 		customerEntity.setNoOfRcb(customerDTO.getNoOfRcb());
+		
+	//	if(customerDTO.getCreatedBy() != null && customerDTO.getCreatedBy().length() > 0 );
 		customerEntity.setCreatedBy(customerDTO.getCreatedBy());
+		
+	//if(customerDTO.getPaymentBy() != null && customerDTO.getPaymentBy() >= 0 );
 		customerEntity.setPaymentBy(customerDTO.getPaymentBy());
+		//if(customerDTO.getActivatedBy() != null && customerDTO.getNoOfRcb() >= 0 );
 		customerEntity.setActivatedBy(customerDTO.getActivatedBy());
 		LOGGER.info("Out Customer Updated for "+customerEntity.getId()); 
 		
