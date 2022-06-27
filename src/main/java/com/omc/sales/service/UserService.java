@@ -12,10 +12,13 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.omc.sales.dto.LoginDTO;
+import com.omc.sales.entity.Plant;
+import com.omc.sales.entity.PlantUsers;
 import com.omc.sales.entity.Role;
 import com.omc.sales.entity.User;
 import com.omc.sales.exception.ErrorCodes;
 import com.omc.sales.exception.SSNSQLException;
+import com.omc.sales.repository.PlantUsersRepository;
 import com.omc.sales.repository.UsersRepository;
 
 
@@ -25,6 +28,9 @@ public class UserService implements UserDetailsService {
 	
 	@Autowired
 	private UsersRepository userRepository;
+	
+	@Autowired
+	private PlantUsersRepository plantUsersRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -55,6 +61,11 @@ public class UserService implements UserDetailsService {
 	public List<User> getUserList() {
 		
 		return userRepository.findAll();
+	}
+
+	
+	public List<User> getUserListByPlantId(Long plantIds) {
+		return plantUsersRepository.findUserByPlant(plantIds);
 	}
 
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.omc.sales.entity.Plant;
 import com.omc.sales.entity.PlantUsers;
+import com.omc.sales.entity.User;
 
 
 
@@ -20,4 +21,7 @@ public interface PlantUsersRepository extends JpaRepository<PlantUsers, Long> {
 	
 	@Query("SELECT r.plant FROM PlantUsers r where r.user.id=:userId")
 	List<Plant> findPlantByUser(@Param("userId") Long userId);
+
+	@Query("SELECT r.user FROM PlantUsers r where r.plant.plantId=:plantIds")
+	List<User> findUserByPlant(@Param("plantIds") Long plantIds);
 }

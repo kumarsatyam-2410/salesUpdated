@@ -153,6 +153,29 @@ public class Customer {
 	@Column(name = "created_by")
 	private int createdBy;
 	
+	@Column(name = "activated_by")
+	private int activatedBy;
+	
+	@Column(name = "payment_by")
+	private int paymentBy;
+	
+	
+	public int getPaymentBy() {
+		return paymentBy;
+	}
+
+	public void setPaymentBy(int paymentBy) {
+		this.paymentBy = paymentBy;
+	}
+
+	public int getActivatedBy() {
+		return activatedBy;
+	}
+
+	public void setActivatedBy(int activatedBy) {
+		this.activatedBy = activatedBy;
+	}
+
 	public int getCreatedBy() {
 		return createdBy;
 	}

@@ -113,6 +113,26 @@ public class CustomerDTO {
 	
 	private int createdBy;
 	
+	private int activatedBy;
+	
+	private int paymentBy;
+	
+	public int getActivatedBy() {
+		return activatedBy;
+	}
+
+	public void setActivatedBy(int activatedBy) {
+		this.activatedBy = activatedBy;
+	}
+
+	public int getPaymentBy() {
+		return paymentBy;
+	}
+
+	public void setPaymentBy(int paymentBy) {
+		this.paymentBy = paymentBy;
+	}
+
 	public int getCreatedBy() {
 		return createdBy;
 	}

@@ -153,6 +153,16 @@ public class CustomerAcquisitionDTO {
 	
 	private int createdBy;
 	
+	private int paymentBy;
+	
+	public int getPaymentBy() {
+		return paymentBy;
+	}
+
+	public void setPaymentBy(int paymentBy) {
+		this.paymentBy = paymentBy;
+	}
+
 	public int getCreatedBy() {
 		return createdBy;
 	}

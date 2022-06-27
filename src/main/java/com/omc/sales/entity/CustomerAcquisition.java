@@ -236,6 +236,17 @@ public class CustomerAcquisition {
 	
 	@Column(name = "created_by")
 	private int createdBy;
+	
+	@Column(name = "payment_by")
+	private int paymentBy;
+	
+	public int getPaymentBy() {
+		return paymentBy;
+	}
+
+	public void setPaymentBy(int paymentBy) {
+		this.paymentBy = paymentBy;
+	}
 
 	public CustomerAcquisition() {
 		

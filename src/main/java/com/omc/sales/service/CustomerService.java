@@ -102,6 +102,8 @@ public class CustomerService {
 		customerEntity.setSll(customerDTO.getSll());
 		customerEntity.setNoOfRcb(customerDTO.getNoOfRcb());
 		customerEntity.setCreatedBy(customerDTO.getCreatedBy());
+		customerEntity.setPaymentBy(customerDTO.getPaymentBy());
+		customerEntity.setActivatedBy(customerDTO.getActivatedBy());
 			customerRepository.save(customerEntity);
 
 		LOGGER.info("Out createCustomer service with return Value customerId:"+customerEntity.getId()); 
@@ -172,6 +174,8 @@ public class CustomerService {
 		customerEntity.setSll(customerDTO.getSll());
 		customerEntity.setNoOfRcb(customerDTO.getNoOfRcb());
 		customerEntity.setCreatedBy(customerDTO.getCreatedBy());
+		customerEntity.setPaymentBy(customerDTO.getPaymentBy());
+		customerEntity.setActivatedBy(customerDTO.getActivatedBy());
 		LOGGER.info("Out Customer Updated for "+customerEntity.getId()); 
 		
 		return customerEntity.getId();
@@ -227,9 +231,11 @@ public class CustomerService {
 		customerHistory.setCurrentPackageAmount(customerEntity.getCurrentPackageAmount());
 		customerHistory.setCafNo(customerEntity.getCafNo());
 		customerHistory.setSll(customerEntity.getSll());
-		customerHistory.setNoOfRcb(customerEntity.getNoOfRcb());
+		customerHistory.setNoOfRcb(customerHistory.getNoOfRcb());
 		customerHistory.setBillingType(customerEntity.getBillingType());
 		customerHistory.setCreatedBy(customerEntity.getCreatedBy());
+		customerHistory.setPaymentBy(customerHistory.getPaymentBy());
+		customerHistory.setActivatedBy(customerEntity.getActivatedBy());
 		customerHistoryRepository.save(customerHistory);
 
 		

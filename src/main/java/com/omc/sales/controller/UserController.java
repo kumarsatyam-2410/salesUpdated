@@ -23,9 +23,12 @@ import com.omc.sales.dto.CustomerAcquisitionDTO;
 import com.omc.sales.dto.CustomerAcquisitionResponseDTO;
 import com.omc.sales.dto.DashboardDTO;
 import com.omc.sales.dto.LoginDTO;
+import com.omc.sales.dto.PlantUserListResponseDTO;
 import com.omc.sales.dto.UserListResponseDTO;
 import com.omc.sales.dto.UserResponseDTO;
 import com.omc.sales.entity.CafTable;
+import com.omc.sales.entity.Plant;
+import com.omc.sales.entity.PlantUsers;
 import com.omc.sales.entity.User;
 import com.omc.sales.exception.BaseException;
 import com.omc.sales.exception.ErrorCodes;
@@ -178,5 +181,38 @@ public class UserController {
 		return responseEntity;
 	}
 
-	
+	@RequestMapping(value = "/get_user_list/{plantIds}", method = RequestMethod.GET)
+	public ResponseEntity<UserListResponseDTO> getUserListByPlantId(@PathVariable Long plantIds) {
+
+		ResponseEntity<UserListResponseDTO> responseEntity;
+		List<User> list=new ArrayList<>();
+		UserListResponseDTO userListResponseDTO = new UserListResponseDTO();
+		try{
+			list =userService.getUserListByPlantId(plantIds);
+			userListResponseDTO.setList(list);
+			userListResponseDTO.setStatus(HttpStatus.CREATED.value());
+			responseEntity = new ResponseEntity<>(userListResponseDTO,HttpStatus.CREATED);
+		}catch(BaseException exception){
+			userListResponseDTO.setErrorCode(exception.getErrorCode().getCode());
+			userListResponseDTO.setStatus(HttpStatus.BAD_REQUEST.value());
+			userListResponseDTO.setErrorMessage(exception.getErrorMsg());
+			responseEntity = new ResponseEntity<>(userListResponseDTO,HttpStatus.BAD_REQUEST);
+			
+		}
+		catch(RuntimeException exception){
+			userListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			userListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(userListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);	
+		} catch(Exception exception){
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(userListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			
+		}
+		return responseEntity;
+	}
+
+		
 }

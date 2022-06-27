@@ -157,6 +157,28 @@ public class CustomerHistory {
 	
 	@Column(name = "created_by")
 	private int createdBy;
+	
+	@Column(name = "activated_by")
+	private int activatedBy;
+	
+	@Column(name = "payment_by")
+	private int paymentBy;
+	
+	public int getActivatedBy() {
+		return activatedBy;
+	}
+
+	public void setActivatedBy(int activatedBy) {
+		this.activatedBy = activatedBy;
+	}
+
+	public int getPaymentBy() {
+		return paymentBy;
+	}
+
+	public void setPaymentBy(int paymentBy) {
+		this.paymentBy = paymentBy;
+	}
 
 	public CustomerHistory() {
 		
