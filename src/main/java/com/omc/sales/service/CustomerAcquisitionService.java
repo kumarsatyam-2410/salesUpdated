@@ -157,7 +157,6 @@ public class CustomerAcquisitionService {
 		 historiseCustomerAcq(customerAcquisitionEntity);
 		
 		customerAcquisitionEntity.setActive(customerAcquisitionDTO.isActive());
-		
 		customerAcquisitionEntity.setAbhApprovalStatus(customerAcquisitionDTO.getAbhApprovalStatus());
 		customerAcquisitionEntity.setSalesheadApprovalStatus(customerAcquisitionDTO.getSalesheadApprovalStatus());
 		customerAcquisitionEntity.setCustomerName(customerAcquisitionDTO.getCustomerName());
@@ -182,9 +181,6 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setNoRcbsInstallationRequired(customerAcquisitionDTO.getNo_rcbs_installation_required());
 		customerAcquisitionEntity.setNoSllInstallationRequired(customerAcquisitionDTO.getNo_sll_installation_required());
 		customerAcquisitionEntity.setNoWireInMeterRequired(customerAcquisitionDTO.getNo_wire_in_meter_required());
-		
-		
-		
 		customerAcquisitionEntity.setCustomerUserId(customerAcquisitionEntity.getCustomerUserId());
 		customerAcquisitionEntity.setRechargeNo(customerAcquisitionDTO.getRechargeNo());
 		customerAcquisitionEntity.setCustomerType(customerAcquisitionDTO.getCustomerType());
@@ -211,7 +207,6 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setAddressProofType(customerAcquisitionDTO.getAddressProofType());
 		customerAcquisitionEntity.setAddressProofDocNo(customerAcquisitionDTO.getAddressProofDocNo());
 		customerAcquisitionEntity.setNatureOfSupply(customerAcquisitionDTO.getNatureOfSupply());
-		
 		customerAcquisitionEntity.setOmcId(customerAcquisitionDTO.getOmcId());
 		customerAcquisitionEntity.setCustomerType(customerAcquisitionDTO.getCustomerType());
 		customerAcquisitionEntity.setSubscriptionPackageId(customerAcquisitionDTO.getSubscriptionPackageId());
@@ -231,8 +226,6 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setBillingType(customerAcquisitionDTO.getBillingType());
 		customerAcquisitionEntity.setCreatedBy(customerAcquisitionDTO.getCreatedBy());
 		customerAcquisitionEntity.setPaymentBy(customerAcquisitionDTO.getPaymentBy());
-		
-		
 		LOGGER.info("Out CustomerAcquisition Updated for "+customerAcquisitionEntity.getId()); 
 		return customerAcquisitionEntity.getId();
 	}

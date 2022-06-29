@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.omc.sales.entity.Plant;
+import com.omc.sales.entity.PlantPoll;
 import com.omc.sales.entity.PollSll;
 
 
@@ -17,6 +18,8 @@ import com.omc.sales.entity.PollSll;
 @Repository
 public interface PollSllRepository extends JpaRepository<PollSll, Long> {
 
-public 	List<PollSll> findAllByPsId(Long psId);
+//public 	List<PollSll> findAllByPsId(Long psId);
+
+    public List<PollSll> findAllByPlantPoll(PlantPoll plantPoll);
 
 }

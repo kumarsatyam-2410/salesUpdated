@@ -48,6 +48,15 @@ public class PlantPoll implements Serializable {
 	private Set<PollSll> pollSll;
 	
 
+	@Column(name = "added_on")
+	private Timestamp addedOn;
+
+	@Column(name = "updated_on")
+	private Timestamp updatedOn;
+
+      public PlantPoll(){
+  		
+	       }
 
 	public Set<PollSll> getPollSll() {
 		return pollSll;
@@ -57,19 +66,6 @@ public class PlantPoll implements Serializable {
 	public void setPollSll(Set<PollSll> pollSll) {
 		this.pollSll = pollSll;
 	}
-
-
-	@Column(name = "added_on")
-	private Timestamp addedOn;
-
-	@Column(name = "updated_on")
-	private Timestamp updatedOn;
-	
-	
-	public PlantPoll(){
-		
-	}
-
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

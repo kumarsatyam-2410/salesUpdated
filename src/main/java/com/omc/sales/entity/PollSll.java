@@ -46,6 +46,16 @@ public class PollSll implements Serializable {
 	@OneToMany(mappedBy = "pollSll")
 	private Set<SllCustomer> sllCustomers;
 	
+	@Column(name = "added_on")
+	private Timestamp addedOn;
+
+	@Column(name = "updated_on")
+	private Timestamp updatedOn;
+	
+          public PollSll(){
+		
+	        }
+	
 	public Set<SllCustomer> getSllCustomers() {
 		return sllCustomers;
 	}
@@ -54,19 +64,6 @@ public class PollSll implements Serializable {
 	public void setSllCustomers(Set<SllCustomer> sllCustomers) {
 		this.sllCustomers = sllCustomers;
 	}
-
-
-	@Column(name = "added_on")
-	private Timestamp addedOn;
-
-	@Column(name = "updated_on")
-	private Timestamp updatedOn;
-	
-	
-	public PollSll(){
-		
-	}
-
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

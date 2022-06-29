@@ -117,6 +117,8 @@ public class CustomerDTO {
 	
 	private int paymentBy;
 	
+	private BigDecimal currentPackageAmount;
+	
 	public int getActivatedBy() {
 		return activatedBy;
 	}
@@ -182,15 +184,13 @@ public class CustomerDTO {
 	}
 
 	public BigDecimal getCurrentPackageAmount() {
-		return CurrentPackageAmount;
+		return currentPackageAmount;
 	}
 
 	public void setCurrentPackageAmount(BigDecimal currentPackageAmount) {
-		CurrentPackageAmount = currentPackageAmount;
+		currentPackageAmount = currentPackageAmount;
 	}
 
-	private BigDecimal CurrentPackageAmount;
-	
 	public Long getOmcId() {
 		return omcId;
 	}

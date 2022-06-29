@@ -126,8 +126,9 @@ public class CustomerService {
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
 	public Long updateCustomer(CustomerDTO customerDTO) {
 		LOGGER.info("In updateCustomer  Service");
-		Customer customerEntity = customerRepository.findByCustomerName(customerDTO.getCustomerName());
+		Customer customerEntity = customerRepository.findAllById(customerDTO.getId());
 		CustomerHist(customerEntity);
+		
 		if(customerDTO.getId() != null && customerDTO.getId() >= 0)
 		customerEntity.setId(customerDTO.getId());
 		
@@ -230,7 +231,7 @@ public class CustomerService {
 		
 		customerEntity.setLiveDate(customerDTO.getLiveDate());
 		
-	//	if(customerDTO.getCurrentPackageAmount() != null && customerDTO.getCurrentPackageAmount() >= 0 );
+	//	if(customerDTO.getCurrentPackageAmount() != null && customerDTO.getCurrentPackageAmount() >= 0.0 );
 		customerEntity.setCurrentPackageAmount(customerDTO.getCurrentPackageAmount());
 		
 		if(customerDTO.getCurrentPackageId() != null && customerDTO.getCurrentPackageId() >= 0 );

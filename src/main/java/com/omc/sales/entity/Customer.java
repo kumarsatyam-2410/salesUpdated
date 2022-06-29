@@ -159,6 +159,9 @@ public class Customer {
 	@Column(name = "payment_by")
 	private int paymentBy;
 	
+	@Column(name = "Current_Package_amount")
+	private BigDecimal currentPackageAmount;
+	
 	
 	public int getPaymentBy() {
 		return paymentBy;
@@ -224,15 +227,14 @@ public class Customer {
 		this.currentPackageId = currentPackageId;
 	}
 
-	@Column(name = "Current_Package_amount")
-	private BigDecimal CurrentPackageAmount;
+	
 	
 	public BigDecimal getCurrentPackageAmount() {
-		return CurrentPackageAmount;
+		return currentPackageAmount;
 	}
 
 	public void setCurrentPackageAmount(BigDecimal currentPackageAmount) {
-		CurrentPackageAmount = currentPackageAmount;
+		currentPackageAmount = currentPackageAmount;
 	}
 
 	public String getCustomerUid() {

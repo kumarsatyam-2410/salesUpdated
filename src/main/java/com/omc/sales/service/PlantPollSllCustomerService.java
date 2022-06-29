@@ -94,9 +94,9 @@ public class PlantPollSllCustomerService {
 	}
 
 	@Transactional(propagation=Propagation.REQUIRED)
-	public List<PollSll> listAllPollSll(Long psId) {
+	public List<PollSll> listAllPollSll(PlantPoll plantPoll) {
 		
-		return pollSllRepository.findAllByPsId(psId);
+		return pollSllRepository.findAllByPlantPoll(plantPoll);
 	}
 	
 }

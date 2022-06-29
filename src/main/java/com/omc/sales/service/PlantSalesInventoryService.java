@@ -33,7 +33,7 @@ public class PlantSalesInventoryService {
 		LOGGER.info("Request Received for createSalesInventory with parameters:"+ "customername: " + plantSalesInventoryDTO.getUserId());
 
 		
-		PlantSalesInventory existingInventory=plantSalesInventoryRepository.findByUserId(plantSalesInventoryDTO.getUserId());
+		PlantSalesInventory existingInventory=plantSalesInventoryRepository.findByPlantId(plantSalesInventoryDTO.getPlantId());
 		if(existingInventory !=null)
 		{
 			throw new SSNSQLException("not unique inventory",ErrorCodes.NOT_UNIQUE_Plan);

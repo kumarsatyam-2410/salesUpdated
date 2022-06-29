@@ -9,6 +9,8 @@ public interface PlantSalesInventoryRepository extends JpaRepository<PlantSalesI
 
 	public PlantSalesInventory findByUserId(Long userID);
 	public Long deleteByUserId(Long userId);
-
+	public PlantSalesInventory findByPlantId(int plantId);
+	
+	
 
 }

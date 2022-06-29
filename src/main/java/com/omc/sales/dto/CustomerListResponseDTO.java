@@ -8,6 +8,10 @@ import com.omc.sales.entity.Customer;
 
 public class CustomerListResponseDTO extends AbstractResponseDTO{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<Customer> list;
 	
 	public List<Customer> getList() {

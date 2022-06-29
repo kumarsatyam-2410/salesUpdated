@@ -167,15 +167,15 @@ public class PlantPollSllCustomerController {
 	}
 	
 	
-	@RequestMapping(value = "/allPollSll/{psId}", method = RequestMethod.GET)
-	public ResponseEntity<PlantPollSllCustomerListDTO> listAllPollSll(@PathVariable Long psId) {
+	@RequestMapping(value = "/allPollSll/{plantPoll}", method = RequestMethod.GET)
+	public ResponseEntity<PlantPollSllCustomerListDTO> listAllPollSll(@PathVariable PlantPoll plantPoll) {
 
 		ResponseEntity<PlantPollSllCustomerListDTO> responseEntity;
 		List<PollSll> list = new ArrayList<>();
 		PlantPollSllCustomerListDTO plantPollSllCustomerListDTO = new PlantPollSllCustomerListDTO();
 		try{
 			LOGGER.info("In CustomerController for listAll Customers Request");	
-			list = plantPollSllCustomerService.listAllPollSll(psId);
+			list = plantPollSllCustomerService.listAllPollSll(plantPoll);
 			plantPollSllCustomerListDTO.setList(list);
 			plantPollSllCustomerListDTO.setStatus(HttpStatus.OK.value());
 			responseEntity = new ResponseEntity<>(plantPollSllCustomerListDTO,HttpStatus.OK);
