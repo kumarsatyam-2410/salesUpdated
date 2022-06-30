@@ -40,7 +40,9 @@ public class PlantSalesInventoryService {
 		}
 		
 		PlantSalesInventory  plantSalesInventory=new  PlantSalesInventory();
+		
 		 plantSalesInventory.setInventoryId(plantSalesInventoryDTO.getInventoryId());
+		 plantSalesInventory.setPlantId(plantSalesInventoryDTO.getPlantId());
 		 plantSalesInventory.setUserId(plantSalesInventoryDTO.getUserId());
 		 plantSalesInventory.setTotalNoPolls(plantSalesInventoryDTO.getTotalNoPolls());
 		 plantSalesInventory.setUsedNoPolls(plantSalesInventoryDTO.getUsedNoPolls());
@@ -69,7 +71,7 @@ public class PlantSalesInventoryService {
 		 plantSalesInventoryRepository.save(plantSalesInventory);
 		 
 		 LOGGER.info("Out createSalesInventory service with return Value customerId:"+plantSalesInventory.getUserId()); 
-		 return plantSalesInventory.getUserId();
+		 return plantSalesInventory.getInventoryId();
 		
     }
 	
@@ -92,8 +94,8 @@ public class PlantSalesInventoryService {
 		
 		LOGGER.info("In updateSalesInventory  Service");
 	
-		PlantSalesInventory salesInventory=plantSalesInventoryRepository.findByUserId(plantSalesInventoryDTO.getUserId());
-		//salesInventory.setInventoryId(plantSalesInventoryDTO.getInventoryId());
+		PlantSalesInventory salesInventory=plantSalesInventoryRepository.findByInventoryId(plantSalesInventoryDTO.getInventoryId());
+		salesInventory.setInventoryId(plantSalesInventoryDTO.getInventoryId());
 		salesInventory.setTotalNoPolls(plantSalesInventoryDTO.getTotalNoPolls());
 		salesInventory.setUsedNoPolls(plantSalesInventoryDTO.getUsedNoPolls());
 		salesInventory.setFreeNoPolls(plantSalesInventoryDTO.getFreeNoPolls());
@@ -118,7 +120,7 @@ public class PlantSalesInventoryService {
 		salesInventory.setUpdatedOn(plantSalesInventoryDTO.getUpdateOn());
 		salesInventory.setUpdatedBy(plantSalesInventoryDTO.getUpdateBy());
 		LOGGER.info("Out SalesInventory Updated for "+salesInventory.getUserId());
-		return salesInventory.getUserId();
+		return salesInventory.getInventoryId();
 		
 	}
 	@Transactional(propagation=Propagation.REQUIRED)

@@ -13,8 +13,7 @@ import javax.persistence.Table;
 @Table(name="plant_sales_inventory")
 public class PlantSalesInventory {
 	
-	@Column(name="user_id")
-	private Long userId;
+	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -23,6 +22,9 @@ public class PlantSalesInventory {
 	
 	@Column(name="plantid")
 	private int plantId;
+	
+	@Column(name="user_id")
+	private Long userId;
 	
 	@Column(name="total_no_polls")
 	private int totalNoPolls;
