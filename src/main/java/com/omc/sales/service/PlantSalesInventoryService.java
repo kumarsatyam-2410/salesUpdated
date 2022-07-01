@@ -131,6 +131,15 @@ public class PlantSalesInventoryService {
 		
 	}
 
+	@Transactional(propagation=Propagation.REQUIRED)
+	public List<PlantSalesInventory> listAllByInventoryId(Long inventoryId) {
+		
+		List<PlantSalesInventory> list=new ArrayList<>();
+		PlantSalesInventory plantSalesInventory=plantSalesInventoryRepository.findByInventoryId(inventoryId);
+		list.add(plantSalesInventory);
+		return list;
+	}
+
 	
 
 	

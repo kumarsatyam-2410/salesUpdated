@@ -154,77 +154,201 @@ public class CustomerAcquisitionService {
 		LOGGER.info("In updateCustomerAcquisition  Service");
 		CustomerAcquisition customerAcquisitionEntity = customerAcquisitionRepository.findAllById(customerAcquisitionDTO.getId());
 		
-		 historiseCustomerAcq(customerAcquisitionEntity);
+		// historiseCustomerAcq(customerAcquisitionEntity);
 		
 		customerAcquisitionEntity.setActive(customerAcquisitionDTO.isActive());
+		
+		if(customerAcquisitionDTO.getAbhApprovalStatus() != null && customerAcquisitionDTO.getAbhApprovalStatus().length() > 0 )
 		customerAcquisitionEntity.setAbhApprovalStatus(customerAcquisitionDTO.getAbhApprovalStatus());
+		
+		if(customerAcquisitionDTO.getSalesheadApprovalStatus() != null && customerAcquisitionDTO.getSalesheadApprovalStatus().length() > 0 )
 		customerAcquisitionEntity.setSalesheadApprovalStatus(customerAcquisitionDTO.getSalesheadApprovalStatus());
+		
+		if(customerAcquisitionDTO.getCustomerName() != null && customerAcquisitionDTO.getCustomerName().length() > 0 )
 		customerAcquisitionEntity.setCustomerName(customerAcquisitionDTO.getCustomerName());
+		
+		if(customerAcquisitionDTO.getPlantId() != null && customerAcquisitionDTO.getPlantId().length() > 0 )
 		customerAcquisitionEntity.setPlantId(Long.valueOf(customerAcquisitionDTO.getPlantId()));
+		
+		if(customerAcquisitionDTO.getGender() != null && customerAcquisitionDTO.getGender().length() > 0 )
 		customerAcquisitionEntity.setGender(customerAcquisitionDTO.getGender());
+		
+		if(customerAcquisitionDTO.getAddress() != null && customerAcquisitionDTO.getAddress().length() > 0 )
 		customerAcquisitionEntity.setAddress(customerAcquisitionDTO.getAddress());
+		
+		if(customerAcquisitionDTO.getZipcode() != null && customerAcquisitionDTO.getZipcode().length() > 0 )
 		customerAcquisitionEntity.setZipcode(customerAcquisitionDTO.getZipcode());
+		
+		if(customerAcquisitionDTO.getMobile() != null && customerAcquisitionDTO.getMobile().length() > 0 )
 		customerAcquisitionEntity.setMobile(customerAcquisitionDTO.getMobile());
+		
+		if(customerAcquisitionDTO.getAdharNumber() != null && customerAcquisitionDTO.getAdharNumber().length() > 0 )
 		customerAcquisitionEntity.setAdharNumber(customerAcquisitionDTO.getAdharNumber());
+		
+		if(customerAcquisitionDTO.getPackageType() != null && customerAcquisitionDTO.getPackageType().length() > 0 )
 		customerAcquisitionEntity.setPackageType(customerAcquisitionDTO.getPackageType());
+		
+		if(customerAcquisitionDTO.getSubscriptionType() != null && customerAcquisitionDTO.getSubscriptionType().length() > 0 )
 		customerAcquisitionEntity.setSubscriptionType(customerAcquisitionDTO.getSubscriptionType());
+		
+		if(customerAcquisitionDTO.getLatitude() != null && customerAcquisitionDTO.getLatitude().length() > 0 )
 		customerAcquisitionEntity.setLatitude(customerAcquisitionDTO.getLatitude());
+		
+		if(customerAcquisitionDTO.getLongitude() != null && customerAcquisitionDTO.getLongitude().length() > 0 )
 		customerAcquisitionEntity.setLongitude(customerAcquisitionDTO.getLongitude());
+		
 		customerAcquisitionEntity.setSubscriptionStartDate(customerAcquisitionDTO.getSubscriptionStartDate());
 		customerAcquisitionEntity.setSubscriptionEndDate(customerAcquisitionDTO.getSubscriptionEndDate());
 		customerAcquisitionEntity.setLastSuccessSubscriptionDate(customerAcquisitionDTO.getLastSuccessSubscriptionDate());
+		
+		if(customerAcquisitionDTO.getAcquisition_status() != null && customerAcquisitionDTO.getAcquisition_status().length() > 0 )
 		customerAcquisitionEntity.setAcquisitionStatus(customerAcquisitionDTO.getAcquisition_status());
+		
+		if(customerAcquisitionDTO.getUpload_caf_path() != null && customerAcquisitionDTO.getUpload_caf_path().length() > 0 )
 		customerAcquisitionEntity.setUploadCafPath(customerAcquisitionDTO.getUpload_caf_path());
+		
+		if(customerAcquisitionDTO.getUpload_installation_certificate() != null && customerAcquisitionDTO.getUpload_installation_certificate().length() > 0 )
 		customerAcquisitionEntity.setUploadInstallationCertificate(customerAcquisitionDTO.getUpload_installation_certificate());
+		
+		if(customerAcquisitionDTO.getNo_board_installation_required() != 0 && customerAcquisitionDTO.getNo_board_installation_required() >= 0)
 		customerAcquisitionEntity.setNoBoardInstallationRequired(customerAcquisitionDTO.getNo_board_installation_required());
+		if(customerAcquisitionDTO.getNo_polls_installation_required() != 0 && customerAcquisitionDTO.getNo_polls_installation_required() >= 0)
 		customerAcquisitionEntity.setNoPollsInstallationRequired(customerAcquisitionDTO.getNo_polls_installation_required());
+		if(customerAcquisitionDTO.getNo_rcbs_installation_required() != 0 && customerAcquisitionDTO.getNo_rcbs_installation_required() >= 0)
 		customerAcquisitionEntity.setNoRcbsInstallationRequired(customerAcquisitionDTO.getNo_rcbs_installation_required());
+		if(customerAcquisitionDTO.getNo_sll_installation_required() != 0 && customerAcquisitionDTO.getNo_sll_installation_required() >= 0)
 		customerAcquisitionEntity.setNoSllInstallationRequired(customerAcquisitionDTO.getNo_sll_installation_required());
+		if(customerAcquisitionDTO.getNo_wire_in_meter_required() != 0 && customerAcquisitionDTO.getNo_wire_in_meter_required() >= 0)
 		customerAcquisitionEntity.setNoWireInMeterRequired(customerAcquisitionDTO.getNo_wire_in_meter_required());
-		customerAcquisitionEntity.setCustomerUserId(customerAcquisitionEntity.getCustomerUserId());
+		
+		if(customerAcquisitionDTO.getCustomerUserId() != null && customerAcquisitionDTO.getCustomerUserId().length() > 0 )
+		customerAcquisitionEntity.setCustomerUserId(customerAcquisitionDTO.getCustomerUserId());
+		
+		if(customerAcquisitionDTO.getRechargeNo() != null && customerAcquisitionDTO.getRechargeNo().length() > 0 )
 		customerAcquisitionEntity.setRechargeNo(customerAcquisitionDTO.getRechargeNo());
+		
+		if(customerAcquisitionDTO.getCustomerType() != null && customerAcquisitionDTO.getCustomerType().length() > 0 )
 		customerAcquisitionEntity.setCustomerType(customerAcquisitionDTO.getCustomerType());
-		customerAcquisitionEntity.setPackageId(customerAcquisitionEntity.getPackageId());
+		
+		if(customerAcquisitionDTO.getPackageId() != 0 && customerAcquisitionDTO.getPackageId() >= 0)
+		customerAcquisitionEntity.setPackageId(customerAcquisitionDTO.getPackageId());
+		
+		if(customerAcquisitionDTO.getAmount() != null && customerAcquisitionDTO.getAmount() != null )
 		customerAcquisitionEntity.setAmount(customerAcquisitionDTO.getAmount());
+		
 		customerAcquisitionEntity.setPaymentDate(customerAcquisitionDTO.getPaymentDate());
+		
+		if(customerAcquisitionDTO.getPaymentStatus() != null && customerAcquisitionDTO.getPaymentStatus().length() > 0 )
 		customerAcquisitionEntity.setPaymentStatus(customerAcquisitionDTO.getPaymentStatus());
+		
+		if(customerAcquisitionDTO.getPaymentMode() != null && customerAcquisitionDTO.getPaymentMode().length() > 0 )
 		customerAcquisitionEntity.setPaymentMode(customerAcquisitionDTO.getPaymentMode());
+		
+		if(customerAcquisitionDTO.getPaymentCurrency() != null && customerAcquisitionDTO.getPaymentCurrency().length() > 0 )
 		customerAcquisitionEntity.setPaymentCurrency(customerAcquisitionDTO.getPaymentCurrency());
+		
+		if(customerAcquisitionDTO.getFathersName() != null && customerAcquisitionDTO.getFathersName().length() > 0 )
 		customerAcquisitionEntity.setFathersName(customerAcquisitionDTO.getFathersName());
+		
+		if(customerAcquisitionDTO.getHusbandName() != null && customerAcquisitionDTO.getHusbandName().length() > 0 )
 		customerAcquisitionEntity.setHusbandName(customerAcquisitionDTO.getHusbandName());
+		
+		if(customerAcquisitionDTO.getConAddress() != null && customerAcquisitionDTO.getConAddress().length() > 0 )
 		customerAcquisitionEntity.setConAddress(customerAcquisitionDTO.getConAddress());
+		
+		if(customerAcquisitionDTO.getConVillage() != null && customerAcquisitionDTO.getConVillage().length() > 0 )
 		customerAcquisitionEntity.setConVillage(customerAcquisitionDTO.getConVillage());
+		
+		if(customerAcquisitionDTO.getConTehsil() != null && customerAcquisitionDTO.getConTehsil().length() > 0 )
 		customerAcquisitionEntity.setConTehsil(customerAcquisitionDTO.getConTehsil());
+		
+		if(customerAcquisitionDTO.getConPostoffice() != null && customerAcquisitionDTO.getConPostoffice().length() > 0 )
 		customerAcquisitionEntity.setConPostoffice(customerAcquisitionDTO.getConPostoffice());
+		
+		if(customerAcquisitionDTO.getConPincode() != null && customerAcquisitionDTO.getConPincode().length() > 0 )
 		customerAcquisitionEntity.setConPincode(customerAcquisitionDTO.getConPincode());
+		
+		if(customerAcquisitionDTO.getPermanentAddress() != null && customerAcquisitionDTO.getPermanentAddress().length() > 0 )
 		customerAcquisitionEntity.setPermanentAddress(customerAcquisitionDTO.getPermanentAddress());
+		
+		if(customerAcquisitionDTO.getPermanentVillage() != null && customerAcquisitionDTO.getPermanentVillage().length() > 0 )
 		customerAcquisitionEntity.setPermanentVillage(customerAcquisitionDTO.getPermanentVillage());
-		customerAcquisitionEntity.setPermanentTehsil(customerAcquisitionDTO.getPermanentTehsil());
+		
+		if(customerAcquisitionDTO.getPermanentPostoffice() != null && customerAcquisitionDTO.getPermanentPostoffice().length() > 0 )
 		customerAcquisitionEntity.setPermanentPostoffice(customerAcquisitionDTO.getPermanentPostoffice());
+		
+		if(customerAcquisitionDTO.getPermanentPincode() != null && customerAcquisitionDTO.getPermanentPincode().length() > 0 )
 		customerAcquisitionEntity.setPermanentPincode(customerAcquisitionDTO.getPermanentPincode());
+
+		if(customerAcquisitionDTO.getIdProofType() != null && customerAcquisitionDTO.getIdProofType().length() > 0 )
 		customerAcquisitionEntity.setIdProofType(customerAcquisitionDTO.getIdProofType());
+		
+		if(customerAcquisitionDTO.getIdProfDocNo() != null && customerAcquisitionDTO.getIdProfDocNo().length() > 0 )
 		customerAcquisitionEntity.setIdProfDocNo(customerAcquisitionDTO.getIdProfDocNo());
+		
+		if(customerAcquisitionDTO.getAddressProofType() != null && customerAcquisitionDTO.getAddressProofType().length() > 0 )
 		customerAcquisitionEntity.setAddressProofType(customerAcquisitionDTO.getAddressProofType());
+		
+		if(customerAcquisitionDTO.getAddressProofDocNo() != null && customerAcquisitionDTO.getAddressProofDocNo().length() > 0 )
 		customerAcquisitionEntity.setAddressProofDocNo(customerAcquisitionDTO.getAddressProofDocNo());
+		
+		if(customerAcquisitionDTO.getNatureOfSupply() != null && customerAcquisitionDTO.getNatureOfSupply().length() > 0 )
 		customerAcquisitionEntity.setNatureOfSupply(customerAcquisitionDTO.getNatureOfSupply());
+		
+		if(customerAcquisitionDTO.getOmcId() != null && customerAcquisitionDTO.getOmcId() != null )
 		customerAcquisitionEntity.setOmcId(customerAcquisitionDTO.getOmcId());
+		
+		if(customerAcquisitionDTO.getCustomerType() != null && customerAcquisitionDTO.getCustomerType().length() > 0 )
 		customerAcquisitionEntity.setCustomerType(customerAcquisitionDTO.getCustomerType());
+		
+		if(customerAcquisitionDTO.getSubscriptionPackageId() != null && customerAcquisitionDTO.getSubscriptionPackageId() != null )
 		customerAcquisitionEntity.setSubscriptionPackageId(customerAcquisitionDTO.getSubscriptionPackageId());
+		
+		if(customerAcquisitionDTO.getSubscriptionPackageAmount() != null && customerAcquisitionDTO.getSubscriptionPackageAmount() != null )
 		customerAcquisitionEntity.setSubscriptionPackageAmount(customerAcquisitionDTO.getSubscriptionPackageAmount());
+		
+		if(customerAcquisitionDTO.getSpiCategory() != null && customerAcquisitionDTO.getSpiCategory().length() > 0 )
 		customerAcquisitionEntity.setSpiCategory(customerAcquisitionDTO.getSpiCategory());
+		
+		if(customerAcquisitionDTO.getDeviceConnected() != null && customerAcquisitionDTO.getDeviceConnected().length() > 0 )
 		customerAcquisitionEntity.setDeviceConnected(customerAcquisitionDTO.getDeviceConnected());
+		
+		if(customerAcquisitionDTO.getPollNo() != null && customerAcquisitionDTO.getPollNo() != null )
 		customerAcquisitionEntity.setPollNo(customerAcquisitionDTO.getPollNo());
+		
+		if(customerAcquisitionDTO.getBigBoard() != null && customerAcquisitionDTO.getBigBoard().length() > 0 )
 		customerAcquisitionEntity.setBigBoard(customerAcquisitionDTO.getBigBoard());
+		
+		if(customerAcquisitionDTO.getSmallBoard() != null && customerAcquisitionDTO.getSmallBoard().length() > 0 )
 		customerAcquisitionEntity.setSmallBoard(customerAcquisitionDTO.getSmallBoard());
+		
+		if(customerAcquisitionDTO.getLed() != null && customerAcquisitionDTO.getLed().length() > 0 )
 		customerAcquisitionEntity.setLed(customerAcquisitionDTO.getLed());
+		
+		if(customerAcquisitionDTO.getTypeOfEstablishment() != null && customerAcquisitionDTO.getTypeOfEstablishment().length() > 0 )
 		customerAcquisitionEntity.setTypeOfEstablishment(customerAcquisitionDTO.getTypeOfEstablishment());
+		
+		if(customerAcquisitionDTO.getProfessionOccupation() != null && customerAcquisitionDTO.getProfessionOccupation().length() > 0 )
 		customerAcquisitionEntity.setProfessionOccupation(customerAcquisitionDTO.getProfessionOccupation());
+		
+		if(customerAcquisitionDTO.getConnectionAddressDistrict() != null && customerAcquisitionDTO.getConnectionAddressDistrict().length() > 0 )
 		customerAcquisitionEntity.setConnectionAddressDistrict(customerAcquisitionDTO.getConnectionAddressDistrict());
+		
+		if(customerAcquisitionDTO.getPermanentAddressDistrict() != null && customerAcquisitionDTO.getPermanentAddressDistrict().length() > 0 )
 		customerAcquisitionEntity.setPermanentAddressDistrict(customerAcquisitionDTO.getPermanentAddressDistrict());
+		
+		if(customerAcquisitionDTO.getAddressProofType() != null && customerAcquisitionDTO.getAddressProofType().length() > 0 )
 		customerAcquisitionEntity.setAddressProofType(customerAcquisitionDTO.getAddressProofType());
+		
+		if(customerAcquisitionDTO.getCafNo() != null && customerAcquisitionDTO.getCafNo().length() > 0 )
 		customerAcquisitionEntity.setCafNo(customerAcquisitionDTO.getCafNo());
+		
+		if(customerAcquisitionDTO.getBillingType() != null && customerAcquisitionDTO.getBillingType().length() > 0 )
 		customerAcquisitionEntity.setBillingType(customerAcquisitionDTO.getBillingType());
+		
+		if(customerAcquisitionDTO.getCreatedBy() != 0 && customerAcquisitionDTO.getCreatedBy() != 0 )
 		customerAcquisitionEntity.setCreatedBy(customerAcquisitionDTO.getCreatedBy());
+		if(customerAcquisitionDTO.getPaymentBy() != 0 && customerAcquisitionDTO.getPaymentBy() != 0 )
 		customerAcquisitionEntity.setPaymentBy(customerAcquisitionDTO.getPaymentBy());
 		LOGGER.info("Out CustomerAcquisition Updated for "+customerAcquisitionEntity.getId()); 
 		return customerAcquisitionEntity.getId();

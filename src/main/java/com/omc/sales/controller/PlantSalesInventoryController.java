@@ -201,4 +201,40 @@ public class PlantSalesInventoryController {
 		return response;
 	
 	}
+	
+	@GetMapping("/getallsalesinventory/{inventoryId}")
+	public List<PlantSalesInventory> listAllByInventoryId(@PathVariable Long inventoryId)
+	{
+		
+		ResponseEntity<PlantSalesInventoryListResponseDTO> responseEntity;
+		List<PlantSalesInventory> list=new ArrayList();
+		PlantSalesInventoryListResponseDTO plantSalesInventoryListResponseDTO=new PlantSalesInventoryListResponseDTO();
+		try 
+		{
+			LOGGER.info("In PlantSalesInventoryController for listAll SalesInventoryt Request");	
+			list=plantSalesInventoryService.listAllByInventoryId(inventoryId);
+			plantSalesInventoryListResponseDTO.setList(list);
+			plantSalesInventoryListResponseDTO.setStatus(HttpStatus.OK.value());
+			responseEntity=new ResponseEntity<>(plantSalesInventoryListResponseDTO,HttpStatus.OK);
+			
+		}
+		catch(RuntimeException e)
+		{
+			LOGGER.warn("Error occurred while listing PlantSalesInventory", e);
+			plantSalesInventoryListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			plantSalesInventoryListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity=new ResponseEntity<>(plantSalesInventoryListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			plantSalesInventoryListResponseDTO.setErrorMessage(e.getCause().getMessage());
+		}
+		catch(Exception e)
+		{
+			LOGGER.warn("Error occurred while listing customer", e);
+			plantSalesInventoryListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			plantSalesInventoryListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity=new ResponseEntity<>(plantSalesInventoryListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			plantSalesInventoryListResponseDTO.setErrorMessage(e.getCause().getMessage());
+		}
+		return list;
+		
+	}
 }
