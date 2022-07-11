@@ -51,8 +51,8 @@ public class PollSll implements Serializable {
 
 	@Column(name = "updated_on")
 	private Timestamp updatedOn;
-	
-          public PollSll(){
+
+		public PollSll(){
 		
 	        }
 	

@@ -67,10 +67,9 @@ public class CustomerAcquisition {
 
 	@Column(name = "acquisition_status")
 	private String acquisitionStatus;
-
+	
 	@Column(name = "upload_caf_path")
 	private String uploadCafPath;
-	
 	
 	@Column(name = "sales_executive_id")
 	private String salesExecutiveId;
@@ -240,6 +239,36 @@ public class CustomerAcquisition {
 	@Column(name = "payment_by")
 	private int paymentBy;
 	
+	@Column(name = "type_of_board")
+	private String typeOfBoard;
+	
+	@Column(name = "sll_no")
+	private String sllNo;
+	
+	public String getAcquisitionStatus() {
+		return acquisitionStatus;
+	}
+
+	public void setAcquisitionStatus(String acquisitionStatus) {
+		this.acquisitionStatus = acquisitionStatus;
+	}
+
+	public String getSllNo() {
+		return sllNo;
+	}
+
+	public void setSllNo(String sllNo) {
+		this.sllNo = sllNo;
+	}
+
+	public String getTypeOfBoard() {
+		return typeOfBoard;
+	}
+
+	public void setTypeOfBoard(String typeOfBoard) {
+		this.typeOfBoard = typeOfBoard;
+	}
+
 	public int getPaymentBy() {
 		return paymentBy;
 	}
@@ -372,13 +401,6 @@ public class CustomerAcquisition {
 		this.longitude = longitude;
 	}
 
-	public String getAcquisitionStatus() {
-		return acquisitionStatus;
-	}
-
-	public void setAcquisitionStatus(String acquisitionStatus) {
-		this.acquisitionStatus = acquisitionStatus;
-	}
 
 	public String getUploadCafPath() {
 		return uploadCafPath;

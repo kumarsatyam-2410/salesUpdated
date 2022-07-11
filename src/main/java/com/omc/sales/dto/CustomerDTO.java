@@ -105,7 +105,7 @@ public class CustomerDTO {
 	
 	private String cafNo;
 	
-	private Long sll;
+	private String sll;
 	
 	private Long noOfRcb;
 	
@@ -119,6 +119,27 @@ public class CustomerDTO {
 	
 	private BigDecimal currentPackageAmount;
 	
+	private String typeOfBoard;
+	
+	private String installationCertificate;
+
+	
+	public String getInstallationCertificate() {
+		return installationCertificate;
+	}
+
+	public void setInstallationCertificate(String installationCertificate) {
+		this.installationCertificate = installationCertificate;
+	}
+
+	public String getTypeOfBoard() {
+		return typeOfBoard;
+	}
+
+	public void setTypeOfBoard(String typeOfBoard) {
+		this.typeOfBoard = typeOfBoard;
+	}
+
 	public int getActivatedBy() {
 		return activatedBy;
 	}
@@ -151,11 +172,11 @@ public class CustomerDTO {
 		this.cafNo = cafNo;
 	}
 
-	public Long getSll() {
+	public String getSll() {
 		return sll;
 	}
 
-	public void setSll(Long sll) {
+	public void setSll(String sll) {
 		this.sll = sll;
 	}
 

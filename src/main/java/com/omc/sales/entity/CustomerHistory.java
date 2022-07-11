@@ -146,8 +146,8 @@ public class CustomerHistory {
 	@Column(name = "caf_no")
 	private String cafNo;
 	
-	@Column(name = "sll")
-	private Long sll;
+	@Column(name = "sll_no")
+	private String sll;
 	
 	@Column(name = "no_of_rcb")
 	private Long noOfRcb;
@@ -164,6 +164,28 @@ public class CustomerHistory {
 	@Column(name = "payment_by")
 	private int paymentBy;
 	
+	@Column(name = "type_of_board")
+	private String typeOfBoard;
+	
+	@Column(name = "installation_certificate")
+	private String installationCertificate;
+	
+	public String getInstallationCertificate() {
+		return installationCertificate;
+	}
+
+	public void setInstallationCertificate(String installationCertificate) {
+		this.installationCertificate = installationCertificate;
+	}
+
+	public String getTypeOfBoard() {
+		return typeOfBoard;
+	}
+
+	public void setTypeOfBoard(String typeOfBoard) {
+		this.typeOfBoard = typeOfBoard;
+	}
+
 	public int getActivatedBy() {
 		return activatedBy;
 	}
@@ -528,12 +550,12 @@ public class CustomerHistory {
 		this.cafNo = cafNo;
 	}
 
-	public Long getSll() {
+	public String getSll() {
 		return sll;
 	}
 
-	public void setSll(Long sll) {
-		this.sll = sll;
+	public void setSll(String string) {
+		this.sll = string;
 	}
 
 	public Long getNoOfRcb() {

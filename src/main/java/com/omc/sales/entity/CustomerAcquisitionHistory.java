@@ -158,6 +158,29 @@ public class CustomerAcquisitionHistory {
 	@Column(name = "payment_by")
 	private int paymentBy;
 	
+	@Column(name = "type_of_board")
+	private String typeOfBoard;
+	
+	@Column(name = "sll_no")
+	private String sllNo;
+	
+	
+	public String getSllNo() {
+		return sllNo;
+	}
+
+	public void setSllNo(String sllNo) {
+		this.sllNo = sllNo;
+	}
+
+	public String getTypeOfBoard() {
+		return typeOfBoard;
+	}
+
+	public void setTypeOfBoard(String typeOfBoard) {
+		this.typeOfBoard = typeOfBoard;
+	}
+
 	public int getPaymentBy() {
 		return paymentBy;
 	}

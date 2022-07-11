@@ -63,8 +63,8 @@ public class Customer {
 	@Column(name = "last_success_subscription_date")
 	private Timestamp lastSuccessSubscriptionDate;
 
-//	@Column(name = "added_on")
-//	private Timestamp addedOn;
+	@Column(name = "added_on")
+	private Timestamp addedOn;
 	
 	@Column(name = "is_active")
 	private boolean isActive;
@@ -141,8 +141,8 @@ public class Customer {
 	@Column(name = "caf_no")
 	private String cafNo;
 	
-	@Column(name = "sll")
-	private Long sll;
+	@Column(name = "sll_no")
+	private String sll;
 	
 	@Column(name = "no_of_rcb")
 	private Long noOfRcb;
@@ -162,7 +162,36 @@ public class Customer {
 	@Column(name = "Current_Package_amount")
 	private BigDecimal currentPackageAmount;
 	
+	@Column(name = "type_of_board")
+	private String typeOfBoard;
 	
+	@Column(name = "installation_certificate")
+	private String installationCertificate;
+	
+	public Timestamp getAddedOn() {
+		return addedOn;
+	}
+
+	public void setAddedOn(Timestamp addedOn) {
+		this.addedOn = addedOn;
+	}
+	
+	public String getInstallationCertificate() {
+		return installationCertificate;
+	}
+
+	public void setInstallationCertificate(String installationCertificate) {
+		this.installationCertificate = installationCertificate;
+	}
+
+	public String getTypeOfBoard() {
+		return typeOfBoard;
+	}
+
+	public void setTypeOfBoard(String typeOfBoard) {
+		this.typeOfBoard = typeOfBoard;
+	}
+
 	public int getPaymentBy() {
 		return paymentBy;
 	}
@@ -195,11 +224,11 @@ public class Customer {
 		this.billingType = billingType;
 	}
 
-	public Long getSll() {
+	public String getSll() {
 		return sll;
 	}
 
-	public void setSll(Long sll) {
+	public void setSll(String sll) {
 		this.sll = sll;
 	}
 

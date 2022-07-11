@@ -49,15 +49,12 @@ public class DashBoardService {
 			
 			//List<CustomerAcquisition> list = customerAcquisitionRepository.findByAcquisition_status(true, "Closed");
 			customerData.setTotalCustomerAcquired(""+list.size());
-			
 			customerData.setTotalCustomerAcquiredCurrentMonth(""+list.size());
 			customerData.setTargetCustomerAcquiredCurrentMonth(""+list.size());
 			customerData.setTargetCustomerAcquired(""+list.size());
+			
 			dashBoardDTO.setCustomerData(customerData);
 		//}
-
-		
-
 		return dashBoardDTO;
 	}
 

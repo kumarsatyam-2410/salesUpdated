@@ -73,7 +73,7 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setSubscriptionStartDate(customerAcquisitionDTO.getSubscriptionStartDate());
 		customerAcquisitionEntity.setSubscriptionEndDate(customerAcquisitionDTO.getSubscriptionEndDate());
 		customerAcquisitionEntity.setLastSuccessSubscriptionDate(customerAcquisitionDTO.getLastSuccessSubscriptionDate());
-		customerAcquisitionEntity.setAcquisitionStatus(customerAcquisitionDTO.getAcquisition_status().toString());
+		customerAcquisitionEntity.setAcquisitionStatus(customerAcquisitionDTO.getAcquisitionStatus());
 		customerAcquisitionEntity.setUploadCafPath(customerAcquisitionDTO.getUpload_caf_path());
 		customerAcquisitionEntity.setUploadInstallationCertificate(customerAcquisitionDTO.getUpload_installation_certificate());
 		customerAcquisitionEntity.setNoBoardInstallationRequired(customerAcquisitionDTO.getNo_board_installation_required());
@@ -127,7 +127,9 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setBillingType(customerAcquisitionDTO.getBillingType());
 		customerAcquisitionEntity.setSalesExecutiveId(customerAcquisitionDTO.getSalesExecutiveId());
 		customerAcquisitionEntity.setCreatedBy(customerAcquisitionDTO.getCreatedBy());
-		//customerAcquisitionEntity.setAddedOn(customerAcquisitionDTO.getAddedOn());
+		customerAcquisitionEntity.setSllNo(customerAcquisitionDTO.getSllNo());
+		customerAcquisitionEntity.setTypeOfBoard(customerAcquisitionDTO.getTypeOfBoard());
+	//	customerAcquisitionEntity.setAddedOn(customerAcquisitionDTO.getAddedOn());
 		customerAcquisitionEntity.setPaymentBy(customerAcquisitionDTO.getPaymentBy());
 		customerAcquisitionRepository.save(customerAcquisitionEntity);
 
@@ -142,9 +144,13 @@ public class CustomerAcquisitionService {
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
 	public List<CustomerAcquisition> listAllCustomerAcquisitions() {
 		LOGGER.info("In listAllCustomerAcquisitions  Service");
-		List<CustomerAcquisition> customerAcquisition = new ArrayList<>();
-		customerAcquisitionRepository.findAll().forEach(customerAcquisition::add);
-		return customerAcquisition;
+		List<CustomerAcquisition> list = new ArrayList<>();
+		
+//		customerAcquisitionRepository.findAll().forEach(customerAcquisition::add);
+		return  customerAcquisitionRepository.findAll();
+		
+	//	return customerAcquisition;
+		//return list;
 	}
 
 
@@ -201,8 +207,8 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setSubscriptionEndDate(customerAcquisitionDTO.getSubscriptionEndDate());
 		customerAcquisitionEntity.setLastSuccessSubscriptionDate(customerAcquisitionDTO.getLastSuccessSubscriptionDate());
 		
-		if(customerAcquisitionDTO.getAcquisition_status() != null && customerAcquisitionDTO.getAcquisition_status().length() > 0 )
-		customerAcquisitionEntity.setAcquisitionStatus(customerAcquisitionDTO.getAcquisition_status());
+		if(customerAcquisitionDTO.getAcquisitionStatus() != null && customerAcquisitionDTO.getAcquisitionStatus().length() > 0 )
+		customerAcquisitionEntity.setAcquisitionStatus(customerAcquisitionDTO.getAcquisitionStatus());
 		
 		if(customerAcquisitionDTO.getUpload_caf_path() != null && customerAcquisitionDTO.getUpload_caf_path().length() > 0 )
 		customerAcquisitionEntity.setUploadCafPath(customerAcquisitionDTO.getUpload_caf_path());
@@ -346,6 +352,13 @@ public class CustomerAcquisitionService {
 		if(customerAcquisitionDTO.getBillingType() != null && customerAcquisitionDTO.getBillingType().length() > 0 )
 		customerAcquisitionEntity.setBillingType(customerAcquisitionDTO.getBillingType());
 		
+		if(customerAcquisitionDTO.getSllNo() != null && customerAcquisitionDTO.getSllNo().length() > 0 )
+		customerAcquisitionEntity.setSllNo(customerAcquisitionDTO.getSllNo());
+		
+		if(customerAcquisitionDTO.getTypeOfBoard() != null && customerAcquisitionDTO.getTypeOfBoard().length() > 0 )
+		customerAcquisitionEntity.setTypeOfBoard(customerAcquisitionDTO.getTypeOfBoard());
+		
+		
 		if(customerAcquisitionDTO.getCreatedBy() != 0 && customerAcquisitionDTO.getCreatedBy() != 0 )
 		customerAcquisitionEntity.setCreatedBy(customerAcquisitionDTO.getCreatedBy());
 		if(customerAcquisitionDTO.getPaymentBy() != 0 && customerAcquisitionDTO.getPaymentBy() != 0 )
@@ -406,6 +419,8 @@ public class CustomerAcquisitionService {
 		customerAcquisitionHistory.setBillingType(customerAcquisitionEntity.getBillingType());
 		//customerAcquisitionHistory.setHistoryCreatedOn(new Timestamp(new Date().getTime()));
 		customerAcquisitionHistory.setCreatedBy(customerAcquisitionEntity.getCreatedBy());
+		customerAcquisitionHistory.setSllNo(customerAcquisitionEntity.getSllNo());
+		customerAcquisitionHistory.setTypeOfBoard(customerAcquisitionEntity.getTypeOfBoard());
 		customerAcquisitionHistory.setPaymentBy(customerAcquisitionEntity.getPaymentBy());
 		customerAcquisitionHistoryRepository.save(customerAcquisitionHistory);
 		

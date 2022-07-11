@@ -165,6 +165,37 @@ public class CustomerController {
 		return list;
 	}
 	
+	@GetMapping("/getcustomers/{sll}")
+	public List<Customer> getCustomerBySll(@PathVariable String sll) {
+
+		ResponseEntity<CustomerListResponseDTO> responseEntity;
+		List<Customer> list = new ArrayList<>();
+		CustomerListResponseDTO customerResponseDTO = new CustomerListResponseDTO();
+		try{
+			LOGGER.info("In CustomerController for listAll Customers Request");	
+			list = customerService.getCustomerBySll(sll);
+			customerResponseDTO.setList(list);
+			customerResponseDTO.setStatus(HttpStatus.OK.value());
+			responseEntity = new ResponseEntity<>(customerResponseDTO,HttpStatus.OK);
+		}  catch(RuntimeException exception) {
+			LOGGER.warn("Error occurred while listing customer", exception);
+			customerResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			customerResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity = new ResponseEntity<>(customerResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			customerResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		} catch(Exception exception){
+			LOGGER.warn("Error occurred while listing customer", exception);
+			customerResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			customerResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity = new ResponseEntity<>(customerResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			customerResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		}
+		return list;
+	}
+	
+	
+	
+	
 	
 	
 	

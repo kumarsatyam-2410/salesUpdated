@@ -40,8 +40,7 @@ public class PlantUsers implements Serializable {
 	@ManyToOne
 	@JoinColumn( name="plant_id",nullable=false)
 	private Plant plant;
-	
-	
+	 
 	@Column(name = "status")
 	private String status;
 	

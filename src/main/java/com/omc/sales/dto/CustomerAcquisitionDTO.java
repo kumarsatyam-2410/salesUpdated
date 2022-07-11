@@ -53,11 +53,11 @@ public class CustomerAcquisitionDTO {
 	private Timestamp subscriptionEndDate;
 	private Timestamp lastSuccessSubscriptionDate;
 
-	private Timestamp addedOn;
-	
+	//private Timestamp addedOn;
+
 	private boolean isActive;
 	
-	private String acquisition_status;
+	private String acquisitionStatus;
 	
 	private String upload_caf_path;
 	private String upload_installation_certificate;
@@ -155,6 +155,34 @@ public class CustomerAcquisitionDTO {
 	
 	private int paymentBy;
 	
+    private String typeOfBoard;
+    
+	private String sllNo;
+	
+	public String getAcquisitionStatus() {
+		return acquisitionStatus;
+	}
+
+	public void setAcquisitionStatus(String acquisitionStatus) {
+		this.acquisitionStatus = acquisitionStatus;
+	}
+
+	public String getTypeOfBoard() {
+		return typeOfBoard;
+	}
+
+	public void setTypeOfBoard(String typeOfBoard) {
+		this.typeOfBoard = typeOfBoard;
+	}
+
+	public String getSllNo() {
+		return sllNo;
+	}
+
+	public void setSllNo(String sllNo) {
+		this.sllNo = sllNo;
+	}
+
 	public int getPaymentBy() {
 		return paymentBy;
 	}
@@ -602,9 +630,9 @@ public class CustomerAcquisitionDTO {
 		return lastSuccessSubscriptionDate;
 	}
 
-	public Timestamp getAddedOn() {
-		return addedOn;
-	}
+//	public Timestamp getAddedOn() {
+//		return addedOn;
+//	}
 
 	public boolean isActive() {
 		return isActive;
@@ -670,9 +698,9 @@ public class CustomerAcquisitionDTO {
 		this.lastSuccessSubscriptionDate = lastSuccessSubscriptionDate;
 	}
 
-	public void setAddedOn(Timestamp addedOn) {
-		this.addedOn = addedOn;
-	}
+//	public void setAddedOn(Timestamp addedOn) {
+//		this.addedOn = addedOn;
+//	}
 
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
@@ -686,9 +714,6 @@ public class CustomerAcquisitionDTO {
 		this.plantId = plantId;
 	}
 
-	public String getAcquisition_status() {
-		return acquisition_status;
-	}
 
 	public String getUpload_caf_path() {
 		return upload_caf_path;
@@ -718,9 +743,6 @@ public class CustomerAcquisitionDTO {
 		return no_wire_in_meter_required;
 	}
 
-	public void setAcquisition_status(String acquisition_status) {
-		this.acquisition_status = acquisition_status;
-	}
 
 	public void setUpload_caf_path(String upload_caf_path) {
 		this.upload_caf_path = upload_caf_path;

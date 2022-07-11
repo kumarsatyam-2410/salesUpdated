@@ -22,4 +22,6 @@ public interface PollSllRepository extends JpaRepository<PollSll, Long> {
 
     public List<PollSll> findAllByPlantPoll(PlantPoll plantPoll);
 
+	public List<PollSll> findAllBySllNumber(Long sllNumber);
+
 }

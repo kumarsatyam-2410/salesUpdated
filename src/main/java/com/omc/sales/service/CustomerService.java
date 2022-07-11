@@ -73,7 +73,7 @@ public class CustomerService {
 		customerEntity.setSubscriptionStartDate(customerDTO.getSubscriptionStartDate());
 		customerEntity.setSubscriptionEndDate(customerDTO.getSubscriptionEndDate());
 		customerEntity.setLastSuccessSubscriptionDate(customerDTO.getLastSuccessSubscriptionDate());
-		//customerEntity.setAddedOn(customerDTO.getAddedOn());
+		customerEntity.setAddedOn(customerDTO.getAddedOn());
 		customerEntity.setCustomerStatus(customerDTO.getCustomerStatus());
 		customerEntity.setSalesExecutiveId(customerDTO.getSalesExecutiveId());
 		customerEntity.setPlantId(customerDTO.getPlantId());
@@ -104,6 +104,8 @@ public class CustomerService {
 		customerEntity.setCreatedBy(customerDTO.getCreatedBy());
 		customerEntity.setPaymentBy(customerDTO.getPaymentBy());
 		customerEntity.setActivatedBy(customerDTO.getActivatedBy());
+		customerEntity.setTypeOfBoard(customerDTO.getTypeOfBoard());
+		customerEntity.setInstallationCertificate(customerDTO.getInstallationCertificate());
 			customerRepository.save(customerEntity);
 
 		LOGGER.info("Out createCustomer service with return Value customerId:"+customerEntity.getId()); 
@@ -245,7 +247,7 @@ public class CustomerService {
 		if(customerDTO.getBillingType() != null && customerDTO.getBillingType().length() > 0 )
 		customerEntity.setBillingType(customerDTO.getBillingType());
 		
-		if(customerDTO.getSll() != null && customerDTO.getSll() >= 0 )
+		if(customerDTO.getSll() != null && customerDTO.getSll() .length() > 0 )
 		customerEntity.setSll(customerDTO.getSll());
 		
 		if(customerDTO.getNoOfRcb() != null && customerDTO.getNoOfRcb() >= 0 )
@@ -257,8 +259,14 @@ public class CustomerService {
     	if(customerDTO.getPaymentBy() != 0 && customerDTO.getPaymentBy() >= 0 )
 		customerEntity.setPaymentBy(customerDTO.getPaymentBy());
     	
-		if(customerDTO.getActivatedBy() != 0 && customerDTO.getNoOfRcb() >= 0 )
+		if(customerDTO.getActivatedBy() != 0 && customerDTO.getActivatedBy() >= 0 )
 		customerEntity.setActivatedBy(customerDTO.getActivatedBy());
+		
+		if(customerDTO.getTypeOfBoard() != null && customerDTO.getTypeOfBoard() .length() > 0 )
+		customerEntity.setTypeOfBoard(customerDTO.getTypeOfBoard());
+		
+		if(customerDTO.getInstallationCertificate() != null && customerDTO.getInstallationCertificate() .length() > 0 )
+		customerEntity.setInstallationCertificate(customerDTO.getInstallationCertificate());
 		
 		LOGGER.info("Out Customer Updated for "+customerEntity.getId()); 
 		return customerEntity.getId();
@@ -319,6 +327,8 @@ public class CustomerService {
 		customerHistory.setCreatedBy(customerEntity.getCreatedBy());
 		customerHistory.setPaymentBy(customerHistory.getPaymentBy());
 		customerHistory.setActivatedBy(customerEntity.getActivatedBy());
+		customerHistory.setTypeOfBoard(customerEntity.getTypeOfBoard());
+		customerHistory.setInstallationCertificate(customerEntity.getInstallationCertificate());
 		customerHistoryRepository.save(customerHistory);
 
 		
@@ -330,6 +340,12 @@ public class CustomerService {
 		List<Customer> customer=new ArrayList<>();
 		customerRepository.getCustomerById(id).forEach(customer::add);
 		return customer;
+	}
+
+
+	public List<Customer> getCustomerBySll(String sll) {
+		
+		return customerRepository.findAllCustomerBySll(sll);
 	}
 
 

@@ -14,6 +14,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.omc.sales.dto.CustomerDTO;
+import com.omc.sales.dto.DashboardDTO;
+import com.omc.sales.dto.DashboardDTO.CustomerData;
 import com.omc.sales.entity.Customer;
 import com.omc.sales.entity.Plant;
 import com.omc.sales.entity.PlantPoll;
@@ -98,5 +100,14 @@ public class PlantPollSllCustomerService {
 		
 		return pollSllRepository.findAllByPlantPoll(plantPoll);
 	}
+
+
+	public List<PollSll> listAllPollSlls(Long sllNumber) {
+	    
+		return pollSllRepository.findAllBySllNumber(sllNumber);
+	}
+
+
+	
 	
 }
