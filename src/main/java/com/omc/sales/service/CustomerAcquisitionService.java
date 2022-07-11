@@ -49,10 +49,10 @@ public class CustomerAcquisitionService {
 		LOGGER.info("Request Received for createCustomerAcquisition with parameters:"+ "customerName: " + customerAcquisitionDTO.getCustomerName());
 
 		 //validate unique customerAcquisition
-		CustomerAcquisition existingCustomerAcquisitionEntity =customerAcquisitionRepository.findByCustomerName(customerAcquisitionDTO.getCustomerName());
-		if(existingCustomerAcquisitionEntity != null){
-			throw new SSNSQLException("Not Unique CustomerAcquisition", ErrorCodes.NOT_UNIQUE_CUSTOMER);
-		}
+//		CustomerAcquisition existingCustomerAcquisitionEntity =customerAcquisitionRepository.findByCustomerName(customerAcquisitionDTO.getCustomerName());
+//		if(existingCustomerAcquisitionEntity != null){
+//			throw new SSNSQLException("Not Unique CustomerAcquisition", ErrorCodes.NOT_UNIQUE_CUSTOMER);
+//		}
 		
 		CustomerAcquisition customerAcquisitionEntity = new CustomerAcquisition();
 		

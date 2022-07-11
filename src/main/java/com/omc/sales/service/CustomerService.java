@@ -129,7 +129,7 @@ public class CustomerService {
 	public Long updateCustomer(CustomerDTO customerDTO) {
 		LOGGER.info("In updateCustomer  Service");
 		Customer customerEntity = customerRepository.findAllById(customerDTO.getId());
-		//CustomerHist(customerEntity);
+		
 		
 		if(customerDTO.getId() != null && customerDTO.getId() >= 0)
 		customerEntity.setId(customerDTO.getId());
@@ -269,6 +269,7 @@ public class CustomerService {
 		customerEntity.setInstallationCertificate(customerDTO.getInstallationCertificate());
 		
 		LOGGER.info("Out Customer Updated for "+customerEntity.getId()); 
+		CustomerHist(customerEntity);
 		return customerEntity.getId();
 		
 	}
