@@ -130,6 +130,7 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setSllNo(customerAcquisitionDTO.getSllNo());
 		customerAcquisitionEntity.setTypeOfBoard(customerAcquisitionDTO.getTypeOfBoard());
 	//	customerAcquisitionEntity.setAddedOn(customerAcquisitionDTO.getAddedOn());
+		customerAcquisitionEntity.setCustomerPic(customerAcquisitionDTO.getCustomerPic());
 		customerAcquisitionEntity.setPaymentBy(customerAcquisitionDTO.getPaymentBy());
 		customerAcquisitionRepository.save(customerAcquisitionEntity);
 
