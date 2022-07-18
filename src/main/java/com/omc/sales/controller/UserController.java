@@ -23,11 +23,13 @@ import com.omc.sales.dto.CustomerAcquisitionDTO;
 import com.omc.sales.dto.CustomerAcquisitionResponseDTO;
 import com.omc.sales.dto.DashboardDTO;
 import com.omc.sales.dto.LoginDTO;
+import com.omc.sales.dto.PlantSalesInventoryListResponseDTO;
 import com.omc.sales.dto.PlantUserListResponseDTO;
 import com.omc.sales.dto.UserListResponseDTO;
 import com.omc.sales.dto.UserResponseDTO;
 import com.omc.sales.entity.CafTable;
 import com.omc.sales.entity.Plant;
+import com.omc.sales.entity.PlantSalesInventory;
 import com.omc.sales.entity.PlantUsers;
 import com.omc.sales.entity.User;
 import com.omc.sales.exception.BaseException;
@@ -214,5 +216,6 @@ public class UserController {
 		return responseEntity;
 	}
 
+	
 		
 }

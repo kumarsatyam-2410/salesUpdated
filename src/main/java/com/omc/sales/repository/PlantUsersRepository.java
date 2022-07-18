@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.omc.sales.entity.Plant;
+import com.omc.sales.entity.PlantSalesInventory;
 import com.omc.sales.entity.PlantUsers;
 import com.omc.sales.entity.User;
 
@@ -27,4 +28,6 @@ public interface PlantUsersRepository extends JpaRepository<PlantUsers, Long> {
 	
 	@Query(value="SELECT a.user_id,b.username FROM sales.plant_users a,  user b where a.plant.plantId=:plantId and a.user_id=b.user_id",nativeQuery=true)
 	List<User> findUserByPlant(Long plantId);
+	
+	
 }

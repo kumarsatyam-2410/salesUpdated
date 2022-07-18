@@ -159,6 +159,16 @@ public class CustomerAcquisitionDTO {
     
 	private String sllNo;
 	
+	private String financeHeadApprovalStatus;
+
+	public String getFinanceHeadApprovalStatus() {
+		return financeHeadApprovalStatus;
+	}
+
+	public void setFinanceHeadApprovalStatus(String financeHeadApprovalStatus) {
+		this.financeHeadApprovalStatus = financeHeadApprovalStatus;
+	}
+
 	public String getAcquisitionStatus() {
 		return acquisitionStatus;
 	}

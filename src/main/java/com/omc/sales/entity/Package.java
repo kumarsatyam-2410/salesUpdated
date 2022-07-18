@@ -97,6 +97,28 @@ public class Package {
 	@Column(name = "validity")
 	private Timestamp validity;
 	
+	@Column(name = "churn")
+	private int churn;
+	
+	@Column(name = "grace")
+	private int grace;
+	
+	public int getChurn() {
+		return churn;
+	}
+
+	public void setChurn(int churn) {
+		this.churn = churn;
+	}
+
+	public int getGrace() {
+		return grace;
+	}
+
+	public void setGrace(int grace) {
+		this.grace = grace;
+	}
+
 	public int getClosedPackage() {
 		return closedPackage;
 	}

@@ -132,6 +132,7 @@ public class CustomerAcquisitionService {
 	//	customerAcquisitionEntity.setAddedOn(customerAcquisitionDTO.getAddedOn());
 		customerAcquisitionEntity.setCustomerPic(customerAcquisitionDTO.getCustomerPic());
 		customerAcquisitionEntity.setPaymentBy(customerAcquisitionDTO.getPaymentBy());
+		customerAcquisitionEntity.setFinanceHeadApprovalStatus(customerAcquisitionDTO.getFinanceHeadApprovalStatus());
 		customerAcquisitionRepository.save(customerAcquisitionEntity);
 
 		LOGGER.info("Out createCustomerAcquisition service with return Value customerAcquisitionId:"+customerAcquisitionEntity.getId()); 
@@ -161,7 +162,7 @@ public class CustomerAcquisitionService {
 		LOGGER.info("In updateCustomerAcquisition  Service");
 		CustomerAcquisition customerAcquisitionEntity = customerAcquisitionRepository.findAllById(customerAcquisitionDTO.getId());
 		
-		// historiseCustomerAcq(customerAcquisitionEntity);
+		 historiseCustomerAcq(customerAcquisitionEntity);
 		
 		customerAcquisitionEntity.setActive(customerAcquisitionDTO.isActive());
 		
@@ -364,6 +365,10 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setCreatedBy(customerAcquisitionDTO.getCreatedBy());
 		if(customerAcquisitionDTO.getPaymentBy() != 0 && customerAcquisitionDTO.getPaymentBy() != 0 )
 		customerAcquisitionEntity.setPaymentBy(customerAcquisitionDTO.getPaymentBy());
+		
+		if(customerAcquisitionDTO.getFinanceHeadApprovalStatus() != null && customerAcquisitionDTO.getFinanceHeadApprovalStatus().length() > 0 )
+		customerAcquisitionEntity.setFinanceHeadApprovalStatus(customerAcquisitionDTO.getFinanceHeadApprovalStatus());
+		
 		LOGGER.info("Out CustomerAcquisition Updated for "+customerAcquisitionEntity.getId()); 
 		return customerAcquisitionEntity.getId();
 	}
@@ -423,6 +428,7 @@ public class CustomerAcquisitionService {
 		customerAcquisitionHistory.setSllNo(customerAcquisitionEntity.getSllNo());
 		customerAcquisitionHistory.setTypeOfBoard(customerAcquisitionEntity.getTypeOfBoard());
 		customerAcquisitionHistory.setPaymentBy(customerAcquisitionEntity.getPaymentBy());
+		customerAcquisitionHistory.setFinanceHeadApprovalStatus(customerAcquisitionEntity.getFinanceHeadApprovalStatus());
 		customerAcquisitionHistoryRepository.save(customerAcquisitionHistory);
 		
 	}

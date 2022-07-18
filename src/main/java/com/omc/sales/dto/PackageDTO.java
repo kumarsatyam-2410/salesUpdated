@@ -66,7 +66,31 @@ public class PackageDTO {
 	private String Remarks;
 	
 	private int closedPackage;
+
+	private int churn;
 	
+	private int grace;
+	
+	public int getChurn() {
+		return churn;
+	}
+
+
+	public void setChurn(int churn) {
+		this.churn = churn;
+	}
+
+
+	public int getGrace() {
+		return grace;
+	}
+
+
+	public void setGrace(int grace) {
+		this.grace = grace;
+	}
+
+
 	public int getClosedPackage() {
 		return closedPackage;
 	}

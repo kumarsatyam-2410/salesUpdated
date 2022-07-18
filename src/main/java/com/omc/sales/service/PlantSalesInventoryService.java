@@ -12,9 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.omc.sales.dto.PlantSalesInventoryDTO;
 import com.omc.sales.entity.PlantSalesInventory;
+import com.omc.sales.entity.User;
 import com.omc.sales.exception.ErrorCodes;
 import com.omc.sales.exception.SSNSQLException;
 import com.omc.sales.repository.PlantSalesInventoryRepository;
+import com.omc.sales.repository.PlantUsersRepository;
 
 @Service
 public class PlantSalesInventoryService {
@@ -24,13 +26,16 @@ public class PlantSalesInventoryService {
 	
 	@Autowired
 	private PlantSalesInventoryRepository plantSalesInventoryRepository;
+	
+	@Autowired
+	private PlantUsersRepository plantUsersRepository;
 /*
  * add sales inventory
  */
 	@Transactional(propagation=Propagation.REQUIRED)
 	public Long addInventory(PlantSalesInventoryDTO plantSalesInventoryDTO)throws SSNSQLException {
 		
-		LOGGER.info("Request Received for createSalesInventory with parameters:"+ "customername: " + plantSalesInventoryDTO.getUserId());
+		LOGGER.info("Request Received for createSalesInventory with parameters:"+ "customername: " + plantSalesInventoryDTO.getInventoryId());
 
 		
 		PlantSalesInventory existingInventory=plantSalesInventoryRepository.findByPlantId(plantSalesInventoryDTO.getPlantId());
@@ -43,7 +48,6 @@ public class PlantSalesInventoryService {
 		
 		 plantSalesInventory.setInventoryId(plantSalesInventoryDTO.getInventoryId());
 		 plantSalesInventory.setPlantId(plantSalesInventoryDTO.getPlantId());
-		 plantSalesInventory.setUserId(plantSalesInventoryDTO.getUserId());
 		 plantSalesInventory.setTotalNoPolls(plantSalesInventoryDTO.getTotalNoPolls());
 		 plantSalesInventory.setUsedNoPolls(plantSalesInventoryDTO.getUsedNoPolls());
 		 plantSalesInventory.setFreeNoPolls(plantSalesInventoryDTO.getFreeNoPolls());
@@ -70,7 +74,7 @@ public class PlantSalesInventoryService {
 		 
 		 plantSalesInventoryRepository.save(plantSalesInventory);
 		 
-		 LOGGER.info("Out createSalesInventory service with return Value customerId:"+plantSalesInventory.getUserId()); 
+		 LOGGER.info("Out createSalesInventory service with return Value customerId:"+plantSalesInventory.getInventoryId()); 
 		 return plantSalesInventory.getInventoryId();
 		
     }
@@ -119,25 +123,31 @@ public class PlantSalesInventoryService {
 		salesInventory.setCreateBy(plantSalesInventoryDTO.getCreateBy());
 		salesInventory.setUpdatedOn(plantSalesInventoryDTO.getUpdateOn());
 		salesInventory.setUpdatedBy(plantSalesInventoryDTO.getUpdateBy());
-		LOGGER.info("Out SalesInventory Updated for "+salesInventory.getUserId());
+		LOGGER.info("Out SalesInventory Updated for "+salesInventory.getInventoryId());
 		return salesInventory.getInventoryId();
 		
 	}
 	@Transactional(propagation=Propagation.REQUIRED)
-	public Long deleteInventory(Long userId) {
-		LOGGER.info("In deleteSalesInventory  Service"+plantSalesInventoryRepository.deleteByUserId(userId));
-		 Long id=plantSalesInventoryRepository.deleteByUserId(userId);
+	public Long deleteInventory(Long inventoryId) {
+		LOGGER.info("In deleteSalesInventory  Service"+plantSalesInventoryRepository.deleteByInventoryId(inventoryId));
+		 Long id=plantSalesInventoryRepository.deleteByInventoryId(inventoryId);
 		return id;
 		
 	}
 
+//	@Transactional(propagation=Propagation.REQUIRED)
+//	public List<PlantSalesInventory> listAllByInventoryId(Long inventoryId) {
+//		
+//		List<PlantSalesInventory> list=new ArrayList<>();
+//		PlantSalesInventory plantSalesInventory=plantSalesInventoryRepository.findByInventoryId(inventoryId);
+//		list.add(plantSalesInventory);
+//		return list;
+//	}
+
 	@Transactional(propagation=Propagation.REQUIRED)
-	public List<PlantSalesInventory> listAllByInventoryId(Long inventoryId) {
-		
-		List<PlantSalesInventory> list=new ArrayList<>();
-		PlantSalesInventory plantSalesInventory=plantSalesInventoryRepository.findByInventoryId(inventoryId);
-		list.add(plantSalesInventory);
-		return list;
+	public List<PlantSalesInventory> listAllSalesInventoryByUserId(int userId) {
+	
+		return plantSalesInventoryRepository.findJoinQuery(userId);
 	}
 
 	

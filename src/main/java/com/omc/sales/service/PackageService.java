@@ -72,6 +72,8 @@ public class PackageService {
 		packageEntity.setStartTiming(packageDTO.getStartTiming());
 		packageEntity.setEndTiming(packageDTO.getEndTiming());
 		packageEntity.setClosedPackage(packageDTO.getClosedPackage());
+		packageEntity.setChurn(packageDTO.getChurn());
+		packageEntity.setGrace(packageDTO.getGrace());
 		packageRepository.save(packageEntity);
 
 		LOGGER.info("Out createPackage service with return Value packageId:"+packageEntity.getId()); 
@@ -119,6 +121,8 @@ public class PackageService {
 		packageEntity.setStartTiming(packageDTO.getStartTiming());
 		packageEntity.setEndTiming(packageDTO.getEndTiming());
 		packageEntity.setClosedPackage(packageDTO.getClosedPackage());
+		packageEntity.setChurn(packageDTO.getChurn());
+		packageEntity.setGrace(packageDTO.getGrace());
 		
 		LOGGER.info("Out Package Updated for "+packageEntity.getId()); 
 		return packageEntity.getId();

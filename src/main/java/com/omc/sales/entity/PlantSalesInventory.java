@@ -13,19 +13,14 @@ import javax.persistence.Table;
 @Table(name="plant_sales_inventory")
 public class PlantSalesInventory {
 	
-	
-	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="inventory_id")
 	private Long inventoryId;
 	
-	@Column(name="plantid")
+	@Column(name="plant_id")
 	private int plantId;
-	
-	@Column(name="user_id")
-	private Long userId;
-	
+
 	@Column(name="total_no_polls")
 	private int totalNoPolls;
 	
@@ -98,12 +93,6 @@ public class PlantSalesInventory {
 	public PlantSalesInventory() {
 	}
 
-	
-
-	public Long getUserId() {
-		return userId;
-	}
-
 	public Long getInventoryId() {
 		return inventoryId;
 	}
@@ -111,6 +100,7 @@ public class PlantSalesInventory {
 	public int getPlantId() {
 		return plantId;
 	}
+	
 
 	public int getTotalNoPolls() {
 		return totalNoPolls;
@@ -204,9 +194,6 @@ public class PlantSalesInventory {
 		return updatedBy;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
 
 	public void setInventoryId(Long inventoryId) {
 		this.inventoryId = inventoryId;
@@ -310,7 +297,7 @@ public class PlantSalesInventory {
 
 	@Override
 	public String toString() {
-		return "PlantSalesInventory [userId=" + userId + ", inventoryId=" + inventoryId + ", plantId=" + plantId
+		return "PlantSalesInventory [ inventoryId=" + inventoryId + ", plantId=" + plantId
 				+ ", totalNoPolls=" + totalNoPolls + ", usedNoPolls=" + usedNoPolls + ", freeNoPolls=" + freeNoPolls
 				+ ", totalNoSll=" + totalNoSll + ", usedNoSll=" + usedNoSll + ", freeNoSll=" + freeNoSll
 				+ ", totalWireMeter=" + totalWireMeter + ", usedWireMeter=" + usedWireMeter + ", freeWireMeter="

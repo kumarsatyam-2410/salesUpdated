@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.omc.sales.dto.LoginDTO;
 import com.omc.sales.entity.Plant;
+import com.omc.sales.entity.PlantSalesInventory;
 import com.omc.sales.entity.PlantUsers;
 import com.omc.sales.entity.Role;
 import com.omc.sales.entity.User;
@@ -68,4 +69,5 @@ public class UserService implements UserDetailsService {
 		return plantUsersRepository.findUserByPlant(plantId);
 	}
 
+	
 }

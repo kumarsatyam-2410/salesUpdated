@@ -5,13 +5,10 @@ import java.sql.Timestamp;
 
 public class PlantSalesInventoryDTO {
 
-
-	private Long userId;
-	
     private Long inventoryId;
 	
     private int plantId;
-	
+   
      private int totalNoPolls;
 	
      private int usedNoPolls;
@@ -61,11 +58,6 @@ public class PlantSalesInventoryDTO {
 	public PlantSalesInventoryDTO() {
 	}
 
-
-	public Long getUserId() {
-		return userId;
-	}
-
 	public Long getInventoryId() {
 		return inventoryId;
 	}
@@ -101,6 +93,7 @@ public class PlantSalesInventoryDTO {
 	public int getTotalWireMeter() {
 		return totalWireMeter;
 	}
+
 
 	public int getUsedWireMeter() {
 		return usedWireMeter;
@@ -166,9 +159,7 @@ public class PlantSalesInventoryDTO {
 		return updateBy;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
+	
 
 	public void setInventoryId(Long inventoryId) {
 		this.inventoryId = inventoryId;
@@ -270,18 +261,20 @@ public class PlantSalesInventoryDTO {
 		this.updateBy = updateBy;
 	}
 
+
 	@Override
 	public String toString() {
-		return "PlantSalesInventoryDTO [userId=" + userId + ", inventoryId=" + inventoryId + ", plantId=" + plantId
-				+ ", totalNoPolls=" + totalNoPolls + ", usedNoPolls=" + usedNoPolls + ", freeNoPolls=" + freeNoPolls
-				+ ", totalNoSsl=" + totalNoSsl + ", usedNoSsl=" + usedNoSsl + ", freeNoSsl=" + freeNoSsl
-				+ ", totalWireMeter=" + totalWireMeter + ", usedWireMeter=" + usedWireMeter + ", freeWireMeter="
-				+ freeWireMeter + ", totalNoBoard=" + totalNoBoard + ", freeNoBoard=" + freeNoBoard + ", usedNoBoard="
-				+ usedNoBoard + ", totalNoRccs=" + totalNoRccs + ", usedNoRccs=" + usedNoRccs + ", freeNoRccs="
-				+ freeNoRccs + ", totalNoGift=" + totalNoGift + ", usedNoGift=" + usedNoGift + ", freeNoGift="
-				+ freeNoGift + ", isActive=" + isActive + ", createOn=" + createOn + ", createBy=" + createBy
-				+ ", updateOn=" + updateOn + ", updateBy=" + updateBy + "]";
+		return "PlantSalesInventoryDTO [inventoryId=" + inventoryId + ", plantId=" + plantId + ", totalNoPolls="
+				+ totalNoPolls + ", usedNoPolls=" + usedNoPolls + ", freeNoPolls=" + freeNoPolls + ", totalNoSsl="
+				+ totalNoSsl + ", usedNoSsl=" + usedNoSsl + ", freeNoSsl=" + freeNoSsl + ", totalWireMeter="
+				+ totalWireMeter + ", usedWireMeter=" + usedWireMeter + ", freeWireMeter=" + freeWireMeter
+				+ ", totalNoBoard=" + totalNoBoard + ", freeNoBoard=" + freeNoBoard + ", usedNoBoard=" + usedNoBoard
+				+ ", totalNoRccs=" + totalNoRccs + ", usedNoRccs=" + usedNoRccs + ", freeNoRccs=" + freeNoRccs
+				+ ", totalNoGift=" + totalNoGift + ", usedNoGift=" + usedNoGift + ", freeNoGift=" + freeNoGift
+				+ ", isActive=" + isActive + ", createOn=" + createOn + ", createBy=" + createBy + ", updateOn="
+				+ updateOn + ", updateBy=" + updateBy + "]";
 	}
+
 	
 	
 }

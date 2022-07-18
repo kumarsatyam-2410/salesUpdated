@@ -58,25 +58,18 @@ public class CustomerDTO {
 	
 	private int plantId;
 	
-	@Column(name = "omc_id")
 	private Long omcId;
 	
-	@Column(name = "customer_uid")
 	private String customerUid;
 	
-	@Column(name = "led")
 	private String led;
 	
-	@Column(name = "small_board")
 	private String smallBoard;
 	
-	@Column(name = "big_board")
 	private String bigBoard;
 	
-	@Column(name = "wire_meter")
 	private BigDecimal wire_meter;
 	
-	@Column(name = "poll_no")
 	private Long poll_no;
 	
 	private String fatherHusbandName;
@@ -87,7 +80,7 @@ public class CustomerDTO {
 	
 	private Date liveDate;
 	
-	private String customerType;    //////////////
+	private String customerType;   
 	
 	private BigDecimal SubscriptionPackageAmount;
 

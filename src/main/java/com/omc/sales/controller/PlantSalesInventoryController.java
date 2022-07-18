@@ -16,12 +16,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.omc.sales.dto.PlantSalesInventoryDTO;
 import com.omc.sales.dto.PlantSalesInventoryListResponseDTO;
 import com.omc.sales.dto.PlantSalesInventoryResponseDTO;
 import com.omc.sales.entity.PlantSalesInventory;
+import com.omc.sales.entity.User;
 import com.omc.sales.exception.BaseException;
 import com.omc.sales.exception.ErrorCodes;
 import com.omc.sales.service.PlantSalesInventoryService;
@@ -169,17 +171,17 @@ public class PlantSalesInventoryController {
 	 *  delete the sales inventory
 	 */
 	
-	@DeleteMapping("/deletesalesinventory/{userId}")
-	public ResponseEntity<PlantSalesInventoryResponseDTO> deleteSalesInventory(@PathVariable Long userId)
+	@DeleteMapping("/deletesalesinventory/{inventoryId}")
+	public ResponseEntity<PlantSalesInventoryResponseDTO> deleteSalesInventory(@PathVariable Long inventoryId)
 	{
 		ResponseEntity<PlantSalesInventoryResponseDTO> response;
 		PlantSalesInventoryResponseDTO plantSalesInventoryResponseDTO=new PlantSalesInventoryResponseDTO();
 		try
 		{
 			LOGGER.info("In SalesInventoryController for deletingsalesInventory Request");
-			Long id=plantSalesInventoryService.deleteInventory(userId);
+			Long id=plantSalesInventoryService.deleteInventory(inventoryId);
 			plantSalesInventoryResponseDTO.setStatus(HttpStatus.OK.value());
-			plantSalesInventoryResponseDTO.setInventoryId(userId);
+			plantSalesInventoryResponseDTO.setInventoryId(inventoryId);
 			response=new ResponseEntity<>(plantSalesInventoryResponseDTO,HttpStatus.OK);
 		}
 		catch(RuntimeException e)
@@ -202,8 +204,46 @@ public class PlantSalesInventoryController {
 	
 	}
 	
-	@GetMapping("/getallsalesinventory/{inventoryId}")
-	public List<PlantSalesInventory> listAllByInventoryId(@PathVariable Long inventoryId)
+//	@GetMapping("/getallsalesinventory/{inventoryId}")
+//	public List<PlantSalesInventory> listAllByInventoryId(@PathVariable Long inventoryId)
+//	{
+//		
+//		ResponseEntity<PlantSalesInventoryListResponseDTO> responseEntity;
+//		List<PlantSalesInventory> list=new ArrayList();
+//		PlantSalesInventoryListResponseDTO plantSalesInventoryListResponseDTO=new PlantSalesInventoryListResponseDTO();
+//		try 
+//		{
+//			LOGGER.info("In PlantSalesInventoryController for listAll SalesInventoryt Request");	
+//			list=plantSalesInventoryService.listAllByInventoryId(inventoryId);
+//			plantSalesInventoryListResponseDTO.setList(list);
+//			plantSalesInventoryListResponseDTO.setStatus(HttpStatus.OK.value());
+//			responseEntity=new ResponseEntity<>(plantSalesInventoryListResponseDTO,HttpStatus.OK);
+//			
+//		}
+//		catch(RuntimeException e)
+//		{
+//			LOGGER.warn("Error occurred while listing PlantSalesInventory", e);
+//			plantSalesInventoryListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+//			plantSalesInventoryListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+//			responseEntity=new ResponseEntity<>(plantSalesInventoryListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+//			plantSalesInventoryListResponseDTO.setErrorMessage(e.getCause().getMessage());
+//		}
+//		catch(Exception e)
+//		{
+//			LOGGER.warn("Error occurred while listing customer", e);
+//			plantSalesInventoryListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+//			plantSalesInventoryListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+//			responseEntity=new ResponseEntity<>(plantSalesInventoryListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+//			plantSalesInventoryListResponseDTO.setErrorMessage(e.getCause().getMessage());
+//		}
+//		return list;
+//		
+//	}
+//	
+	
+	//////////////////////////
+	@GetMapping("/getallsalesinventory/{userId}")
+	public ResponseEntity<PlantSalesInventoryListResponseDTO> listAllSalesInventoryByUserId(@PathVariable int userId)
 	{
 		
 		ResponseEntity<PlantSalesInventoryListResponseDTO> responseEntity;
@@ -212,7 +252,7 @@ public class PlantSalesInventoryController {
 		try 
 		{
 			LOGGER.info("In PlantSalesInventoryController for listAll SalesInventoryt Request");	
-			list=plantSalesInventoryService.listAllByInventoryId(inventoryId);
+			list=plantSalesInventoryService.listAllSalesInventoryByUserId(userId);
 			plantSalesInventoryListResponseDTO.setList(list);
 			plantSalesInventoryListResponseDTO.setStatus(HttpStatus.OK.value());
 			responseEntity=new ResponseEntity<>(plantSalesInventoryListResponseDTO,HttpStatus.OK);
@@ -234,7 +274,7 @@ public class PlantSalesInventoryController {
 			responseEntity=new ResponseEntity<>(plantSalesInventoryListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
 			plantSalesInventoryListResponseDTO.setErrorMessage(e.getCause().getMessage());
 		}
-		return list;
+		return responseEntity;
 		
 	}
 }

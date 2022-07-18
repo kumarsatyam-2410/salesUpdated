@@ -114,7 +114,7 @@ public class Customer {
 	@Column(name = "live_date")
 	private Date liveDate;
 	
-	@Column(name = "customer_type")       /////////////////////
+	@Column(name = "customer_type")     
 	private String customerType;
 	
 	@Column(name = "Subscription_Package_amount")
@@ -168,6 +168,12 @@ public class Customer {
 	@Column(name = "installation_certificate")
 	private String installationCertificate;
 	
+	
+	
+	public void setCurrentPackageAmount(BigDecimal currentPackageAmount) {
+		this.currentPackageAmount = currentPackageAmount;
+	}
+
 	public Timestamp getAddedOn() {
 		return addedOn;
 	}
@@ -262,9 +268,7 @@ public class Customer {
 		return currentPackageAmount;
 	}
 
-	public void setCurrentPackageAmount(BigDecimal currentPackageAmount) {
-		currentPackageAmount = currentPackageAmount;
-	}
+	
 
 	public String getCustomerUid() {
 		return customerUid;

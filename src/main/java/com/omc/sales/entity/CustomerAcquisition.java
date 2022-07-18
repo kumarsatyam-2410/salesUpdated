@@ -245,6 +245,17 @@ public class CustomerAcquisition {
 	@Column(name = "sll_no")
 	private String sllNo;
 	
+	@Column(name = "finance_headApproval_status")
+	private String financeHeadApprovalStatus;
+	
+	public String getFinanceHeadApprovalStatus() {
+		return financeHeadApprovalStatus;
+	}
+
+	public void setFinanceHeadApprovalStatus(String financeHeadApprovalStatus) {
+		this.financeHeadApprovalStatus = financeHeadApprovalStatus;
+	}
+
 	public String getAcquisitionStatus() {
 		return acquisitionStatus;
 	}
