@@ -11,10 +11,13 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.omc.sales.dto.PlantSalesInventoryDTO;
+import com.omc.sales.entity.CustomerAcquisition;
 import com.omc.sales.entity.PlantSalesInventory;
+import com.omc.sales.entity.PlantSalesInventoryHistory;
 import com.omc.sales.entity.User;
 import com.omc.sales.exception.ErrorCodes;
 import com.omc.sales.exception.SSNSQLException;
+import com.omc.sales.repository.PlantSalesInventoryHistoryRepository;
 import com.omc.sales.repository.PlantSalesInventoryRepository;
 import com.omc.sales.repository.PlantUsersRepository;
 
@@ -26,6 +29,9 @@ public class PlantSalesInventoryService {
 	
 	@Autowired
 	private PlantSalesInventoryRepository plantSalesInventoryRepository;
+	
+	@Autowired
+	private PlantSalesInventoryHistoryRepository plantSalesInventoryHistoryRepository;
 	
 	@Autowired
 	private PlantUsersRepository plantUsersRepository;
@@ -97,8 +103,12 @@ public class PlantSalesInventoryService {
 	public Long updateSalesInventory(PlantSalesInventoryDTO plantSalesInventoryDTO) {
 		
 		LOGGER.info("In updateSalesInventory  Service");
+		
 	
 		PlantSalesInventory salesInventory=plantSalesInventoryRepository.findByInventoryId(plantSalesInventoryDTO.getInventoryId());
+		
+		historisePlantSalesInventory(salesInventory);
+		
 		salesInventory.setInventoryId(plantSalesInventoryDTO.getInventoryId());
 		salesInventory.setTotalNoPolls(plantSalesInventoryDTO.getTotalNoPolls());
 		salesInventory.setUsedNoPolls(plantSalesInventoryDTO.getUsedNoPolls());
@@ -151,8 +161,38 @@ public class PlantSalesInventoryService {
 	}
 
 	
-
+	@Transactional(propagation=Propagation.REQUIRED)
+	private void historisePlantSalesInventory(PlantSalesInventory salesInventory)
+	{
+		LOGGER.info("In updateinventoryHistory  Service");
+		PlantSalesInventoryHistory plantSalesInventoryHistory=new PlantSalesInventoryHistory();
+		plantSalesInventoryHistory.setInventoryId(salesInventory.getInventoryId());
+		plantSalesInventoryHistory.setTotalNoPolls(salesInventory.getTotalNoPolls());
+		plantSalesInventoryHistory.setUsedNoPolls(salesInventory.getUsedNoPolls());
+		plantSalesInventoryHistory.setFreeNoPolls(salesInventory.getFreeNoPolls());
+		plantSalesInventoryHistory.setTotalNoSll(salesInventory.getTotalNoSll());
+		plantSalesInventoryHistory.setUsedNoSll(salesInventory.getUsedNoSll());
+		plantSalesInventoryHistory.setFreeNoSll(salesInventory.getFreeNoSll());
+		plantSalesInventoryHistory.setTotalWireMeter(salesInventory.getTotalWireMeter());
+		plantSalesInventoryHistory.setUsedWireMeter(salesInventory.getUsedWireMeter());
+		plantSalesInventoryHistory.setFreeWireMeter(salesInventory.getFreeWireMeter());
+		plantSalesInventoryHistory.setTotalNoBoard(salesInventory.getTotalNoBoard());
+		plantSalesInventoryHistory.setFreeNoBoard(salesInventory.getFreeNoBoard());
+		plantSalesInventoryHistory.setUsedNoBoard(salesInventory.getUsedNoBoard());
+		plantSalesInventoryHistory.setTotalNoRccs(salesInventory.getTotalNoRccs());
+		plantSalesInventoryHistory.setUsedNoRccs(salesInventory.getUsedNoRccs());
+		plantSalesInventoryHistory.setFreeNoRccs(salesInventory.getFreeNoRccs());
+		plantSalesInventoryHistory.setTotalNoGift(salesInventory.getTotalNoGift());
+		plantSalesInventoryHistory.setUsedNoGift(salesInventory.getUsedNoGift());
+		plantSalesInventoryHistory.setFreeNoGift(salesInventory.getFreeNoGift());
+		plantSalesInventoryHistory.setActive(salesInventory.isActive());
+		plantSalesInventoryHistory.setCreateOn(salesInventory.getCreateOn());
+		plantSalesInventoryHistory.setCreateBy(salesInventory.getCreateBy());
+		plantSalesInventoryHistory.setUpdatedOn(salesInventory.getUpdatedOn());
+		plantSalesInventoryHistory.setUpdatedBy(salesInventory.getUpdatedBy());
+		plantSalesInventoryHistoryRepository.save(plantSalesInventoryHistory);
 	
+	}
   
 
 	
