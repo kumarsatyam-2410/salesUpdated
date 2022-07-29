@@ -61,7 +61,7 @@ public class UserService implements UserDetailsService {
 
 	public List<User> getUserList() {
 		
-		return userRepository.findAll();
+		return userRepository.findTop10ByOrderByIdDesc();
 	}
 
 	
@@ -69,5 +69,16 @@ public class UserService implements UserDetailsService {
 		return plantUsersRepository.findUserByPlant(plantId);
 	}
 
+	public List<User> getUserListByRole(Long roleNo) {
+		
+		return userRepository.findAll(roleNo);
+	}
+
+	public List<User> getUserListByRolesAndPlantId(Long roleNo, Long userIds) {
+		
+		return userRepository.findData(roleNo,userIds);
+	}
+
+	
 	
 }

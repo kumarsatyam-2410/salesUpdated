@@ -39,6 +39,18 @@ public class UserTarget {
 	
 	@Column(name="comment")
 	private String comment;
+	
+	@Column(name = "added_by")
+	private int addedBy;
+
+	
+	public int getAddedBy() {
+		return addedBy;
+	}
+
+	public void setAddedBy(int addedBy) {
+		this.addedBy = addedBy;
+	}
 
 	public UserTarget() {
 		super();

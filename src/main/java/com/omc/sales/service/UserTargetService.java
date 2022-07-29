@@ -44,6 +44,7 @@ public class UserTargetService {
 		userTarget.setNoCustomerAcqTarget(userTargetDTO.getNoCustomerAcqTarget());
 		userTarget.setRevenueTargetAmount(userTargetDTO.getRevenueTargetAmount());
 		userTarget.setComment(userTargetDTO.getComment());
+		userTarget.setAddedBy(userTargetDTO.getAddedBy());
 		userTargetRepository.save(userTarget);
 		 LOGGER.info("Out createSalesInventory service with return Value customerId:"+userTarget.getTargetId()); 
 		return userTarget.getTargetId();
@@ -53,7 +54,7 @@ public class UserTargetService {
 	public List<UserTarget> listAll() {
 		LOGGER.info("In listAllOfUserTarget  Service");
 		List<UserTarget> userTarget=new ArrayList();
-		userTargetRepository.findAll().forEach(userTarget::add);
+		userTargetRepository.findTop10ByOrderByTargetIdDesc().forEach(userTarget::add);
 		return userTarget;
 	}
 
@@ -68,15 +69,29 @@ public class UserTargetService {
 		userTarget.setNoCustomerAcqTarget(userTarget.getNoCustomerAcqTarget());
 		userTarget.setRevenueTargetAmount(userTargetDTO.getRevenueTargetAmount());
 		userTarget.setComment(userTargetDTO.getComment());
-		
+		userTarget.setAddedBy(userTargetDTO.getAddedBy());
+		userTargetRepository.save(userTarget);
 		LOGGER.info("Out UserTarget Updated for "+userTarget.getTargetId());
 		return userTarget.getTargetId();
 	}
 
+	@Transactional(propagation=Propagation.REQUIRED)
 	public Long deleteUserTarget(Long targetId) {
 		LOGGER.info("In deleteSalesInventory  Service");
         userTargetRepository.deleteById(targetId);
 		return targetId;
+	}
+
+	@Transactional(propagation=Propagation.REQUIRED)
+	public List<UserTarget> listAllByUserId(String userId) {
+		
+		return userTargetRepository.findListByUserId(userId);
+	}
+
+	@Transactional(propagation=Propagation.REQUIRED)
+	public List<UserTarget> listAllByAddedBy(int addedBy) {
+		
+		return userTargetRepository.getListByAddedBy(addedBy);
 	}
 
 }

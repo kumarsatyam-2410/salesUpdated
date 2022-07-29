@@ -139,7 +139,7 @@ public class PackageService {
 
 	public List<Package> listAllPackages() {
 		
-		return packageRepository.findAll();
+		return packageRepository.findAllByOrderByIdDesc();
 	}
 
 

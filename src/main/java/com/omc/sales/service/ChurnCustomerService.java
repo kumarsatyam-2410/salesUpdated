@@ -85,7 +85,7 @@ public class ChurnCustomerService {
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
 	public List<ChurnCustomer> listAllChurnCustomer() {
 		
-		return churnCustomerRepository.findAll();
+		return churnCustomerRepository.findAllByOrderByIdDesc();
 	}
 
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)

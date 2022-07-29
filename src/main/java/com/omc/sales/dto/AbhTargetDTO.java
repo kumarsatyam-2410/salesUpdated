@@ -22,6 +22,18 @@ public class AbhTargetDTO {
 	private BigDecimal revenueTargetAmount;
 	
 	private String comment;
+	
+	private int addedBy;
+	
+	
+
+	public int getAddedBy() {
+		return addedBy;
+	}
+
+	public void setAddedBy(int addedBy) {
+		this.addedBy = addedBy;
+	}
 
 	public String getUserId() {
 		return userId;

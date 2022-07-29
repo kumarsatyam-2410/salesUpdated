@@ -17,5 +17,7 @@ public interface PackageRepository extends JpaRepository<Package, Long> {
 public List<Package> findByPackageTypeAndBillingTypeAndClosedPackage(String packageType,String billingType,int closedPackage);
 
 	public Package findByPackageName(String packageName);
+
+	public List<Package> findAllByOrderByIdDesc();
 	
 }

@@ -20,6 +20,7 @@ public interface PlantSalesInventoryRepository extends JpaRepository<PlantSalesI
 	
 	@Query(value = "SELECT * FROM plant_sales_inventory WHERE plant_id IN (SELECT plant_id FROM plant_users WHERE user_id=:userId)", nativeQuery = true)
 	public List<PlantSalesInventory> findJoinQuery(@Param("userId") int userId);
+	public List<PlantSalesInventory> findAllByOrderByInventoryIdDesc();
 	
 
 }

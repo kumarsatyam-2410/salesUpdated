@@ -41,6 +41,7 @@ public class RevenueCollectionTargetService {
 		revenueCollectionTarget.setComment(revenueCollectionTargetDTO.getComment());
 		revenueCollectionTarget.setTargetStartDate(revenueCollectionTargetDTO.getTargetStartDate());
 		revenueCollectionTarget.setTargetEndDate(revenueCollectionTargetDTO.getTargetEndDate());
+		revenueCollectionTarget.setAddedBy(revenueCollectionTargetDTO.getAddedBy());
 		 revenueCollectionTargetRepository.save(revenueCollectionTarget); 
 		 LOGGER.info("Out createAbhTarget service with return Value Churncusto"+revenueCollectionTarget.getRctId());
 		return revenueCollectionTarget.getRctId();
@@ -58,6 +59,7 @@ public class RevenueCollectionTargetService {
 		revenueCollectionTarget.setComment(revenueCollectionTargetDTO.getComment());
 		revenueCollectionTarget.setTargetStartDate(revenueCollectionTargetDTO.getTargetStartDate());
 		revenueCollectionTarget.setTargetEndDate(revenueCollectionTargetDTO.getTargetEndDate());
+		revenueCollectionTarget.setAddedBy(revenueCollectionTargetDTO.getAddedBy());
 		 revenueCollectionTargetRepository.save(revenueCollectionTarget); 
 		 LOGGER.info("Out updateAbhTarget service with return Value rctId"+revenueCollectionTarget.getRctId());
 		return revenueCollectionTarget.getRctId();
@@ -66,10 +68,20 @@ public class RevenueCollectionTargetService {
 	@Transactional(propagation=Propagation.REQUIRED)
 	public List<RevenueCollectionTarget> getRevenueCollectionTargetByserId(String userId) {
 	
-		List<RevenueCollectionTarget> list = new ArrayList<>();
-		RevenueCollectionTarget revenueCollectionTarget=revenueCollectionTargetRepository.findRevenueCollectionTargetByUserId(userId); 
-	    list.add(revenueCollectionTarget);
-		return list;
+		
+		return revenueCollectionTargetRepository.findRevenueCollectionTargetByUserId(userId); 
+	 
+	}
+
+	@Transactional(propagation=Propagation.REQUIRED)
+	public List<RevenueCollectionTarget> getListrevenueCollectionTarget() {
+		
+		return revenueCollectionTargetRepository.findTop10ByOrderByRctIdDesc();
+	}
+
+	public List<RevenueCollectionTarget> getRevenueCollectionTargetByAddedBy(int addedBy) {
+		
+		return revenueCollectionTargetRepository.getListRevenueCollectionTargetByAddedBy(addedBy);
 	}
 
 	

@@ -217,5 +217,72 @@ public class UserController {
 	}
 
 	
-		
+	@RequestMapping(value = "/getUsersList/{roleNo}", method = RequestMethod.GET)
+	public ResponseEntity<UserListResponseDTO> getUserListByRoles(@PathVariable Long roleNo) {
+
+		ResponseEntity<UserListResponseDTO> responseEntity;
+		List<User> list=new ArrayList<>();
+		UserListResponseDTO userListResponseDTO = new UserListResponseDTO();
+		try{
+			list =userService.getUserListByRole(roleNo);
+			userListResponseDTO.setList(list);
+			userListResponseDTO.setStatus(HttpStatus.CREATED.value());
+			responseEntity = new ResponseEntity<>(userListResponseDTO,HttpStatus.CREATED);
+		}catch(BaseException exception){
+			userListResponseDTO.setErrorCode(exception.getErrorCode().getCode());
+			userListResponseDTO.setStatus(HttpStatus.BAD_REQUEST.value());
+			userListResponseDTO.setErrorMessage(exception.getErrorMsg());
+			responseEntity = new ResponseEntity<>(userListResponseDTO,HttpStatus.BAD_REQUEST);
+			
+		}
+		catch(RuntimeException exception){
+			userListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			userListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(userListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);	
+		} catch(Exception exception){
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(userListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			
+		}
+		return responseEntity;
+	}
+
+	
+	@RequestMapping(value = "/getUsersListByPlantIdAndRoleNo/", method = RequestMethod.GET)
+	public ResponseEntity<UserListResponseDTO> getUserListByRolesAndPlantId(@RequestParam Long roleNo,@RequestParam Long userIds) {
+
+		ResponseEntity<UserListResponseDTO> responseEntity;
+		List<User> list=new ArrayList<>();
+		UserListResponseDTO userListResponseDTO = new UserListResponseDTO();
+		try{
+			list =userService.getUserListByRolesAndPlantId(roleNo,userIds);
+			userListResponseDTO.setList(list);
+			userListResponseDTO.setStatus(HttpStatus.CREATED.value());
+			responseEntity = new ResponseEntity<>(userListResponseDTO,HttpStatus.CREATED);
+		}catch(BaseException exception){
+			userListResponseDTO.setErrorCode(exception.getErrorCode().getCode());
+			userListResponseDTO.setStatus(HttpStatus.BAD_REQUEST.value());
+			userListResponseDTO.setErrorMessage(exception.getErrorMsg());
+			responseEntity = new ResponseEntity<>(userListResponseDTO,HttpStatus.BAD_REQUEST);
+			
+		}
+		catch(RuntimeException exception){
+			userListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			userListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(userListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);	
+		} catch(Exception exception){
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			userListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(userListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			
+		}
+		return responseEntity;
+	}
+
+	
 }

@@ -24,6 +24,8 @@ public interface CustomerPaymentRepository extends JpaRepository<CustomerPayment
 
 	@Query("SELECT SUM(paymentAmount) AS mtd_revenue FROM CustomerPaymentDetails WHERE paymentReceivedUserId= :userId AND MONTH(paymentDate)= MONTH(CURDATE()) AND YEAR(paymentDate) = YEAR(CURDATE())")
 	public List<Object[]> getMTDRevenue(@Param("userId") Integer userId);
+
+	public List<CustomerPaymentDetails> findAllByOrderByCpIdDesc();
 	
 	
 	//SELECT SUM(payment_amount) AS total_revenue FROM CustomerPaymentDetails WHERE payment_received_user_id=1;

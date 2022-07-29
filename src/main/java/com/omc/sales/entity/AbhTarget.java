@@ -39,6 +39,9 @@ public class AbhTarget {
 	
 	@Column(name = "comment")
 	private String comment;
+	
+	@Column(name = "added_by")
+	private int addedBy;
 
 	public AbhTarget() {
 		
@@ -46,6 +49,16 @@ public class AbhTarget {
 
 	public Long getAbhId() {
 		return abhId;
+	}
+	
+	
+
+	public int getAddedBy() {
+		return addedBy;
+	}
+
+	public void setAddedBy(int addedBy) {
+		this.addedBy = addedBy;
 	}
 
 	public void setAbhId(Long abhId) {

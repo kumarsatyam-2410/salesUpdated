@@ -19,6 +19,8 @@ public interface CustomerAcquisitionRepository extends JpaRepository<CustomerAcq
 	public CustomerAcquisition findAllById(Long id);
 	public List<CustomerAcquisition> getAllCustomerAcquisitionByid(Long id);
 	
+	public List<CustomerAcquisition> findAllByOrderByIdDesc();
+	
 //	public Minigrid findTopByOmcIdOrderByEventTimeStampDesc(int omcId);
 //
 //	List<User> findTop10ByLastname(String lastname, Pageable pageable);

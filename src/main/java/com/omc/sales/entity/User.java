@@ -44,10 +44,12 @@ public class User {
 	@Column(name = "mobile")
 	private String mobile;
 
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn( name="role")
 	private Role role;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private Set<PlantUsers> plants;
 

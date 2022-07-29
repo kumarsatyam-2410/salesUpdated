@@ -37,6 +37,7 @@ public class AbhTargetService {
 		abhTarget.setTargetType(abhTargetDTO.getTargetType());
 		abhTarget.setTargetStartDate(abhTargetDTO.getTargetStartDate());
 		abhTarget.setTargetEndDate(abhTargetDTO.getTargetEndDate());
+		abhTarget.setAddedBy(abhTargetDTO.getAddedBy());
 		abhTargetRepository.save(abhTarget);
 		LOGGER.info("Out createAbhTarget service with return Value Churncusto"+abhTarget.getAbhId()); 
 		return abhTarget.getAbhId();
@@ -56,6 +57,7 @@ public class AbhTargetService {
 		abhTarget.setTargetType(abhTargetDTO.getTargetType());
 		abhTarget.setTargetStartDate(abhTargetDTO.getTargetStartDate());
 		abhTarget.setTargetEndDate(abhTargetDTO.getTargetEndDate());
+		abhTarget.setAddedBy(abhTargetDTO.getAddedBy());
 		abhTargetRepository.save(abhTarget);
 		LOGGER.info("Out updateAbhTarget service with return Value Churncusto"+abhTarget.getAbhId()); 
 		return abhTarget.getAbhId();
@@ -63,10 +65,22 @@ public class AbhTargetService {
 
 	@Transactional(propagation=Propagation.REQUIRED)
 	public List<AbhTarget> getAbhTargetByserId(String userId) {
-		List<AbhTarget> list = new ArrayList<>();
-		AbhTarget abhTarget=abhTargetRepository.findAbhTargetByUserId(userId);
-		 list.add(abhTarget);
-		return list;
+
+		 return abhTargetRepository.findAbhTargetByUserId(userId);
+	
+	}
+
+	@Transactional(propagation=Propagation.REQUIRED)
+	public List<AbhTarget> getListAbhTarget() {
+	
+		return abhTargetRepository.findAllByOrderByAbhIdDesc();
+	}
+
+	@Transactional(propagation=Propagation.REQUIRED)
+	public List<AbhTarget> getAbhTargetByAddedBy(int addedBy) {
+		
+		return abhTargetRepository.getAbhTargetByAddedBy(addedBy);
+		
 	}
 	
 	

@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,7 @@ import com.omc.sales.exception.BaseException;
 import com.omc.sales.exception.ErrorCodes;
 import com.omc.sales.service.UserTargetService;
 
+@CrossOrigin
 @RestController
 public class UserTargetController {
 	
@@ -176,4 +178,74 @@ public class UserTargetController {
 	   }
 	return response;
    }
+   
+   @GetMapping("/getallusertargetByUserId/{userId}")
+ 	public List<UserTarget> listAllByUserId(@PathVariable String userId)
+ 	{
+     	ResponseEntity<UserTargetResponseListDTO> response;
+ 		List<UserTarget> list=new ArrayList();
+ 		UserTargetResponseListDTO userTargetResponseListDTO=new UserTargetResponseListDTO();
+          try
+          {
+  			LOGGER.info("In UserTargetController for listAll usertarget Request");	
+         	 list=userTargetService.listAllByUserId(userId);
+         	 userTargetResponseListDTO.setList(list);
+         	 userTargetResponseListDTO.setStatus(HttpStatus.OK.value());
+         	 response=new ResponseEntity<>(userTargetResponseListDTO,HttpStatus.OK);
+         	 
+          }
+          catch(RuntimeException e)
+          {
+  			LOGGER.warn("Error occurred while listing UserTarget", e);
+         	 userTargetResponseListDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+         	 userTargetResponseListDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+         	 userTargetResponseListDTO.setErrorMessage(e.getCause().getMessage());
+         	 response=new ResponseEntity<>(userTargetResponseListDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+          }
+          catch(Exception e)
+          {
+  			LOGGER.warn("Error occurred while listing UserTarget", e);
+         	 userTargetResponseListDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+         	 userTargetResponseListDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+         	 userTargetResponseListDTO.setErrorMessage(e.getCause().getMessage());
+         	 response=new ResponseEntity<>(userTargetResponseListDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+
+          }
+ 		return list;
+ 	}
+
+   @GetMapping("/getallusertargetByAddedBy/{addedBy}")
+	public List<UserTarget> listAllByAddedBy(@PathVariable  int addedBy)
+	{
+    	ResponseEntity<UserTargetResponseListDTO> response;
+		List<UserTarget> list=new ArrayList();
+		UserTargetResponseListDTO userTargetResponseListDTO=new UserTargetResponseListDTO();
+         try
+         {
+ 			LOGGER.info("In UserTargetController for listAll usertarget Request");	
+        	 list=userTargetService.listAllByAddedBy(addedBy);
+        	 userTargetResponseListDTO.setList(list);
+        	 userTargetResponseListDTO.setStatus(HttpStatus.OK.value());
+        	 response=new ResponseEntity<>(userTargetResponseListDTO,HttpStatus.OK);
+        	 
+         }
+         catch(RuntimeException e)
+         {
+ 			LOGGER.warn("Error occurred while listing UserTarget", e);
+        	 userTargetResponseListDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        	 userTargetResponseListDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+        	 userTargetResponseListDTO.setErrorMessage(e.getCause().getMessage());
+        	 response=new ResponseEntity<>(userTargetResponseListDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+         }
+         catch(Exception e)
+         {
+ 			LOGGER.warn("Error occurred while listing UserTarget", e);
+        	 userTargetResponseListDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        	 userTargetResponseListDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+        	 userTargetResponseListDTO.setErrorMessage(e.getCause().getMessage());
+        	 response=new ResponseEntity<>(userTargetResponseListDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+
+         }
+		return list;
+	}
 }

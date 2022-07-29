@@ -91,9 +91,10 @@ public class PlantSalesInventoryService {
 	@Transactional(propagation=Propagation.REQUIRED)
 	public List<PlantSalesInventory> listAll() {
 		LOGGER.info("In listAllSalesInventory  Service");
-		List<PlantSalesInventory> salesInventory=new ArrayList();
-		plantSalesInventoryRepository.findAll().forEach(salesInventory::add);
-		return salesInventory;
+//		List<PlantSalesInventory> salesInventory=new ArrayList();
+//		plantSalesInventoryRepository.findAll().forEach(salesInventory::add);
+//		return salesInventory;
+		return plantSalesInventoryRepository.findAllByOrderByInventoryIdDesc();
 	}
 
 	/*
@@ -110,6 +111,7 @@ public class PlantSalesInventoryService {
 		historisePlantSalesInventory(salesInventory);
 		
 		salesInventory.setInventoryId(plantSalesInventoryDTO.getInventoryId());
+		salesInventory.setPlantId(plantSalesInventoryDTO.getPlantId());
 		salesInventory.setTotalNoPolls(plantSalesInventoryDTO.getTotalNoPolls());
 		salesInventory.setUsedNoPolls(plantSalesInventoryDTO.getUsedNoPolls());
 		salesInventory.setFreeNoPolls(plantSalesInventoryDTO.getFreeNoPolls());
@@ -145,14 +147,6 @@ public class PlantSalesInventoryService {
 		
 	}
 
-//	@Transactional(propagation=Propagation.REQUIRED)
-//	public List<PlantSalesInventory> listAllByInventoryId(Long inventoryId) {
-//		
-//		List<PlantSalesInventory> list=new ArrayList<>();
-//		PlantSalesInventory plantSalesInventory=plantSalesInventoryRepository.findByInventoryId(inventoryId);
-//		list.add(plantSalesInventory);
-//		return list;
-//	}
 
 	@Transactional(propagation=Propagation.REQUIRED)
 	public List<PlantSalesInventory> listAllSalesInventoryByUserId(int userId) {
@@ -166,7 +160,9 @@ public class PlantSalesInventoryService {
 	{
 		LOGGER.info("In updateinventoryHistory  Service");
 		PlantSalesInventoryHistory plantSalesInventoryHistory=new PlantSalesInventoryHistory();
+		
 		plantSalesInventoryHistory.setInventoryId(salesInventory.getInventoryId());
+		plantSalesInventoryHistory.setPlantId(salesInventory.getPlantId());
 		plantSalesInventoryHistory.setTotalNoPolls(salesInventory.getTotalNoPolls());
 		plantSalesInventoryHistory.setUsedNoPolls(salesInventory.getUsedNoPolls());
 		plantSalesInventoryHistory.setFreeNoPolls(salesInventory.getFreeNoPolls());
@@ -192,6 +188,15 @@ public class PlantSalesInventoryService {
 		plantSalesInventoryHistory.setUpdatedBy(salesInventory.getUpdatedBy());
 		plantSalesInventoryHistoryRepository.save(plantSalesInventoryHistory);
 	
+	}
+
+	@Transactional(propagation=Propagation.REQUIRED)
+	public List<PlantSalesInventory> listAllByInventoryId(Long inventoryId) {
+		
+		List<PlantSalesInventory> list=new ArrayList<>();
+		PlantSalesInventory plantSalesInventory=plantSalesInventoryRepository.findByInventoryId(inventoryId);
+		list.add(plantSalesInventory);
+		return list;
 	}
   
 

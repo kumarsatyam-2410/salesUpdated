@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import com.omc.sales.entity.Plant;
+import com.omc.sales.entity.User;
 import com.omc.sales.repository.PlantRepository;
+import com.omc.sales.repository.PlantUsersRepository;
 
 
 @Service
@@ -17,6 +19,9 @@ public class PlantService {
 
 	@Autowired
 	private PlantRepository plantRepository;
+	
+	@Autowired
+	private PlantUsersRepository plantUsersRepository;
 	
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
 	public List<Plant> listAllPlants(Integer countryId,Integer stateId,Integer districtId) {
@@ -42,5 +47,11 @@ public class PlantService {
 		}
 		return subscrptionEntity;
 
+	}
+
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
+	public List<Plant> getPlantListUser(Long userId) {
+	
+		return plantUsersRepository.findPlantByUser(userId);
 	}
 }

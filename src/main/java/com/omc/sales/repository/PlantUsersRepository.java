@@ -28,6 +28,11 @@ public interface PlantUsersRepository extends JpaRepository<PlantUsers, Long> {
 	
 	@Query(value="SELECT a.user_id,b.username FROM sales.plant_users a,  user b where a.plant.plantId=:plantId and a.user_id=b.user_id",nativeQuery=true)
 	List<User> findUserByPlant(Long plantId);
+
+    
+
+//	@Query(value="SELECT * FROM `rms_plant` WHERE plant_id IN(SELECT plant_id FROM plant_users WHERE user_id=:user)",nativeQuery=true)
+//	public List<Plant> findJoinQuery(@Param("user") User user);
 	
 	
 }

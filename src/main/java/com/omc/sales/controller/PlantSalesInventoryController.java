@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,7 @@ import com.omc.sales.exception.BaseException;
 import com.omc.sales.exception.ErrorCodes;
 import com.omc.sales.service.PlantSalesInventoryService;
 
+@CrossOrigin
 @RestController
 public class PlantSalesInventoryController {
 	
@@ -204,45 +206,45 @@ public class PlantSalesInventoryController {
 	
 	}
 	
-//	@GetMapping("/getallsalesinventory/{inventoryId}")
-//	public List<PlantSalesInventory> listAllByInventoryId(@PathVariable Long inventoryId)
-//	{
-//		
-//		ResponseEntity<PlantSalesInventoryListResponseDTO> responseEntity;
-//		List<PlantSalesInventory> list=new ArrayList();
-//		PlantSalesInventoryListResponseDTO plantSalesInventoryListResponseDTO=new PlantSalesInventoryListResponseDTO();
-//		try 
-//		{
-//			LOGGER.info("In PlantSalesInventoryController for listAll SalesInventoryt Request");	
-//			list=plantSalesInventoryService.listAllByInventoryId(inventoryId);
-//			plantSalesInventoryListResponseDTO.setList(list);
-//			plantSalesInventoryListResponseDTO.setStatus(HttpStatus.OK.value());
-//			responseEntity=new ResponseEntity<>(plantSalesInventoryListResponseDTO,HttpStatus.OK);
-//			
-//		}
-//		catch(RuntimeException e)
-//		{
-//			LOGGER.warn("Error occurred while listing PlantSalesInventory", e);
-//			plantSalesInventoryListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-//			plantSalesInventoryListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
-//			responseEntity=new ResponseEntity<>(plantSalesInventoryListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
-//			plantSalesInventoryListResponseDTO.setErrorMessage(e.getCause().getMessage());
-//		}
-//		catch(Exception e)
-//		{
-//			LOGGER.warn("Error occurred while listing customer", e);
-//			plantSalesInventoryListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
-//			plantSalesInventoryListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
-//			responseEntity=new ResponseEntity<>(plantSalesInventoryListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
-//			plantSalesInventoryListResponseDTO.setErrorMessage(e.getCause().getMessage());
-//		}
-//		return list;
-//		
-//	}
-//	
+	@GetMapping("/getallsalesinventory/{inventoryId}")
+	public List<PlantSalesInventory> listAllByInventoryId(@PathVariable Long inventoryId)
+	{
+		
+		ResponseEntity<PlantSalesInventoryListResponseDTO> responseEntity;
+		List<PlantSalesInventory> list=new ArrayList();
+		PlantSalesInventoryListResponseDTO plantSalesInventoryListResponseDTO=new PlantSalesInventoryListResponseDTO();
+		try 
+		{
+			LOGGER.info("In PlantSalesInventoryController for listAll SalesInventoryt Request");	
+			list=plantSalesInventoryService.listAllByInventoryId(inventoryId);
+			plantSalesInventoryListResponseDTO.setList(list);
+			plantSalesInventoryListResponseDTO.setStatus(HttpStatus.OK.value());
+			responseEntity=new ResponseEntity<>(plantSalesInventoryListResponseDTO,HttpStatus.OK);
+			
+		}
+		catch(RuntimeException e)
+		{
+			LOGGER.warn("Error occurred while listing PlantSalesInventory", e);
+			plantSalesInventoryListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			plantSalesInventoryListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity=new ResponseEntity<>(plantSalesInventoryListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			plantSalesInventoryListResponseDTO.setErrorMessage(e.getCause().getMessage());
+		}
+		catch(Exception e)
+		{
+			LOGGER.warn("Error occurred while listing customer", e);
+			plantSalesInventoryListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			plantSalesInventoryListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity=new ResponseEntity<>(plantSalesInventoryListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			plantSalesInventoryListResponseDTO.setErrorMessage(e.getCause().getMessage());
+		}
+		return list;
+		
+	}
+
 	
-	//////////////////////////
-	@GetMapping("/getallsalesinventory/{userId}")
+
+	@GetMapping("/getallsalesinventoryByUserId/{userId}")
 	public ResponseEntity<PlantSalesInventoryListResponseDTO> listAllSalesInventoryByUserId(@PathVariable int userId)
 	{
 		

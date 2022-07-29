@@ -81,9 +81,10 @@ public class CustomerPaymentService {
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
 	public List<CustomerPaymentDetails> listAllCustomers() {
 		LOGGER.info("In listAllCustomers  Service");
-		List<CustomerPaymentDetails> customerPaymentDetail = new ArrayList<>();
-		customerPaymentRepository.findAll().forEach(customerPaymentDetail::add);
-		return customerPaymentDetail;
+//		List<CustomerPaymentDetails> customerPaymentDetail = new ArrayList<>();
+//		customerPaymentRepository.findAllByOrderByIdDesc().forEach(customerPaymentDetail::add);
+//		return customerPaymentDetail;
+		return customerPaymentRepository.findAllByOrderByCpIdDesc();
 	}
 
 

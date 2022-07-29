@@ -67,9 +67,10 @@ public class NotificationService {
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
 	public List<Notification> listAllNotifications() {
 		LOGGER.info("In listAllNotifications  Service");
-		List<Notification> notification = new ArrayList<>();
-		notificationRepository.findAll().forEach(notification::add);
-		return notification;
+//		List<Notification> notification = new ArrayList<>();
+//		notificationRepository.findAll().forEach(notification::add);
+//		return notification;
+		return notificationRepository.findAllByOrderByIdDesc();
 	}
 
 

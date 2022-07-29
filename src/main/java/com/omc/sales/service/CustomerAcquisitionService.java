@@ -146,13 +146,12 @@ public class CustomerAcquisitionService {
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
 	public List<CustomerAcquisition> listAllCustomerAcquisitions() {
 		LOGGER.info("In listAllCustomerAcquisitions  Service");
-		List<CustomerAcquisition> list = new ArrayList<>();
-		
-//		customerAcquisitionRepository.findAll().forEach(customerAcquisition::add);
-		return  customerAcquisitionRepository.findAll();
-		
-	//	return customerAcquisition;
-		//return list;
+	
+		return  customerAcquisitionRepository.findAllByOrderByIdDesc();
+//		List<CustomerAcquisition> list = new ArrayList<>();
+//	    customerAcquisitionRepository.findAll().forEach(customerAcquisition::add);
+//		return customerAcquisition;
+//		return list;
 	}
 
 

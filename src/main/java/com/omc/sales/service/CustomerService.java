@@ -119,9 +119,12 @@ public class CustomerService {
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
 	public List<Customer> listAllCustomers()throws SSNSQLException  {
 		LOGGER.info("In listAllCustomers  Service");
-		List<Customer> customer = new ArrayList<>();
-		customerRepository.findAll().forEach(customer::add);
-		return customer;
+		return customerRepository.findAllByOrderByIdDesc();
+		
+		
+//		List<Customer> customer = new ArrayList<>();
+//		customerRepository.findAll().forEach(customer::add);
+//		return customer;
 	}
 
 
