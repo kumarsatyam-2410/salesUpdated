@@ -82,6 +82,15 @@ public class AbhTargetService {
 		return abhTargetRepository.getAbhTargetByAddedBy(addedBy);
 		
 	}
+
+	public List<AbhTarget> getAbhTargetById(Long abhId) {
+		
+		List<AbhTarget> list = new ArrayList<>();
+		AbhTarget abhTarget =  abhTargetRepository.findByAbhId(abhId);
+		list.add(abhTarget);
+		return list;
+		
+	}
 	
 	
 

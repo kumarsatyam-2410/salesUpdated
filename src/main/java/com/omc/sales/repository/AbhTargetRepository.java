@@ -8,7 +8,7 @@ import com.omc.sales.entity.AbhTarget;
 
 public interface AbhTargetRepository extends JpaRepository<AbhTarget,Long> {
 
-         
+         public AbhTarget findByAbhId(Long abhId);
 
 		public  List<AbhTarget> findAbhTargetByUserId(String userId);
 

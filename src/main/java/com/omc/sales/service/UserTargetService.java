@@ -94,4 +94,12 @@ public class UserTargetService {
 		return userTargetRepository.getListByAddedBy(addedBy);
 	}
 
+	public List<UserTarget> listAllByUserId(Long targetId) {
+		
+		List<UserTarget> list=new ArrayList();
+		UserTarget userTarget =	userTargetRepository.findListByTargetId(targetId);
+	 	list.add(userTarget);
+		 return list;
+	}
+
 }

@@ -84,6 +84,14 @@ public class RevenueCollectionTargetService {
 		return revenueCollectionTargetRepository.getListRevenueCollectionTargetByAddedBy(addedBy);
 	}
 
+	public List<RevenueCollectionTarget> getRevenueCollectionTargetByserId(Long rctId) {
+		
+		List<RevenueCollectionTarget> list = new ArrayList<>();
+		RevenueCollectionTarget revenueCollectionTarget =	revenueCollectionTargetRepository.findByRctId(rctId);
+		list.add(revenueCollectionTarget);
+		return list;
+	}
+
 	
 
 	

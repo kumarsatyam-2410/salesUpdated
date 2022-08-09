@@ -14,5 +14,7 @@ public interface RevenueCollectionTargetRepository extends JpaRepository<Revenue
 	public List<RevenueCollectionTarget> getListRevenueCollectionTargetByAddedBy(int addedBy);
 
 	public List<RevenueCollectionTarget> findTop10ByOrderByRctIdDesc();
+	
+	public RevenueCollectionTarget findByRctId(Long rctId);
 
 }

@@ -14,4 +14,8 @@ public List<UserTarget> getListByAddedBy(int addedBy);
 
 public List<UserTarget> findTop10ByOrderByTargetIdDesc();
 
+public UserTarget findListByTargetId(Long targetId);
+
+
+
 }

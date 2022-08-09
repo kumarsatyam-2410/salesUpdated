@@ -112,7 +112,6 @@ public class UserController {
 		return null;
 	}
 	
-	/////////////////////////////////////////////////////////////////////////////////////////
 	@PostMapping("/login")
 	public ResponseEntity<UserListResponseDTO> login(@RequestBody LoginDTO loginDTO) {
 

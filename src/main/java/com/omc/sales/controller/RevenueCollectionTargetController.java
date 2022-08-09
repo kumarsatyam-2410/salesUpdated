@@ -202,5 +202,33 @@ private static final Logger LOGGER = LogManager.getLogger(RevenueCollectionTarge
 		return responseEntity;
 	}
 	
+	@RequestMapping(value = "/getRevenueCollectionTarget/{rctId}", method = RequestMethod.GET)
+	public ResponseEntity<RevenueCollectionTargetListResponseDTO> getRevenueCollectionTargetByserId(@PathVariable Long rctId) {
 
+		ResponseEntity<RevenueCollectionTargetListResponseDTO> responseEntity;
+		List<RevenueCollectionTarget> list = new ArrayList<>();
+		RevenueCollectionTargetListResponseDTO revenueCollectionTargetListResponseDTO = new RevenueCollectionTargetListResponseDTO();
+		try{
+			LOGGER.info("In CustomerAcquisitionController for listAll CustomerAcquisitions Request");	
+			list = revenueCollectionTargetService.getRevenueCollectionTargetByserId(rctId);
+			revenueCollectionTargetListResponseDTO.setList(list);
+			revenueCollectionTargetListResponseDTO.setStatus(HttpStatus.OK.value());
+			responseEntity = new ResponseEntity<>(revenueCollectionTargetListResponseDTO,HttpStatus.OK);
+		}  catch(RuntimeException exception) {
+			LOGGER.warn("Error occurred while listing customerAcquisition", exception);
+			revenueCollectionTargetListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			revenueCollectionTargetListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			revenueCollectionTargetListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(revenueCollectionTargetListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			
+		} catch(Exception exception){
+			LOGGER.warn("Error occurred while listing customerAcquisition", exception);
+			revenueCollectionTargetListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			revenueCollectionTargetListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity = new ResponseEntity<>(revenueCollectionTargetListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			revenueCollectionTargetListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		}
+		return responseEntity;
+	}
+	
 }

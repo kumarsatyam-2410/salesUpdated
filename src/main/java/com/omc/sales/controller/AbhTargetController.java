@@ -199,5 +199,32 @@ public class AbhTargetController {
 	}
 	
 
+	@RequestMapping(value = "/getabhTarget/{abhId}", method = RequestMethod.GET)
+	public ResponseEntity<AbhTargetListResponseDTO> getAbhTargetById(@PathVariable Long abhId) {
 
+		ResponseEntity<AbhTargetListResponseDTO> responseEntity;
+		List<AbhTarget> list = new ArrayList<>();
+		AbhTargetListResponseDTO abhTargetListResponseDTO = new AbhTargetListResponseDTO();
+		try{
+			LOGGER.info("In CustomerAcquisitionController for listAll CustomerAcquisitions Request");	
+			list = abhTargetService.getAbhTargetById(abhId);
+			abhTargetListResponseDTO.setList(list);
+			abhTargetListResponseDTO.setStatus(HttpStatus.OK.value());
+			responseEntity = new ResponseEntity<>(abhTargetListResponseDTO,HttpStatus.OK);
+		}  catch(RuntimeException exception) {
+			LOGGER.warn("Error occurred while listing customerAcquisition", exception);
+			abhTargetListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			abhTargetListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			abhTargetListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(abhTargetListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			
+		} catch(Exception exception){
+			LOGGER.warn("Error occurred while listing customerAcquisition", exception);
+			abhTargetListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			abhTargetListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity = new ResponseEntity<>(abhTargetListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			abhTargetListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		}
+		return responseEntity;
+	}
 }

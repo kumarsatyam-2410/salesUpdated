@@ -248,4 +248,39 @@ public class UserTargetController {
          }
 		return list;
 	}
+   
+   @GetMapping("/getUsertarget/{targetId}")
+	public List<UserTarget> getUserTargetByUserId(@PathVariable Long targetId)
+	{
+    	ResponseEntity<UserTargetResponseListDTO> response;
+		List<UserTarget> list=new ArrayList();
+		UserTargetResponseListDTO userTargetResponseListDTO=new UserTargetResponseListDTO();
+         try
+         {
+ 			LOGGER.info("In UserTargetController for listAll usertarget Request");	
+        	 list=userTargetService.listAllByUserId(targetId);
+        	 userTargetResponseListDTO.setList(list);
+        	 userTargetResponseListDTO.setStatus(HttpStatus.OK.value());
+        	 response=new ResponseEntity<>(userTargetResponseListDTO,HttpStatus.OK);
+        	 
+         }
+         catch(RuntimeException e)
+         {
+ 			LOGGER.warn("Error occurred while listing UserTarget", e);
+        	 userTargetResponseListDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        	 userTargetResponseListDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+        	 userTargetResponseListDTO.setErrorMessage(e.getCause().getMessage());
+        	 response=new ResponseEntity<>(userTargetResponseListDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+         }
+         catch(Exception e)
+         {
+ 			LOGGER.warn("Error occurred while listing UserTarget", e);
+        	 userTargetResponseListDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+        	 userTargetResponseListDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+        	 userTargetResponseListDTO.setErrorMessage(e.getCause().getMessage());
+        	 response=new ResponseEntity<>(userTargetResponseListDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+
+         }
+		return list;
+	}
 }
