@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -367,12 +368,35 @@ public class CustomerService {
 		return customer;
 	}
 
-
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
 	public List<Customer> getCustomerBySll(String sll) {
 		
 		return customerRepository.findAllCustomerBySll(sll);
 	}
 
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
+	public List<Customer> getCustomerByDateRangeAndStatus(Timestamp startDate, Timestamp endDate, String customerStatus,
+			Integer offsets, Integer limits) {
+		
+		LOGGER.info("in  Customer get customer data by dateRange and status"); 
+		List<Customer> customer;
+		
+       if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) && !StringUtils.isEmpty(customerStatus) && !StringUtils.isEmpty(offsets) && !StringUtils.isEmpty(limits) ){
+			 
+    	   customer = customerRepository.findSubscriptionStartDateBetweenAndAcquisitionStatus(startDate, endDate, customerStatus, offsets, limits) ;
+		 }else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate)) {
+			 customer = customerRepository.getAllBetweenDates(startDate, endDate);
+		 }else {
+			 customer = customerRepository.findAll();
+		 }
+		return customer;
+	
+	
+	
+      }
+	
+	}
 
 
-}
+
+

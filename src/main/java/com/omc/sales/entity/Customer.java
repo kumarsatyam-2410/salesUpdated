@@ -58,8 +58,10 @@ public class Customer {
 
 	@Column(name = "subscription_start_date")
 	private Timestamp subscriptionStartDate;
+	
 	@Column(name = "subscription_end_date")
 	private Timestamp subscriptionEndDate;
+	
 	@Column(name = "last_success_subscription_date")
 	private Timestamp lastSuccessSubscriptionDate;
 

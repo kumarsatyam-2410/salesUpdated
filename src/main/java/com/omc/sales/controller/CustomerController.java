@@ -1,5 +1,6 @@
 package com.omc.sales.controller;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.omc.sales.dto.CustomerDTO;
@@ -193,5 +195,38 @@ public class CustomerController {
 		return list;
 	}
 	
+	@GetMapping("/getCustomerByDateRangeAndStatus")
+	public List<Customer> getCustomerByDateRangeAndStatus(
+			
+			@RequestParam(required = false, value="startDate") Timestamp startDate,
+			@RequestParam(required = false, value="endDate") Timestamp endDate ,
+			@RequestParam(required = false, value="customerStatus") String customerStatus ,
+			@RequestParam(required = false, value="offsets") Integer offsets,
+			@RequestParam(required = false, value="limits") Integer limits
+			 ) {
 
+		ResponseEntity<CustomerListResponseDTO> responseEntity;
+		List<Customer> list = new ArrayList<>();
+		CustomerListResponseDTO customerResponseDTO = new CustomerListResponseDTO();
+		try{
+			LOGGER.info("In CustomerController for listAll Customers Request by DateRange");	
+			list = customerService.getCustomerByDateRangeAndStatus(startDate,endDate,customerStatus,offsets,limits);
+			customerResponseDTO.setList(list);
+			customerResponseDTO.setStatus(HttpStatus.OK.value());
+			responseEntity = new ResponseEntity<>(customerResponseDTO,HttpStatus.OK);
+		}  catch(RuntimeException exception) {
+			LOGGER.warn("Error occurred while listing customer", exception);
+			customerResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			customerResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity = new ResponseEntity<>(customerResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			customerResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		} catch(Exception exception){
+			LOGGER.warn("Error occurred while listing customer", exception);
+			customerResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			customerResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity = new ResponseEntity<>(customerResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			customerResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		}
+		return list;
+	}
 }
