@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import javax.persistence.Column;
+
 
 public class ChurnCustomerDTO {
 	
@@ -108,6 +110,30 @@ public class ChurnCustomerDTO {
 	private String typeOfBoard;
 	
 	private String installationCertificate;
+	
+	private String unSubscribe;
+	
+	private Timestamp graceExpiryDate;
+	
+	public String getUnSubscribe() {
+		return unSubscribe;
+	}
+
+	public void setUnSubscribe(String unSubscribe) {
+		this.unSubscribe = unSubscribe;
+	}
+
+	public Timestamp getGraceExpiryDate() {
+		return graceExpiryDate;
+	}
+
+	public void setGraceExpiryDate(Timestamp graceExpiryDate) {
+		this.graceExpiryDate = graceExpiryDate;
+	}
+
+	public void setSubscriptionPackageId(Long subscriptionPackageId) {
+		SubscriptionPackageId = subscriptionPackageId;
+	}
 
 	public ChurnCustomerDTO() {
 	

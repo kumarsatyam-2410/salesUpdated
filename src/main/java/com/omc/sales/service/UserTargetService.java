@@ -62,15 +62,19 @@ public class UserTargetService {
 	public Long updateUserTarget(UserTargetDTO userTargetDTO) {
 		LOGGER.info("In updateUserTarget  Service");
 		UserTarget userTarget=userTargetRepository.findById(userTargetDTO.getTargetId()).get();
+		
 		userTarget.setUserId(userTargetDTO.getUserId());
 		userTarget.setTargetType(userTargetDTO.getTargetType());
 		userTarget.setTargetStartDate(userTargetDTO.getTargetStartDate());
 		userTarget.setTargetEndDate(userTargetDTO.getTargetEndDate());
-		userTarget.setNoCustomerAcqTarget(userTarget.getNoCustomerAcqTarget());
+		userTarget.setNoCustomerAcqTarget(userTargetDTO.getNoCustomerAcqTarget());
 		userTarget.setRevenueTargetAmount(userTargetDTO.getRevenueTargetAmount());
 		userTarget.setComment(userTargetDTO.getComment());
 		userTarget.setAddedBy(userTargetDTO.getAddedBy());
+		
 		userTargetRepository.save(userTarget);
+		System.out.println(userTarget.getNoCustomerAcqTarget());
+		
 		LOGGER.info("Out UserTarget Updated for "+userTarget.getTargetId());
 		return userTarget.getTargetId();
 	}

@@ -170,6 +170,36 @@ public class ChurnCustomer {
 	
 	@Column(name = "installation_certificate")
 	private String installationCertificate;
+	
+	@Column(name = "un_subscribe")
+	private String unSubscribe;
+
+	@Column(name = "grace_expiry_date")
+	private Timestamp graceExpiryDate;
+
+	public String getUnSubscribe() {
+		return unSubscribe;
+	}
+
+
+
+	public void setUnSubscribe(String unSubscribe) {
+		this.unSubscribe = unSubscribe;
+	}
+
+
+
+	public Timestamp getGraceExpiryDate() {
+		return graceExpiryDate;
+	}
+
+
+
+	public void setGraceExpiryDate(Timestamp graceExpiryDate) {
+		this.graceExpiryDate = graceExpiryDate;
+	}
+
+
 
 	public ChurnCustomer() {
 		

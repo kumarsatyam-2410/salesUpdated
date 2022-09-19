@@ -9,9 +9,12 @@ import java.util.Optional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
+
 import com.omc.sales.dto.CustomerAcquisitionDTO;
 import com.omc.sales.entity.CustomerAcquisition;
 import com.omc.sales.entity.CustomerAcquisitionHistory;
@@ -56,6 +59,7 @@ public class CustomerAcquisitionService {
 		
 		CustomerAcquisition customerAcquisitionEntity = new CustomerAcquisition();
 		
+		customerAcquisitionEntity.setId(customerAcquisitionDTO.getId());
 		customerAcquisitionEntity.setAbhApprovalStatus(customerAcquisitionDTO.getAbhApprovalStatus());
 		customerAcquisitionEntity.setSalesheadApprovalStatus(customerAcquisitionDTO.getSalesheadApprovalStatus());
 		customerAcquisitionEntity.setActive(customerAcquisitionDTO.isActive());
@@ -148,10 +152,7 @@ public class CustomerAcquisitionService {
 		LOGGER.info("In listAllCustomerAcquisitions  Service");
 	
 		return  customerAcquisitionRepository.findAllByOrderByIdDesc();
-//		List<CustomerAcquisition> list = new ArrayList<>();
-//	    customerAcquisitionRepository.findAll().forEach(customerAcquisition::add);
-//		return customerAcquisition;
-//		return list;
+
 	}
 
 
@@ -162,6 +163,9 @@ public class CustomerAcquisitionService {
 		CustomerAcquisition customerAcquisitionEntity = customerAcquisitionRepository.findAllById(customerAcquisitionDTO.getId());
 		
 		 historiseCustomerAcq(customerAcquisitionEntity);
+		
+		if(customerAcquisitionDTO.getId() != null && customerAcquisitionDTO.getId() >= 0)
+		customerAcquisitionEntity.setId(customerAcquisitionDTO.getId());
 		
 		customerAcquisitionEntity.setActive(customerAcquisitionDTO.isActive());
 		
@@ -368,6 +372,7 @@ public class CustomerAcquisitionService {
 		if(customerAcquisitionDTO.getFinanceHeadApprovalStatus() != null && customerAcquisitionDTO.getFinanceHeadApprovalStatus().length() > 0 )
 		customerAcquisitionEntity.setFinanceHeadApprovalStatus(customerAcquisitionDTO.getFinanceHeadApprovalStatus());
 		
+		customerAcquisitionRepository.save(customerAcquisitionEntity);
 		LOGGER.info("Out CustomerAcquisition Updated for "+customerAcquisitionEntity.getId()); 
 		return customerAcquisitionEntity.getId();
 	}
@@ -440,6 +445,22 @@ public class CustomerAcquisitionService {
 		return customerAcquisition;
 	}
 
-
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
+	public List<CustomerAcquisition> getcustomerAcquisitionByTimeAndStatus(Timestamp startDate,Timestamp endDate ,String acquisitionStatus ,Integer offsets,Integer limits) {
 	
+		LOGGER.info("In get CustomerAcquisition by times and status Service");
+		
+		 List<CustomerAcquisition> customerAcquisition=null;
+		 
+		 if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) && !StringUtils.isEmpty(acquisitionStatus) && !StringUtils.isEmpty(offsets) && !StringUtils.isEmpty(limits) ){
+			 
+			 customerAcquisition = customerAcquisitionRepository.findSubscriptionStartDateBetweenAndAcquisitionStatus(startDate, endDate, acquisitionStatus, offsets, limits) ;
+		 }else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate)) {
+			 customerAcquisition = customerAcquisitionRepository.getAllBetweenDates(startDate, endDate);
+		 }else {
+			 customerAcquisition = customerAcquisitionRepository.findAll();
+		 }
+		return customerAcquisition;
+	
+	}
 }

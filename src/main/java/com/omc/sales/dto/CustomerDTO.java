@@ -115,8 +115,48 @@ public class CustomerDTO {
 	private String typeOfBoard;
 	
 	private String installationCertificate;
+	
+	private String unSubscribe;
+
+	private Timestamp lastExpiryDate;
+	
+	private Timestamp churnDate;
+
+	private String unsubType;
+
+	public Timestamp getChurnDate() {
+		return churnDate;
+	}
+
+	public void setChurnDate(Timestamp churnDate) {
+		this.churnDate = churnDate;
+	}
+
+	public String getUnsubType() {
+		return unsubType;
+	}
+
+	public void setUnsubType(String unsubType) {
+		this.unsubType = unsubType;
+	}
+
+	public String getUnSubscribe() {
+		return unSubscribe;
+	}
+
+	public void setUnSubscribe(String unSubscribe) {
+		this.unSubscribe = unSubscribe;
+	}
 
 	
+	public Timestamp getLastExpiryDate() {
+		return lastExpiryDate;
+	}
+
+	public void setLastExpiryDate(Timestamp lastExpiryDate) {
+		this.lastExpiryDate = lastExpiryDate;
+	}
+
 	public String getInstallationCertificate() {
 		return installationCertificate;
 	}

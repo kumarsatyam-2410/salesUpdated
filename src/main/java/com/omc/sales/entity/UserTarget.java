@@ -44,6 +44,7 @@ public class UserTarget {
 	private int addedBy;
 
 	
+	
 	public int getAddedBy() {
 		return addedBy;
 	}

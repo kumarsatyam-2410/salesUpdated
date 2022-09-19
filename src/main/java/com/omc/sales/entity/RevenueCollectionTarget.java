@@ -2,13 +2,18 @@ package com.omc.sales.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="revenue_collection_target")
@@ -20,7 +25,7 @@ public class RevenueCollectionTarget {
 	private Long rctId;
 	
 	@Column(name = "user_id")
-	private String userId;
+	private int userId;
 	
 	@Column(name = "target_type")
 	private String targetType;
@@ -36,19 +41,24 @@ public class RevenueCollectionTarget {
 	
 	@Column(name = "comment")
 	private String comment;
-	
 
 	@Column(name = "added_by")
 	private int addedBy;
 	
-	
-
 	public int getAddedBy() {
 		return addedBy;
 	}
 
 	public void setAddedBy(int addedBy) {
 		this.addedBy = addedBy;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public RevenueCollectionTarget() {
@@ -61,14 +71,6 @@ public class RevenueCollectionTarget {
 
 	public void setRctId(Long rctId) {
 		this.rctId = rctId;
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
 	}
 
 	public String getTargetType() {

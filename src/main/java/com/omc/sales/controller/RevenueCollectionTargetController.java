@@ -115,7 +115,7 @@ private static final Logger LOGGER = LogManager.getLogger(RevenueCollectionTarge
 	}
 	
 	@RequestMapping(value = "/revenueCollectionTarget/{userId}", method = RequestMethod.GET)
-	public ResponseEntity<RevenueCollectionTargetListResponseDTO> getRevenueCollectionTargetByserId(@PathVariable String userId) {
+	public ResponseEntity<RevenueCollectionTargetListResponseDTO> getRevenueCollectionTargetByserId(@PathVariable int userId) {
 
 		ResponseEntity<RevenueCollectionTargetListResponseDTO> responseEntity;
 		List<RevenueCollectionTarget> list = new ArrayList<>();

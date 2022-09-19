@@ -170,6 +170,51 @@ public class CustomerHistory {
 	@Column(name = "installation_certificate")
 	private String installationCertificate;
 	
+	@Column(name = "un_subscribe")
+	private String unSubscribe;
+
+	@Column(name = "last_expiry_date")
+	private Timestamp lastExpiryDate;
+	
+	@Column(name = "churn_date")
+	private Timestamp churnDate;
+
+	@Column(name = "unsub_type")
+	private String unsubType;
+	
+	public Timestamp getChurnDate() {
+		return churnDate;
+	}
+
+	public void setChurnDate(Timestamp churnDate) {
+		this.churnDate = churnDate;
+	}
+
+	public String getUnsubType() {
+		return unsubType;
+	}
+
+	public void setUnsubType(String unsubType) {
+		this.unsubType = unsubType;
+	}
+
+	public Timestamp getLastExpiryDate() {
+		return lastExpiryDate;
+	}
+
+	public void setLastExpiryDate(Timestamp lastExpiryDate) {
+		this.lastExpiryDate = lastExpiryDate;
+	}
+
+	public String getUnSubscribe() {
+		return unSubscribe;
+	}
+
+	public void setUnSubscribe(String unSubscribe) {
+		this.unSubscribe = unSubscribe;
+	}
+
+
 	public String getInstallationCertificate() {
 		return installationCertificate;
 	}

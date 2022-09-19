@@ -89,4 +89,101 @@ public class CafTableController {
 		}
 		return responseEntity;
 	}
+	
+	@RequestMapping(value = "/getListcafNumber", method = RequestMethod.GET)
+	public ResponseEntity<CafTableListResponseDTO> getListCafNumber() {
+
+		ResponseEntity<CafTableListResponseDTO> responseEntity;
+		List<CafTable> list=new ArrayList<>();
+		CafTableListResponseDTO cafTableListResponseDTO = new CafTableListResponseDTO();
+		try{
+			list =cafTableService.getListCafNumber();
+			cafTableListResponseDTO.setStatus(HttpStatus.CREATED.value());
+			cafTableListResponseDTO.setList(list);
+			responseEntity = new ResponseEntity<>(cafTableListResponseDTO,HttpStatus.CREATED);
+		}catch(BaseException exception){
+			cafTableListResponseDTO.setErrorCode(exception.getErrorCode().getCode());
+			cafTableListResponseDTO.setStatus(HttpStatus.BAD_REQUEST.value());
+			cafTableListResponseDTO.setErrorMessage(exception.getErrorMsg());
+			responseEntity = new ResponseEntity<>(cafTableListResponseDTO,HttpStatus.BAD_REQUEST);
+			
+		}
+		catch(RuntimeException exception){
+			cafTableListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			cafTableListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			cafTableListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(cafTableListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);	
+		} catch(Exception exception){
+			cafTableListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			cafTableListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			cafTableListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(cafTableListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			
+		}
+		return responseEntity;
+	}
+	
+	@RequestMapping(value = "/createCafNumber", method = RequestMethod.POST)
+	public ResponseEntity<CafTableResponseDTO> createCafTables(@RequestBody CafTableDTO cafTableDTO) {
+
+		ResponseEntity<CafTableResponseDTO> responseEntity;
+		CafTableResponseDTO cafTableResponseDTO = new CafTableResponseDTO();
+		try{
+			String cafNo= cafTableService.createCafTables(cafTableDTO);
+			 cafTableResponseDTO.setStatus(HttpStatus.CREATED.value());
+			 cafTableResponseDTO.setCafNo(cafNo);
+			responseEntity = new ResponseEntity<>(cafTableResponseDTO,HttpStatus.CREATED);
+		}catch(BaseException exception){
+			cafTableResponseDTO.setErrorCode(exception.getErrorCode().getCode());
+			cafTableResponseDTO.setStatus(HttpStatus.BAD_REQUEST.value());
+			responseEntity = new ResponseEntity<>(cafTableResponseDTO,HttpStatus.BAD_REQUEST);
+			cafTableResponseDTO.setErrorMessage(exception.getErrorMsg());
+		}
+		catch(RuntimeException exception){
+			cafTableResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			cafTableResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity = new ResponseEntity<>(cafTableResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			cafTableResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		} catch(Exception exception){
+			cafTableResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			cafTableResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity = new ResponseEntity<>(cafTableResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			cafTableResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		}
+		return responseEntity;
+	}
+	
+	@RequestMapping(value = "/getCafNumberById", method = RequestMethod.GET)
+	public ResponseEntity<CafTableListResponseDTO> getCafNumber(@RequestParam Long id) {
+
+		ResponseEntity<CafTableListResponseDTO> responseEntity;
+		List<CafTable> list=new ArrayList<>();
+		CafTableListResponseDTO cafTableListResponseDTO = new CafTableListResponseDTO();
+		try{
+			list =cafTableService.getCafTable(id);
+			cafTableListResponseDTO.setStatus(HttpStatus.CREATED.value());
+			cafTableListResponseDTO.setList(list);
+			responseEntity = new ResponseEntity<>(cafTableListResponseDTO,HttpStatus.CREATED);
+		}catch(BaseException exception){
+			cafTableListResponseDTO.setErrorCode(exception.getErrorCode().getCode());
+			cafTableListResponseDTO.setStatus(HttpStatus.BAD_REQUEST.value());
+			cafTableListResponseDTO.setErrorMessage(exception.getErrorMsg());
+			responseEntity = new ResponseEntity<>(cafTableListResponseDTO,HttpStatus.BAD_REQUEST);
+			
+		}
+		catch(RuntimeException exception){
+			cafTableListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			cafTableListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			cafTableListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(cafTableListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);	
+		} catch(Exception exception){
+			cafTableListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			cafTableListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			cafTableListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(cafTableListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			
+		}
+		return responseEntity;
+	}
+	
 }

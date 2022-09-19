@@ -8,10 +8,14 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestTemplate;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.omc.sales.dto.CustomerDTO;
 import com.omc.sales.entity.Customer;
 import com.omc.sales.entity.CustomerHistory;
@@ -32,8 +36,7 @@ public class CustomerService {
 	
 	@Autowired
 	private CustomerHistoryRepository customerHistoryRepository;
-
-
+		
 	/**
 	 * Creates the customer.
 	 *
@@ -106,6 +109,10 @@ public class CustomerService {
 		customerEntity.setActivatedBy(customerDTO.getActivatedBy());
 		customerEntity.setTypeOfBoard(customerDTO.getTypeOfBoard());
 		customerEntity.setInstallationCertificate(customerDTO.getInstallationCertificate());
+		customerEntity.setUnSubscribe(customerDTO.getUnSubscribe());
+		customerEntity.setLastExpiryDate(customerDTO.getLastExpiryDate());
+		customerEntity.setChurnDate(customerDTO.getChurnDate());
+		customerEntity.setUnsubType(customerDTO.getUnsubType());
 			customerRepository.save(customerEntity);
 
 		LOGGER.info("Out createCustomer service with return Value customerId:"+customerEntity.getId()); 
@@ -271,6 +278,17 @@ public class CustomerService {
 		if(customerDTO.getInstallationCertificate() != null && customerDTO.getInstallationCertificate() .length() > 0 )
 		customerEntity.setInstallationCertificate(customerDTO.getInstallationCertificate());
 		
+		if(customerDTO.getUnSubscribe() != null && customerDTO.getUnSubscribe() .length() > 0 )
+		customerEntity.setUnSubscribe(customerDTO.getUnSubscribe());
+		
+		customerEntity.setLastExpiryDate(customerDTO.getLastExpiryDate());
+		
+		customerEntity.setChurnDate(customerDTO.getChurnDate());
+		
+		if(customerDTO.getUnsubType() != null && customerDTO.getUnsubType() .length() > 0 )
+		customerEntity.setUnsubType(customerDTO.getUnsubType());
+		
+		customerRepository.save(customerEntity);
 		LOGGER.info("Out Customer Updated for "+customerEntity.getId()); 
 		return customerEntity.getId();
 		
@@ -332,6 +350,10 @@ public class CustomerService {
 		customerHistory.setActivatedBy(customerEntity.getActivatedBy());
 		customerHistory.setTypeOfBoard(customerEntity.getTypeOfBoard());
 		customerHistory.setInstallationCertificate(customerEntity.getInstallationCertificate());
+		customerHistory.setUnSubscribe(customerEntity.getUnSubscribe());
+		customerHistory.setLastExpiryDate(customerEntity.getLastExpiryDate());
+		customerHistory.setUnsubType(customerEntity.getUnsubType());
+		customerHistory.setChurnDate(customerEntity.getChurnDate());
 		customerHistoryRepository.save(customerHistory);
 
 		
@@ -350,6 +372,7 @@ public class CustomerService {
 		
 		return customerRepository.findAllCustomerBySll(sll);
 	}
+
 
 
 }

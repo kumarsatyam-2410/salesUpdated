@@ -9,7 +9,7 @@ import com.omc.sales.entity.RevenueCollectionTarget;
 
 public interface RevenueCollectionTargetRepository extends JpaRepository<RevenueCollectionTarget,Long>{
 
-	public List<RevenueCollectionTarget> findRevenueCollectionTargetByUserId(String userId);
+	public List<RevenueCollectionTarget> findRevenueCollectionTargetByUserId(int userId);
 
 	public List<RevenueCollectionTarget> getListRevenueCollectionTargetByAddedBy(int addedBy);
 

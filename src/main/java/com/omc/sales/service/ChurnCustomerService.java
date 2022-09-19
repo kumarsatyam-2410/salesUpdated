@@ -42,7 +42,7 @@ public class ChurnCustomerService {
 		churnCustomer.setSubscriptionStartDate(churnCustomerDTO.getSubscriptionStartDate());
 		churnCustomer.setSubscriptionEndDate(churnCustomerDTO.getSubscriptionEndDate());
 		churnCustomer.setLastSuccessSubscriptionDate(churnCustomerDTO.getLastSuccessSubscriptionDate());
-		churnCustomer.setAddedOn(churnCustomerDTO.getAddedOn());   //////////////
+		churnCustomer.setAddedOn(churnCustomerDTO.getAddedOn());   
 		churnCustomer.setActive(true);
 		churnCustomer.setCustomerStatus(churnCustomerDTO.getCustomerStatus());
 		churnCustomer.setSalesExecutiveId(churnCustomerDTO.getSalesExecutiveId());
@@ -77,6 +77,8 @@ public class ChurnCustomerService {
 		churnCustomer.setCurrentPackageAmount(churnCustomerDTO.getCurrentPackageAmount());
 		churnCustomer.setTypeOfBoard(churnCustomerDTO.getTypeOfBoard());
 		churnCustomer.setInstallationCertificate(churnCustomerDTO.getInstallationCertificate());
+		churnCustomer.setUnSubscribe(churnCustomerDTO.getUnSubscribe());
+		churnCustomer.setGraceExpiryDate(churnCustomerDTO.getGraceExpiryDate());
 		churnCustomerRepository.save(churnCustomer);
 		LOGGER.info("Out createChurnCustomer service with return Value ChurncustomerId:"+churnCustomerDTO.getId()); 
 		 return churnCustomer.getId();

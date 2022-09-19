@@ -9,8 +9,6 @@ public class RevenueCollectionTargetDTO {
 	
 	private Long rctId;
 	
-	private String userId;
-	
 	private String targetType;
 	
 	private Date targetStartDate;
@@ -23,6 +21,15 @@ public class RevenueCollectionTargetDTO {
 	
 	private int addedBy;
 	
+	private int userId;
+	
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 
 	public int getAddedBy() {
 		return addedBy;
@@ -34,14 +41,6 @@ public class RevenueCollectionTargetDTO {
 
 	public RevenueCollectionTargetDTO() {
 		
-	}
-
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
 	}
 
 	public String getTargetType() {

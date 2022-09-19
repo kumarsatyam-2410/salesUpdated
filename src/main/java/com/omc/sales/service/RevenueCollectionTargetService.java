@@ -34,6 +34,7 @@ public class RevenueCollectionTargetService {
 		
 		LOGGER.info("Request Received for createRevenueCollectionTarget with parameters");
 		RevenueCollectionTarget revenueCollectionTarget=new RevenueCollectionTarget();
+		
 		revenueCollectionTarget.setRctId(revenueCollectionTargetDTO.getRctId());
 		revenueCollectionTarget.setUserId(revenueCollectionTargetDTO.getUserId());
 		revenueCollectionTarget.setRevenueTargetAmount(revenueCollectionTargetDTO.getRevenueTargetAmount());
@@ -66,7 +67,7 @@ public class RevenueCollectionTargetService {
 	}
 
 	@Transactional(propagation=Propagation.REQUIRED)
-	public List<RevenueCollectionTarget> getRevenueCollectionTargetByserId(String userId) {
+	public List<RevenueCollectionTarget> getRevenueCollectionTargetByserId(int userId) {
 	
 		
 		return revenueCollectionTargetRepository.findRevenueCollectionTargetByUserId(userId); 
@@ -79,11 +80,13 @@ public class RevenueCollectionTargetService {
 		return revenueCollectionTargetRepository.findTop10ByOrderByRctIdDesc();
 	}
 
+	@Transactional(propagation=Propagation.REQUIRED)
 	public List<RevenueCollectionTarget> getRevenueCollectionTargetByAddedBy(int addedBy) {
 		
 		return revenueCollectionTargetRepository.getListRevenueCollectionTargetByAddedBy(addedBy);
 	}
 
+	@Transactional(propagation=Propagation.REQUIRED)
 	public List<RevenueCollectionTarget> getRevenueCollectionTargetByserId(Long rctId) {
 		
 		List<RevenueCollectionTarget> list = new ArrayList<>();

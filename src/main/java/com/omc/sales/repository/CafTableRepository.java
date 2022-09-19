@@ -11,4 +11,6 @@ public interface CafTableRepository extends JpaRepository<CafTable,Long> {
 
 	public CafTable findByPlantIdAndBillingType(int plantId, String billingType);
 
+	public CafTable findCafTableById(Long id);
+
 }
