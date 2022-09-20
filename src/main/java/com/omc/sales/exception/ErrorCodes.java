@@ -18,7 +18,7 @@ public enum ErrorCodes {
 	NO_USER_CONTENT_PROFILE_EXISTS(4002),
 	NOT_UNIQUE_USER_CONTENT_PROFILE(4003),
 	NOT_UNIQUE_Plan(4004),
-	
+	Sales_head_not_found(5000),
 	USER_NOT_FOUND(1001);
 
 	/** The error code. */
