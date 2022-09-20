@@ -378,7 +378,7 @@ public class CustomerService {
 	public List<Customer> getCustomerByDateRangeAndStatus(Timestamp startDate, Timestamp endDate, String customerStatus,
 			Integer offsets, Integer limits) {
 		
-		LOGGER.info("in  Customer get customer data by dateRange and status"); 
+		LOGGER.info("in  Customer service get customer data by dateRange and status"); 
 		List<Customer> customer;
 		
        if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) && !StringUtils.isEmpty(customerStatus) && !StringUtils.isEmpty(offsets) && !StringUtils.isEmpty(limits) ){
@@ -386,9 +386,14 @@ public class CustomerService {
     	   customer = customerRepository.findSubscriptionStartDateBetweenAndAcquisitionStatus(startDate, endDate, customerStatus, offsets, limits) ;
 		 }else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate)) {
 			 customer = customerRepository.getAllBetweenDates(startDate, endDate);
+		 }else if(!StringUtils.isEmpty(offsets) && !StringUtils.isEmpty(limits)) {
+			   customer = customerRepository.findCustomerByLimitsAndOffSets(offsets ,limits);
+		 }else if(!StringUtils.isEmpty(customerStatus) && !StringUtils.isEmpty(offsets) && !StringUtils.isEmpty(limits) ) {
+			 customer = customerRepository.findCustomerStatus(customerStatus , offsets ,limits);
 		 }else {
 			 customer = customerRepository.findAll();
 		 }
+		 
 		return customer;
 	
 	

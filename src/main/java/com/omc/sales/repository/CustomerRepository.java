@@ -33,6 +33,12 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 	public List<Customer> findSubscriptionStartDateBetweenAndAcquisitionStatus(
             @Param("startDate") Timestamp startDate,
             @Param("endDate") Timestamp endDate, @Param("customerStatus") String customerStatus ,@Param("offsets") Integer offsets,@Param("limits")  Integer limits);
+	  
+	  @Query(value="SELECT  * FROM `customers`  limit :limits  offset :offsets " ,nativeQuery = true)
+	public List<Customer> findCustomerByLimitsAndOffSets(@Param("offsets") Integer offsets,@Param("limits") Integer limits);
+	  
+	  @Query(value="SELECT  * FROM `customers` WHERE customer_status =:customerStatus  limit :limits  offset :offsets " ,nativeQuery = true)
+	public List<Customer> findCustomerStatus(@Param("customerStatus") String customerStatus , @Param("offsets") Integer offsets , @Param("limits")  Integer limits);
 
 	
 	
