@@ -25,20 +25,22 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 	
 	public List<Customer> findAllByOrderByIdDesc();
 	
-	@Query(value = "from Customer t where subscription_start_date BETWEEN :startDate AND :endDate")
-	public List<Customer> getAllBetweenDates(@Param("startDate")Timestamp startDate,@Param("endDate")Timestamp endDate);
+	 @Query(value="SELECT  * FROM `customers` WHERE customer_status =:customerStatus  limit :limits  offset :offsets " ,nativeQuery = true)
+	public List<Customer> findCustomerStatus(@Param("customerStatus") String customerStatus , @Param("offsets") Integer offsets , @Param("limits")  Integer limits);
+	  
+	  @Query(value = "from Customer t where subscription_start_date BETWEEN :startDate AND :endDate")
+    public List<Customer> getAllBetweenDates(@Param("startDate")Timestamp startDate,@Param("endDate")Timestamp endDate);
 
 	
-	  @Query(value="SELECT  * FROM `customers` WHERE customer_status =:customerStatus AND (subscription_start_date BETWEEN :startDate AND :endDate)  limit :limits  offset :offsets " ,nativeQuery = true)
-	public List<Customer> findSubscriptionStartDateBetweenAndAcquisitionStatus(
+	   @Query(value="SELECT  * FROM `customers` WHERE customer_status =:customerStatus AND (subscription_start_date BETWEEN :startDate AND :endDate)  limit :limits  offset :offsets " ,nativeQuery = true)
+	    public List<Customer> findSubscriptionStartDateBetweenAndAcquisitionStatus(
             @Param("startDate") Timestamp startDate,
             @Param("endDate") Timestamp endDate, @Param("customerStatus") String customerStatus ,@Param("offsets") Integer offsets,@Param("limits")  Integer limits);
 	  
 	  @Query(value="SELECT  * FROM `customers`  limit :limits  offset :offsets " ,nativeQuery = true)
-	public List<Customer> findCustomerByLimitsAndOffSets(@Param("offsets") Integer offsets,@Param("limits") Integer limits);
+	  public List<Customer> findCustomerByLimitsAndOffSets(@Param("offsets") Integer offsets,@Param("limits") Integer limits);
 	  
-	  @Query(value="SELECT  * FROM `customers` WHERE customer_status =:customerStatus  limit :limits  offset :offsets " ,nativeQuery = true)
-	public List<Customer> findCustomerStatus(@Param("customerStatus") String customerStatus , @Param("offsets") Integer offsets , @Param("limits")  Integer limits);
+	
 
 	
 	

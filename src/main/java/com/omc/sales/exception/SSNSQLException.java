@@ -26,6 +26,14 @@ public class SSNSQLException extends BaseException {
 	}
 
 
+	public SSNSQLException(String errorMsg, ErrorCodes errorCode, String errorMsg2) {
+		super(errorMsg, errorCode);
+		errorMsg = errorMsg2;
+	}
+
+
+
+
 	/* (non-Javadoc)
 	 * @see com.gemalto.tlm.exception.BaseException#getErrorMsg()
 	 */

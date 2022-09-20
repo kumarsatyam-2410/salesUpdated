@@ -379,27 +379,24 @@ public class CustomerService {
 			Integer offsets, Integer limits) {
 		
 		LOGGER.info("in  Customer service get customer data by dateRange and status"); 
-		List<Customer> customer;
+		List<Customer> customer = null;
 		
        if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) && !StringUtils.isEmpty(customerStatus) && !StringUtils.isEmpty(offsets) && !StringUtils.isEmpty(limits) ){
 			 
     	   customer = customerRepository.findSubscriptionStartDateBetweenAndAcquisitionStatus(startDate, endDate, customerStatus, offsets, limits) ;
 		 }else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate)) {
 			 customer = customerRepository.getAllBetweenDates(startDate, endDate);
-		 }else if(!StringUtils.isEmpty(offsets) && !StringUtils.isEmpty(limits)) {
-			   customer = customerRepository.findCustomerByLimitsAndOffSets(offsets ,limits);
 		 }else if(!StringUtils.isEmpty(customerStatus) && !StringUtils.isEmpty(offsets) && !StringUtils.isEmpty(limits) ) {
 			 customer = customerRepository.findCustomerStatus(customerStatus , offsets ,limits);
-		 }else {
-			 customer = customerRepository.findAll();
 		 }
-		 
-		return customer;
-	
-	
-	
+		 else if(!StringUtils.isEmpty(offsets) && !StringUtils.isEmpty(limits)) {
+			   customer = customerRepository.findCustomerByLimitsAndOffSets(offsets ,limits);
+		 }
+	return customer;
+
       }
-	
+	 
+		
 	}
 
 
