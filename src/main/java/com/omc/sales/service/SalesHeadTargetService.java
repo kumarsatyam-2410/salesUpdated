@@ -75,10 +75,7 @@ public class SalesHeadTargetService {
 		
 		LOGGER.info("In SalesHeadTargetService for get SalesHeadTarget by userId");
 		List<SalesHeadTarget> list = new ArrayList<>();
-		
-		SalesHeadTarget salesHeadTarget=salesHeadTargetRepository.findSalesHeadTargetByUserId(userId);
-		list.add(salesHeadTarget);
-		return list;
+		return salesHeadTargetRepository.findSalesHeadTargetByUserId(userId);
 	}
 
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
@@ -95,10 +92,8 @@ public class SalesHeadTargetService {
 	public List<SalesHeadTarget> findSalesHeadTargetByAddedBy(int addedBy) {
 		
 		LOGGER.info("In SalesHeadTargetService for get SalesHeadTarget by addedBy");
-		List<SalesHeadTarget> list = new ArrayList<>();
-		SalesHeadTarget salesHeadTarget=salesHeadTargetRepository.findSalesHeadTargetByAddedBy(addedBy);
-		list.add(salesHeadTarget);
-		return list;
+	
+		return salesHeadTargetRepository.findSalesHeadTargetByAddedBy(addedBy);
 	}
 
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)

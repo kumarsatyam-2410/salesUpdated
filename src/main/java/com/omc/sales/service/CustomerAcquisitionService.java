@@ -137,6 +137,9 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setCustomerPic(customerAcquisitionDTO.getCustomerPic());
 		customerAcquisitionEntity.setPaymentBy(customerAcquisitionDTO.getPaymentBy());
 		customerAcquisitionEntity.setFinanceHeadApprovalStatus(customerAcquisitionDTO.getFinanceHeadApprovalStatus());
+		customerAcquisitionEntity.setAadharPicFront(customerAcquisitionDTO.getAadharPicFront());
+		customerAcquisitionEntity.setAadharPicBack(customerAcquisitionDTO.getAadharPicBack());
+	
 		customerAcquisitionRepository.save(customerAcquisitionEntity);
 
 		LOGGER.info("Out createCustomerAcquisition service with return Value customerAcquisitionId:"+customerAcquisitionEntity.getId()); 
@@ -372,6 +375,12 @@ public class CustomerAcquisitionService {
 		if(customerAcquisitionDTO.getFinanceHeadApprovalStatus() != null && customerAcquisitionDTO.getFinanceHeadApprovalStatus().length() > 0 )
 		customerAcquisitionEntity.setFinanceHeadApprovalStatus(customerAcquisitionDTO.getFinanceHeadApprovalStatus());
 		
+		if(customerAcquisitionDTO.getAadharPicFront() != null && customerAcquisitionDTO.getAadharPicFront().length() > 0 )
+		customerAcquisitionEntity.setAadharPicFront(customerAcquisitionDTO.getAadharPicFront());
+		
+		if(customerAcquisitionDTO.getAadharPicBack() != null && customerAcquisitionDTO.getAadharPicBack().length() > 0 )
+		customerAcquisitionEntity.setAadharPicBack(customerAcquisitionDTO.getAadharPicBack());
+		
 		customerAcquisitionRepository.save(customerAcquisitionEntity);
 		LOGGER.info("Out CustomerAcquisition Updated for "+customerAcquisitionEntity.getId()); 
 		return customerAcquisitionEntity.getId();
@@ -433,6 +442,8 @@ public class CustomerAcquisitionService {
 		customerAcquisitionHistory.setTypeOfBoard(customerAcquisitionEntity.getTypeOfBoard());
 		customerAcquisitionHistory.setPaymentBy(customerAcquisitionEntity.getPaymentBy());
 		customerAcquisitionHistory.setFinanceHeadApprovalStatus(customerAcquisitionEntity.getFinanceHeadApprovalStatus());
+		customerAcquisitionHistory.setAadharPicFront(customerAcquisitionEntity.getAadharPicFront());
+		customerAcquisitionHistory.setAadharPicBack(customerAcquisitionEntity.getAadharPicBack());
 		customerAcquisitionHistoryRepository.save(customerAcquisitionHistory);
 		
 	}

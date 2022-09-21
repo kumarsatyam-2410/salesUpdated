@@ -10,9 +10,9 @@ public interface SalesHeadTargetRepository extends JpaRepository<SalesHeadTarget
 
          public	SalesHeadTarget findBySalesHeadId(Long salesHeadId);
 
-		public SalesHeadTarget findSalesHeadTargetByUserId(String userId);
+		public List<SalesHeadTarget> findSalesHeadTargetByUserId(String userId);
 
-		public SalesHeadTarget findSalesHeadTargetByAddedBy(int addedBy);
+		public List<SalesHeadTarget> findSalesHeadTargetByAddedBy(int addedBy);
 		
 		@Query(value = "from SalesHeadTarget t where targetStartDate BETWEEN :startDate AND :endDate")
 		public List<SalesHeadTarget> getAllBetweenDates(@Param("startDate")Timestamp startDate,@Param("endDate")Timestamp endDate);

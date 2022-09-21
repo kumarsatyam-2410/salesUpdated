@@ -161,6 +161,26 @@ public class CustomerAcquisitionDTO {
 	
 	private String financeHeadApprovalStatus;
 
+	private String aadharPicFront;
+	
+	private String aadharPicBack;
+	
+	public String getAadharPicFront() {
+		return aadharPicFront;
+	}
+
+	public void setAadharPicFront(String aadharPicFront) {
+		this.aadharPicFront = aadharPicFront;
+	}
+
+	public String getAadharPicBack() {
+		return aadharPicBack;
+	}
+
+	public void setAadharPicBack(String aadharPicBack) {
+		this.aadharPicBack = aadharPicBack;
+	}
+
 	public String getFinanceHeadApprovalStatus() {
 		return financeHeadApprovalStatus;
 	}

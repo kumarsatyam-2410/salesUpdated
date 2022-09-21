@@ -164,6 +164,28 @@ public class CustomerAcquisitionHistory {
 	@Column(name = "sll_no")
 	private String sllNo;
 	
+	@Column(name = "aadhar_pic_front")
+	private String aadharPicFront;
+	
+	@Column(name = "aadhar_pic_back")
+	private String aadharPicBack;
+
+	public String getAadharPicFront() {
+		return aadharPicFront;
+	}
+
+	public void setAadharPicFront(String aadharPicFront) {
+		this.aadharPicFront = aadharPicFront;
+	}
+
+	public String getAadharPicBack() {
+		return aadharPicBack;
+	}
+
+	public void setAadharPicBack(String aadharPicBack) {
+		this.aadharPicBack = aadharPicBack;
+	}
+
 	@Column(name = "finance_headApproval_status")
 	private String financeHeadApprovalStatus;
 	

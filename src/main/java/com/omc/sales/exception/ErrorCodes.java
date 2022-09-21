@@ -19,6 +19,7 @@ public enum ErrorCodes {
 	NOT_UNIQUE_USER_CONTENT_PROFILE(4003),
 	NOT_UNIQUE_Plan(4004),
 	Sales_head_not_found(5000),
+	Subscription_id_not_found(6000),
 	USER_NOT_FOUND(1001);
 
 	/** The error code. */

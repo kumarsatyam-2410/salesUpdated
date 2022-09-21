@@ -100,6 +100,7 @@ public class PackageService {
 	public Long updatePackage(PackageDTO packageDTO) {
 		LOGGER.info("In updatePackage  Service");
 		Package packageEntity = packageRepository.findByPackageName(packageDTO.getPackageName());
+		
 		packageEntity.setPackageDescription(packageDTO.getPackageDescription());
 		packageEntity.setPackageType(packageDTO.getPackageType());
 		packageEntity.setAmount(packageDTO.getAmount());

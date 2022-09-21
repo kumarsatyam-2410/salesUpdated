@@ -114,6 +114,8 @@ public class CustomerService {
 		customerEntity.setLastExpiryDate(customerDTO.getLastExpiryDate());
 		customerEntity.setChurnDate(customerDTO.getChurnDate());
 		customerEntity.setUnsubType(customerDTO.getUnsubType());
+		customerEntity.setAadharPicFront(customerDTO.getAadharPicFront());
+		customerEntity.setAadharPicBack(customerDTO.getAadharPicBack());
 			customerRepository.save(customerEntity);
 
 		LOGGER.info("Out createCustomer service with return Value customerId:"+customerEntity.getId()); 
@@ -289,6 +291,12 @@ public class CustomerService {
 		if(customerDTO.getUnsubType() != null && customerDTO.getUnsubType() .length() > 0 )
 		customerEntity.setUnsubType(customerDTO.getUnsubType());
 		
+		if(customerDTO.getAadharPicFront() != null && customerDTO.getAadharPicFront() .length() > 0 )
+		customerEntity.setAadharPicFront(customerDTO.getAadharPicFront());
+		
+		if(customerDTO.getAadharPicBack() != null && customerDTO.getAadharPicBack() .length() > 0 )
+		customerEntity.setAadharPicBack(customerDTO.getAadharPicBack());
+		
 		customerRepository.save(customerEntity);
 		LOGGER.info("Out Customer Updated for "+customerEntity.getId()); 
 		return customerEntity.getId();
@@ -355,6 +363,8 @@ public class CustomerService {
 		customerHistory.setLastExpiryDate(customerEntity.getLastExpiryDate());
 		customerHistory.setUnsubType(customerEntity.getUnsubType());
 		customerHistory.setChurnDate(customerEntity.getChurnDate());
+		customerHistory.setAadharPicFront(customerEntity.getAadharPicFront());
+		customerHistory.setAadharPicBack(customerEntity.getAadharPicBack());
 		customerHistoryRepository.save(customerHistory);
 
 		

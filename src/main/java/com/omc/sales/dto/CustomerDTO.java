@@ -123,6 +123,26 @@ public class CustomerDTO {
 	private Timestamp churnDate;
 
 	private String unsubType;
+	
+	private String aadharPicFront;
+	
+	private String aadharPicBack;
+
+	public String getAadharPicFront() {
+		return aadharPicFront;
+	}
+
+	public void setAadharPicFront(String aadharPicFront) {
+		this.aadharPicFront = aadharPicFront;
+	}
+
+	public String getAadharPicBack() {
+		return aadharPicBack;
+	}
+
+	public void setAadharPicBack(String aadharPicBack) {
+		this.aadharPicBack = aadharPicBack;
+	}
 
 	public Timestamp getChurnDate() {
 		return churnDate;
