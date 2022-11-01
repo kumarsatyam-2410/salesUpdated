@@ -19,6 +19,8 @@ public interface PlantRepository extends JpaRepository<Plant, Long> {
 
 	public List<Plant> findByCountryId(Integer countryId);
 
+	public Long deleteByPlantId(Long plantId);
+
 	public List<Plant> findByStateId(Integer stateId);
 
 	public List<Plant> findByDistrictId(Integer districtId);
@@ -31,6 +33,10 @@ public interface PlantRepository extends JpaRepository<Plant, Long> {
 	public List<Plant> findByCountryIdAndDistrictId(Integer countryId,Integer districtId);
 	
 	public List<Plant> findByCountryIdAndStateId(Integer countryId,Integer stateId);
+
+	public Plant findByOmcId(Integer omcId);
+
+	public Plant findByPlantId(Long plantId);
 
 
 

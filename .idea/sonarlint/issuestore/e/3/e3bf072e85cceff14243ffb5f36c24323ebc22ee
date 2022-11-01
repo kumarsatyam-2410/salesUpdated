@@ -1,0 +1,30 @@
+
+g	java:S117®"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡”÷
+l	java:S117·"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†§Ö‹ıÿÿÿÿ
+g	java:S117»"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òô´›
+o	java:S116>"URename this field "created_by" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(šöÁÜøÿÿÿÿ
+o	java:S116A"URename this field "updated_by" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºò×õùÿÿÿÿ
+o	java:S116G"URename this field "unit_price" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆçÈıÿÿÿÿ
+h	java:S116M"NRename this field "OTI" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‹òóşûÿÿÿÿ
+g	java:S116P"RRename this field "Remarks" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ˆúï—
+
+java:S1186Ê"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Ô°Âúÿÿÿÿ
+Q	java:S1255"<This block of commented-out lines of code should be removed.(ä³àİ
+d	java:S100ª"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ï¡Ù
+d	java:S100®"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‡”÷
+W	java:S125ó"<This block of commented-out lines of code should be removed.(áä–Çıÿÿÿÿ
+i	java:S100ÿ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ß°³Àÿÿÿÿÿ
+d	java:S100ƒ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú¸“Ë
+W	java:S125«"<This block of commented-out lines of code should be removed.(”¿äÄÿÿÿÿÿ
+i	java:S100·"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(†§Ö‹ıÿÿÿÿ
+d	java:S100»"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(òô´›
+E
+java:S1128"*Remove this unused import 'java.util.Set'.(ö²„¤şÿÿÿÿ
+O
+java:S1128"9Remove this unused import 'javax.persistence.JoinColumn'.(´Å¼á
+M
+java:S1128"8Remove this unused import 'javax.persistence.OneToMany'.(«õù;
+M
+java:S1128"7Remove this unused import 'javax.persistence.OneToOne'.(Ø½ïâ
+^
+java:S1128"HRemove this unused import 'com.fasterxml.jackson.annotation.JsonIgnore'.(ş‘‹„

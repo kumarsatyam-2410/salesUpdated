@@ -1,33 +1,22 @@
 package com.omc.sales.service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.omc.sales.entity.*;
+import com.omc.sales.repository.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import com.omc.sales.dto.CustomerDTO;
-import com.omc.sales.dto.DashboardDTO;
-import com.omc.sales.dto.DashboardDTO.CustomerData;
-import com.omc.sales.entity.Customer;
-import com.omc.sales.entity.Plant;
-import com.omc.sales.entity.PlantPoll;
-import com.omc.sales.entity.PollSll;
-import com.omc.sales.entity.SllCustomer;
-import com.omc.sales.exception.ErrorCodes;
 import com.omc.sales.exception.SSNSQLException;
-import com.omc.sales.repository.CustomerRepository;
-import com.omc.sales.repository.PlantPollRepository;
-import com.omc.sales.repository.PlantRepository;
-import com.omc.sales.repository.PollSllRepository;
-import com.omc.sales.repository.SllCustomerRepository;
+
+import static org.hibernate.bytecode.BytecodeLogger.LOGGER;
 
 
 @Service
@@ -50,6 +39,9 @@ public class PlantPollSllCustomerService {
 	
 	@Autowired
 	private CustomerRepository customerRepository;
+
+	@Autowired
+	private SllChannelRepository sllChannelRepository;
 	
 	/** The Constant LOGGER. */
 	private static final Logger LOGGER = LogManager.getLogger(PlantPollSllCustomerService.class);
@@ -65,8 +57,20 @@ public class PlantPollSllCustomerService {
 
 		return plantPollEntity.getPpId();
 	}
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
+	public Long updatePoll(Long ppID,String plantId, String pollNumber) {
+		LOGGER.info("In updatePlant  Service");
+		PlantPoll plantPollEntity = new PlantPoll();
+		plantPollEntity.setPpId(ppID);
+		plantPollEntity.setPlant(plantRepository.findById(Long.valueOf(plantId)).get());
+		plantPollEntity.setAddedOn(new Timestamp(new Date().getTime()));
+		plantPollEntity.setPollNumber(Long.valueOf(pollNumber));
+		plantPollRepository.save(plantPollEntity);
 
-	
+		return plantPollEntity.getPpId();
+	}
+
+
 	@Transactional(propagation=Propagation.REQUIRED)
 	public Long createSll(String pollId, String sllNumber) throws SSNSQLException{
 
@@ -78,20 +82,34 @@ public class PlantPollSllCustomerService {
 
 		return plantPollEntity.getPsId();
 	}
+
+	@Transactional(propagation=Propagation.REQUIRED)
+	public Long updateSll(Long psId,String pollId, String sllNumber) throws SSNSQLException{
+
+		PollSll plantPollEntity = new PollSll();
+		plantPollEntity.setPsId(psId);
+		plantPollEntity.setPlantPoll(plantPollRepository.findById(Long.valueOf(pollId)).get());
+		plantPollEntity.setAddedOn(new Timestamp(new Date().getTime()));
+		plantPollEntity.setSllNumber(Long.valueOf(sllNumber));
+		pollSllRepository.save(plantPollEntity);
+
+		return plantPollEntity.getPsId();
+	}
 	
 	@Transactional(propagation=Propagation.REQUIRED)
-	public Long createSllCustomer(String sllId, String customerId) throws SSNSQLException{
+	public Long createSllCustomer(String sllId, String customerId,String channelNo) throws SSNSQLException{
 
 		SllCustomer sllCustomerEntity = new SllCustomer();
 		sllCustomerEntity.setPollSll(pollSllRepository.findById(Long.valueOf(sllId)).get());
 		sllCustomerEntity.setCustomer(customerRepository.findById(Long.valueOf(customerId)).get());
+		sllCustomerEntity.setChannelNo(channelNo);
 		sllCustomerRepository.save(sllCustomerEntity);
 
 		return sllCustomerEntity.getScId();
 	}
-	
+
 	@Transactional(propagation=Propagation.REQUIRED)
-	public List<PlantPoll> getPollSll(Plant plant) {
+	public List<PlantPoll> getPollNo(Plant plant) {
 		return plantPollRepository.findByPlant(plant);
 	}
 
@@ -102,12 +120,50 @@ public class PlantPollSllCustomerService {
 	}
 
 
-	public List<PollSll> listAllPollSlls(Long sllNumber) {
+	public List<PollSll> listAllPollSll(Long sllNumber) {
 	    
 		return pollSllRepository.findAllBySllNumber(sllNumber);
 	}
 
+	@Transactional(propagation=Propagation.REQUIRED)
+	public List<SllChannel> listAllChannel(Integer sllId) {
 
-	
-	
+		return sllChannelRepository.findAllBySllId(sllId);
+	}
+
+	@Transactional(propagation=Propagation.REQUIRED)
+	public Long deletePoll(Long ppId) {
+		LOGGER.info("In deletepoll  Service"+plantPollRepository.deleteByppId(ppId));
+		Long id=plantPollRepository.deleteByppId(ppId);
+		return id;
+
+	}
+	@Transactional(propagation=Propagation.REQUIRED)
+	public Long deleteSll(Long psId) {
+		LOGGER.info("In deleteSll  Service"+pollSllRepository.deleteByPsId(psId));
+		Long id=pollSllRepository.deleteByPsId(psId);
+		return id;
+
+	}
+
+	@Transactional(propagation=Propagation.REQUIRED)
+	public List<PlantPoll> listAllByPpId(Long ppId) {
+
+		List<PlantPoll> list=new ArrayList<>();
+		PlantPoll plantPoll=plantPollRepository.findByppId(ppId);
+		list.add(plantPoll);
+		return list;
+	}
+	@Transactional(propagation=Propagation.REQUIRED)
+	public List<PollSll> listAllByPsId(Long psId) {
+
+		List<PollSll> list=new ArrayList<>();
+		PollSll pollSll=pollSllRepository.findBypsId(psId);
+		list.add(pollSll);
+		return list;
+	}
+
+
+
+
 }

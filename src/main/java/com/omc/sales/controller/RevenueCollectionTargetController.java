@@ -3,26 +3,14 @@ package com.omc.sales.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.omc.sales.dto.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.omc.sales.dto.AbhTargetDTO;
-import com.omc.sales.dto.AbhTargetResponseDTO;
-import com.omc.sales.dto.ChurnCustomerDTO;
-import com.omc.sales.dto.ChurnCustomerResponseDTO;
-import com.omc.sales.dto.ChurnUserListResponseDTO;
-import com.omc.sales.dto.RevenueCollectionTargetDTO;
-import com.omc.sales.dto.RevenueCollectionTargetListResponseDTO;
-import com.omc.sales.dto.RevenueCollectionTargetResponseDTO;
 import com.omc.sales.entity.ChurnCustomer;
 import com.omc.sales.entity.RevenueCollectionTarget;
 import com.omc.sales.exception.BaseException;
@@ -229,6 +217,32 @@ private static final Logger LOGGER = LogManager.getLogger(RevenueCollectionTarge
 			revenueCollectionTargetListResponseDTO.setErrorMessage(exception.getCause().getMessage());
 		}
 		return responseEntity;
+	}
+	@DeleteMapping("/deleteRevenueCollectionTarget/{rctId}")
+	public ResponseEntity<RevenueCollectionTargetListResponseDTO> deleteRevenueCollection(@PathVariable Long rctId) {
+		ResponseEntity<RevenueCollectionTargetListResponseDTO> response;
+		RevenueCollectionTargetListResponseDTO revenueCollectionTargetListResponseDTO = new RevenueCollectionTargetListResponseDTO();
+		try {
+			LOGGER.info("In RevenueCollectionTargetController for deleting revenue Request");
+			Long id = revenueCollectionTargetService.deleteRevenue(rctId);
+			revenueCollectionTargetListResponseDTO.setStatus(HttpStatus.OK.value());
+			revenueCollectionTargetListResponseDTO.setRctId(rctId);
+			response = new ResponseEntity<>(revenueCollectionTargetListResponseDTO, HttpStatus.OK);
+		} catch (RuntimeException e) {
+			LOGGER.warn("Error occurred while deleting revenue request", e);
+			revenueCollectionTargetListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			revenueCollectionTargetListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			response = new ResponseEntity<>(revenueCollectionTargetListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			revenueCollectionTargetListResponseDTO.setErrorMessage(e.getCause().getMessage());
+		} catch (Exception e) {
+			LOGGER.warn("Error occurred while deleting revenue request", e);
+			revenueCollectionTargetListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			revenueCollectionTargetListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			response = new ResponseEntity<>(revenueCollectionTargetListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			revenueCollectionTargetListResponseDTO.setErrorMessage(e.getCause().getMessage());
+		}
+		return response;
+
 	}
 	
 }

@@ -31,6 +31,8 @@ public interface UsersRepository extends JpaRepository<User, Long> {
 
 	public List<User> findTop10ByOrderByIdDesc();
 
+	public Long deleteByid(Long id);
+
 
 
 }

@@ -55,7 +55,7 @@ public class SpringSecurityConfig  extends WebSecurityConfigurerAdapter {
 		//.antMatchers("/swagger*/**").hasRole("swagger")
 		.antMatchers("/swagger*/**").authenticated()
 		//.antMatchers("/rms/user/**").authenticated()
-		.antMatchers("/rms*/**").authenticated()
+	//	.antMatchers("/rms*/**").authenticated()
 		.anyRequest().permitAll()
 		.and()
 		.csrf().disable()

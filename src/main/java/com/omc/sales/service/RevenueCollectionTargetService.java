@@ -21,6 +21,8 @@ import com.omc.sales.entity.RevenueCollectionTarget;
 import com.omc.sales.exception.ErrorCodes;
 import com.omc.sales.repository.RevenueCollectionTargetRepository;
 
+import static org.hibernate.bytecode.BytecodeLogger.LOGGER;
+
 @Service
 public class RevenueCollectionTargetService {
 
@@ -93,6 +95,13 @@ public class RevenueCollectionTargetService {
 		RevenueCollectionTarget revenueCollectionTarget =	revenueCollectionTargetRepository.findByRctId(rctId);
 		list.add(revenueCollectionTarget);
 		return list;
+	}
+	@Transactional(propagation=Propagation.REQUIRED)
+	public Long deleteRevenue(Long rctId) {
+		LOGGER.info("In deleteRevenueCollectionTarget  Service"+revenueCollectionTargetRepository.deleteByRctId(rctId));
+		Long id=revenueCollectionTargetRepository.deleteByRctId(rctId);
+		return id;
+
 	}
 
 	

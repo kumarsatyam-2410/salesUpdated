@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "rms_plant")
-public class Plant implements Serializable {
+public class Plant  implements Serializable {
 
 	/**
 	 * 
@@ -86,7 +86,7 @@ public class Plant implements Serializable {
 	/**
 	 * @param plantId the plantId to set
 	 */
-	public void setPlantId(Long plantId) {
+	public void setPlantId(long plantId) {
 		this.plantId = plantId;
 	}
 

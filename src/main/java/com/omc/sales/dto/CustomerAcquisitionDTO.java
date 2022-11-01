@@ -49,6 +49,16 @@ public class CustomerAcquisitionDTO {
 	
 	private String longitude;
 
+	private String channelNo;
+
+	public String getChannelNo() {
+		return channelNo;
+	}
+
+	public void setChannelNo(String channelNo) {
+		this.channelNo = channelNo;
+	}
+
 	private Timestamp subscriptionStartDate;
 	private Timestamp subscriptionEndDate;
 	private Timestamp lastSuccessSubscriptionDate;

@@ -128,6 +128,38 @@ public class CustomerDTO {
 	
 	private String aadharPicBack;
 
+	private String orderId;
+
+	private String channelNo;
+
+	public String getChannelNo() {
+		return channelNo;
+	}
+
+	public void setChannelNo(String channelNo) {
+		this.channelNo = channelNo;
+	}
+
+	private Integer paymentStatus;
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
+	public Integer getPaymentStatus() {
+		return paymentStatus;
+	}
+
+	public void setPaymentStatus(Integer paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+
+
+
 	public String getAadharPicFront() {
 		return aadharPicFront;
 	}

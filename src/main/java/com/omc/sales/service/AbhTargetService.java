@@ -15,6 +15,8 @@ import com.omc.sales.entity.AbhTarget;
 import com.omc.sales.entity.ChurnCustomer;
 import com.omc.sales.repository.AbhTargetRepository;
 
+import static org.hibernate.bytecode.BytecodeLogger.LOGGER;
+
 
 @Service
 public class AbhTargetService {
@@ -64,7 +66,7 @@ public class AbhTargetService {
 	}
 
 	@Transactional(propagation=Propagation.REQUIRED)
-	public List<AbhTarget> getAbhTargetByserId(String userId) {
+	public List<AbhTarget> getAbhTargetByUserId(String userId) {
 
 		 return abhTargetRepository.findAbhTargetByUserId(userId);
 	
@@ -90,6 +92,13 @@ public class AbhTargetService {
 		list.add(abhTarget);
 		return list;
 		
+	}
+	@Transactional(propagation=Propagation.REQUIRED)
+	public Long deleteAbhTarget(Long abhId) {
+		LOGGER.info("In deleteAbhTarget  Service"+abhTargetRepository.deleteByAbhId(abhId));
+		Long id=abhTargetRepository.deleteByAbhId(abhId);
+		return id;
+
 	}
 	
 	

@@ -70,5 +70,8 @@ public interface CustomerAcquisitionRepository extends JpaRepository<CustomerAcq
 //	@Query("SELECT SUM(totalSolarGenKw) AS total_solar_gen_kw_hh , SUBSTRING(eventTimeStamp,1,13) AS eventTimestamp_hh, omcId, plantId FROM Solar where omcId =:omcId and eventTimeStamp>=:statTime and eventTimeStamp<:endTime GROUP BY  eventTimestamp_hh, omcId ,plantId ORDER BY omcId,eventTimestamp_hh")
 //	public List<Object[]> getTotalSolarGenKwByOmcId(@Param("omcId") Integer omcId, @Param("statTime") Timestamp statTime, @Param("endTime") Timestamp endTime );
 
+	public Long deleteByid(Long Id);
+
+
 
 }

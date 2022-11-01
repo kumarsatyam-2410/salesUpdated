@@ -5,6 +5,20 @@ import java.util.List;
 public class CustomerResponseDTO extends AbstractResponseDTO{
 
 	private Long id;
+
+
+	private Long ppId;
+
+
+	public Long getPpId() {
+		return ppId;
+	}
+
+	public void setPpId(Long ppId) {
+		this.ppId = ppId;
+	}
+
+
 	
 	public Long getId() {
 		return id;

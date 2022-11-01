@@ -100,6 +100,8 @@ public class CustomerPaymentService {
 		customerPaymentDetails.setPaymentDate(customerPaymentDTO.getPaymentDate());
 		customerPaymentDetails.setPaymentReceivedUserId(customerPaymentDTO.getPaymentReceivedUserId());
 		customerPaymentDetails.setRemark(customerPaymentDTO.getRemark());
+		customerPaymentDetails.setCafNo(customerPaymentDTO.getCafNo());
+		customerPaymentDetails.setSalesExecId(customerPaymentDTO.getSalesExecId());
 		customerPaymentRepository.save(customerPaymentDetails);
 		return customerPaymentDetails.getCpId();
 		

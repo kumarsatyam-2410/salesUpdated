@@ -18,6 +18,8 @@ public interface NotificationRepository extends JpaRepository<Notification, Long
 	public Notification findByNotificationType(String notificationType);
 	
 	public Notification findByNotificationMode(String notificationMode);
+
+	public Long deleteByid(Long id);
 	
 	public Notification findByNotificationTypeAndNotificationMode(String notificationType,String notificationMode);
 

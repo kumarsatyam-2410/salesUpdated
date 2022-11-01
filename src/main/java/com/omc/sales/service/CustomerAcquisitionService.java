@@ -65,6 +65,7 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setActive(customerAcquisitionDTO.isActive());
 		customerAcquisitionEntity.setCustomerName(customerAcquisitionDTO.getCustomerName());
 		customerAcquisitionEntity.setPlantId(Long.valueOf(customerAcquisitionDTO.getPlantId()));
+		customerAcquisitionEntity.setChannelNo(customerAcquisitionDTO.getChannelNo());
 		customerAcquisitionEntity.setGender(customerAcquisitionDTO.getGender());
 		customerAcquisitionEntity.setAddress(customerAcquisitionDTO.getAddress());
 		customerAcquisitionEntity.setZipcode(customerAcquisitionDTO.getZipcode());
@@ -473,5 +474,12 @@ public class CustomerAcquisitionService {
 		 }
 		return customerAcquisition;
 	
+	}
+	@Transactional(propagation=Propagation.REQUIRED)
+	public Long deleteCustAcq(Long id) {
+		LOGGER.info("In deleteCustomerAcquisition  Service"+customerAcquisitionRepository.deleteByid(id));
+		Long Id=customerAcquisitionRepository.deleteByid(id);
+		return Id;
+
 	}
 }

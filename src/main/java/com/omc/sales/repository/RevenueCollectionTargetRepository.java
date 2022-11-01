@@ -17,4 +17,6 @@ public interface RevenueCollectionTargetRepository extends JpaRepository<Revenue
 	
 	public RevenueCollectionTarget findByRctId(Long rctId);
 
+	public Long deleteByRctId(Long rctId);
+
 }

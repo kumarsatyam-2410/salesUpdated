@@ -50,7 +50,7 @@ public class CustomerPaymentController {
     	CustomerPaymentResponseDTO customerPaymentResponseDTO = new CustomerPaymentResponseDTO();
     	try
     	{
-    		LOGGER.info("In CustomerController for addCustomer Request");
+    		LOGGER.info("In CustomerPaymentController for addCustomer Request");
     		Long id=customerPaymentService.addCustomerPayment(customerPaymentDTO);
     		customerPaymentResponseDTO.setId(id);
     		customerPaymentResponseDTO.setStatus(HttpStatus.CREATED.value());
@@ -134,7 +134,7 @@ public class CustomerPaymentController {
 		List<CustomerPaymentDetails> list = new ArrayList<>();
 		CustomerPaymentListResponseDTO customerPaymentListResponseDTO = new CustomerPaymentListResponseDTO();
 		try{
-			LOGGER.info("In CustomerController for listAll Customers Request");	
+			LOGGER.info("In CustomerPaymentController for listAll Customers Request");
 			list = customerPaymentService.listAllCustomers();
 		    customerPaymentListResponseDTO.setList(list);
 			customerPaymentListResponseDTO.setStatus(HttpStatus.OK.value());

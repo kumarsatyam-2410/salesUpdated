@@ -41,7 +41,11 @@ public class SllCustomer implements Serializable {
 	@ManyToOne
 	@JoinColumn( name="sll_id", nullable=false)
 	private PollSll pollSll;
-	
+
+	@Column(name = "channel_no")
+	private  String channelNo;
+
+
 	@Column(name = "added_on")
 	private Timestamp addedOn;
 
@@ -106,6 +110,13 @@ public class SllCustomer implements Serializable {
 
 	public void setUpdatedOn(Timestamp updatedOn) {
 		this.updatedOn = updatedOn;
+	}
+	public String getChannelNo() {
+		return channelNo;
+	}
+
+	public void setChannelNo(String channelNo) {
+		this.channelNo = channelNo;
 	}
 
 

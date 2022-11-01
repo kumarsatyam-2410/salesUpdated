@@ -3,24 +3,14 @@ package com.omc.sales.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.omc.sales.dto.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.omc.sales.dto.AbhTargetDTO;
-import com.omc.sales.dto.AbhTargetListResponseDTO;
-import com.omc.sales.dto.AbhTargetResponseDTO;
-import com.omc.sales.dto.ChurnCustomerDTO;
-import com.omc.sales.dto.ChurnCustomerResponseDTO;
-import com.omc.sales.dto.RevenueCollectionTargetListResponseDTO;
 import com.omc.sales.entity.AbhTarget;
 import com.omc.sales.entity.RevenueCollectionTarget;
 import com.omc.sales.exception.BaseException;
@@ -79,7 +69,7 @@ public class AbhTargetController {
 		ResponseEntity<AbhTargetResponseDTO> responseEntity;
 		AbhTargetResponseDTO abhTargetResponseDTO = new AbhTargetResponseDTO();
 		try{
-			LOGGER.info("In AbhTargetController for addAbhTarget Request");
+			LOGGER.info("In AbhTargetController for UpdateAbhTarget Request");
 			Long abhId = abhTargetService.updateAbhTarget(abhTargetDTO);
 			abhTargetResponseDTO.setStatus(HttpStatus.CREATED.value());
 			abhTargetResponseDTO.setAbhId(abhId);
@@ -93,14 +83,14 @@ public class AbhTargetController {
 			
 		}
 		catch(RuntimeException exception){
-			LOGGER.warn("Error occurred during runtime creating addAbhTarget", exception);
+			LOGGER.warn("Error occurred during runtime updating addAbhTarget", exception);
 			abhTargetResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			abhTargetResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
 			abhTargetResponseDTO.setErrorMessage(exception.getCause().getMessage());
 			responseEntity = new ResponseEntity<>(abhTargetResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
 			
 		} catch(Exception exception){
-			LOGGER.warn("Error occurred while creating addAbhTarget", exception);
+			LOGGER.warn("Error occurred while updating addAbhTarget", exception);
 			abhTargetResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			abhTargetResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
 			abhTargetResponseDTO.setErrorMessage(exception.getCause().getMessage());
@@ -111,26 +101,26 @@ public class AbhTargetController {
 	}
 
 	@RequestMapping(value = "/abhTarget/{userId}", method = RequestMethod.GET)
-	public ResponseEntity<AbhTargetListResponseDTO> getAbhTargetByserId(@PathVariable String userId) {
+	public ResponseEntity<AbhTargetListResponseDTO> getAbhTargetByUserId(@PathVariable String userId) {
 
 		ResponseEntity<AbhTargetListResponseDTO> responseEntity;
 		List<AbhTarget> list = new ArrayList<>();
 		AbhTargetListResponseDTO abhTargetListResponseDTO = new AbhTargetListResponseDTO();
 		try{
-			LOGGER.info("In CustomerAcquisitionController for listAll CustomerAcquisitions Request");	
-			list = abhTargetService.getAbhTargetByserId(userId);
+			LOGGER.info("In ABHTargetController for listAll ABHTarget Request");
+			list = abhTargetService.getAbhTargetByUserId(userId);
 			abhTargetListResponseDTO.setList(list);
 			abhTargetListResponseDTO.setStatus(HttpStatus.OK.value());
 			responseEntity = new ResponseEntity<>(abhTargetListResponseDTO,HttpStatus.OK);
 		}  catch(RuntimeException exception) {
-			LOGGER.warn("Error occurred while listing customerAcquisition", exception);
+			LOGGER.warn("Error occurred while listing ABHTarget", exception);
 			abhTargetListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			abhTargetListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
 			abhTargetListResponseDTO.setErrorMessage(exception.getCause().getMessage());
 			responseEntity = new ResponseEntity<>(abhTargetListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
 			
 		} catch(Exception exception){
-			LOGGER.warn("Error occurred while listing customerAcquisition", exception);
+			LOGGER.warn("Error occurred while listing ABHTarget", exception);
 			abhTargetListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			abhTargetListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
 			responseEntity = new ResponseEntity<>(abhTargetListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
@@ -146,20 +136,20 @@ public class AbhTargetController {
 		List<AbhTarget> list = new ArrayList<>();
 		AbhTargetListResponseDTO abhTargetListResponseDTO = new AbhTargetListResponseDTO();
 		try{
-			LOGGER.info("In CustomerAcquisitionController for listAll CustomerAcquisitions Request");	
+			LOGGER.info("In ANHTargetController for listAll CustomerAcquisitions Request");
 			list = abhTargetService.getListAbhTarget();
 			abhTargetListResponseDTO.setList(list);
 			abhTargetListResponseDTO.setStatus(HttpStatus.OK.value());
 			responseEntity = new ResponseEntity<>(abhTargetListResponseDTO,HttpStatus.OK);
 		}  catch(RuntimeException exception) {
-			LOGGER.warn("Error occurred while listing customerAcquisition", exception);
+			LOGGER.warn("Error occurred while listing ABHTarget", exception);
 			abhTargetListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			abhTargetListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
 			abhTargetListResponseDTO.setErrorMessage(exception.getCause().getMessage());
 			responseEntity = new ResponseEntity<>(abhTargetListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
 			
 		} catch(Exception exception){
-			LOGGER.warn("Error occurred while listing customerAcquisition", exception);
+			LOGGER.warn("Error occurred while listing ABHTarget", exception);
 			abhTargetListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			abhTargetListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
 			responseEntity = new ResponseEntity<>(abhTargetListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
@@ -176,20 +166,20 @@ public class AbhTargetController {
 		List<AbhTarget> list = new ArrayList<>();
 		AbhTargetListResponseDTO abhTargetListResponseDTO = new AbhTargetListResponseDTO();
 		try{
-			LOGGER.info("In CustomerAcquisitionController for listAll CustomerAcquisitions Request");	
+			LOGGER.info("In ABHTargetController for listAll ABHTarget Request");
 			list = abhTargetService.getAbhTargetByAddedBy(addedBy);
 			abhTargetListResponseDTO.setList(list);
 			abhTargetListResponseDTO.setStatus(HttpStatus.OK.value());
 			responseEntity = new ResponseEntity<>(abhTargetListResponseDTO,HttpStatus.OK);
 		}  catch(RuntimeException exception) {
-			LOGGER.warn("Error occurred while listing customerAcquisition", exception);
+			LOGGER.warn("Error occurred while listing ABHTarget", exception);
 			abhTargetListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			abhTargetListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
 			abhTargetListResponseDTO.setErrorMessage(exception.getCause().getMessage());
 			responseEntity = new ResponseEntity<>(abhTargetListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
 			
 		} catch(Exception exception){
-			LOGGER.warn("Error occurred while listing customerAcquisition", exception);
+			LOGGER.warn("Error occurred while listing ABHTarget", exception);
 			abhTargetListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			abhTargetListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
 			responseEntity = new ResponseEntity<>(abhTargetListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
@@ -206,20 +196,20 @@ public class AbhTargetController {
 		List<AbhTarget> list = new ArrayList<>();
 		AbhTargetListResponseDTO abhTargetListResponseDTO = new AbhTargetListResponseDTO();
 		try{
-			LOGGER.info("In CustomerAcquisitionController for listAll CustomerAcquisitions Request");	
+			LOGGER.info("In ABHTargetController for listAll ABH Target Request");
 			list = abhTargetService.getAbhTargetById(abhId);
 			abhTargetListResponseDTO.setList(list);
 			abhTargetListResponseDTO.setStatus(HttpStatus.OK.value());
 			responseEntity = new ResponseEntity<>(abhTargetListResponseDTO,HttpStatus.OK);
 		}  catch(RuntimeException exception) {
-			LOGGER.warn("Error occurred while listing customerAcquisition", exception);
+			LOGGER.warn("Error occurred while listing ABHTarget", exception);
 			abhTargetListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			abhTargetListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
 			abhTargetListResponseDTO.setErrorMessage(exception.getCause().getMessage());
 			responseEntity = new ResponseEntity<>(abhTargetListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
 			
 		} catch(Exception exception){
-			LOGGER.warn("Error occurred while listing customerAcquisition", exception);
+			LOGGER.warn("Error occurred while listing ABHTarget", exception);
 			abhTargetListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			abhTargetListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
 			responseEntity = new ResponseEntity<>(abhTargetListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
@@ -227,4 +217,31 @@ public class AbhTargetController {
 		}
 		return responseEntity;
 	}
+	@DeleteMapping("/deleteabhtarget/{abhId}")
+	public ResponseEntity<AbhTargetResponseDTO> deleteAbhTarget(@PathVariable Long abhId) {
+		ResponseEntity<AbhTargetResponseDTO> response;
+		AbhTargetResponseDTO abhTargetResponseDTO = new AbhTargetResponseDTO();
+		try {
+			LOGGER.info("In Abh Controller for deleting Abh Request");
+			Long id =abhTargetService.deleteAbhTarget(abhId);
+			abhTargetResponseDTO.setStatus(HttpStatus.OK.value());
+			abhTargetResponseDTO.setAbhId(abhId);
+			response = new ResponseEntity<>(abhTargetResponseDTO, HttpStatus.OK);
+		} catch (RuntimeException e) {
+			LOGGER.warn("Error occurred while deleting ABH TARGET", e);
+			abhTargetResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			abhTargetResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			response = new ResponseEntity<>(abhTargetResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			abhTargetResponseDTO.setErrorMessage(e.getCause().getMessage());
+		} catch (Exception e) {
+			LOGGER.warn("Error occurred while deleting ABH Target", e);
+			abhTargetResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			abhTargetResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			response = new ResponseEntity<>(abhTargetResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			abhTargetResponseDTO.setErrorMessage(e.getCause().getMessage());
+		}
+		return response;
+
+	}
+
 }

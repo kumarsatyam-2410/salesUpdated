@@ -16,6 +16,8 @@ import com.omc.sales.exception.ErrorCodes;
 import com.omc.sales.exception.SSNSQLException;
 import com.omc.sales.repository.NotificationRepository;
 
+import static org.hibernate.bytecode.BytecodeLogger.LOGGER;
+
 @Service
 public class NotificationService {
 
@@ -87,6 +89,13 @@ public class NotificationService {
 		LOGGER.info("Out Notification Updated for "+notificationEntity.getId()); 
 		return notificationEntity.getId();
 	}
+	@Transactional(propagation=Propagation.REQUIRED)
+	public Long deleteNotification(Long id) {
+		LOGGER.info("In deleteNotification  Service" + notificationRepository.deleteByid(id));
+		Long aid = notificationRepository.deleteByid(id);
+		return id;
 
+
+	}
 
 }

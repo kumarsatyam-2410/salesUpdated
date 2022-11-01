@@ -271,14 +271,14 @@ public class SalesHeadTargetController {
 			salesHeadTargetListResponseDTO.setStatus(HttpStatus.OK.value());
 			responseEntity = new ResponseEntity<>(salesHeadTargetListResponseDTO,HttpStatus.OK);
 		}  catch(RuntimeException exception) {
-			LOGGER.warn("Error occurred while listing SalesHeadTarget", exception);
+			LOGGER.warn("Error occurred while deleting SalesHeadTarget", exception);
 			salesHeadTargetListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			salesHeadTargetListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
 			salesHeadTargetListResponseDTO.setErrorMessage(exception.getCause().getMessage());
 			responseEntity = new ResponseEntity<>(salesHeadTargetListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
 			
 		} catch(Exception exception){
-			LOGGER.warn("Error occurred while listing SalesHeadTarget", exception);
+			LOGGER.warn("Error occurred while deleting SalesHeadTarget", exception);
 			salesHeadTargetListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			salesHeadTargetListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
 			responseEntity = new ResponseEntity<>(salesHeadTargetListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);

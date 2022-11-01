@@ -13,6 +13,16 @@ public class RevenueCollectionTargetListResponseDTO extends AbstractResponseDTO 
 	
 	List<RevenueCollectionTarget> list;
 
+	private Long rctId;
+
+	public Long getRctId() {
+		return rctId;
+	}
+
+	public void setRctId(Long rctId) {
+		this.rctId = rctId;
+	}
+
 	public List<RevenueCollectionTarget> getList() {
 		return list;
 	}

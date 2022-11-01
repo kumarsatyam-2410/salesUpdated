@@ -57,6 +57,73 @@ public class CustomerPaymentDetails implements Serializable {
 	@Column(name = "remark")
 	private String remark;
 
+	@Column(name = "razorpay_signature")
+	private String razorpaySignature;
+
+	@Column(name = "razorpay_payment_id")
+	private String razorpayPaymentId;
+
+	@Column(name = "razorpay_order_id")
+	private String razorpayOrderId;
+
+	@Column(name = "payment_status")
+	private Integer paymentStatus;
+
+	@Column(name = "caf_no")
+	private String cafNo;
+
+	@Column(name = "sales_exec_id")
+	private Integer salesExecId;
+
+	public Integer getSalesExecId() {
+		return salesExecId;
+	}
+
+	public void setSalesExecId(Integer salesExecId) {
+		this.salesExecId = salesExecId;
+	}
+
+	public String getCafNo() {
+		return cafNo;
+	}
+
+	public void setCafNo(String cafNo) {
+		this.cafNo = cafNo;
+	}
+
+	public String getRazorpaySignature() {
+		return razorpaySignature;
+	}
+
+	public void setRazorpaySignature(String razorpaySignature) {
+		this.razorpaySignature = razorpaySignature;
+	}
+
+	public String getRazorpayPaymentId() {
+		return razorpayPaymentId;
+	}
+
+	public void setRazorpayPaymentId(String razorpayPaymentId) {
+		this.razorpayPaymentId = razorpayPaymentId;
+	}
+
+	public String getRazorpayOrderId() {
+		return razorpayOrderId;
+	}
+
+	public void setRazorpayOrderId(String razorpayOrderId) {
+		this.razorpayOrderId = razorpayOrderId;
+	}
+
+	public Integer getPaymentStatus() {
+		return paymentStatus;
+	}
+
+	public void setPaymentStatus(Integer paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+
+
 	
 	
 	/*
@@ -195,15 +262,23 @@ public class CustomerPaymentDetails implements Serializable {
 		this.customerName = customerName;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "CustomerPaymentDetails [cpId=" + cpId + ", customerId=" + customerId + ", customerName=" + customerName
-				+ ", plantId=" + plantId + ", paymentMode=" + paymentMode + ", paymentAmount=" + paymentAmount
-				+ ", paymentCurrency=" + paymentCurrency + ", paymentDate=" + paymentDate + ", paymentReceivedUserId="
-				+ paymentReceivedUserId + ", remark=" + remark + "]";
+		return "CustomerPaymentDetails{" +
+				"cpId=" + cpId +
+				", customerId=" + customerId +
+				", customerName='" + customerName + '\'' +
+				", plantId=" + plantId +
+				", paymentMode='" + paymentMode + '\'' +
+				", paymentAmount=" + paymentAmount +
+				", paymentCurrency='" + paymentCurrency + '\'' +
+				", paymentDate=" + paymentDate +
+				", paymentReceivedUserId=" + paymentReceivedUserId +
+				", remark='" + remark + '\'' +
+				", razorpaySignature='" + razorpaySignature + '\'' +
+				", razorpayPaymentId='" + razorpayPaymentId + '\'' +
+				", razorpayOrderId='" + razorpayOrderId + '\'' +
+				", paymentStatus=" + paymentStatus +
+				'}';
 	}
-	
-	
-	}
+}

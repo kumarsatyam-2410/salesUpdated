@@ -18,6 +18,8 @@ import com.omc.sales.exception.ErrorCodes;
 import com.omc.sales.exception.SSNSQLException;
 import com.omc.sales.repository.PackageRepository;
 
+import static org.hibernate.bytecode.BytecodeLogger.LOGGER;
+
 @Service
 public class PackageService {
 
@@ -44,10 +46,8 @@ public class PackageService {
 		LOGGER.info("Request Received for createPackage with parameters:"+ "packageName: " + packageDTO.getPackageName());
 
 		// validate unique package
-		Package existingPackageEntity = packageRepository.findByPackageName(packageDTO.getPackageName());
-		if(existingPackageEntity != null){
-			throw new SSNSQLException("Not Unique Package", ErrorCodes.NOT_UNIQUE_PACKAGE);
-		}
+
+
 		
 		Package packageEntity = new Package();
 		packageEntity.setActive(packageDTO.isActive());
@@ -141,6 +141,14 @@ public class PackageService {
 	public List<Package> listAllPackages() {
 		
 		return packageRepository.findAllByOrderByIdDesc();
+	}
+	@Transactional(propagation=Propagation.REQUIRED)
+	public Long deletePackage(Long id) {
+		LOGGER.info("In deletePackage  Service" + packageRepository.deleteByid(id));
+		Long aid = packageRepository.deleteByid(id);
+		return id;
+
+
 	}
 
 

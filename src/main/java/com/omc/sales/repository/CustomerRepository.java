@@ -22,7 +22,9 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
 	public Customer findByCustomerName(String customerName);
 	public List<Customer> getCustomerById(Long id);
 	public List<Customer> findAllCustomerBySll(String sll);
-	
+
+
+
 	public List<Customer> findAllByOrderByIdDesc();
 	
 	 @Query(value="SELECT  * FROM `customers` WHERE customer_status =:customerStatus  limit :limits  offset :offsets " ,nativeQuery = true)

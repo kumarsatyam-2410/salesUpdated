@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  */
 @Entity
 @Table(name = "rms_country")
-public class Country implements Serializable{
+public class  Country implements Serializable{
 
 	/**
 	 * 

@@ -4,19 +4,13 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.omc.sales.dto.PlantListResponseDTO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.omc.sales.dto.CustomerDTO;
 import com.omc.sales.dto.CustomerListResponseDTO;
@@ -228,5 +222,37 @@ public class CustomerController {
 			customerResponseDTO.setErrorMessage(exception.getCause().getMessage());
 		}
 		return list;
+	}
+	@DeleteMapping("/deletecustomer/{id}")
+	public ResponseEntity<CustomerResponseDTO> deletePlant(@PathVariable Long id)
+	{
+		ResponseEntity<CustomerResponseDTO> response;
+		CustomerResponseDTO customerResponseDTO=new CustomerResponseDTO();
+		try
+		{
+			LOGGER.info("In CUSTOMER Controller for deleting CUSTOMER Request");
+			Long plantId=customerService.deleteCustomer(id);
+			customerResponseDTO.setStatus(HttpStatus.OK.value());
+			customerResponseDTO.setId(id);
+			response=new ResponseEntity<>(customerResponseDTO,HttpStatus.OK);
+		}
+		catch(RuntimeException e)
+		{
+			LOGGER.warn("Error occured while deleting customer", e);
+			customerResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			customerResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			response=new ResponseEntity<>(customerResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			customerResponseDTO.setErrorMessage(e.getCause().getMessage());
+		}
+		catch(Exception e)
+		{
+			LOGGER.warn("Error occurred while deleting customer", e);
+			customerResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			customerResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			response=new ResponseEntity<>(customerResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			customerResponseDTO.setErrorMessage(e.getCause().getMessage());
+		}
+		return response;
+
 	}
 }

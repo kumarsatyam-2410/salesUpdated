@@ -3,19 +3,13 @@ package com.omc.sales.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.omc.sales.dto.CafTableListResponseDTO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.omc.sales.dto.PackageDTO;
 import com.omc.sales.dto.PackageListResponseDTO;
@@ -24,6 +18,8 @@ import com.omc.sales.entity.Package;
 import com.omc.sales.exception.BaseException;
 import com.omc.sales.exception.ErrorCodes;
 import com.omc.sales.service.PackageService;
+
+import static org.hibernate.bytecode.BytecodeLogger.LOGGER;
 
 /**
  * The Class PackageController.
@@ -185,5 +181,32 @@ public class PackageController {
 			packageResponseDTO.setErrorMessage(exception.getCause().getMessage());
 		}
 		return responseEntity;
+	}
+	@DeleteMapping("/deletePackage/{id}")
+	public ResponseEntity<PackageResponseDTO> deletePackage(@PathVariable Long id
+	) {
+		ResponseEntity<PackageResponseDTO> response;
+		PackageResponseDTO packageResponseDTO = new PackageResponseDTO();
+		try {
+			LOGGER.info("In Package  Controller for deleting Package Request");
+			Long aid = packageService.deletePackage(id);
+			packageResponseDTO.setStatus(HttpStatus.OK.value());
+			packageResponseDTO.setId(id);
+			response = new ResponseEntity<>(packageResponseDTO, HttpStatus.OK);
+		} catch (RuntimeException e) {
+			LOGGER.warn("Error occurred while deleting Package", e);
+			packageResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			packageResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			response = new ResponseEntity<>(packageResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			packageResponseDTO.setErrorMessage(e.getCause().getMessage());
+		} catch (Exception e) {
+			LOGGER.warn("Error occurred while deleting Package", e);
+			packageResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			packageResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			response = new ResponseEntity<>(packageResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			packageResponseDTO.setErrorMessage(e.getCause().getMessage());
+		}
+		return response;
+
 	}
 }

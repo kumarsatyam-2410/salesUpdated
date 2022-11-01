@@ -184,10 +184,44 @@ public class Customer {
 	
 	@Column(name = "aadhar_pic_front")
 	private String aadharPicFront;
-	
+
 	@Column(name = "aadhar_pic_back")
 	private String aadharPicBack;
-	
+
+	@Column(name = "order_id")
+	private String orderId;
+
+	@Column(name = "payment_status")
+	private Integer paymentStatus;
+
+	@Column(name = "channel_no")
+	private String channelNo;
+
+	public String getChannelNo() {
+		return channelNo;
+	}
+
+	public void setChannelNo(String channelNo) {
+		this.channelNo = channelNo;
+	}
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
+	public Integer getPaymentStatus() {
+		return paymentStatus;
+	}
+
+	public void setPaymentStatus(Integer paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+
+
 	public String getAadharPicFront() {
 		return aadharPicFront;
 	}

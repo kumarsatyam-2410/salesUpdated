@@ -18,4 +18,6 @@ import com.omc.sales.entity.SllCustomer;
 public interface SllCustomerRepository extends JpaRepository<SllCustomer, Long> {
 
 
+
+
 }

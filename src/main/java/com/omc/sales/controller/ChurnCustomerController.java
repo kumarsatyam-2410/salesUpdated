@@ -80,19 +80,19 @@ public class ChurnCustomerController {
 		List<ChurnCustomer> list = new ArrayList<>();
 		ChurnUserListResponseDTO churnUserListResponseDTO = new ChurnUserListResponseDTO();
 		try{
-			LOGGER.info("In CustomerAcquisitionController for listAll CustomerAcquisitions Request");	
+			LOGGER.info("In CustomerAcquisitionController for listAll ChurnCustomer Request");
 			list = churnCustomerService.listAllChurnCustomer();
 			churnUserListResponseDTO.setList(list);
 			churnUserListResponseDTO.setStatus(HttpStatus.OK.value());
 			responseEntity = new ResponseEntity<>(churnUserListResponseDTO,HttpStatus.OK);
 		}  catch(RuntimeException exception) {
-			LOGGER.warn("Error occurred while listing customerAcquisition", exception);
+			LOGGER.warn("Error occurred while listing ChurnCustomer", exception);
 			churnUserListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			churnUserListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
 			responseEntity = new ResponseEntity<>(churnUserListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
 			churnUserListResponseDTO.setErrorMessage(exception.getCause().getMessage());
 		} catch(Exception exception){
-			LOGGER.warn("Error occurred while listing customerAcquisition", exception);
+			LOGGER.warn("Error occurred while listing ChurnCustomer", exception);
 			churnUserListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			churnUserListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
 			responseEntity = new ResponseEntity<>(churnUserListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);

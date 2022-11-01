@@ -3,30 +3,14 @@ package com.omc.sales.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.omc.sales.dto.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import com.omc.sales.dto.CafTableListResponseDTO;
-import com.omc.sales.dto.CustomerAcquisitionDTO;
-import com.omc.sales.dto.CustomerAcquisitionResponseDTO;
-import com.omc.sales.dto.DashboardDTO;
-import com.omc.sales.dto.LoginDTO;
-import com.omc.sales.dto.PlantSalesInventoryListResponseDTO;
-import com.omc.sales.dto.PlantUserListResponseDTO;
-import com.omc.sales.dto.UserListResponseDTO;
-import com.omc.sales.dto.UserResponseDTO;
 import com.omc.sales.entity.CafTable;
 import com.omc.sales.entity.Plant;
 import com.omc.sales.entity.PlantSalesInventory;
@@ -281,6 +265,32 @@ public class UserController {
 			
 		}
 		return responseEntity;
+	}
+	@DeleteMapping("/deleteuser/{id}")
+	public ResponseEntity<UserResponseDTO> deleteUser(@PathVariable Long id) {
+		ResponseEntity<UserResponseDTO> response;
+		UserResponseDTO userResponseDTO = new UserResponseDTO();
+		try {
+			LOGGER.info("In USER Controller for deleting User Request");
+			Long Id=userService.deleteUser(id);
+			userResponseDTO.setStatus(HttpStatus.OK.value());
+			userResponseDTO.setId(id);
+			response = new ResponseEntity<>(userResponseDTO, HttpStatus.OK);
+		} catch (RuntimeException e) {
+			LOGGER.warn("Error occurred while deleting user", e);
+			userResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			userResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			response = new ResponseEntity<>(userResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			userResponseDTO.setErrorMessage(e.getCause().getMessage());
+		} catch (Exception e) {
+			LOGGER.warn("Error occurred while deleting plant", e);
+			userResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			userResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			response = new ResponseEntity<>(userResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			userResponseDTO.setErrorMessage(e.getCause().getMessage());
+		}
+		return response;
+
 	}
 
 	

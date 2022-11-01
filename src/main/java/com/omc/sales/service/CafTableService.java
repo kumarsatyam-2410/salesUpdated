@@ -12,11 +12,13 @@ import com.omc.sales.dto.CafTableDTO;
 import com.omc.sales.entity.CafTable;
 import com.omc.sales.repository.CafTableRepository;
 
+import static org.hibernate.bytecode.BytecodeLogger.LOGGER;
+
 @Service
 public class CafTableService<cafNo> {
 	
 	@Autowired
-	private CafTableRepository cafTableRepository;
+	private CafTableRepository  cafTableRepository;
 
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
 	public String createCafNo(CafTableDTO cafTableDTO) {
@@ -69,8 +71,13 @@ public class CafTableService<cafNo> {
 		list.add(cafTable);
 		return list;
 	}
+	@Transactional(propagation=Propagation.REQUIRED)
+	public Long deleteCafTable(Long id) {
+		LOGGER.info("In deleteCaf  Service" + cafTableRepository.deleteByid(id));
+		Long aid = cafTableRepository.deleteByid(id);
+		return id;
 
-	
-	
+
+	}
 
 }

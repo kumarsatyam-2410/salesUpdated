@@ -38,6 +38,17 @@ public class CustomerAcquisition {
 	@Column(name = "saleshead_approval_status")
 	private String salesheadApprovalStatus;
 
+	@Column(name = "channel_no")
+	private String channelNo;
+
+	public String getChannelNo() {
+		return channelNo;
+	}
+
+	public void setChannelNo(String channelNo) {
+		this.channelNo = channelNo;
+	}
+
 	@Column(name = "address")
 	private String address;
 
@@ -250,6 +261,18 @@ public class CustomerAcquisition {
 	
 	@Column(name = "aadhar_pic_back")
 	private String aadharPicBack;
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
+	@Column(name = "order_id")
+	private String orderId;
+
 
 	public String getAadharPicFront() {
 		return aadharPicFront;

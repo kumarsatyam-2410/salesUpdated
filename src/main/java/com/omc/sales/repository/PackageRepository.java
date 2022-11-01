@@ -19,5 +19,7 @@ public List<Package> findByPackageTypeAndBillingTypeAndClosedPackage(String pack
 	public Package findByPackageName(String packageName);
 
 	public List<Package> findAllByOrderByIdDesc();
+
+	public Long deleteByid(Long id);
 	
 }

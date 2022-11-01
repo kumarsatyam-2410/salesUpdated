@@ -142,20 +142,20 @@ public class SubscriptionTypesController {
 		List<SubscriptionTypes> list = new ArrayList<>();
 		SubscriptionTypesListResponseDTO subscriptionTypesListResponseDTO = new SubscriptionTypesListResponseDTO();
 		try{
-			LOGGER.info("In SalesHeadTargetController for find SalesHeadTarget by salesHeadId Request");	
+			LOGGER.info("In SubscriptionTypesController to delete SubscriptionTypes Request");
 			subscriptionTypesService.deleteSubscriptionTypes(subId);
 			subscriptionTypesListResponseDTO.setErrorMessage("Record deleted successfully");
 			subscriptionTypesListResponseDTO.setStatus(HttpStatus.OK.value());
 			responseEntity = new ResponseEntity<>(subscriptionTypesListResponseDTO,HttpStatus.OK);
 		}  catch(RuntimeException exception) {
-			LOGGER.warn("Error occurred while listing SalesHeadTarget", exception);
+			LOGGER.warn("Error occurred while deleting SubscriptionTypes", exception);
 			subscriptionTypesListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			subscriptionTypesListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
 			subscriptionTypesListResponseDTO.setErrorMessage(exception.getCause().getMessage());
 			responseEntity = new ResponseEntity<>(subscriptionTypesListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
 			
 		} catch(Exception exception){
-			LOGGER.warn("Error occurred while listing SalesHeadTarget", exception);
+			LOGGER.warn("Error occurred while deleting SubscriptionTypes", exception);
 			subscriptionTypesListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			subscriptionTypesListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
 			responseEntity = new ResponseEntity<>(subscriptionTypesListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);

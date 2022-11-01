@@ -7,6 +7,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 import com.omc.sales.property.FileStorageProperties;
 
+import static org.hibernate.tool.schema.SchemaToolingLogging.LOGGER;
+
 
 @SpringBootApplication
 @EnableConfigurationProperties({FileStorageProperties.class})
@@ -15,7 +17,8 @@ public class SalesApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SalesApplication.class, args);
-		System.out.println("starting sales application.....");
+		//LOGGER.info("Welcome in SALES............");
+		System.out.println("WELCOME IN SALES");
 	}
 
 }

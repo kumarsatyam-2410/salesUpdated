@@ -22,6 +22,8 @@ import com.omc.sales.exception.SSNSQLException;
 import com.omc.sales.repository.PlantUsersRepository;
 import com.omc.sales.repository.UsersRepository;
 
+import static org.hibernate.bytecode.BytecodeLogger.LOGGER;
+
 
 @Service
 @Transactional(propagation = Propagation.REQUIRES_NEW)
@@ -46,6 +48,7 @@ public class UserService implements UserDetailsService {
 		return userRepository.findByEmail(email);
 	}
 	
+
 	public User getUserById(String id){
 		return userRepository.findById(Long.valueOf(id)).get();
 	}
@@ -79,6 +82,16 @@ public class UserService implements UserDetailsService {
 		return userRepository.findData(roleNo,userIds);
 	}
 
-	
-	
+	@Transactional(propagation=Propagation.REQUIRED)
+	public Long deleteUser(Long id) {
+		LOGGER.info("In deleteuser  Service"+userRepository.deleteByid(id));
+		Long Id=userRepository.deleteByid(id);
+		return Id;
+
+	}
+
+
+
+
+
 }

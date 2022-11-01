@@ -188,6 +188,34 @@ public class CustomerHistory {
 	@Column(name = "aadhar_pic_back")
 	private String aadharPicBack;
 
+	@Column(name = "order_id")
+	private String orderId;
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
+	public Integer getPaymentStatus() {
+		return paymentStatus;
+	}
+
+	public void setPaymentStatus(Integer paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+
+	@Column(name = "payment_status")
+	private Integer paymentStatus;
+
+
+
+
+
+
+
 	public String getAadharPicFront() {
 		return aadharPicFront;
 	}

@@ -27,7 +27,7 @@ import com.omc.sales.service.UserTargetService;
 
 @CrossOrigin
 @RestController
-public class UserTargetController {
+public class 	UserTargetController {
 	
 	/** The Constant logger. */
 	private static final org.apache.logging.log4j.Logger LOGGER = LogManager.getLogger(UserTargetController.class);
@@ -42,7 +42,7 @@ public class UserTargetController {
 		UserTargetResponseDTO userTargetResponseDTO=new UserTargetResponseDTO();
 		try
 		{
-			LOGGER.info("In UserTargetController for addusertarget Request");
+			LOGGER.info("In UserTargetController for addUserTarget Request");
 			Long id=userTargetService.addUserTarget(userTargetDTO);
 			userTargetResponseDTO.setTargetId(id);
 			userTargetResponseDTO.setStatus(HttpStatus.CREATED.value());

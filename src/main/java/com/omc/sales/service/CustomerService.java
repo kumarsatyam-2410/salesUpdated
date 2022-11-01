@@ -25,6 +25,8 @@ import com.omc.sales.exception.SSNSQLException;
 import com.omc.sales.repository.CustomerHistoryRepository;
 import com.omc.sales.repository.CustomerRepository;
 
+import static org.hibernate.bytecode.BytecodeLogger.LOGGER;
+
 @Service
 public class CustomerService {
 
@@ -63,6 +65,7 @@ public class CustomerService {
 
 		customerEntity.setId(customerDTO.getId());
 		customerEntity.setActive(customerDTO.isActive());
+		customerEntity.setChannelNo(customerDTO.getChannelNo());
 		customerEntity.setCustomerName(customerDTO.getCustomerName());
 		customerEntity.setGender(customerDTO.getGender());
 		customerEntity.setAddress(customerDTO.getAddress());
@@ -142,7 +145,6 @@ public class CustomerService {
 	public Long updateCustomer(CustomerDTO customerDTO) {
 		LOGGER.info("In updateCustomer  Service");
 		Customer customerEntity = customerRepository.findAllById(customerDTO.getId());
-		CustomerHist(customerEntity);
 		
 		if(customerDTO.getId() != null && customerDTO.getId() >= 0)
 		customerEntity.setId(customerDTO.getId());
@@ -150,7 +152,7 @@ public class CustomerService {
 		customerEntity.setActive(customerDTO.isActive());
 		if(customerDTO.getCustomerName() != null && customerDTO.getCustomerName().length() > 0 )
 		customerEntity.setCustomerName(customerDTO.getCustomerName());
-		
+
 		if(customerDTO.getGender() != null && customerDTO.getGender().length() > 0 )
 		customerEntity.setGender(customerDTO.getGender());
 		
@@ -181,6 +183,13 @@ public class CustomerService {
 		
 		if(customerDTO.getLongitude() != null && customerDTO.getLongitude().length() > 0 )
 		customerEntity.setLongitude(customerDTO.getLongitude());
+
+
+			customerEntity.setChannelNo(customerDTO.getChannelNo());
+
+
+
+
 		
 		customerEntity.setSubscriptionStartDate(customerDTO.getSubscriptionStartDate());
 		customerEntity.setSubscriptionEndDate(customerDTO.getSubscriptionEndDate());
@@ -405,9 +414,17 @@ public class CustomerService {
 	return customer;
 
       }
-	 
-		
+
+	@Transactional(propagation=Propagation.REQUIRED)
+	public Long deleteCustomer(Long id) {
+		LOGGER.info("In deleteSalesInventory  Service");
+		customerRepository.deleteById(id);
+		return id;
 	}
+
+
+
+}
 
 
 

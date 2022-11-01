@@ -1,5 +1,6 @@
 package com.omc.sales.dto;
 
+import java.io.StringWriter;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 
@@ -36,6 +37,71 @@ public class CustomerPaymentDTO {
 	private int paymentReceivedUserId;
 		
 	private String remark;
+
+
+	private String razorpayPaymentId;
+
+	private String cafNo;
+
+	private Integer salesExecId;
+
+	public Integer getSalesExecId() {
+		return salesExecId;
+	}
+
+	public void setSalesExecId(Integer salesExecId) {
+		this.salesExecId = salesExecId;
+	}
+
+	public String getCafNo() {
+		return cafNo;
+	}
+
+	public void setCafNo(String cafNo) {
+		this.cafNo = cafNo;
+	}
+
+	public String getRazorpayPaymentId() {
+		return razorpayPaymentId;
+	}
+
+	public void setRazorpayPaymentId(String razorpayPaymentId) {
+		this.razorpayPaymentId = razorpayPaymentId;
+	}
+
+	public String getRazorpayOrderId() {
+		return razorpayOrderId;
+	}
+
+	public void setRazorpayOrderId(String razorpayOrderId) {
+		this.razorpayOrderId = razorpayOrderId;
+	}
+
+	public Integer getPaymentStatus() {
+		return paymentStatus;
+	}
+
+	public void setPaymentStatus(Integer paymentStatus) {
+		this.paymentStatus = paymentStatus;
+	}
+
+	public String getRazorpaySignature() {
+		return razorpaySignature;
+	}
+
+	public void setRazorpaySignature(String razorpaySignature) {
+		this.razorpaySignature = razorpaySignature;
+	}
+
+	private String razorpayOrderId;
+
+
+	private Integer paymentStatus;
+
+
+	private String razorpaySignature;
+
+
 
 	public Long getCpId() {
 		return cpId;
@@ -120,10 +186,21 @@ public class CustomerPaymentDTO {
 
 	@Override
 	public String toString() {
-		return "CustomerPaymentDTO [cpId=" + cpId + ", customerId=" + customerId + ", customerName=" + customerName
-				+ ", plantId=" + plantId + ", paymentMode=" + paymentMode + ", paymentAmount=" + paymentAmount
-				+ ", paymentCurrency=" + paymentCurrency + ", paymentDate=" + paymentDate + ", paymentReceivedUserId="
-				+ paymentReceivedUserId + ", remark=" + remark + "]";
+		return "CustomerPaymentDTO{" +
+				"cpId=" + cpId +
+				", customerId=" + customerId +
+				", customerName='" + customerName + '\'' +
+				", plantId=" + plantId +
+				", paymentMode='" + paymentMode + '\'' +
+				", paymentAmount=" + paymentAmount +
+				", paymentCurrency='" + paymentCurrency + '\'' +
+				", paymentDate=" + paymentDate +
+				", paymentReceivedUserId=" + paymentReceivedUserId +
+				", remark='" + remark + '\'' +
+				", razorpayPaymentId='" + razorpayPaymentId + '\'' +
+				", razorpayOrderId='" + razorpayOrderId + '\'' +
+				", paymentStatus=" + paymentStatus +
+				", razorpaySignature='" + razorpaySignature + '\'' +
+				'}';
 	}
-
 }

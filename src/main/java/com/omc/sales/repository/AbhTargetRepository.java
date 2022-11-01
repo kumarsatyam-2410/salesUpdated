@@ -16,4 +16,7 @@ public interface AbhTargetRepository extends JpaRepository<AbhTarget,Long> {
 
 		public List<AbhTarget> findAllByOrderByAbhIdDesc();
 
+	    public Long deleteByAbhId(Long abhId);
+
+
 }

@@ -20,6 +20,8 @@ import com.omc.sales.entity.User;
 @Repository
 public interface PlantUsersRepository extends JpaRepository<PlantUsers, Long> {
 	
+
+
 	@Query("SELECT r.plant FROM PlantUsers r where r.user.id=:userId")
 	List<Plant> findPlantByUser(@Param("userId") Long userId);
 
