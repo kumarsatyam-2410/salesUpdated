@@ -37,8 +37,8 @@ public class AbhTargetService {
 		abhTarget.setComment(abhTargetDTO.getComment());
 		abhTarget.setNoCustomerAcqTarget(abhTargetDTO.getNoCustomerAcqTarget());
 		abhTarget.setTargetType(abhTargetDTO.getTargetType());
-		abhTarget.setTargetStartDate(abhTargetDTO.getTargetStartDate());
-		abhTarget.setTargetEndDate(abhTargetDTO.getTargetEndDate());
+		abhTarget.setYear(abhTargetDTO.getYear());
+		abhTarget.setMonth(abhTargetDTO.getMonth());
 		abhTarget.setAddedBy(abhTargetDTO.getAddedBy());
 		abhTargetRepository.save(abhTarget);
 		LOGGER.info("Out createAbhTarget service with return Value Churncusto"+abhTarget.getAbhId()); 
@@ -57,8 +57,8 @@ public class AbhTargetService {
 		abhTarget.setComment(abhTargetDTO.getComment());
 		abhTarget.setNoCustomerAcqTarget(abhTargetDTO.getNoCustomerAcqTarget());
 		abhTarget.setTargetType(abhTargetDTO.getTargetType());
-		abhTarget.setTargetStartDate(abhTargetDTO.getTargetStartDate());
-		abhTarget.setTargetEndDate(abhTargetDTO.getTargetEndDate());
+		abhTarget.setYear(abhTargetDTO.getYear());
+		abhTarget.setMonth(abhTargetDTO.getMonth());
 		abhTarget.setAddedBy(abhTargetDTO.getAddedBy());
 		abhTargetRepository.save(abhTarget);
 		LOGGER.info("Out updateAbhTarget service with return Value Churncusto"+abhTarget.getAbhId()); 

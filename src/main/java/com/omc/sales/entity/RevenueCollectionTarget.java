@@ -30,11 +30,11 @@ public class RevenueCollectionTarget {
 	@Column(name = "target_type")
 	private String targetType;
 	
-	@Column(name = "target_start_date")
-	private Date targetStartDate;
+	@Column(name = "year")
+	private String year;
 	
-	@Column(name = "target_end_date")
-	private Date targetEndDate;
+	@Column(name = "month")
+	private String month;
 	
 	@Column(name = "revenue_target_amount")
 	private BigDecimal revenueTargetAmount;
@@ -44,7 +44,23 @@ public class RevenueCollectionTarget {
 
 	@Column(name = "added_by")
 	private int addedBy;
-	
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
 	public int getAddedBy() {
 		return addedBy;
 	}
@@ -81,21 +97,7 @@ public class RevenueCollectionTarget {
 		this.targetType = targetType;
 	}
 
-	public Date getTargetStartDate() {
-		return targetStartDate;
-	}
 
-	public void setTargetStartDate(Date targetStartDate) {
-		this.targetStartDate = targetStartDate;
-	}
-
-	public Date getTargetEndDate() {
-		return targetEndDate;
-	}
-
-	public void setTargetEndDate(Date targetEndDate) {
-		this.targetEndDate = targetEndDate;
-	}
 
 	public BigDecimal getRevenueTargetAmount() {
 		return revenueTargetAmount;

@@ -3,6 +3,8 @@ package com.omc.sales.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.omc.sales.dto.*;
+import com.omc.sales.entity.AbhTarget;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.omc.sales.dto.SalesHeadTargetListResponseDTO;
-import com.omc.sales.dto.SubscriptionTypesDTO;
-import com.omc.sales.dto.SubscriptionTypesListResponseDTO;
-import com.omc.sales.dto.SubscriptionTypesResponseDTO;
 import com.omc.sales.entity.SalesHeadTarget;
 import com.omc.sales.entity.SubscriptionTypes;
 import com.omc.sales.exception.BaseException;
@@ -163,8 +161,38 @@ public class SubscriptionTypesController {
 		}
 		return responseEntity;
 	}
-	
+	@RequestMapping(value = "/subscriptionTypes/{subId}", method = RequestMethod.GET)
+	public ResponseEntity<SubscriptionTypesListResponseDTO> getSubscriptionTypesBySubId(@PathVariable Long subId) {
 
-	
-	
+		ResponseEntity<SubscriptionTypesListResponseDTO> responseEntity;
+		List<SubscriptionTypes> list = new ArrayList<>();
+		SubscriptionTypesListResponseDTO subscriptionTypesListResponseDTO = new SubscriptionTypesListResponseDTO();
+		try{
+			LOGGER.info("In SubscriptionType controller to list subscriptionType");
+			list = subscriptionTypesService.getSubscriptionTypeBySubId(subId);
+			subscriptionTypesListResponseDTO.setList(list);
+			subscriptionTypesListResponseDTO.setStatus(HttpStatus.OK.value());
+			responseEntity = new ResponseEntity<>(subscriptionTypesListResponseDTO,HttpStatus.OK);
+		}  catch(RuntimeException exception) {
+			LOGGER.warn("Error occurred while listing subscriptionTypes", exception);
+			subscriptionTypesListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			subscriptionTypesListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			subscriptionTypesListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+			responseEntity = new ResponseEntity<>(subscriptionTypesListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+
+		} catch(Exception exception){
+			LOGGER.warn("Error occurred while listing subscriptionTypes", exception);
+			subscriptionTypesListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			subscriptionTypesListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity = new ResponseEntity<>(subscriptionTypesListResponseDTO,HttpStatus.INTERNAL_SERVER_ERROR);
+			subscriptionTypesListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		}
+		return responseEntity;
+	}
+
+
+
+
+
+
 }

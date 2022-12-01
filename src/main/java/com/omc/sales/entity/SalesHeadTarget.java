@@ -25,13 +25,29 @@ public class SalesHeadTarget {
 	
 	@Column(name = "target_type")
 	private String targetType;
-	
-	@Column(name = "target_start_date")
-	private Timestamp targetStartDate;
-	
-	@Column(name = "target_end_date")
-	private Timestamp targetEndDate;
-	
+
+	@Column(name = "year")
+	private String year;
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	@Column(name = "month")
+	private String month ;
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
 	@Column(name = "no_customer_acq_target")
 	private int noCustomerAcqTarget;
 	
@@ -48,24 +64,8 @@ public class SalesHeadTarget {
 		super();
 	}
 
-	public Timestamp getTargetStartDate() {
-		return targetStartDate;
-	}
 
 
-	public void setTargetStartDate(Timestamp targetStartDate) {
-		this.targetStartDate = targetStartDate;
-	}
-
-
-	public Timestamp getTargetEndDate() {
-		return targetEndDate;
-	}
-
-
-	public void setTargetEndDate(Timestamp targetEndDate) {
-		this.targetEndDate = targetEndDate;
-	}
 
 
 	public Long getSalesHeadId() {

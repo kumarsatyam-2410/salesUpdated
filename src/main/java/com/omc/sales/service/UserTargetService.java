@@ -39,8 +39,8 @@ public class UserTargetService {
 		userTarget.setTargetId(userTargetDTO.getTargetId());
 		userTarget.setUserId(userTargetDTO.getUserId());
 		userTarget.setTargetType(userTargetDTO.getTargetType());
-		userTarget.setTargetStartDate(userTargetDTO.getTargetStartDate());
-		userTarget.setTargetEndDate(userTargetDTO.getTargetEndDate());
+		userTarget.setYear(userTargetDTO.getYear());
+		userTarget.setMonth(userTargetDTO.getMonth());
 		userTarget.setNoCustomerAcqTarget(userTargetDTO.getNoCustomerAcqTarget());
 		userTarget.setRevenueTargetAmount(userTargetDTO.getRevenueTargetAmount());
 		userTarget.setComment(userTargetDTO.getComment());
@@ -65,8 +65,8 @@ public class UserTargetService {
 		
 		userTarget.setUserId(userTargetDTO.getUserId());
 		userTarget.setTargetType(userTargetDTO.getTargetType());
-		userTarget.setTargetStartDate(userTargetDTO.getTargetStartDate());
-		userTarget.setTargetEndDate(userTargetDTO.getTargetEndDate());
+		userTarget.setYear(userTargetDTO.getYear());
+		userTarget.setMonth(userTargetDTO.getMonth());
 		userTarget.setNoCustomerAcqTarget(userTargetDTO.getNoCustomerAcqTarget());
 		userTarget.setRevenueTargetAmount(userTargetDTO.getRevenueTargetAmount());
 		userTarget.setComment(userTargetDTO.getComment());
@@ -87,7 +87,7 @@ public class UserTargetService {
 	}
 
 	@Transactional(propagation=Propagation.REQUIRED)
-	public List<UserTarget> listAllByUserId(String userId) {
+	public List<UserTarget> listAllByUserId(Integer userId) {
 		
 		return userTargetRepository.findListByUserId(userId);
 	}

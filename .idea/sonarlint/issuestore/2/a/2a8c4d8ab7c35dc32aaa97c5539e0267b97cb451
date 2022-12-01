@@ -1,0 +1,7 @@
+
+—
+java:S1186:"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(ÚÅÉä
+H
+java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8¦Ë‹ÅÅ0
+Q
+java:S1128"5Remove this unused import 'javax.persistence.Column'.(ìûæH8§Ë‹ÅÅ0

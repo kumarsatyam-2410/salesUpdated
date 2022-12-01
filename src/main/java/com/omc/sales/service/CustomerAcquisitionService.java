@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import com.omc.sales.entity.Customer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -140,6 +141,12 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setFinanceHeadApprovalStatus(customerAcquisitionDTO.getFinanceHeadApprovalStatus());
 		customerAcquisitionEntity.setAadharPicFront(customerAcquisitionDTO.getAadharPicFront());
 		customerAcquisitionEntity.setAadharPicBack(customerAcquisitionDTO.getAadharPicBack());
+		customerAcquisitionEntity.setAge(customerAcquisitionDTO.getAge());
+		customerAcquisitionEntity.setDistrict(customerAcquisitionDTO.getDistrict());
+		customerAcquisitionEntity.setCountry(customerAcquisitionDTO.getCountry());
+		customerAcquisitionEntity.setState(customerAcquisitionDTO.getState());
+		customerAcquisitionEntity.setKycDocType(customerAcquisitionDTO.getKycDocType());
+		customerAcquisitionEntity.setOtiCharge(customerAcquisitionDTO.getOtiCharge());
 	
 		customerAcquisitionRepository.save(customerAcquisitionEntity);
 
@@ -172,6 +179,23 @@ public class CustomerAcquisitionService {
 		customerAcquisitionEntity.setId(customerAcquisitionDTO.getId());
 		
 		customerAcquisitionEntity.setActive(customerAcquisitionDTO.isActive());
+		if(customerAcquisitionDTO.getOtiCharge() != 0 && customerAcquisitionDTO.getOtiCharge() >= 0 )
+		customerAcquisitionEntity.setOtiCharge(customerAcquisitionDTO.getOtiCharge());
+
+		if(customerAcquisitionDTO.getKycDocType() != null && customerAcquisitionDTO.getKycDocType() .length() > 0 )
+		customerAcquisitionEntity.setKycDocType(customerAcquisitionDTO.getKycDocType());
+
+		if(customerAcquisitionDTO.getAge() != 0 && customerAcquisitionDTO.getAge() >= 0 )
+		customerAcquisitionEntity.setAge(customerAcquisitionDTO.getAge());
+
+		if(customerAcquisitionDTO.getCountry() != 0 && customerAcquisitionDTO.getCountry() >= 0 )
+		customerAcquisitionEntity.setCountry(customerAcquisitionDTO.getCountry());
+
+		if(customerAcquisitionDTO.getState() != 0 && customerAcquisitionDTO.getState() >= 0 )
+		customerAcquisitionEntity.setState(customerAcquisitionDTO.getState());
+
+		if(customerAcquisitionDTO.getDistrict() != 0 && customerAcquisitionDTO.getDistrict() >= 0 )
+		customerAcquisitionEntity.setDistrict(customerAcquisitionDTO.getDistrict());
 		
 		if(customerAcquisitionDTO.getAbhApprovalStatus() != null && customerAcquisitionDTO.getAbhApprovalStatus().length() > 0 )
 		customerAcquisitionEntity.setAbhApprovalStatus(customerAcquisitionDTO.getAbhApprovalStatus());
@@ -445,6 +469,12 @@ public class CustomerAcquisitionService {
 		customerAcquisitionHistory.setFinanceHeadApprovalStatus(customerAcquisitionEntity.getFinanceHeadApprovalStatus());
 		customerAcquisitionHistory.setAadharPicFront(customerAcquisitionEntity.getAadharPicFront());
 		customerAcquisitionHistory.setAadharPicBack(customerAcquisitionEntity.getAadharPicBack());
+		customerAcquisitionHistory.setKycDocType(customerAcquisitionEntity.getKycDocType());
+		customerAcquisitionHistory.setOtiCharge(customerAcquisitionEntity.getOtiCharge());
+		customerAcquisitionHistory.setAge(customerAcquisitionEntity.getAge());
+		customerAcquisitionHistory.setCountry(customerAcquisitionEntity.getCountry());
+		customerAcquisitionHistory.setState(customerAcquisitionEntity.getState());
+		customerAcquisitionHistory.setDistrict(customerAcquisitionEntity.getDistrict());
 		customerAcquisitionHistoryRepository.save(customerAcquisitionHistory);
 		
 	}
@@ -456,25 +486,75 @@ public class CustomerAcquisitionService {
 		customerAcquisitionRepository.getAllCustomerAcquisitionByid(id).forEach(customerAcquisition::add);
 		return customerAcquisition;
 	}
-
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
-	public List<CustomerAcquisition> getcustomerAcquisitionByTimeAndStatus(Timestamp startDate,Timestamp endDate ,String acquisitionStatus ,Integer offsets,Integer limits) {
-	
-		LOGGER.info("In get CustomerAcquisition by times and status Service");
-		
-		 List<CustomerAcquisition> customerAcquisition=null;
-		 
-		 if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) && !StringUtils.isEmpty(acquisitionStatus) && !StringUtils.isEmpty(offsets) && !StringUtils.isEmpty(limits) ){
-			 
-			 customerAcquisition = customerAcquisitionRepository.findSubscriptionStartDateBetweenAndAcquisitionStatus(startDate, endDate, acquisitionStatus, offsets, limits) ;
-		 }else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate)) {
-			 customerAcquisition = customerAcquisitionRepository.getAllBetweenDates(startDate, endDate);
-		 }else {
-			 customerAcquisition = customerAcquisitionRepository.findAll();
-		 }
-		return customerAcquisition;
-	
+	public List<CustomerAcquisition> getCustomerByDateRangeAndStatus(Timestamp startDate, Timestamp endDate, String acquisitionStatus,
+														  Long[] plantId , Long[] salesExecutiveId) {
+		System.out.println("anythu"+salesExecutiveId);
+		LOGGER.info("in  Customer acquisition service get customer data by dateRange,customerStatus,plantId and salesExecutiveId");
+		List<CustomerAcquisition> customer = null;
+		if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) && !StringUtils.isEmpty(acquisitionStatus) && !StringUtils.isEmpty(plantId) && !StringUtils.isEmpty(salesExecutiveId) ){
+
+			customer = customerAcquisitionRepository.findCustomerByAllFilters(plantId, salesExecutiveId, startDate, endDate,acquisitionStatus);
+		}
+		else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate)  && !StringUtils.isEmpty(plantId) && !StringUtils.isEmpty(salesExecutiveId) ) {
+
+			customer = customerAcquisitionRepository.findCustomerByDateRangeAndAllId(plantId,salesExecutiveId,startDate,endDate);
+		}
+		else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate)  && !StringUtils.isEmpty(plantId)  ) {
+
+			customer =customerAcquisitionRepository.findCustomerByDateRangeAndPlantId(startDate,endDate,plantId);
+		}
+		else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) && StringUtils.isEmpty(acquisitionStatus) && StringUtils.isEmpty(plantId) && !StringUtils.isEmpty(salesExecutiveId) ){
+
+			customer = customerAcquisitionRepository.findCustomerByDateRangeANDId(startDate,endDate,salesExecutiveId);
+		}
+		else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate)  && !StringUtils.isEmpty(acquisitionStatus)  ) {
+
+			customer = customerAcquisitionRepository.findSubscriptionStartDateBetweenAndAcquisitionStatus(startDate,endDate,acquisitionStatus);
+		}
+		else if(!StringUtils.isEmpty(salesExecutiveId)&& !StringUtils.isEmpty(plantId)  && !StringUtils.isEmpty(acquisitionStatus)  ) {
+
+			customer = customerAcquisitionRepository.findByIdAndStatus(salesExecutiveId,plantId,acquisitionStatus);
+		}
+		else if(StringUtils.isEmpty(startDate)&& StringUtils.isEmpty(endDate) && StringUtils.isEmpty(acquisitionStatus) && !StringUtils.isEmpty(plantId) && !StringUtils.isEmpty(salesExecutiveId) ){
+
+			customer = customerAcquisitionRepository.findByPlantIdAndSalesExecutiveId(plantId,salesExecutiveId);
+		}
+		else if(!StringUtils.isEmpty(acquisitionStatus)&& !StringUtils.isEmpty(plantId)    ) {
+
+			customer = customerAcquisitionRepository.findByCustomerStatusAndPlantId(acquisitionStatus,plantId);
+		}
+		else if(!StringUtils.isEmpty(acquisitionStatus)&& !StringUtils.isEmpty(salesExecutiveId)    ) {
+
+			customer = customerAcquisitionRepository.findByCustomerStatusAndSalesExecutiveId(acquisitionStatus,salesExecutiveId);
+		}
+		else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) && StringUtils.isEmpty(acquisitionStatus) && StringUtils.isEmpty(plantId) && StringUtils.isEmpty(salesExecutiveId) ){
+
+			customer = customerAcquisitionRepository.getAllBetweenDates(startDate,endDate);
+		}
+
+		else if(!StringUtils.isEmpty(plantId)  ) {
+
+			customer = customerAcquisitionRepository.getCustomerByPlantId(plantId);
+		}
+		//System.out.println("anythu"+salesExecutiveId);
+
+		else if(!StringUtils.isEmpty(salesExecutiveId)  ) {
+			customer = customerAcquisitionRepository.findCustomerBySalesExecutiveId(salesExecutiveId);
+		}
+
+		else if(!StringUtils.isEmpty(acquisitionStatus)  ) {
+
+			customer = customerAcquisitionRepository.findByAcquisitionStatus(acquisitionStatus);
+		}
+		else  {
+			customer =customerAcquisitionRepository.findAll();
+		}
+		return customer;
+
 	}
+
+
 	@Transactional(propagation=Propagation.REQUIRED)
 	public Long deleteCustAcq(Long id) {
 		LOGGER.info("In deleteCustomerAcquisition  Service"+customerAcquisitionRepository.deleteByid(id));
@@ -482,4 +562,5 @@ public class CustomerAcquisitionService {
 		return Id;
 
 	}
+
 }

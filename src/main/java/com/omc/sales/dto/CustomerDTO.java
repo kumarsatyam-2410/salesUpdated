@@ -1,5 +1,7 @@
 package com.omc.sales.dto;
 
+import com.omc.sales.entity.Plant;
+
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -56,7 +58,7 @@ public class CustomerDTO {
 	
 	private Long custAcqId;
 	
-	private int plantId;
+	private Plant plantId;
 	
 	private Long omcId;
 	
@@ -131,6 +133,81 @@ public class CustomerDTO {
 	private String orderId;
 
 	private String channelNo;
+
+
+	private String kycDocType;
+
+
+	private Integer country;
+
+
+	private Integer state;
+
+
+	private Integer district;
+
+
+  private Integer age;
+
+
+	private Integer otiCharge;
+
+
+	public Plant getPlantId() {
+		return plantId;
+	}
+
+	public void setPlantId(Plant plantId) {
+		this.plantId = plantId;
+	}
+
+	public String getKycDocType() {
+		return kycDocType;
+	}
+
+	public void setKycDocType(String kycDocType) {
+		this.kycDocType = kycDocType;
+	}
+
+	public Integer getCountry() {
+		return country;
+	}
+
+	public void setCountry(Integer country) {
+		this.country = country;
+	}
+
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
+	}
+
+	public Integer getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(Integer district) {
+		this.district = district;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public Integer getOtiCharge() {
+		return otiCharge;
+	}
+
+	public void setOtiCharge(Integer otiCharge) {
+		this.otiCharge = otiCharge;
+	}
 
 	public String getChannelNo() {
 		return channelNo;
@@ -601,13 +678,9 @@ public class CustomerDTO {
 		this.custAcqId = custAcqId;
 	}
 
-	public int getPlantId() {
-		return plantId;
-	}
 
-	public void setPlantId(int plantId) {
-		this.plantId = plantId;
-	}
+
+
 
 	@Override
 	public String toString() {

@@ -2,6 +2,7 @@ package com.omc.sales.service;
 
 import java.util.List;
 
+import com.omc.sales.entity.AbhTarget;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,5 +69,13 @@ public class SubscriptionTypesService {
 		
 		subscriptionTypesRepository.deleteById(subId);
 	}
+
+	@Transactional(propagation=Propagation.REQUIRED)
+	public List<SubscriptionTypes> getSubscriptionTypeBySubId(Long subId) {
+
+		return subscriptionTypesRepository.findSubscriptionTypeBySubId(subId);
+
+	}
+
 
 }

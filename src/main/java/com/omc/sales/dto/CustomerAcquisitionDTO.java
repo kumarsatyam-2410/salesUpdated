@@ -174,7 +174,73 @@ public class CustomerAcquisitionDTO {
 	private String aadharPicFront;
 	
 	private String aadharPicBack;
-	
+
+	private Integer otiCharge;
+
+
+
+	private String kycDocType;
+
+
+	private Integer country;
+
+
+	private Integer state;
+
+
+	private Integer district;
+
+
+	private Integer age;
+
+	public Integer getOtiCharge() {
+		return otiCharge;
+	}
+
+	public void setOtiCharge(Integer otiCharge) {
+		this.otiCharge = otiCharge;
+	}
+
+	public String getKycDocType() {
+		return kycDocType;
+	}
+
+	public void setKycDocType(String kycDocType) {
+		this.kycDocType = kycDocType;
+	}
+
+	public Integer getCountry() {
+		return country;
+	}
+
+	public void setCountry(Integer country) {
+		this.country = country;
+	}
+
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
+	}
+
+	public Integer getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(Integer district) {
+		this.district = district;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
 	public String getAadharPicFront() {
 		return aadharPicFront;
 	}

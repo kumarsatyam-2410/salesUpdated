@@ -8,7 +8,7 @@ import com.omc.sales.entity.UserTarget;
 
 public interface UserTargetRepository extends JpaRepository<UserTarget,Long> {
 
-   public List<UserTarget> findListByUserId(String userId);
+   public List<UserTarget> findListByUserId(Integer userId);
 
 public List<UserTarget> getListByAddedBy(int addedBy);
 

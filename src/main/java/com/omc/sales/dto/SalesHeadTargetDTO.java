@@ -11,9 +11,9 @@ public class SalesHeadTargetDTO {
 
 	private String targetType;
 
-	private Timestamp targetStartDate;
+	private  String year;
 	
-	private Timestamp targetEndDate;
+	private String month;
 	
 	private int noCustomerAcqTarget;
 	
@@ -22,6 +22,22 @@ public class SalesHeadTargetDTO {
 	private String comment;
 	
 	private int addedBy;
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
 
 	public SalesHeadTargetDTO() {
 		super();
@@ -51,21 +67,8 @@ public class SalesHeadTargetDTO {
 		this.targetType = targetType;
 	}
 
-	public Timestamp getTargetStartDate() {
-		return targetStartDate;
-	}
 
-	public void setTargetStartDate(Timestamp targetStartDate) {
-		this.targetStartDate = targetStartDate;
-	}
 
-	public Timestamp getTargetEndDate() {
-		return targetEndDate;
-	}
-
-	public void setTargetEndDate(Timestamp targetEndDate) {
-		this.targetEndDate = targetEndDate;
-	}
 
 	public int getNoCustomerAcqTarget() {
 		return noCustomerAcqTarget;

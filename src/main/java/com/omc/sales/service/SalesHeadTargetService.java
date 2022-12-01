@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.omc.sales.entity.AbhTarget;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +36,8 @@ public class SalesHeadTargetService {
 		salesHeadTarget.setSalesHeadId(salesHeadTargetDTO.getSalesHeadId());
 		salesHeadTarget.setUserId(salesHeadTargetDTO.getUserId());
 		salesHeadTarget.setTargetType(salesHeadTargetDTO.getTargetType());
-		salesHeadTarget.setTargetStartDate(salesHeadTargetDTO.getTargetStartDate());
-		salesHeadTarget.setTargetEndDate(salesHeadTargetDTO.getTargetEndDate());
+		salesHeadTarget.setYear(salesHeadTargetDTO.getYear());
+		salesHeadTarget.setMonth(salesHeadTargetDTO.getMonth());
 		salesHeadTarget.setNoCustomerAcqTarget(salesHeadTargetDTO.getNoCustomerAcqTarget());
 		salesHeadTarget.setRevenueTargetAmount(salesHeadTargetDTO.getRevenueTargetAmount());
 		salesHeadTarget.setComment(salesHeadTargetDTO.getComment());
@@ -57,8 +58,8 @@ public class SalesHeadTargetService {
 		}else {
 			salesHeadTarget.setUserId(salesHeadTargetDTO.getUserId());
 			salesHeadTarget.setTargetType(salesHeadTargetDTO.getTargetType());
-			salesHeadTarget.setTargetStartDate(salesHeadTargetDTO.getTargetStartDate());
-			salesHeadTarget.setTargetEndDate(salesHeadTargetDTO.getTargetEndDate());
+			salesHeadTarget.setYear(salesHeadTargetDTO.getYear());
+			salesHeadTarget.setMonth(salesHeadTargetDTO.getMonth());
 			salesHeadTarget.setNoCustomerAcqTarget(salesHeadTargetDTO.getNoCustomerAcqTarget());
 			salesHeadTarget.setRevenueTargetAmount(salesHeadTargetDTO.getRevenueTargetAmount());
 			salesHeadTarget.setComment(salesHeadTargetDTO.getComment());
@@ -86,6 +87,12 @@ public class SalesHeadTargetService {
 		SalesHeadTarget salesHeadTarget=salesHeadTargetRepository.findBySalesHeadId(salesHeadId);
 		list.add(salesHeadTarget);
 		return list;
+	}
+	@Transactional(propagation=Propagation.REQUIRED)
+	public List<SalesHeadTarget> getSalesHeadTargetBySalesHeadId1(Long salesHeadId) {
+
+		return salesHeadTargetRepository.findSalesHeadTargetBySalesHeadId(salesHeadId);
+
 	}
 
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)

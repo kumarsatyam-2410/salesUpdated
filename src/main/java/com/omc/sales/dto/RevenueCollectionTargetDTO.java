@@ -11,9 +11,9 @@ public class RevenueCollectionTargetDTO {
 	
 	private String targetType;
 	
-	private Date targetStartDate;
+	private String year;
 	
-	private Date targetEndDate;
+	private String month;
 
 	private BigDecimal revenueTargetAmount;
 	
@@ -22,7 +22,23 @@ public class RevenueCollectionTargetDTO {
 	private int addedBy;
 	
 	private int userId;
-	
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
 	public int getUserId() {
 		return userId;
 	}
@@ -51,9 +67,7 @@ public class RevenueCollectionTargetDTO {
 		this.targetType = targetType;
 	}
 
-	public Date getTargetStartDate() {
-		return targetStartDate;
-	}
+
 	
 	public Long getRctId() {
 		return rctId;
@@ -63,17 +77,7 @@ public class RevenueCollectionTargetDTO {
 		this.rctId = rctId;
 	}
 
-	public void setTargetStartDate(Date targetStartDate) {
-		this.targetStartDate = targetStartDate;
-	}
 
-	public Date getTargetEndDate() {
-		return targetEndDate;
-	}
-
-	public void setTargetEndDate(Date targetEndDate) {
-		this.targetEndDate = targetEndDate;
-	}
 
 	public BigDecimal getRevenueTargetAmount() {
 		return revenueTargetAmount;

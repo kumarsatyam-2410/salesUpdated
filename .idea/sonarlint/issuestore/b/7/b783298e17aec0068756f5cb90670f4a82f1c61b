@@ -1,0 +1,63 @@
+
+J
+java:S3740U"/Provide the parametrized type for this generic.(Ï´Šıÿÿÿÿ
+K
+java:S3740º"/Provide the parametrized type for this generic.(Ï´Šıÿÿÿÿ
+K
+java:S3740İ"/Provide the parametrized type for this generic.(Ï´Šıÿÿÿÿ
+K
+java:S3740€"/Provide the parametrized type for this generic.(Ï´Šıÿÿÿÿ
+ƒ
+java:S1192b"hDefine a constant instead of duplicating this literal "Error occurred while listing UserTarget" 8 times.(×Æƒíùÿÿÿÿ
+’
+java:S1192Y"wDefine a constant instead of duplicating this literal "In UserTargetController for listAll usertarget Request" 4 times.(™Ğ›‰ùÿÿÿÿ
+\
+java:S34576"AFormat specifiers should be used instead of string concatenation.(‹‹¡éıÿÿÿÿ
+W
+java:S1854f"<Remove this useless assignment to local variable "response".(ÕÛùöûÿÿÿÿ
+W
+java:S1854n"<Remove this useless assignment to local variable "response".(ÕÛùöûÿÿÿÿ
+R
+java:S1854]"<Remove this useless assignment to local variable "response".(š¤£í
+C
+java:S1481T"-Remove this unused "response" local variable.(€œäÊ
+_
+java:S2147h"DCombine this catch with the one at line 96, which has the same body.(¼Ôîàùÿÿÿÿ
+a
+java:S2147Š"ECombine this catch with the one at line 130, which has the same body.(¼Ôîàùÿÿÿÿ
+R
+java:S1854"6Remove this useless assignment to local variable "id".(¤Ú—°øÿÿÿÿ
+a
+java:S2147«"ECombine this catch with the one at line 163, which has the same body.(¼Ôîàùÿÿÿÿ
+C
+java:S1481"'Remove this unused "id" local variable.(¤Ú—°øÿÿÿÿ
+X
+java:S1854Ë"<Remove this useless assignment to local variable "response".(ÕÛùöûÿÿÿÿ
+X
+java:S1854Ó"<Remove this useless assignment to local variable "response".(ÕÛùöûÿÿÿÿ
+S
+java:S1854Â"<Remove this useless assignment to local variable "response".(š¤£í
+D
+java:S1481¹"-Remove this unused "response" local variable.(€œäÊ
+a
+java:S2147Í"ECombine this catch with the one at line 197, which has the same body.(¼Ôîàùÿÿÿÿ
+X
+java:S1854î"<Remove this useless assignment to local variable "response".(ÕÛùöûÿÿÿÿ
+X
+java:S1854ö"<Remove this useless assignment to local variable "response".(ÕÛùöûÿÿÿÿ
+S
+java:S1854å"<Remove this useless assignment to local variable "response".(š¤£í
+D
+java:S1481Ü"-Remove this unused "response" local variable.(€œäÊ
+a
+java:S2147ğ"ECombine this catch with the one at line 232, which has the same body.(¼Ôîàùÿÿÿÿ
+X
+java:S1854‘"<Remove this useless assignment to local variable "response".(ÕÛùöûÿÿÿÿ
+X
+java:S1854™"<Remove this useless assignment to local variable "response".(ÕÛùöûÿÿÿÿ
+S
+java:S1854ˆ"<Remove this useless assignment to local variable "response".(š¤£í
+D
+java:S1481ÿ"-Remove this unused "response" local variable.(€œäÊ
+a
+java:S2147“"ECombine this catch with the one at line 267, which has the same body.(¼Ôîàùÿÿÿÿ

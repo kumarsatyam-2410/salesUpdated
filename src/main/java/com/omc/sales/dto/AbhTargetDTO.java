@@ -9,13 +9,29 @@ public class AbhTargetDTO {
 	
 	private Long abhId;
 	
-	private String userId;
+	private Integer userId;
 	
 	private String targetType;
 	
-	private Date targetStartDate;
-	
-	private Date targetEndDate;
+	private String year;
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	private String month;
 
 	private int noCustomerAcqTarget;
 	
@@ -35,7 +51,7 @@ public class AbhTargetDTO {
 		this.addedBy = addedBy;
 	}
 
-	public String getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 	
@@ -49,7 +65,7 @@ public class AbhTargetDTO {
 
 
 
-	public void setUserId(String userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 
@@ -61,21 +77,6 @@ public class AbhTargetDTO {
 		this.targetType = targetType;
 	}
 
-	public Date getTargetStartDate() {
-		return targetStartDate;
-	}
-
-	public void setTargetStartDate(Date targetStartDate) {
-		this.targetStartDate = targetStartDate;
-	}
-
-	public Date getTargetEndDate() {
-		return targetEndDate;
-	}
-
-	public void setTargetEndDate(Date targetEndDate) {
-		this.targetEndDate = targetEndDate;
-	}
 
 	public int getNoCustomerAcqTarget() {
 		return noCustomerAcqTarget;

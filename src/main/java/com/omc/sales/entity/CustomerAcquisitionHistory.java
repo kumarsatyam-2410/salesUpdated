@@ -170,6 +170,72 @@ public class CustomerAcquisitionHistory {
 	@Column(name = "aadhar_pic_back")
 	private String aadharPicBack;
 
+	@Column(name = "kyc_doc_type")
+	private String kycDocType;
+
+	@Column(name = "oti_charge")
+	private Integer otiCharge;
+
+	@Column(name = "age")
+	private Integer age;
+
+	@Column(name = "country")
+	private Integer country;
+
+	@Column(name = "state")
+	private Integer state;
+
+	@Column(name = "district")
+	private Integer district;
+
+	public String getKycDocType() {
+		return kycDocType;
+	}
+
+	public void setKycDocType(String kycDocType) {
+		this.kycDocType = kycDocType;
+	}
+
+	public Integer getOtiCharge() {
+		return otiCharge;
+	}
+
+	public void setOtiCharge(Integer otiCharge) {
+		this.otiCharge = otiCharge;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public Integer getCountry() {
+		return country;
+	}
+
+	public void setCountry(Integer country) {
+		this.country = country;
+	}
+
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
+	}
+
+	public Integer getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(Integer district) {
+		this.district = district;
+	}
+
 	public String getAadharPicFront() {
 		return aadharPicFront;
 	}

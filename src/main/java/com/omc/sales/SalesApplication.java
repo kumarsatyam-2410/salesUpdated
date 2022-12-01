@@ -5,9 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
-import com.omc.sales.property.FileStorageProperties;
-
-import static org.hibernate.tool.schema.SchemaToolingLogging.LOGGER;
+import com.omc.sales.repository.property.FileStorageProperties;
 
 
 @SpringBootApplication

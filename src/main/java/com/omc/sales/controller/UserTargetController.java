@@ -180,7 +180,7 @@ public class 	UserTargetController {
    }
    
    @GetMapping("/getallusertargetByUserId/{userId}")
- 	public List<UserTarget> listAllByUserId(@PathVariable String userId)
+ 	public List<UserTarget> listAllByUserId(@PathVariable Integer userId)
  	{
      	ResponseEntity<UserTargetResponseListDTO> response;
  		List<UserTarget> list=new ArrayList();

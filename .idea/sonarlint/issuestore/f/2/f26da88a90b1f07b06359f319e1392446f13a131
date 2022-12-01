@@ -1,0 +1,31 @@
+
+e
+java:S4488'"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ØŞÅíøÿÿÿÿ
+W
+java:S34573"AFormat specifiers should be used instead of string concatenation.(š™×
+X
+java:S1854Z"BRemove this useless assignment to local variable "responseEntity".(‚¨à¤
+X
+java:S1854`"BRemove this useless assignment to local variable "responseEntity".(‚¨à¤
+]
+java:S1854U"BRemove this useless assignment to local variable "responseEntity".(¥ÙÚØúÿÿÿÿ
+^
+java:S4488J"HReplace "@RequestMapping(method = RequestMethod.GET)" with "@GetMapping"(ùÌó
+I
+java:S1481M"3Remove this unused "responseEntity" local variable.(ŒêŠ¢
+Z
+java:S2147\"DCombine this catch with the one at line 86, which has the same body.(®ËúÃ
+^
+java:S4488g"HReplace "@RequestMapping(method = RequestMethod.PUT)" with "@PutMapping"(¥ÆÏŒ
+[
+java:S2147w"ECombine this catch with the one at line 113, which has the same body.(®ËúÃ
+N
+java:S1854ˆ"7Remove this useless assignment to local variable "aid".(˜°°°
+\
+java:S2147’"ECombine this catch with the one at line 140, which has the same body.(”ı¾
+?
+java:S1481ˆ"(Remove this unused "aid" local variable.(˜°°°
+a
+java:S1128"FRemove this unused import 'com.omc.sales.dto.CafTableListResponseDTO'.(†ÂËıÿÿÿÿ
+d
+java:S1128"IRemove this unused import 'org.hibernate.bytecode.BytecodeLogger.LOGGER'.(ÚüşÀøÿÿÿÿ

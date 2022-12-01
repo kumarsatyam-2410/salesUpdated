@@ -20,16 +20,16 @@ public class UserTarget {
 	private Long targetId;
 	
 	@Column(name="user_id")
-	private String userId;
+	private Integer userId;
 	
 	@Column(name="target_type")
 	private String targetType;
 	
-	@Column(name="target_start_date")
-	private Timestamp targetStartDate;
+	@Column(name="year")
+	private String year;
 	
-	@Column(name="target_end_date")
-	private Timestamp targetEndDate;
+	@Column(name="month")
+	private String month;
 	
 	@Column(name="no_customer_acq_target")
 	private Long noCustomerAcqTarget;
@@ -43,8 +43,22 @@ public class UserTarget {
 	@Column(name = "added_by")
 	private int addedBy;
 
-	
-	
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
 	public int getAddedBy() {
 		return addedBy;
 	}
@@ -65,11 +79,11 @@ public class UserTarget {
 		this.targetId = targetId;
 	}
 
-	public String getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 
@@ -81,21 +95,6 @@ public class UserTarget {
 		this.targetType = targetType;
 	}
 
-	public Timestamp getTargetStartDate() {
-		return targetStartDate;
-	}
-
-	public void setTargetStartDate(Timestamp targetStartDate) {
-		this.targetStartDate = targetStartDate;
-	}
-
-	public Timestamp getTargetEndDate() {
-		return targetEndDate;
-	}
-
-	public void setTargetEndDate(Timestamp targetEndDate) {
-		this.targetEndDate = targetEndDate;
-	}
 
 	public Long getNoCustomerAcqTarget() {
 		return noCustomerAcqTarget;
@@ -124,7 +123,7 @@ public class UserTarget {
 	@Override
 	public String toString() {
 		return "UserTarget [targetId=" + targetId + ", userId=" + userId + ", targetType=" + targetType
-				+ ", targetStartDate=" + targetStartDate + ", targetEndDate=" + targetEndDate + ", noCustomerAcqTarget="
+				+ ", year=" + year + ", month=" + month + ", noCustomerAcqTarget="
 				+ noCustomerAcqTarget + ", revenueTargetAmount=" + revenueTargetAmount + ", comment=" + comment + "]";
 	}
 	

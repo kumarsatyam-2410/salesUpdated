@@ -1,4 +1,4 @@
-package com.omc.sales.property;
+package com.omc.sales.repository.property;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

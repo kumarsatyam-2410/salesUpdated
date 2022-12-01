@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import com.omc.sales.entity.Customer;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -44,17 +45,57 @@ public interface CustomerAcquisitionRepository extends JpaRepository<CustomerAcq
 	@Query(value = "from CustomerAcquisition t where subscription_start_date BETWEEN :startDate AND :endDate")
 	public List<CustomerAcquisition> getAllBetweenDates(@Param("startDate")Timestamp startDate,@Param("endDate")Timestamp endDate);
 
-	
-	  @Query(value="SELECT  * FROM `customers_acquisition` WHERE acquisition_status =:acquisitionStatus AND (subscription_start_date BETWEEN :startDate AND :endDate)  limit :limits  offset :offsets " ,nativeQuery = true)
-	public List<CustomerAcquisition> findSubscriptionStartDateBetweenAndAcquisitionStatus(
-            @Param("startDate") Timestamp startDate,
-            @Param("endDate") Timestamp endDate, @Param("acquisitionStatus") String acquisitionStatus ,@Param("offsets") Integer offsets,@Param("limits")  Integer limits);
+	@Query (value="SELECT * from customers_acquisition ud where ud.plant_id in ?1", nativeQuery=true)
+	public List<CustomerAcquisition> getCustomerByPlantId(Long[] plantId);
+
+	@Query (value="SELECT * from customers_acquisition ud where ud.sales_executive_id in ?1", nativeQuery=true)
+	public List<CustomerAcquisition> findCustomerBySalesExecutiveId(@Param("saleExecutiveId") Long[] salesExecutiveId);
 
 	
-			 
-		
-	  
-	
+	  @Query(value="SELECT  * FROM `customers_acquisition` WHERE acquisition_status =:acquisitionStatus AND (subscription_start_date BETWEEN :startDate AND :endDate)" ,nativeQuery = true)
+	public List<CustomerAcquisition> findSubscriptionStartDateBetweenAndAcquisitionStatus(
+            @Param("startDate") Timestamp startDate,
+            @Param("endDate") Timestamp endDate, @Param("acquisitionStatus") String acquisitionStatus);
+
+	public List<CustomerAcquisition> findByAcquisitionStatus(String acquisitionStatus);
+
+	@Query(value="SELECT * FROM customers_acquisition WHERE plant_id IN (:plantId) AND sales_executive_id IN (:salesExecutiveId) AND acquisition_status =:acquisitionStatus  AND subscription_start_date BETWEEN :startDate AND :endDate" ,nativeQuery = true)
+	public List<CustomerAcquisition> findCustomerByAllFilters(
+			@Param("plantId") Long[] plantId,
+			@Param("salesExecutiveId") Long[] salesExecutiveId, @Param("startDate") Timestamp startDate,@Param("endDate")Timestamp endDate,@Param("acquisitionStatus") String acquisitionStatus);
+
+	@Query(value="SELECT * FROM customers_acquisition WHERE plant_id IN (:plantId) AND sales_executive_id IN (:salesExecutiveId) AND subscription_start_date BETWEEN :startDate AND :endDate" ,nativeQuery = true)
+	public List<CustomerAcquisition> findCustomerByDateRangeAndAllId(
+			@Param("plantId") Long[] plantId,
+			@Param("salesExecutiveId") Long[] salesExecutiveId, @Param("startDate") Timestamp startDate,@Param("endDate")Timestamp endDate);
+
+	@Query(value="SELECT * FROM customers_acquisition WHERE plant_id IN (:plantId) AND subscription_start_date BETWEEN :startDate AND :endDate" ,nativeQuery = true)
+	public List<CustomerAcquisition> findCustomerByDateRangeAndPlantId(
+			@Param("startDate") Timestamp startDate,
+			@Param("endDate") Timestamp endDate, @Param("plantId") Long[] plantId );
+
+
+
+	@Query(value="SELECT * FROM customers_acquisition WHERE sales_executive_id IN (:salesExecutiveId) AND subscription_start_date BETWEEN :startDate AND :endDate" ,nativeQuery = true)
+	public List<CustomerAcquisition> findCustomerByDateRangeANDId(
+			@Param("startDate") Timestamp startDate,
+			@Param("endDate") Timestamp endDate, @Param("salesExecutiveId") Long[] salesExecutiveId );
+	@Query (value="SELECT * from customers_acquisition ud where ud.sales_executive_id in ?1 AND ud.plant_id in ?2 AND ud.acquisition_status=?3", nativeQuery=true)
+	List<CustomerAcquisition> findByIdAndStatus(@Param("saleExecutiveId")Long[] salesExecutiveId,@Param("plantId")Long[] plantId,@Param("acquisitionStatus")String acquisitionStatus);
+	@Query (value="SELECT * from customers_acquisition ud where ud.sales_executive_id in ?1 AND ud.plant_id in ?2", nativeQuery=true)
+	public  List<CustomerAcquisition> findByPlantIdAndSalesExecutiveId(@Param("saleExecutiveId")Long[] salesExecutiveId,@Param("plantId")Long[] plantId);
+
+	@Query (value="SELECT * from customers_acquisition ud where ud.acquisition_status=?1 AND ud.plant_id in ?2", nativeQuery=true)
+	public  List<CustomerAcquisition> findByCustomerStatusAndPlantId(@Param("customerStatus")String customerStatus,@Param("plantId")Long[] plantId);
+
+
+	@Query (value="SELECT * from customers_acquisition ud where ud.acquisition_status=?1 AND ud.sales_executive_id in ?2", nativeQuery=true)
+	public  List<CustomerAcquisition> findByCustomerStatusAndSalesExecutiveId(@Param("acquisitionStatus")String acquisitionStatus,@Param("salesExecutiveId")Long[] salesExecutiveId);
+
+
+
+
+
 	public List<CustomerAcquisition> findByIsActiveAndAcquisitionStatusAndSalesExecutiveId(Boolean isActive, String acquisition_status, String salesId);
 	//public List<CustomerAcquisition> findByAcquisitionStatus(Boolean isActive, String acquisition_status);
 	

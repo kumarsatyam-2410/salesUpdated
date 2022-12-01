@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.omc.sales.repository.PlantRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,11 @@ public class CustomerService {
 	
 	@Autowired
 	private CustomerHistoryRepository customerHistoryRepository;
-		
+
+	@Autowired
+	private PlantRepository plantRepository;
+
+
 	/**
 	 * Creates the customer.
 	 *
@@ -65,6 +70,8 @@ public class CustomerService {
 
 		customerEntity.setId(customerDTO.getId());
 		customerEntity.setActive(customerDTO.isActive());
+		customerEntity.setCustAcqId(customerDTO.getCustAcqId());
+		customerEntity.setPaymentStatus(customerDTO.getPaymentStatus());
 		customerEntity.setChannelNo(customerDTO.getChannelNo());
 		customerEntity.setCustomerName(customerDTO.getCustomerName());
 		customerEntity.setGender(customerDTO.getGender());
@@ -84,6 +91,12 @@ public class CustomerService {
 		customerEntity.setCustomerStatus(customerDTO.getCustomerStatus());
 		customerEntity.setSalesExecutiveId(customerDTO.getSalesExecutiveId());
 		customerEntity.setPlantId(customerDTO.getPlantId());
+
+		//customerEntity.setPlantId(customerRepository.findAllById(Long.valueOf()).getPlantId());
+
+
+
+
 		customerEntity.setOmcId(customerDTO.getOmcId());
 		customerEntity.setCustomerUid(customerDTO.getCustomerUid());
 		customerEntity.setCustomerType(customerDTO.getCustomerType());////////////////////////////////////////
@@ -119,7 +132,14 @@ public class CustomerService {
 		customerEntity.setUnsubType(customerDTO.getUnsubType());
 		customerEntity.setAadharPicFront(customerDTO.getAadharPicFront());
 		customerEntity.setAadharPicBack(customerDTO.getAadharPicBack());
-			customerRepository.save(customerEntity);
+		customerEntity.setKycDocType(customerDTO.getKycDocType());
+		customerEntity.setCountry(customerDTO.getCountry());
+		customerEntity.setState(customerDTO.getState());
+		customerEntity.setDistrict(customerDTO.getDistrict());
+		customerEntity.setAge(customerDTO.getAge());
+		customerEntity.setOtiCharge(customerDTO.getOtiCharge());
+
+		customerRepository.save(customerEntity);
 
 		LOGGER.info("Out createCustomer service with return Value customerId:"+customerEntity.getId()); 
 		return customerEntity.getId();
@@ -132,7 +152,7 @@ public class CustomerService {
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
 	public List<Customer> listAllCustomers()throws SSNSQLException  {
 		LOGGER.info("In listAllCustomers  Service");
-		return customerRepository.findAllByOrderByIdDesc();
+		return customerRepository.findAll();
 		
 		
 //		List<Customer> customer = new ArrayList<>();
@@ -145,167 +165,76 @@ public class CustomerService {
 	public Long updateCustomer(CustomerDTO customerDTO) {
 		LOGGER.info("In updateCustomer  Service");
 		Customer customerEntity = customerRepository.findAllById(customerDTO.getId());
-		
-		if(customerDTO.getId() != null && customerDTO.getId() >= 0)
+		CustomerHist(customerEntity);
+
 		customerEntity.setId(customerDTO.getId());
-		
 		customerEntity.setActive(customerDTO.isActive());
-		if(customerDTO.getCustomerName() != null && customerDTO.getCustomerName().length() > 0 )
+		customerEntity.setCustAcqId(customerDTO.getCustAcqId());
+		customerEntity.setPaymentStatus(customerDTO.getPaymentStatus());
+		customerEntity.setChannelNo(customerDTO.getChannelNo());
 		customerEntity.setCustomerName(customerDTO.getCustomerName());
-
-		if(customerDTO.getGender() != null && customerDTO.getGender().length() > 0 )
 		customerEntity.setGender(customerDTO.getGender());
-		
-		if(customerDTO.getAddress() != null && customerDTO.getAddress().length() > 0 )
 		customerEntity.setAddress(customerDTO.getAddress());
-		
-		System.out.println("lenght =" + customerDTO.getZipcode().length());
-		if(customerDTO.getZipcode() != null && customerDTO.getZipcode().length() > 0 )
 		customerEntity.setZipcode(customerDTO.getZipcode());
-		
-		if(customerDTO.getMobile() != null && customerDTO.getMobile().length() > 0 )
 		customerEntity.setMobile(customerDTO.getMobile());
-		
-		if(customerDTO.getAdharNumber() != null && customerDTO.getAdharNumber().length() > 0 )
 		customerEntity.setAdharNumber(customerDTO.getAdharNumber());
-		
-		if(customerDTO.getPackageType() != null && customerDTO.getPackageType().length() > 0 )
 		customerEntity.setPackageType(customerDTO.getPackageType());
-		
-		if(customerDTO.getSubscriptionType() != null && customerDTO.getSubscriptionType().length() > 0 )
 		customerEntity.setSubscriptionType(customerDTO.getSubscriptionType());
-		
-		if(customerDTO.getCustomerPic() != null && customerDTO.getCustomerPic().length() > 0 )
 		customerEntity.setCustomerPic(customerDTO.getCustomerPic());
-		
-		if(customerDTO.getLatitude() != null && customerDTO.getLatitude().length() > 0 )
 		customerEntity.setLatitude(customerDTO.getLatitude());
-		
-		if(customerDTO.getLongitude() != null && customerDTO.getLongitude().length() > 0 )
 		customerEntity.setLongitude(customerDTO.getLongitude());
-
-
-			customerEntity.setChannelNo(customerDTO.getChannelNo());
-
-
-
-
-		
 		customerEntity.setSubscriptionStartDate(customerDTO.getSubscriptionStartDate());
 		customerEntity.setSubscriptionEndDate(customerDTO.getSubscriptionEndDate());
 		customerEntity.setLastSuccessSubscriptionDate(customerDTO.getLastSuccessSubscriptionDate());
-		//customerEntity.setAddedOn(customerDTO.getAddedOn());
-		
-		if(customerDTO.getCustomerStatus() != null && customerDTO.getCustomerStatus().length() > 0 )
+		customerEntity.setAddedOn(customerDTO.getAddedOn());
 		customerEntity.setCustomerStatus(customerDTO.getCustomerStatus());
-		
-		if(customerDTO.getSalesExecutiveId() != 0 && customerDTO.getSalesExecutiveId() >= 0 )
 		customerEntity.setSalesExecutiveId(customerDTO.getSalesExecutiveId());
-		
-		if(customerDTO.getPlantId() != 0 && customerDTO.getPlantId() >= 0 )
 		customerEntity.setPlantId(customerDTO.getPlantId());
-		
-		if(customerDTO.getOmcId() != null && customerDTO.getOmcId() >= 0 )
+
 		customerEntity.setOmcId(customerDTO.getOmcId());
-		
-		if(customerDTO.getCustomerUid() != null && customerDTO.getCustomerUid().length() > 0 )
 		customerEntity.setCustomerUid(customerDTO.getCustomerUid());
-		
-		if(customerDTO.getCustomerType() != null && customerDTO.getCustomerType().length() > 0 )
-		customerEntity.setCustomerType(customerDTO.getCustomerType()); 
-		
-		if(customerDTO.getSubscriptionPackageAmount() != null && customerDTO.getSubscriptionPackageAmount() != null )
+		customerEntity.setCustomerType(customerDTO.getCustomerType());////////////////////////////////////////
 		customerEntity.setSubscriptionPackageAmount(customerDTO.getSubscriptionPackageAmount());
-		
-		if(customerDTO.getSubscription_Package_id() != null && customerDTO.getSubscription_Package_id() >= 0 )
 		customerEntity.setSubscription_Package_id(customerDTO.getSubscription_Package_id());
-		
-		if(customerDTO.getType() != null && customerDTO.getType().length() > 0 )
 		customerEntity.setType(customerDTO.getType());
-		
 		customerEntity.setDate_cancell_hold_unhold(customerDTO.getDate_cancell_hold_unhold());
-		
-		if(customerDTO.getRemarks() != null && customerDTO.getRemarks().length() > 0 )
 		customerEntity.setRemarks(customerDTO.getRemarks());
-		
-		if(customerDTO.getSpiCategory() != null && customerDTO.getSpiCategory().length() > 0 )
 		customerEntity.setSpiCategory(customerDTO.getSpiCategory());
-		
-		if(customerDTO.getDeviceConnected() != null && customerDTO.getDeviceConnected().length() > 0 )
 		customerEntity.setDeviceConnected(customerDTO.getDeviceConnected());
-		
-		if(customerDTO.getFatherHusbandName() != null && customerDTO.getFatherHusbandName().length() > 0 )
 		customerEntity.setFatherHusbandName(customerDTO.getFatherHusbandName());
-		
-		if(customerDTO.getPoll_no() != null && customerDTO.getPoll_no() >= 0 )
 		customerEntity.setPoll_no(customerDTO.getPoll_no());
-		
-		if(customerDTO.getWire_meter() != null && customerDTO.getWire_meter() != null )
 		customerEntity.setWire_meter(customerDTO.getWire_meter());
-		
-		if(customerDTO.getBigBoard() != null && customerDTO.getBigBoard().length() > 0 )
 		customerEntity.setBigBoard(customerDTO.getBigBoard());
-		
-		if(customerDTO.getSmallBoard() != null && customerDTO.getSmallBoard().length() > 0 )
 		customerEntity.setSmallBoard(customerDTO.getSmallBoard());
-		
-		if(customerDTO.getLed() != null && customerDTO.getLed().length() > 0 )
 		customerEntity.setLed(customerDTO.getLed());
-		
-		if(customerDTO.getTypeOfEstablishment() != null && customerDTO.getTypeOfEstablishment().length() > 0 )
 		customerEntity.setTypeOfEstablishment(customerDTO.getTypeOfEstablishment());
-		
 		customerEntity.setLiveDate(customerDTO.getLiveDate());
-		
-		if(customerDTO.getCurrentPackageAmount() != null && customerDTO.getCurrentPackageAmount() != null )
 		customerEntity.setCurrentPackageAmount(customerDTO.getCurrentPackageAmount());
-		
-		if(customerDTO.getCurrentPackageId() != null && customerDTO.getCurrentPackageId() >= 0 )
 		customerEntity.setCurrentPackageId(customerDTO.getCurrentPackageId());
-		
-		if(customerDTO.getCafNo() != null && customerDTO.getCafNo().length() > 0 )
 		customerEntity.setCafNo(customerDTO.getCafNo());
-		
-		if(customerDTO.getBillingType() != null && customerDTO.getBillingType().length() > 0 )
 		customerEntity.setBillingType(customerDTO.getBillingType());
-		
-		if(customerDTO.getSll() != null && customerDTO.getSll() .length() > 0 )
 		customerEntity.setSll(customerDTO.getSll());
-		
-		if(customerDTO.getNoOfRcb() != null && customerDTO.getNoOfRcb() >= 0 )
 		customerEntity.setNoOfRcb(customerDTO.getNoOfRcb());
-		
-		if(customerDTO.getCreatedBy() != 0 && customerDTO.getCreatedBy() > 0 )
 		customerEntity.setCreatedBy(customerDTO.getCreatedBy());
-		
-    	if(customerDTO.getPaymentBy() != 0 && customerDTO.getPaymentBy() >= 0 )
 		customerEntity.setPaymentBy(customerDTO.getPaymentBy());
-    	
-		if(customerDTO.getActivatedBy() != 0 && customerDTO.getActivatedBy() >= 0 )
 		customerEntity.setActivatedBy(customerDTO.getActivatedBy());
-		
-		if(customerDTO.getTypeOfBoard() != null && customerDTO.getTypeOfBoard() .length() > 0 )
 		customerEntity.setTypeOfBoard(customerDTO.getTypeOfBoard());
-		
-		if(customerDTO.getInstallationCertificate() != null && customerDTO.getInstallationCertificate() .length() > 0 )
 		customerEntity.setInstallationCertificate(customerDTO.getInstallationCertificate());
-		
-		if(customerDTO.getUnSubscribe() != null && customerDTO.getUnSubscribe() .length() > 0 )
 		customerEntity.setUnSubscribe(customerDTO.getUnSubscribe());
-		
 		customerEntity.setLastExpiryDate(customerDTO.getLastExpiryDate());
-		
 		customerEntity.setChurnDate(customerDTO.getChurnDate());
-		
-		if(customerDTO.getUnsubType() != null && customerDTO.getUnsubType() .length() > 0 )
 		customerEntity.setUnsubType(customerDTO.getUnsubType());
-		
-		if(customerDTO.getAadharPicFront() != null && customerDTO.getAadharPicFront() .length() > 0 )
 		customerEntity.setAadharPicFront(customerDTO.getAadharPicFront());
-		
-		if(customerDTO.getAadharPicBack() != null && customerDTO.getAadharPicBack() .length() > 0 )
 		customerEntity.setAadharPicBack(customerDTO.getAadharPicBack());
+		customerEntity.setKycDocType(customerDTO.getKycDocType());
+		customerEntity.setCountry(customerDTO.getCountry());
+		customerEntity.setState(customerDTO.getState());
+		customerEntity.setDistrict(customerDTO.getDistrict());
+		customerEntity.setAge(customerDTO.getAge());
+		customerEntity.setOtiCharge(customerDTO.getOtiCharge());
+
 		
+
 		customerRepository.save(customerEntity);
 		LOGGER.info("Out Customer Updated for "+customerEntity.getId()); 
 		return customerEntity.getId();
@@ -338,7 +267,7 @@ public class CustomerService {
 		customerHistory.setCustomerStatus(customerEntity.getCustomerStatus());
 		customerHistory.setSalesExecutiveId(customerEntity.getSalesExecutiveId());
 		customerHistory.setCustAcqId(customerEntity.getCustAcqId());
-		customerHistory.setPlantId(customerEntity.getPlantId());
+		//customerHistory.setPlantId(customerEntity.getPlantId());
 		customerHistory.setOmcId(customerEntity.getOmcId());
 		customerHistory.setLed(customerEntity.getLed());
 		customerHistory.setLiveDate(customerEntity.getLiveDate());
@@ -374,7 +303,13 @@ public class CustomerService {
 		customerHistory.setChurnDate(customerEntity.getChurnDate());
 		customerHistory.setAadharPicFront(customerEntity.getAadharPicFront());
 		customerHistory.setAadharPicBack(customerEntity.getAadharPicBack());
-		customerHistoryRepository.save(customerHistory);
+/*		customerHistory.setKycDocType(customerEntity.getKycDocType());
+		customerHistory.setOtiCharge(customerEntity.getOtiCharge());
+		customerHistory.setAge(customerEntity.getAge());
+		customerHistory.setCountry(customerEntity.getCountry());
+		customerHistory.setState(customerEntity.getState());
+		customerHistory.setDistrict(customerEntity.getDistrict());
+		customerHistoryRepository.save(customerHistory);*/
 
 		
 	}
@@ -393,33 +328,80 @@ public class CustomerService {
 		return customerRepository.findAllCustomerBySll(sll);
 	}
 
-	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
-	public List<Customer> getCustomerByDateRangeAndStatus(Timestamp startDate, Timestamp endDate, String customerStatus,
-			Integer offsets, Integer limits) {
-		
-		LOGGER.info("in  Customer service get customer data by dateRange and status"); 
-		List<Customer> customer = null;
-		
-       if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) && !StringUtils.isEmpty(customerStatus) && !StringUtils.isEmpty(offsets) && !StringUtils.isEmpty(limits) ){
-			 
-    	   customer = customerRepository.findSubscriptionStartDateBetweenAndAcquisitionStatus(startDate, endDate, customerStatus, offsets, limits) ;
-		 }else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate)) {
-			 customer = customerRepository.getAllBetweenDates(startDate, endDate);
-		 }else if(!StringUtils.isEmpty(customerStatus) && !StringUtils.isEmpty(offsets) && !StringUtils.isEmpty(limits) ) {
-			 customer = customerRepository.findCustomerStatus(customerStatus , offsets ,limits);
-		 }
-		 else if(!StringUtils.isEmpty(offsets) && !StringUtils.isEmpty(limits)) {
-			   customer = customerRepository.findCustomerByLimitsAndOffSets(offsets ,limits);
-		 }
-	return customer;
 
-      }
 
 	@Transactional(propagation=Propagation.REQUIRED)
 	public Long deleteCustomer(Long id) {
 		LOGGER.info("In deleteSalesInventory  Service");
 		customerRepository.deleteById(id);
 		return id;
+	}
+
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
+	public List<Customer> getCustomerByDateRangeAndStatus(Timestamp startDate, Timestamp endDate, String customerStatus,
+														  Long[] plantId , Long[] salesExecutiveId) {
+		System.out.println("anythu"+salesExecutiveId);
+		LOGGER.info("in  Customer service get customer data by dateRange,customerStatus,plantId and salesExecutiveId");
+		List<Customer> customer = null;
+		if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) && !StringUtils.isEmpty(customerStatus) && !StringUtils.isEmpty(plantId) && !StringUtils.isEmpty(salesExecutiveId) ){
+
+			customer = customerRepository.findCustomerByAllFilters(plantId, salesExecutiveId, startDate, endDate,customerStatus);
+		}
+		else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate)  && !StringUtils.isEmpty(plantId) && !StringUtils.isEmpty(salesExecutiveId) ) {
+
+          customer = customerRepository.findCustomerByDateRangeAndAllId(plantId,salesExecutiveId,startDate,endDate);
+		}
+		else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate)  && !StringUtils.isEmpty(plantId)  ) {
+
+			customer =customerRepository.findCustomerByDateRangeAndPlantId(startDate,endDate,plantId);
+		}
+		else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) && StringUtils.isEmpty(customerStatus) && StringUtils.isEmpty(plantId) && !StringUtils.isEmpty(salesExecutiveId) ){
+
+			customer = customerRepository.findCustomerByDateRangeAndId(salesExecutiveId,startDate,endDate);
+		}
+		else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate)  && !StringUtils.isEmpty(customerStatus)  ) {
+
+			customer = customerRepository.findSubscriptionStartDateBetweenAndAcquisitionStatus(startDate,endDate,customerStatus);
+		}
+		else if(!StringUtils.isEmpty(salesExecutiveId)&& !StringUtils.isEmpty(plantId)  && !StringUtils.isEmpty(customerStatus)  ) {
+
+			customer = customerRepository.findByIdAndStatus(salesExecutiveId,plantId,customerStatus);
+		}
+		else if(StringUtils.isEmpty(startDate)&& StringUtils.isEmpty(endDate) && StringUtils.isEmpty(customerStatus) && !StringUtils.isEmpty(plantId) && !StringUtils.isEmpty(salesExecutiveId) ){
+
+			customer = customerRepository.findByPlantIdAndSalesExecutiveId(plantId,salesExecutiveId);
+		}
+		else if(!StringUtils.isEmpty(customerStatus)&& !StringUtils.isEmpty(plantId)    ) {
+
+			customer = customerRepository.findByCustomerStatusAndPlantId(customerStatus,plantId);
+		}
+		else if(!StringUtils.isEmpty(customerStatus)&& !StringUtils.isEmpty(salesExecutiveId)    ) {
+
+			customer = customerRepository.findByCustomerStatusAndSalesExecutiveId(customerStatus,salesExecutiveId);
+		}
+		else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) && StringUtils.isEmpty(customerStatus) && StringUtils.isEmpty(plantId) && StringUtils.isEmpty(salesExecutiveId) ){
+
+			customer = customerRepository.getAllBetweenDates(startDate,endDate);
+		}
+
+		else if(!StringUtils.isEmpty(plantId)  ) {
+
+			customer = customerRepository.getCustomerByPlantId(plantId);
+		}
+		//System.out.println("anythu"+salesExecutiveId);
+		else if(!StringUtils.isEmpty(salesExecutiveId)  ) {
+			customer = customerRepository.findCustomerBySalesExecutiveId(salesExecutiveId);
+		}
+
+		else if(!StringUtils.isEmpty(customerStatus)  ) {
+
+			customer = customerRepository.findCustomerByCustomerStatus(customerStatus);
+		}
+		else  {
+			customer = customerRepository.getAllCustomer();
+		}
+		return customer;
+
 	}
 
 

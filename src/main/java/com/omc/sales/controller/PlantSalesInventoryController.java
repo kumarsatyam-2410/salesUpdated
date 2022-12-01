@@ -1,9 +1,13 @@
 package com.omc.sales.controller;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
+import com.omc.sales.dto.CustomerPaymentListResponseDTO;
+import com.omc.sales.entity.CustomerPaymentDetails;
 import org.apache.logging.log4j.LogManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -279,4 +283,38 @@ public class PlantSalesInventoryController {
 		return responseEntity;
 		
 	}
+	@GetMapping("/getPlantSalesInventoryByFilters")
+	public List<PlantSalesInventory> getPlantSalesInventoryByFilters(
+
+			@RequestParam(required = false, value="startDate") Timestamp startDate,
+			@RequestParam(required = false, value="endDate") Timestamp endDate ,
+			@RequestParam(required = false, value="createBy")  Long[] createBy,
+			@RequestParam(required = false, value="plantId") Long[] plantId) {
+		System.out.println("satyam"+ Arrays.toString(createBy));
+		ResponseEntity<PlantSalesInventoryListResponseDTO> responseEntity;
+		List<PlantSalesInventory> list = new ArrayList<>();
+		PlantSalesInventoryListResponseDTO  plantSalesInventoryListResponseDTO = new PlantSalesInventoryListResponseDTO();
+		try {
+			System.out.println("In PlantSalesInventoryController for listAll PlantInventory Request by DateRange");
+			list = plantSalesInventoryService.getPlantSalesInventoryByFilter(startDate,endDate,plantId,createBy);
+			System.out.println("satyam22222"+Arrays.toString(list.toArray()));
+			plantSalesInventoryListResponseDTO.setList(list);
+			plantSalesInventoryListResponseDTO.setStatus(HttpStatus.OK.value());
+			responseEntity = new ResponseEntity<>(plantSalesInventoryListResponseDTO, HttpStatus.OK);
+		} catch (RuntimeException exception) {
+			System.out.println("Error occurred while listing customer Payment"+ exception.getMessage());
+			plantSalesInventoryListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			plantSalesInventoryListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity = new ResponseEntity<>(plantSalesInventoryListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			plantSalesInventoryListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		} catch (Exception exception) {
+			System.out.println("Error occurred while listing customer"+ exception.getMessage());
+			plantSalesInventoryListResponseDTO.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+			plantSalesInventoryListResponseDTO.setErrorCode(ErrorCodes.GENERAL_ERROR.getCode());
+			responseEntity = new ResponseEntity<>(plantSalesInventoryListResponseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
+			plantSalesInventoryListResponseDTO.setErrorMessage(exception.getCause().getMessage());
+		}
+		return list;
+	}
+
 }

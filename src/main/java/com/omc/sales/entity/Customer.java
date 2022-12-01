@@ -1,22 +1,19 @@
 package com.omc.sales.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * The Class Users.   `customer_id` `customername` `email` `password` `temp_password` `mobile` `role` `added_on` `updated_on` 
  */ 
-@Entity
+@Entity()
 @Table(name = "customers")
-public class Customer {
+
+public class Customer implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -75,13 +72,22 @@ public class Customer {
 	private String customerStatus;
 	
 	@Column(name = "sales_executive_id")
-	private int salesExecutiveId;
-	
+	private Integer salesExecutiveId;
+
+	public Integer getSalesExecutiveId() {
+		return salesExecutiveId;
+	}
+
+	public void setSalesExecutiveId(Integer salesExecutiveId) {
+		this.salesExecutiveId = salesExecutiveId;
+	}
+
 	@Column(name = "cust_acq_id")
 	private Long custAcqId;
-	
-	@Column(name = "plant_id")
-	private int plantId;
+
+	@JoinColumn (name = "plant_id")
+	@OneToOne
+	private Plant plantId;
 	
 	@Column(name = "omc_id")
 	private Long omcId;
@@ -197,12 +203,88 @@ public class Customer {
 	@Column(name = "channel_no")
 	private String channelNo;
 
+	@Column(name = "kyc_doc_type")
+	private String kycDocType;
+
+	@Column(name = "country")
+	private Integer country;
+
+	@Column(name = "state")
+	private Integer state;
+
+	@Column(name = "district")
+	private Integer district;
+
+	@Column(name = "age")
+	private Integer age;
+
+
+	@Column(name = "oti_charge")
+	private Integer otiCharge;
+
+
+	public Plant getPlantId() {
+		return plantId;
+	}
+
+	public void setPlantId(Plant plantId) {
+		this.plantId = plantId;
+	}
+
 	public String getChannelNo() {
 		return channelNo;
 	}
 
 	public void setChannelNo(String channelNo) {
 		this.channelNo = channelNo;
+	}
+
+	public String getKycDocType() {
+		return kycDocType;
+	}
+
+	public void setKycDocType(String kycDocType) {
+		this.kycDocType = kycDocType;
+	}
+
+	public Integer getCountry() {
+		return country;
+	}
+
+	public void setCountry(Integer country) {
+		this.country = country;
+	}
+
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
+	}
+
+	public Integer getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(Integer district) {
+		this.district = district;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public Integer getOtiCharge() {
+		return otiCharge;
+	}
+
+	public void setOtiCharge(Integer otiCharge) {
+		this.otiCharge = otiCharge;
 	}
 
 	public String getOrderId() {
@@ -666,14 +748,7 @@ public class Customer {
 	}
 
 	
-	
-	public int getSalesExecutiveId() {
-		return salesExecutiveId;
-	}
 
-	public void setSalesExecutiveId(int salesExecutiveId) {
-		this.salesExecutiveId = salesExecutiveId;
-	}
 
 	public Long getCustAcqId() {
 		return custAcqId;
@@ -683,13 +758,9 @@ public class Customer {
 		this.custAcqId = custAcqId;
 	}
 
-	public int getPlantId() {
-		return plantId;
-	}
 
-	public void setPlantId(int plantId) {
-		this.plantId = plantId;
-	}
+
+
 
 	@Override
 	public String toString() {

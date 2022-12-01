@@ -1,4 +1,4 @@
-package com.omc.sales.utils;
+package com.omc.sales.service.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

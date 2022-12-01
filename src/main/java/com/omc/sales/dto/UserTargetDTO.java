@@ -7,13 +7,13 @@ public class UserTargetDTO {
 	
     private Long targetId;
 	
-	private String userId;
+	private Integer userId;
 	
 	private String targetType;
 	
-	private Timestamp targetStartDate;
+	private String year;
 	
-	private Timestamp targetEndDate;
+	private String month;
 	
 	private Long noCustomerAcqTarget;
 	
@@ -22,6 +22,22 @@ public class UserTargetDTO {
 	private String comment;
 	
 	private int addedBy;
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
 
 	public int getAddedBy() {
 		return addedBy;
@@ -39,11 +55,11 @@ public class UserTargetDTO {
 		this.targetId = targetId;
 	}
 
-	public String getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 
@@ -55,21 +71,7 @@ public class UserTargetDTO {
 		this.targetType = targetType;
 	}
 
-	public Timestamp getTargetStartDate() {
-		return targetStartDate;
-	}
 
-	public void setTargetStartDate(Timestamp targetStartDate) {
-		this.targetStartDate = targetStartDate;
-	}
-
-	public Timestamp getTargetEndDate() {
-		return targetEndDate;
-	}
-
-	public void setTargetEndDate(Timestamp targetEndDate) {
-		this.targetEndDate = targetEndDate;
-	}
 
 	public Long getNoCustomerAcqTarget() {
 		return noCustomerAcqTarget;
@@ -98,7 +100,7 @@ public class UserTargetDTO {
 	@Override
 	public String toString() {
 		return "UserTargetDTO [targetId=" + targetId + ", userId=" + userId + ", targetType=" + targetType
-				+ ", targetStartDate=" + targetStartDate + ", targetEndDate=" + targetEndDate + ", noCustomerAcqTarget="
+				+ ", year=" + year + ", month=" + month + ", noCustomerAcqTarget="
 				+ noCustomerAcqTarget + ", revenueTargetAmount=" + revenueTargetAmount + ", comment=" + comment + "]";
 	}
 	

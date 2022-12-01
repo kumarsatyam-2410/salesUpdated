@@ -1,8 +1,10 @@
 package com.omc.sales.service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.omc.sales.entity.Customer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import com.omc.sales.dto.CustomerPaymentDTO;
 import com.omc.sales.entity.CustomerPaymentDetails;
 import com.omc.sales.exception.SSNSQLException;
 import com.omc.sales.repository.CustomerPaymentRepository;
+import org.springframework.util.StringUtils;
 
 @Service
 public class CustomerPaymentService {
@@ -107,6 +110,26 @@ public class CustomerPaymentService {
 		
 	}
 
+	public Long updateCustomerPayment(CustomerPaymentDTO customerPaymentDTO) {
+
+		CustomerPaymentDetails customerPaymentDetails = new CustomerPaymentDetails();
+		customerPaymentDetails.setCpId(customerPaymentDTO.getCpId());
+		customerPaymentDetails.setCustomerId(customerPaymentDTO.getCustomerId());
+		customerPaymentDetails.setCustomerName(customerPaymentDTO.getCustomerName());
+		customerPaymentDetails.setPlantId(customerPaymentDTO.getPlantId());
+		customerPaymentDetails.setPaymentMode(customerPaymentDTO.getPaymentMode());
+		customerPaymentDetails.setPaymentAmount(customerPaymentDTO.getPaymentAmount());
+		customerPaymentDetails.setPaymentCurrency(customerPaymentDTO.getPaymentCurrency());
+		customerPaymentDetails.setPaymentDate(customerPaymentDTO.getPaymentDate());
+		customerPaymentDetails.setPaymentReceivedUserId(customerPaymentDTO.getPaymentReceivedUserId());
+		customerPaymentDetails.setRemark(customerPaymentDTO.getRemark());
+		customerPaymentDetails.setCafNo(customerPaymentDTO.getCafNo());
+		customerPaymentDetails.setSalesExecId(customerPaymentDTO.getSalesExecId());
+		customerPaymentRepository.save(customerPaymentDetails);
+		return customerPaymentDetails.getCpId();
+
+	}
+
 /*
 	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
 	public Long updateCustomer(CustomerDTO customerDTO) {
@@ -136,4 +159,72 @@ public class CustomerPaymentService {
 	}
 
 */
+@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
+public List<CustomerPaymentDetails> getCustomerPaymentByFilter(Timestamp startDate, Timestamp endDate, String paymentMode,
+													  Long[] plantId , Long[] paymentReceivedUserId) {
+	System.out.println("anythu"+paymentReceivedUserId);
+	LOGGER.info("in  CustomerPayment service get customer payment data by dateRange,paymentMode,plantId and PaymentReceivedUserId");
+	List<CustomerPaymentDetails> customer = null;
+	if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) && !StringUtils.isEmpty(paymentMode) && !StringUtils.isEmpty(plantId) && !StringUtils.isEmpty(paymentReceivedUserId) ){
+
+		customer = customerPaymentRepository.findCustomerByAllFilters(plantId,paymentReceivedUserId,startDate,endDate,paymentMode);
+	}
+	else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate)  && !StringUtils.isEmpty(plantId) && !StringUtils.isEmpty(paymentReceivedUserId) ) {
+
+		customer = customerPaymentRepository.findCustomerByDateRangeAndAllId(plantId,paymentReceivedUserId,startDate,endDate);
+	}
+	else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate)  && !StringUtils.isEmpty(plantId)  ) {
+
+		customer =customerPaymentRepository.findCustomerByDateRangeAndPlantId(startDate,endDate,plantId);
+	}
+	else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) && StringUtils.isEmpty(paymentMode) && StringUtils.isEmpty(plantId) && !StringUtils.isEmpty(paymentReceivedUserId) ){
+
+		customer = customerPaymentRepository.findCustomerByDateRangeAndId(paymentReceivedUserId,startDate,endDate);
+	}
+	else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate)  && !StringUtils.isEmpty(paymentMode)  ) {
+
+		customer = customerPaymentRepository.findCustomerPaymentDetailByDateAndPaymentMode(startDate,endDate,paymentMode);
+	}
+	else if(!StringUtils.isEmpty(paymentReceivedUserId)&& !StringUtils.isEmpty(plantId)  && !StringUtils.isEmpty(paymentMode)  ) {
+
+		customer = customerPaymentRepository.findByIdAndMode(paymentReceivedUserId,plantId,paymentMode);
+	}
+	else if(StringUtils.isEmpty(startDate)&& StringUtils.isEmpty(endDate) && StringUtils.isEmpty(paymentMode) && !StringUtils.isEmpty(plantId) && !StringUtils.isEmpty(paymentReceivedUserId) ){
+
+		customer = customerPaymentRepository.findByPlantIdAndPaymentRecievedUserId(paymentReceivedUserId,plantId);
+	}
+	else if(!StringUtils.isEmpty(paymentMode)&& !StringUtils.isEmpty(plantId)    ) {
+
+		customer = customerPaymentRepository.findByPaymentModeAndPlantId(paymentMode,plantId);
+	}
+	else if(!StringUtils.isEmpty(paymentMode)&& !StringUtils.isEmpty(paymentReceivedUserId)    ) {
+
+		customer = customerPaymentRepository.findByPaymentModeAndId(paymentMode,paymentReceivedUserId);
+	}
+	else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) && StringUtils.isEmpty(paymentMode) && StringUtils.isEmpty(plantId) && StringUtils.isEmpty(paymentReceivedUserId) ){
+
+		customer = customerPaymentRepository.getAllBetweenDates(startDate,endDate);
+	}
+
+	else if(!StringUtils.isEmpty(plantId)  ) {
+
+		customer = customerPaymentRepository.getCustomerByPlantId(plantId);
+	}
+	//System.out.println("anythu"+salesExecutiveId);
+	else if(!StringUtils.isEmpty(paymentReceivedUserId)  ) {
+		customer = customerPaymentRepository.findCustomerByPaymentReceivedUserId(paymentReceivedUserId);
+	}
+
+	else if(!StringUtils.isEmpty(paymentMode)  ) {
+
+		customer = customerPaymentRepository.findCustomerByPaymentMode(paymentMode);
+	}
+	else  {
+		customer = customerPaymentRepository.findAll();
+	}
+	return customer;
+
+}
+
+
 }

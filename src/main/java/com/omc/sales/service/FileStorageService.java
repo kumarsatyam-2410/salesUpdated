@@ -15,7 +15,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 
 import com.omc.sales.exception.BaseException;
-import com.omc.sales.property.FileStorageProperties;
+import com.omc.sales.repository.property.FileStorageProperties;
 
 @Service
 public class FileStorageService {

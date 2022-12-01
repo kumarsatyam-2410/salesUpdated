@@ -74,7 +74,7 @@ public class PlantController {
 		return responseEntity;
 	}
 	@RequestMapping(value = "/plantList/{userId}", method = RequestMethod.GET)
-	public ResponseEntity<PlantListResponseDTO> getplantListById(@PathVariable Long userId) {
+	public ResponseEntity<PlantListResponseDTO> getplantListById(@RequestParam(required = false,value="userId") Long userId) {
 
 		ResponseEntity<PlantListResponseDTO> responseEntity;
 		List<Plant> list = new ArrayList<>();

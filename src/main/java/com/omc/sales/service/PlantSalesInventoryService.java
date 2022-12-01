@@ -1,8 +1,10 @@
 package com.omc.sales.service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.omc.sales.entity.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +13,12 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.omc.sales.dto.PlantSalesInventoryDTO;
-import com.omc.sales.entity.CustomerAcquisition;
-import com.omc.sales.entity.PlantSalesInventory;
-import com.omc.sales.entity.PlantSalesInventoryHistory;
-import com.omc.sales.entity.User;
 import com.omc.sales.exception.ErrorCodes;
 import com.omc.sales.exception.SSNSQLException;
 import com.omc.sales.repository.PlantSalesInventoryHistoryRepository;
 import com.omc.sales.repository.PlantSalesInventoryRepository;
 import com.omc.sales.repository.PlantUsersRepository;
+import org.springframework.util.StringUtils;
 
 @Service
 public class PlantSalesInventoryService {
@@ -198,7 +197,43 @@ public class PlantSalesInventoryService {
 		list.add(plantSalesInventory);
 		return list;
 	}
-  
+	@Transactional(propagation=Propagation.REQUIRED, rollbackFor=Throwable.class)
+	public List<PlantSalesInventory> getPlantSalesInventoryByFilter(Timestamp startDate, Timestamp endDate,
+																   Long[] plantId , Long[] createBy) {
+		System.out.println("anythu"+createBy);
+		LOGGER.info("in  PlantSalesInventory service get Sales Inventory data by dateRange,createBy and plantId");
+		List<PlantSalesInventory> customer = null;
+		if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) && !StringUtils.isEmpty(createBy) && !StringUtils.isEmpty(plantId) ){
 
-	
+			customer = plantSalesInventoryRepository.findPlantSalesInventoryByAllFilters(plantId,createBy,startDate,endDate);
+		} else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate)  && !StringUtils.isEmpty(plantId)  ) {
+
+			customer =plantSalesInventoryRepository.findPlantSalesInventoryByDateRangeAndPlantId(startDate,endDate,plantId);
+		} else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) &&  StringUtils.isEmpty(plantId) && !StringUtils.isEmpty(createBy) ){
+
+			customer = plantSalesInventoryRepository.findPlantSalesInventoryByDateRangeAndCreateBy(createBy,startDate,endDate);
+		} else if(StringUtils.isEmpty(startDate)&& StringUtils.isEmpty(endDate) &&  !StringUtils.isEmpty(plantId) && !StringUtils.isEmpty(createBy) ){
+
+			customer = plantSalesInventoryRepository.findByPlantIdAndCreateBy(createBy,plantId);
+		} else if(!StringUtils.isEmpty(startDate)&& !StringUtils.isEmpty(endDate) &&  StringUtils.isEmpty(plantId) && StringUtils.isEmpty(createBy) ){
+
+			customer = plantSalesInventoryRepository.getAllBetweenDates(startDate,endDate);
+		} else if(!StringUtils.isEmpty(plantId)  ) {
+			customer = plantSalesInventoryRepository.getPlantSalesInventoryByPlantId(plantId);
+		}
+		//System.out.println("anythu"+salesExecutiveId);
+		else if(!StringUtils.isEmpty(createBy)  ) {
+			customer = plantSalesInventoryRepository.findPlantSalesInventoryByCreateBy(createBy);
+		}
+
+		else  {
+			customer = plantSalesInventoryRepository.findAll();
+		}
+		return customer;
+
+	}
+
+
+
+
 }

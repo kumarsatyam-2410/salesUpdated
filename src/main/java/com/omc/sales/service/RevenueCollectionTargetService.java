@@ -42,8 +42,8 @@ public class RevenueCollectionTargetService {
 		revenueCollectionTarget.setRevenueTargetAmount(revenueCollectionTargetDTO.getRevenueTargetAmount());
 		revenueCollectionTarget.setTargetType(revenueCollectionTargetDTO.getTargetType());
 		revenueCollectionTarget.setComment(revenueCollectionTargetDTO.getComment());
-		revenueCollectionTarget.setTargetStartDate(revenueCollectionTargetDTO.getTargetStartDate());
-		revenueCollectionTarget.setTargetEndDate(revenueCollectionTargetDTO.getTargetEndDate());
+		revenueCollectionTarget.setYear(revenueCollectionTargetDTO.getYear());
+		revenueCollectionTarget.setMonth(revenueCollectionTargetDTO.getMonth());
 		revenueCollectionTarget.setAddedBy(revenueCollectionTargetDTO.getAddedBy());
 		 revenueCollectionTargetRepository.save(revenueCollectionTarget); 
 		 LOGGER.info("Out createAbhTarget service with return Value Churncusto"+revenueCollectionTarget.getRctId());
@@ -60,8 +60,8 @@ public class RevenueCollectionTargetService {
 		revenueCollectionTarget.setRevenueTargetAmount(revenueCollectionTargetDTO.getRevenueTargetAmount());
 		revenueCollectionTarget.setTargetType(revenueCollectionTargetDTO.getTargetType());
 		revenueCollectionTarget.setComment(revenueCollectionTargetDTO.getComment());
-		revenueCollectionTarget.setTargetStartDate(revenueCollectionTargetDTO.getTargetStartDate());
-		revenueCollectionTarget.setTargetEndDate(revenueCollectionTargetDTO.getTargetEndDate());
+		revenueCollectionTarget.setYear(revenueCollectionTargetDTO.getYear());
+		revenueCollectionTarget.setMonth(revenueCollectionTargetDTO.getMonth());
 		revenueCollectionTarget.setAddedBy(revenueCollectionTargetDTO.getAddedBy());
 		 revenueCollectionTargetRepository.save(revenueCollectionTarget); 
 		 LOGGER.info("Out updateAbhTarget service with return Value rctId"+revenueCollectionTarget.getRctId());

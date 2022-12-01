@@ -191,6 +191,72 @@ public class CustomerHistory {
 	@Column(name = "order_id")
 	private String orderId;
 
+	@Column(name = "kyc_doc_type")
+	private String kycDocType;
+
+	@Column(name = "country")
+	private Integer country;
+
+	@Column(name = "state")
+	private Integer state;
+
+	@Column(name = "district")
+	private Integer district;
+
+	@Column(name = "age")
+	private Integer age;
+
+	@Column(name = "oti_charge")
+	private Integer otiCharge;
+
+	public String getKycDocType() {
+		return kycDocType;
+	}
+
+	public void setKycDocType(String kycDocType) {
+		this.kycDocType = kycDocType;
+	}
+
+	public Integer getCountry() {
+		return country;
+	}
+
+	public void setCountry(Integer country) {
+		this.country = country;
+	}
+
+	public Integer getState() {
+		return state;
+	}
+
+	public void setState(Integer state) {
+		this.state = state;
+	}
+
+	public Integer getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(Integer district) {
+		this.district = district;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public Integer getOtiCharge() {
+		return otiCharge;
+	}
+
+	public void setOtiCharge(Integer otiCharge) {
+		this.otiCharge = otiCharge;
+	}
+
 	public String getOrderId() {
 		return orderId;
 	}

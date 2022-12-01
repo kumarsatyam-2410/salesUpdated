@@ -148,7 +148,7 @@ public class SalesHeadTargetController {
 		SalesHeadTargetListResponseDTO salesHeadTargetListResponseDTO = new SalesHeadTargetListResponseDTO();
 		try{
 			LOGGER.info("In SalesHeadTargetController for find SalesHeadTarget by salesHeadId Request");	
-			list = salesHeadTargetService.getSalesHeadTargetBySalesHeadId(salesHeadId);
+			list = salesHeadTargetService.getSalesHeadTargetBySalesHeadId1(salesHeadId);
 			salesHeadTargetListResponseDTO.setList(list);
 			salesHeadTargetListResponseDTO.setStatus(HttpStatus.OK.value());
 			responseEntity = new ResponseEntity<>(salesHeadTargetListResponseDTO,HttpStatus.OK);

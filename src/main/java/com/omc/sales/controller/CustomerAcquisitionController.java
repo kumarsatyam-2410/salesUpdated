@@ -5,7 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.omc.sales.dto.AbhTargetResponseDTO;
+import com.omc.sales.dto.*;
+import com.omc.sales.entity.Customer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +14,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.omc.sales.dto.CustomerAcquisitionDTO;
-import com.omc.sales.dto.CustomerAcquisitionResponseDTO;
-import com.omc.sales.dto.CustomerAcquitionListResponseDTO;
 import com.omc.sales.entity.CustomerAcquisition;
 import com.omc.sales.exception.BaseException;
 import com.omc.sales.exception.ErrorCodes;
@@ -167,17 +165,17 @@ public class CustomerAcquisitionController {
 	public List<CustomerAcquisition> getcustomerAcquisitionById(
 			@RequestParam(required = false, value="startDate") Timestamp startDate,
 			@RequestParam(required = false, value="endDate") Timestamp endDate ,
-			@RequestParam(required = false, value="acquisitionStatus") String acquisitionStatus ,
-			@RequestParam(required = false, value="offsets") Integer offsets,
-			@RequestParam(required = false, value="limits") Integer limits
-			) {
+			@RequestParam(required = false, value="acquisitionStatus") String acquisitionStatus,
+			@RequestParam(required = false,  value = "plantId") Long[] plantId,
+			@RequestParam(required = false,  value= "salesExecutiveId") Long[]  salesExecutiveId)
+			{
 
 		ResponseEntity<CustomerAcquitionListResponseDTO> responseEntity;
 		List<CustomerAcquisition> list = new ArrayList<>();
 		CustomerAcquitionListResponseDTO customerAcquisitionResponseDTO = new CustomerAcquitionListResponseDTO();
 		try{
 			LOGGER.info("In CustomerAcquisitionController for listAll CustomerAcquisitions Request");	
-			list = customerAcquisitionService.getcustomerAcquisitionByTimeAndStatus(startDate , endDate , acquisitionStatus ,offsets,limits ) ;
+			list = customerAcquisitionService.getCustomerByDateRangeAndStatus(startDate , endDate , acquisitionStatus ,plantId,salesExecutiveId ) ;
 			customerAcquisitionResponseDTO.setList(list);
 			customerAcquisitionResponseDTO.setStatus(HttpStatus.OK.value());
 			responseEntity = new ResponseEntity<>(customerAcquisitionResponseDTO,HttpStatus.OK);
@@ -222,4 +220,5 @@ public class CustomerAcquisitionController {
 		return response;
 
 	}
+
 }

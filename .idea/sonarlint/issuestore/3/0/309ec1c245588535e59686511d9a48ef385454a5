@@ -1,0 +1,39 @@
+
+l	java:S117Õ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÎö£ùÿÿÿÿ
+l	java:S117Ù"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çŒÊÎùÿÿÿÿ
+g	java:S117İ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŞÂÃÀ
+l	java:S117á"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰Ì½”øÿÿÿÿ
+f	java:S117å"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÇÍ´
+l	java:S117é"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ü€øêøÿÿÿÿ
+l	java:S117í"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âã’ªûÿÿÿÿ
+o	java:S116H"ZRename this field "upload_caf_path" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(şêù¸
+	java:S116I"jRename this field "upload_installation_certificate" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(İ£Í
+~	java:S116J"iRename this field "no_board_installation_required" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âºÎ“
+	java:S116K"gRename this field "no_sll_installation_required" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÄµòËúÿÿÿÿ
+|	java:S116L"hRename this field "no_rcbs_installation_required" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶Æş=
+ƒ	java:S116M"iRename this field "no_polls_installation_required" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Â¡¡±úÿÿÿÿ
+~	java:S116N"dRename this field "no_wire_in_meter_required" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(©¥°Æùÿÿÿÿ
+	java:S116†"dRename this field "SubscriptionPackageAmount" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÉäÕ¼ıÿÿÿÿ
+v	java:S116ˆ"`Rename this field "SubscriptionPackageId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú†ó’
+x	java:S116š"cRename this field "PermanentAddressDistrict" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÿÄ˜t
+œ
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¯‚ÿşÿÿÿÿ
+Q	java:S125B"<This block of commented-out lines of code should be removed.(ä³àİ
+W	java:S125ã"<This block of commented-out lines of code should be removed.(áä–Çıÿÿÿÿ
+W	java:S125§"<This block of commented-out lines of code should be removed.(”¿äÄÿÿÿÿÿ
+i	java:S100¸"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŸŸ“Àÿÿÿÿÿ
+d	java:S100¼"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(íóì£
+c	java:S100À"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(”ŠÃ/
+i	java:S100Ä"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Û×œ·ûÿÿÿÿ
+d	java:S100È"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ƒ°Öö
+i	java:S100Ì"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(œ®Üıÿÿÿÿ
+i	java:S100Ğ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“âñ´ıÿÿÿÿ
+i	java:S100Õ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÚÎö£ùÿÿÿÿ
+i	java:S100Ù"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(çŒÊÎùÿÿÿÿ
+d	java:S100İ"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŞÂÃÀ
+i	java:S100á"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(‰Ì½”øÿÿÿÿ
+c	java:S100å"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÇÍ´
+i	java:S100é"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ü€øêøÿÿÿÿ
+i	java:S100í"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(âã’ªûÿÿÿÿ
+J
+java:S1128"5Remove this unused import 'javax.persistence.Column'.(ìûæH

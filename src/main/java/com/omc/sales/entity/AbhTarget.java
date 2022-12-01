@@ -20,16 +20,16 @@ public class AbhTarget {
 	private Long abhId;
 	
 	@Column(name = "user_id")
-	private String userId;
+	private Integer userId;
 	
 	@Column(name = "target_type")
 	private String targetType;
 	
-	@Column(name = "target_start_date")
-	private Date targetStartDate;
+	@Column(name = "year")
+	private String year;
 	
-	@Column(name = "target_end_date")
-	private Date targetEndDate;
+	@Column(name = "month")
+	private String month;
 	
 	@Column(name = "no_customer_acq_target")
 	private int noCustomerAcqTarget;
@@ -42,6 +42,22 @@ public class AbhTarget {
 	
 	@Column(name = "added_by")
 	private int addedBy;
+
+	public String getYear() {
+		return year;
+	}
+
+	public void setYear(String year) {
+		this.year = year;
+	}
+
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
 
 	public AbhTarget() {
 		
@@ -65,11 +81,11 @@ public class AbhTarget {
 		this.abhId = abhId;
 	}
 
-	public String getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 
@@ -81,21 +97,10 @@ public class AbhTarget {
 		this.targetType = targetType;
 	}
 
-	public Date getTargetStartDate() {
-		return targetStartDate;
-	}
 
-	public void setTargetStartDate(Date targetStartDate) {
-		this.targetStartDate = targetStartDate;
-	}
 
-	public Date getTargetEndDate() {
-		return targetEndDate;
-	}
 
-	public void setTargetEndDate(Date targetEndDate) {
-		this.targetEndDate = targetEndDate;
-	}
+
 
 	public int getNoCustomerAcqTarget() {
 		return noCustomerAcqTarget;
